@@ -1,0 +1,40 @@
+networks:
+  dnslab:
+    internal: true          # No network access
+    ipam:
+      config:
+        - subnet: 10.53.0.0/24
+
+services:
+  root:
+    build: ./image
+    image: dnslab
+    command: nsd -d -c /etc/nsd/nsd.conf
+    volumes: ["./root:/etc/nsd:ro"]
+    networks: { dnslab: { ipv4_address: 10.53.0.2 } }
+
+  tld:
+    image: dnslab
+    command: nsd -d -c /etc/nsd/nsd.conf
+    volumes: ["./tld:/etc/nsd:ro"]
+    networks: { dnslab: { ipv4_address: 10.53.0.3 } }
+    depends_on: [root]
+
+  auth1:
+    image: dnslab
+    command: nsd -d -c /etc/nsd/nsd.conf
+    volumes: ["./auth1:/etc/nsd:ro"]
+    networks: { dnslab: { ipv4_address: 10.53.0.11 } }
+    depends_on: [root]
+
+  resolver:
+    image: dnslab
+    command: unbound -d -c /etc/unbound/unbound.conf
+    volumes: ["./resolver:/etc/unbound:ro"]
+    networks: { dnslab: { ipv4_address: 10.53.0.53 } }
+
+  client:
+    image: dnslab
+    command: sleep infinity
+    dns: [10.53.0.53]
+    networks: { dnslab: { ipv4_address: 10.53.0.100 } }
