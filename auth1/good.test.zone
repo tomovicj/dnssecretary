@@ -1,0 +1,10 @@
+$TTL 3600
+good.test.        IN SOA  ns1.good.test. admin.good.test. ( 1 3600 900 604800 300 )
+good.test.        IN NS   ns1.good.test.
+ns1.good.test.    IN A    10.53.0.11
+
+; Test records
+www.good.test.    IN A    10.53.0.80
+mail.good.test.   IN A    10.53.0.81
+good.test.        IN MX   10 mail.good.test.
+good.test.        IN TXT  "this is test zone"

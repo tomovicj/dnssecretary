@@ -1,0 +1,9 @@
+$TTL 3600
+test.                   IN SOA  ns1.nic.test. admin.nic.test. ( 1 3600 900 604800 300 )
+test.                   IN NS   ns1.nic.test.
+ns1.nic.test.           IN A    10.53.0.3
+a.root-servers.test.    IN A    10.53.0.2
+
+; delegacija za good.test.
+good.test.              IN NS   ns1.good.test.
+ns1.good.test.          IN A    10.53.0.11         ; glue
