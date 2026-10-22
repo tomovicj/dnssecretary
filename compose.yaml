@@ -36,5 +36,13 @@ services:
   client:
     image: dnslab
     command: sleep infinity
+    volumes: ["./client:/lab:ro"]
     dns: [10.53.0.53]
     networks: { dnslab: { ipv4_address: 10.53.0.100 } }
+
+  signer:
+    image: dnslab
+    profiles: ["tools"]
+    network_mode: none
+    volumes: ["./:/lab"]
+    working_dir: /lab
