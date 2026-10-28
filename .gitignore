@@ -1,19 +1,19 @@
-# --- Ključevi ---
-# Privatni ključevi nikad ne idu u git (dobra navika, iako su ovde lab ključevi).
-# Javne .key fajlove takođe ignorišemo: svako pravi svoje sa keygen.sh.
+# --- Keys ---
+# Private keys never go into git (good habit, even though these are lab keys).
+# Public .key files are ignored too: everyone makes their own with keygen.sh.
 keys/
 
-# --- Sve što pravi sign.sh (može uvek ponovo da se napravi) ---
+# --- Everything sign.sh produces (can always be regenerated) ---
 build/
 dsset-*
 *.signed
 *.zone.in
 
-# Trust anchor zavisi od root ključa, pa je različit kod svakog člana tima
+# The trust anchor depends on the root key, so it differs for every team member
 resolver/root.key
 client/delv-anchor.conf
 
-# --- Runtime fajlovi servera ---
+# --- Server runtime files ---
 *.pid
 *.log
 *.db
@@ -27,6 +27,6 @@ xfrd.state
 *~
 .DS_Store
 
-# --- Lokalna podešavanja ---
+# --- Local settings ---
 .env
 compose.override.yaml

@@ -1,6 +1,6 @@
-# CI za lab: shellcheck nad skriptama + ceo lab od nule (ključevi, potpisivanje,
-# serveri) i provera da svaka pokvarena zona daje očekivani rezultat.
-# Pokreće se samo na push na main i na pull request (ne na svaki push na granu).
+# Lab CI: shellcheck over the scripts + the whole lab from scratch (keys, signing,
+# servers) and a check that every broken zone gives the expected result.
+# Runs only on push to main and on pull requests (not on every branch push).
 name: lab
 
 on:
@@ -11,7 +11,7 @@ on:
 permissions:
   contents: read
 
-# Novi push na isti PR prekida stari run.
+# A new push to the same PR cancels the old run.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Ista verzija kao lokalno; podešavanja su u .shellcheckrc
+      # Same version as locally; settings are in .shellcheckrc
       - name: shellcheck
         run: docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh
 
@@ -46,7 +46,7 @@ jobs:
       - name: Provera zona (check.sh)
         run: sh scripts/check.sh
 
-      # Rollover skripte menjaju zone, zato idu posle check.sh.
+      # The rollover scripts change zones, so they run after check.sh.
       - name: E1 uživo (e1-rollover.sh)
         run: sh scripts/e1-rollover.sh
 

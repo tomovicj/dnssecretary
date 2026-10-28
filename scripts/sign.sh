@@ -1,14 +1,14 @@
 #!/bin/sh
-# sign.sh – potpisuje sve zone ODOZDO NAGORE i pravi trust anchor.
-# Pokreni svaki put kad promeniš zonu ili kad potpisi isteknu.
+# sign.sh – signs all zones BOTTOM-UP and builds the trust anchor.
+# Run it every time you change a zone or the signatures expire.
 #
-# Pokretanje sa hosta:
+# Run from the host:
 #   docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/sign.sh
-# Posle toga:
+# Then:
 #   docker compose restart root tld auth1 auth2 auth3 resolver
 #
-# Važenje potpisa možeš da promeniš preko env promenljivih (trebaće u fazi 2):
-#   SIG_START=now-3600  SIG_END=now+2592000   (default: od pre 1h do za 30 dana)
+# Signature validity can be changed with env variables (needed in phase 2):
+#   SIG_START=now-3600  SIG_END=now+2592000   (default: from 1h ago to 30 days from now)
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -21,96 +21,96 @@ SIG_END=${SIG_END:-now+2592000}
 
 mkdir -p "$BUILD" client
 
-# ---------- pomoćne funkcije ----------
+# ---------- helpers ----------
 
-# Potpiši jednu zonu i odmah proveri rezultat.
-#   $1 = origin (npr. good.test ili .)
-#   $2 = ulazni (nepotpisani) fajl
-#   $3 = izlazni (potpisani) fajl
+# Sign one zone and verify the result right away.
+#   $1 = origin (e.g. good.test or .)
+#   $2 = input (unsigned) file
+#   $3 = output (signed) file
 sign_zone() {
     origin=$1; input=$2; output=$3
     echo ">> potpisujem: $origin"
 
-    # -S          sam nađe ključeve u $KEYDIR i ubaci DNSKEY zapise u zonu
-    # -d $BUILD   gde da upiše dsset-<zona>. (DS zapis za roditelja)
-    # -s / -e     početak i kraj važenja potpisa (inception / expiration)
-    # -N unixtime SOA serial = trenutno vreme, pa raste pri svakom potpisivanju
+    # -S          finds the keys in $KEYDIR itself and adds the DNSKEY records to the zone
+    # -d $BUILD   where to write dsset-<zone>. (the DS record for the parent)
+    # -s / -e     start and end of signature validity (inception / expiration)
+    # -N unixtime SOA serial = current time, so it grows with every signing
     dnssec-signzone -S -K "$KEYDIR" -d "$BUILD" \
         -s "$SIG_START" -e "$SIG_END" -N unixtime \
         -o "$origin" -f "$output" "$input" >/dev/null
 
-    # Nezavisna provera. Ako ovo padne, set -e prekida skriptu
-    # i pokvarena zona NE stiže do servera.
+    # Independent check. If this fails, set -e stops the script
+    # and the broken zone does NOT reach the servers.
     dnssec-verify -o "$origin" "$output"
 }
 
-# Spoji izvornu zonu deteta-roditelja sa DS zapisom deteta.
-#   $1 = izvorni fajl roditelja, $2 = dsset fajl deteta, $3 = izlaz
+# Join the parent's source zone with the child's DS records.
+#   $1 = parent source file, $2 = child dsset file, $3 = output
 with_ds() {
     { cat "$1"; echo; cat "$2"; } > "$3"
 }
 
-# Nađi KSK fajl za zonu (onaj sa flags 257).
+# Find the KSK file for a zone (the one with flags 257).
 ksk_file() {
     grep -l 'DNSKEY 257' "$KEYDIR"/K"$1"+013+*.key | head -n 1
 }
 
-# ---------- provere pre početka ----------
+# ---------- checks before starting ----------
 
 for f in root.zone test.zone good.test.zone; do
     [ -f "$SRC/$f" ] || { echo "Nema $SRC/$f"; exit 1; }
 done
 
-# DS zapise ubacuje ova skripta. Ako su ostali $INCLUDE ili ručni DS u izvoru,
-# dobićeš duple ili zastarele DS zapise.
+# This script inserts the DS records. If $INCLUDE or hand-written DS records are left
+# in the source, you get duplicate or stale DS records.
 if grep -qiE '^\$INCLUDE|[[:space:]]DS[[:space:]]' "$SRC/test.zone" "$SRC/root.zone"; then
     echo "UPOZORENJE: zones/test.zone ili zones/root.zone već sadrže \$INCLUDE ili DS."
     echo "            Obriši ih – sign.sh sam dodaje DS iz build/dsset-*."
     exit 1
 fi
 
-# ---------- 1. good.test (list stabla) ----------
+# ---------- 1. good.test (leaf of the tree) ----------
 sign_zone good.test "$SRC/good.test.zone" "$BUILD/good.test.zone.signed"
-#   -> nastaje $BUILD/dsset-good.test.
+#   -> produces $BUILD/dsset-good.test.
 
-# ---------- 1b. pokvarene zone (katalog grešaka) ----------
-# Bez dnssec-verify – namerno su pokvarene. Vidi scripts/break.sh.
+# ---------- 1b. broken zones (error catalogue) ----------
+# No dnssec-verify – they are broken on purpose. See scripts/break.sh.
 rm -rf "$BUILD/broken" "$BUILD/parent-ds" "$BUILD/tmp-break"
 sh scripts/break.sh
-#   -> nastaju $BUILD/broken/{,auth2/,auth3/}*.zone.signed i $BUILD/parent-ds/*.ds
+#   -> produces $BUILD/broken/{,auth2/,auth3/}*.zone.signed and $BUILD/parent-ds/*.ds
 
-# ---------- 2. test. (roditelj od good.test i pokvarenih zona) ----------
+# ---------- 2. test. (parent of good.test and the broken zones) ----------
 cat "$BUILD/dsset-good.test." "$BUILD"/parent-ds/*.ds > "$BUILD/dsset-test-children"
 with_ds "$SRC/test.zone" "$BUILD/dsset-test-children" "$BUILD/test.zone.in"
 sign_zone test "$BUILD/test.zone.in" "$BUILD/test.zone.signed"
-#   -> nastaje $BUILD/dsset-test.
+#   -> produces $BUILD/dsset-test.
 
-# ---------- 3. root (roditelj od test.) ----------
+# ---------- 3. root (parent of test.) ----------
 with_ds "$SRC/root.zone" "$BUILD/dsset-test." "$BUILD/root.zone.in"
 sign_zone . "$BUILD/root.zone.in" "$BUILD/root.zone.signed"
 
 # ---------- 4. trust anchor ----------
-# Resolver ne može da pita "koji je root ključ?" – mora da ga zna unapred.
-# Pravimo DS (SHA-256 hash) od root KSK.
+# The resolver can't ask "what is the root key?" – it has to know it in advance.
+# We build a DS (SHA-256 hash) from the root KSK.
 root_ksk=$(ksk_file .)
 [ -n "$root_ksk" ] || { echo "Nema root KSK – pokreni prvo keygen.sh"; exit 1; }
 
-dnssec-dsfromkey -2 "$root_ksk" > resolver/root.key      # format za Unbound
+dnssec-dsfromkey -2 "$root_ksk" > resolver/root.key      # format for Unbound
 echo ">> trust anchor: $(cat resolver/root.key)"
 
-# Isti anchor u BIND formatu, za delv u client kontejneru.
+# The same anchor in BIND format, for delv in the client container.
 awk '{ for (i = 1; i <= NF; i++) if ($i == "DS") {
          printf "trust-anchors {\n    . static-ds %s %s %s \"%s\";\n};\n",
                 $(i+1), $(i+2), $(i+3), $(i+4); exit } }' \
     resolver/root.key > client/delv-anchor.conf
 
-# ---------- 5. isporuka serverima ----------
+# ---------- 5. delivery to the servers ----------
 cp "$BUILD/root.zone.signed"      root/
 cp "$BUILD/test.zone.signed"      tld/
 cp "$BUILD/good.test.zone.signed" auth1/
 cp "$BUILD"/broken/*.zone.signed  auth1/
-cp "$BUILD"/broken/auth2/*.signed  auth2/   # F1: stara zona na "sekundarnom"
-cp "$BUILD"/broken/auth3/*.signed  auth3/   # F2: server bez TCP-a
+cp "$BUILD"/broken/auth2/*.signed  auth2/   # F1: stale zone on the "secondary"
+cp "$BUILD"/broken/auth3/*.signed  auth3/   # F2: server without TCP
 
 echo
 echo "Gotovo. Sad pokreni na hostu:"

@@ -3,7 +3,7 @@ f1-stale-secondary.test.        IN SOA  ns1.f1-stale-secondary.test. admin.f1-st
 f1-stale-secondary.test.        IN NS   ns1.f1-stale-secondary.test.
 f1-stale-secondary.test.        IN NS   ns2.f1-stale-secondary.test.
 ns1.f1-stale-secondary.test.    IN A    10.53.0.11
-ns2.f1-stale-secondary.test.    IN A    10.53.0.12   ; auth2 – sekundarni sa starom zonom
+ns2.f1-stale-secondary.test.    IN A    10.53.0.12   ; auth2 – secondary with a stale zone
 
 ; Test records
 www.f1-stale-secondary.test.    IN A    10.53.0.80

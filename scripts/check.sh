@@ -1,17 +1,17 @@
 #!/bin/sh
-# check.sh – pita resolver za svaku pokvarenu zonu i proveri da li je rezultat očekivan.
-# Očekivano je ono što je provereno sa Unbound 1.20 (lab resolver).
-# Gde se to razlikuje od kataloga grešaka, piše u opisu "(katalog: ...)".
+# check.sh – asks the resolver about every broken zone and checks the result is as expected.
+# "Expected" is what was verified with Unbound 1.20 (the lab resolver).
+# Where that differs from the error catalogue, the description says "(katalog: ...)".
 #
-# Pokretanje sa hosta (lab mora da radi: docker compose up -d):
-#   sh scripts/check.sh              status i AD moraju da se slažu, EDE samo upozorava
-#   STRICT_EDE=1 sh scripts/check.sh i EDE mora da se slaže
+# Run from the host (the lab must be running: docker compose up -d):
+#   sh scripts/check.sh              status and AD must match, EDE only warns
+#   STRICT_EDE=1 sh scripts/check.sh EDE must match too
 #
-# Izlaz: 0 ako je sve kako treba, 1 ako bar jedan upit nije (koristi ga CI).
+# Exit: 0 if everything is as expected, 1 if at least one query isn't (used by CI).
 #
-# Pitamo @10.53.0.53 direktno: Docker DNS (127.0.0.11) briše EDE iz odgovora.
+# We ask @10.53.0.53 directly: Docker DNS (127.0.0.11) strips EDE from answers.
 #
-# Resolver kešira i dobre i loše odgovore. Za čist rezultat posle sign.sh:
+# The resolver caches both good and bad answers. For a clean result after sign.sh:
 #   docker compose restart resolver
 
 set -eu
@@ -21,28 +21,28 @@ STRICT_EDE=${STRICT_EDE:-0}
 FAIL=0
 WARN=0
 
-# Jedan upit preko resolvera. Ispis: "<status> <AD|--> <EDE kod|-> <EDE tekst>"
-#   $1 = ime, $2 = tip
+# One query through the resolver. Prints: "<status> <AD|--> <EDE code|-> <EDE text>"
+#   $1 = name, $2 = type
 ask() {
     docker compose exec -T client dig @10.53.0.53 +dnssec +tries=1 +time=5 "$1" "$2" 2>/dev/null |
     awk '
         /^;; ->>HEADER<<-/ { sub(/,.*/, "", $6); status = $6 }
         /^;; flags:/       { ad = ($0 ~ / ad[ ;]/) ? "AD" : "--" }
-        /^; EDE:/          { code = $3; sub(/^; EDE: /, ""); sub(/\):.*/, ")"); ede = $0 }   # ceo razlog: docker compose logs resolver
+        /^; EDE:/          { code = $3; sub(/^; EDE: /, ""); sub(/\):.*/, ")"); ede = $0 }   # full reason: docker compose logs resolver
         END { printf "%s %s %s %s", (status == "" ? "NEMA-ODGOVORA" : status), (ad == "" ? "--" : ad),
                                     (code == "" ? "-" : code), ede }'
 }
 
-# Jedan red provere.
-#   $1 = ID, $2 = ime, $3 = tip, $4 = očekivani status, $5 = AD ili --,
-#   $6 = očekivani EDE kod ili "-" (bez EDE-a), $7 = opis
+# One check row.
+#   $1 = ID, $2 = name, $3 = type, $4 = expected status, $5 = AD or --,
+#   $6 = expected EDE code or "-" (no EDE), $7 = description
 row() {
     id=$1; name=$2; type=$3; want_status=$4; want_ad=$5; want_ede=$6; desc=$7
     got=$(ask "$name" "$type")
-    # shellcheck disable=SC2086  # $got namerno bez navodnika: deli se na polja
+    # shellcheck disable=SC2086  # $got unquoted on purpose: split into fields
     set -- $got
     status=$1; ad=$2; ede=$3; shift 3
-    shown="$status $ad ${*:--}"     # za ispis: EDE tekst već sadrži kod
+    shown="$status $ad ${*:--}"     # for display: the EDE text already contains the code
 
     if [ "$status" != "$want_status" ] || [ "$ad" != "$want_ad" ]; then
         mark="GREŠKA"; FAIL=$((FAIL + 1))
@@ -58,7 +58,7 @@ row() {
     fi
 }
 
-# Sačekaj da lab proradi (posle "up -d" / "restart" serveri se podižu par sekundi).
+# Wait for the lab to come up (after "up -d" / "restart" the servers take a few seconds).
 i=0
 until [ "$(ask www.good.test A | cut -d' ' -f1-2)" = "NOERROR AD" ]; do
     i=$((i + 1))

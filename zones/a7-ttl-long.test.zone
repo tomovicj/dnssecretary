@@ -1,4 +1,4 @@
-$TTL 2592000                    ; 30 dana – a potpisi važe samo 7 (vidi break.sh)
+$TTL 2592000                    ; 30 days – but signatures are valid for only 7 (see break.sh)
 a7-ttl-long.test.        IN SOA  ns1.a7-ttl-long.test. admin.a7-ttl-long.test. ( 1 3600 900 604800 300 )
 a7-ttl-long.test.        IN NS   ns1.a7-ttl-long.test.
 ns1.a7-ttl-long.test.    IN A    10.53.0.11

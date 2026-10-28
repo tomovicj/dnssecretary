@@ -27,14 +27,14 @@ services:
     networks: { dnslab: { ipv4_address: 10.53.0.11 } }
     depends_on: [root]
 
-  auth2:                    # F1: sekundarni sa starom zonom
+  auth2:                    # F1: secondary with a stale zone
     image: dnslab
     command: nsd -d -c /etc/nsd/nsd.conf
     volumes: ["./auth2:/etc/nsd:ro"]
     networks: { dnslab: { ipv4_address: 10.53.0.12 } }
     depends_on: [root]
 
-  auth3:                    # F2: bez TCP-a, UDP odgovori do 512 bajtova
+  auth3:                    # F2: no TCP, UDP answers up to 512 bytes
     image: dnslab
     command: unbound -d -c /etc/unbound/unbound.conf
     volumes: ["./auth3:/etc/unbound:ro"]

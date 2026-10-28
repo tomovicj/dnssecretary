@@ -3,6 +3,6 @@ $TTL 3600
 .                       IN NS   a.root-servers.test.
 a.root-servers.test.    IN A    10.53.0.2      ; glue
 
-; delegacija za test.
+; delegation for test.
 test.                   IN NS   ns1.nic.test.
 ns1.nic.test.           IN A    10.53.0.3      ; glue

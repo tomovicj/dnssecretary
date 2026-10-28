@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A self-contained DNSSEC lab: a miniature DNS hierarchy (root → `test.` → `good.test.`) served by NSD, with a validating Unbound resolver, all running in Docker on an isolated network (`internal: true`, no internet). There is no application code, build system, or test suite. The "code" is shell scripts, zone files, and server configs.
 
-Comments, script output, and `.gitignore` notes are written in Serbian (Latin script). Keep new comments and messages in the same language and style.
+Comments (in scripts, configs, zone files and the workflow) are in English. Script output, `check.sh` descriptions, workflow step names and the TXT records in the broken zones are in Serbian (Latin script). Keep new code in the same split.
 
 ## Commands
 

@@ -1,7 +1,7 @@
 $TTL 3600
 f2-tcp-edns.test.        IN SOA  ns1.f2-tcp-edns.test. admin.f2-tcp-edns.test. ( 1 3600 900 604800 300 )
 f2-tcp-edns.test.        IN NS   ns1.f2-tcp-edns.test.
-ns1.f2-tcp-edns.test.    IN A    10.53.0.13   ; auth3 – bez TCP-a, UDP odgovori do 512 bajtova
+ns1.f2-tcp-edns.test.    IN A    10.53.0.13   ; auth3 – no TCP, UDP answers up to 512 bytes
 
 ; Test records
 www.f2-tcp-edns.test.    IN A    10.53.0.80
@@ -9,5 +9,5 @@ mail.f2-tcp-edns.test.   IN A    10.53.0.81
 f2-tcp-edns.test.        IN MX   10 mail.f2-tcp-edns.test.
 f2-tcp-edns.test.        IN TXT  "F2: server ne radi sa velikim odgovorima"
 
-; ~450 bajtova: bez DNSSEC-a staje u 512 bajtova, sa RRSIG-om ne
+; ~450 bytes: fits in 512 bytes without DNSSEC, but not with the RRSIG
 big.f2-tcp-edns.test.    IN TXT  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

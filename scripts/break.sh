@@ -1,20 +1,20 @@
 #!/bin/sh
-# break.sh – pravi po jednu POKVARENU zonu za svaku grešku iz kataloga
-# (DNSSECretary-katalog-gresaka, tabovi "Prvo (MVP)" i "Kasnije").
+# break.sh – makes one BROKEN zone for every error in the catalogue
+# (DNSSECretary-katalog-gresaka, tabs "Prvo (MVP)" and "Kasnije").
 #
-# Obično je ne pokrećeš ručno: sign.sh je poziva posle good.test, a pre test.
-# zone, jer test. mora da dobije DS zapise ovih zona.
+# You normally don't run it by hand: sign.sh calls it after good.test and before
+# the test. zone, because test. has to get the DS records of these zones.
 #
-# Izlaz:
-#   build/broken/<zona>.zone.signed         zone koje služi auth1
-#   build/broken/auth2/<zona>.zone.signed   zone koje služi auth2 (F1)
-#   build/broken/auth3/<zona>.zone.signed   zone koje služi auth3 (F2)
-#   build/parent-ds/<zona>.ds               DS koji ide u test. zonu (za neke greške namerno loš)
+# Output:
+#   build/broken/<zone>.zone.signed         zones served by auth1
+#   build/broken/auth2/<zone>.zone.signed   zones served by auth2 (F1)
+#   build/broken/auth3/<zone>.zone.signed   zones served by auth3 (F2)
+#   build/parent-ds/<zone>.ds               DS that goes into the test. zone (deliberately wrong for some errors)
 #
-# Posebni režim (za E1 i E3, pozivaju ga e1-rollover.sh i e3-rollover.sh):
-#   sh scripts/break.sh rollover <zona>     zameni ZSK bez prethodnog objavljivanja
+# Special mode (for E1 and E3, called by e1-rollover.sh and e3-rollover.sh):
+#   sh scripts/break.sh rollover <zone>     replace the ZSK without pre-publishing it
 #
-# Pokvarene zone NE prolaze kroz dnssec-verify – pale bi proveru, a to i hoćemo.
+# Broken zones do NOT go through dnssec-verify – they would fail it, which is the point.
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -24,18 +24,18 @@ SRC=zones
 BUILD=build
 OUT=$BUILD/broken
 PDS=$BUILD/parent-ds
-TMP=$BUILD/tmp-break        # pomoćna potpisivanja (A5, D5, D6)
+TMP=$BUILD/tmp-break        # helper signing runs (A5, D5, D6)
 SIG_START=${SIG_START:-now-3600}
 SIG_END=${SIG_END:-now+2592000}
 
 mkdir -p "$OUT/auth2" "$OUT/auth3" "$PDS" "$TMP"
 
-# ---------- pomoćne funkcije ----------
+# ---------- helpers ----------
 
-# Potpiši zonu bez ugrađene provere (-P).
-#   $1 = ulaz, $2 = izlaz, $3 = zona (bez tačke), $4/$5 = početak/kraj važenja,
-#   $6 = SOA serial (unixtime ili keep), ostalo = dodatne opcije za dnssec-signzone
-# -O full: jedan zapis = jedan red, pa awk lako nađe i izmeni tačno jedan zapis.
+# Sign a zone without the built-in check (-P).
+#   $1 = input, $2 = output, $3 = zone (no trailing dot), $4/$5 = validity start/end,
+#   $6 = SOA serial (unixtime or keep), rest = extra options for dnssec-signzone
+# -O full: one record = one line, so awk can easily find and change exactly one record.
 signzone() {
     in=$1; out=$2; zone=$3; start=$4; end=$5; serial=$6; shift 6
     dnssec-signzone -P -S -K "$KEYDIR" -d "$BUILD" -O full \
@@ -43,51 +43,51 @@ signzone() {
         -o "$zone" -f "$out" "$in" >/dev/null
 }
 
-# Najčešći slučaj: izvor iz zones/, izlaz za auth1.
-#   $1 = zona, $2/$3 = početak/kraj važenja, ostalo = dodatne opcije
+# The common case: source from zones/, output for auth1.
+#   $1 = zone, $2/$3 = validity start/end, rest = extra options
 sign_raw() {
     zone=$1; start=$2; end=$3; shift 3
     signzone "$SRC/$zone.zone" "$OUT/$zone.zone.signed" "$zone" "$start" "$end" unixtime "$@"
 }
 
-# Ispravan DS za roditelja (dsset koji je napravio dnssec-signzone).
+# Correct DS for the parent (the dsset dnssec-signzone produced).
 good_ds() {
     cp "$BUILD/dsset-$1." "$PDS/$1.ds"
 }
 
-# KSK fajl zone (flags 257), u $KEYDIR ili u drugom folderu ($2). Bilo koji algoritam.
+# The zone's KSK file (flags 257), in $KEYDIR or another directory ($2). Any algorithm.
 ksk_file() {
     grep -l 'DNSKEY 257' "${2:-$KEYDIR}"/K"$1".+*.key | head -n 1
 }
 
-# Key tag iz imena fajla: Kzona.+013+01193.key -> 1193
+# Key tag from the file name: Kzone.+013+01193.key -> 1193
 key_tag() {
     basename "$1" .key | awk -F+ '{ print $3 + 0 }'
 }
 
-# DNSKEY zapis iz .key fajla (bez komentara na početku).
+# The DNSKEY record from a .key file (without the leading comments).
 dnskey_of() {
     grep -v '^;' "$1"
 }
 
-# Izmeni potpisanu zonu na mestu, awk programom $2 (fajl: $3, default izlaz za auth1).
+# Edit a signed zone in place with awk program $2 (file: $3, default the auth1 output).
 edit_zone() {
     f=${3:-$OUT/$1.zone.signed}
     awk "$2" "$f" > "$f.tmp"
     mv "$f.tmp" "$f"
 }
 
-# ---------- greške: tab "Prvo (MVP)" ----------
+# ---------- errors: tab "Prvo (MVP)" ----------
 
-# A1 – istekao potpis. Važio od pre 37 dana do pre 7 dana.
-# (Unbound toleriše do 1 dan razlike u satu – val-sig-skew-max – pa "juče" nije dovoljno.)
+# A1 – expired signature. Valid from 37 days ago until 7 days ago.
+# (Unbound tolerates up to 1 day of clock skew – val-sig-skew-max – so "yesterday" isn't enough.)
 break_a1() {
     z=a1-expired.test
     sign_raw $z now-3196800 now-604800
     good_ds $z
 }
 
-# A3 – zapis bez potpisa: obriši RRSIG za www A.
+# A3 – record without a signature: delete the RRSIG for www A.
 break_a3() {
     z=a3-nosig.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -95,7 +95,7 @@ break_a3() {
     good_ds $z
 }
 
-# A4 – neispravan potpis: promeni IP za www posle potpisivanja.
+# A4 – invalid signature: change www's IP after signing.
 break_a4() {
     z=a4-bogus.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -103,7 +103,7 @@ break_a4() {
     good_ds $z
 }
 
-# A6 – potpis uskoro ističe: važi još samo 2 dana. Zona je ispravna.
+# A6 – signature expires soon: valid for only 2 more days. The zone is correct.
 break_a6() {
     z=a6-expiring.test
     sign_raw $z "$SIG_START" now+172800
@@ -111,8 +111,8 @@ break_a6() {
     good_ds $z
 }
 
-# B1 – DS pokazuje na ključ koji ne postoji: u roditelju je DS starog KSK
-# (keys/old/, pravi ga keygen.sh), a zona je potpisana novim.
+# B1 – DS points to a key that doesn't exist: the parent has the DS of the old KSK
+# (keys/old/, made by keygen.sh), but the zone is signed with the new one.
 break_b1() {
     z=b1-ds-stale.test
     old=$(ksk_file $z "$KEYDIR/old")
@@ -121,8 +121,8 @@ break_b1() {
     dnssec-dsfromkey -2 "$old" > "$PDS/$z.ds"
 }
 
-# B2 – DS ima pogrešan digest: promeni jedan hex znak
-# (prvi znak poslednjeg polja – dsset deli digest na više polja).
+# B2 – DS has a wrong digest: change one hex character
+# (the first character of the last field – dsset splits the digest into several fields).
 break_b2() {
     z=b2-ds-digest.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -130,16 +130,16 @@ break_b2() {
         "$BUILD/dsset-$z." > "$PDS/$z.ds"
 }
 
-# B4 – DS postoji, a zona nije potpisana: služimo izvor kakav jeste.
-# Ključevi postoje samo da bi DS imao od čega da se napravi.
+# B4 – DS exists, but the zone is unsigned: serve the source as is.
+# The keys exist only so there is something to build the DS from.
 break_b4() {
     z=b4-ds-unsigned.test
     cp "$SRC/$z.zone" "$OUT/$z.zone.signed"
     dnssec-dsfromkey -2 "$(ksk_file $z)" > "$PDS/$z.ds"
 }
 
-# D1 – pokidan NSEC lanac: obriši NSEC (i njegov RRSIG) od mail.
-# Taj NSEC pokriva opseg mail → ns1, npr. ime "missing".
+# D1 – broken NSEC chain: delete the NSEC (and its RRSIG) at mail.
+# That NSEC covers the range mail → ns1, e.g. the name "missing".
 break_d1() {
     z=d1-nsec-broken.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -147,20 +147,20 @@ break_d1() {
     good_ds $z
 }
 
-# D4 – NSEC3 protiv RFC 9276: 200 iteracija + salt.
-# dnssec-signzone odbija > 150 iteracija, zato ldns-signzone (čita iste BIND ključeve).
+# D4 – NSEC3 against RFC 9276: 200 iterations + salt.
+# dnssec-signzone refuses > 150 iterations, hence ldns-signzone (it reads the same BIND keys).
 break_d4() {
     z=d4-nsec3-iter.test
-    # shellcheck disable=SC2012  # imena ključeva su bezbedna (K<zona>+013+<broj>)
+    # shellcheck disable=SC2012  # key file names are safe (K<zone>+013+<number>)
     keys=$(ls "$KEYDIR"/K$z.+013+*.private | sed 's/\.private$//')
-    # shellcheck disable=SC2086  # $keys namerno bez navodnika: više ključeva
+    # shellcheck disable=SC2086  # $keys unquoted on purpose: several keys
     ldns-signzone -n -t 200 -s abcdef -o $z -f "$OUT/$z.zone.signed" \
         "$SRC/$z.zone" $keys 2>/dev/null
     dnssec-dsfromkey -2 "$(ksk_file $z)" > "$PDS/$z.ds"
 }
 
-# E1 – zona je za početak ISPRAVNA. Kvari je tek e1-rollover.sh (uživo),
-# jer greška zavisi od toga šta resolver već ima u kešu.
+# E1 – the zone starts out CORRECT. Only e1-rollover.sh breaks it (live),
+# because the error depends on what the resolver already has in its cache.
 break_e1() {
     z=e1-rollover.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -168,19 +168,19 @@ break_e1() {
     good_ds $z
 }
 
-# ---------- greške: tab "Kasnije" ----------
+# ---------- errors: tab "Kasnije" ----------
 
-# A2 – potpis još nije važeći: počinje tek za 7 dana (kao da je sat na serveru pomeren).
-# "Sutra" nije dovoljno: Unbound toleriše do 1 dan razlike u satu (val-sig-skew-max).
+# A2 – signature not yet valid: it starts only in 7 days (as if the server clock were off).
+# "Tomorrow" isn't enough: Unbound tolerates up to 1 day of clock skew (val-sig-skew-max).
 break_a2() {
     z=a2-notyet.test
     sign_raw $z now+604800 now+3196800
     good_ds $z
 }
 
-# A5 – potpis ključem koji nije u DNSKEY skupu.
-# Dva potpisivanja: (1) KSK + ZSK1 – odatle uzimamo samo DNSKEY skup i njegov potpis;
-# (2) samo ZSK2 (keys/k2/) – odatle uzimamo sve ostalo. ZSK2 se nigde ne objavljuje.
+# A5 – signature by a key that is not in the DNSKEY set.
+# Two signing runs: (1) KSK + ZSK1 – from it we take only the DNSKEY set and its signature;
+# (2) only ZSK2 (keys/k2/) – from it we take everything else. ZSK2 is never published.
 break_a5() {
     z=a5-unknown-key.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -194,7 +194,7 @@ break_a5() {
     good_ds $z
 }
 
-# A7 – TTL duži od važenja potpisa: TTL 30 dana (u izvoru), potpisi važe 7 dana.
+# A7 – TTL longer than signature validity: TTL 30 days (in the source), signatures valid 7 days.
 break_a7() {
     z=a7-ttl-long.test
     sign_raw $z "$SIG_START" now+604800
@@ -202,34 +202,34 @@ break_a7() {
     good_ds $z
 }
 
-# B3 – DS i DNSKEY imaju različit algoritam: u DS-u 13 → 8.
+# B3 – DS and DNSKEY have different algorithms: 13 → 8 in the DS.
 break_b3() {
     z=b3-ds-alg.test
     sign_raw $z "$SIG_START" "$SIG_END"
-    # dsfromkey: "zona. IN DS <tag> <alg> <digest tip> <digest>"
+    # dsfromkey: "zone. IN DS <tag> <alg> <digest type> <digest>"
     dnssec-dsfromkey -2 "$(ksk_file $z)" | awk '{ $5 = 8; print }' > "$PDS/$z.ds"
 }
 
-# B5 – DNSKEY skup nije potpisan KSK-om: obriši potpis KSK-a nad DNSKEY skupom.
-# (dnssec-signzone potpisuje DNSKEY skup sa oba ključa, pa ostaje samo potpis ZSK-a.)
+# B5 – DNSKEY set not signed by the KSK: delete the KSK's signature over the DNSKEY set.
+# (dnssec-signzone signs the DNSKEY set with both keys, so only the ZSK's signature remains.)
 break_b5() {
     z=b5-dnskey-zsk.test
     tag=$(key_tag "$(ksk_file $z)")
     sign_raw $z "$SIG_START" "$SIG_END"
-    # RRSIG polja: $5 tip, ..., $11 key tag
+    # RRSIG fields: $5 type, ..., $11 key tag
     edit_zone $z '!($4 == "RRSIG" && $5 == "DNSKEY" && $11 == '"$tag"')'
     good_ds $z
 }
 
-# B6 – "ostrvo": zona je ispravno potpisana, ali DS ne ide u roditelja.
+# B6 – "island": the zone is correctly signed, but no DS goes to the parent.
 break_b6() {
     z=b6-island.test
     sign_raw $z "$SIG_START" "$SIG_END"
     dnssec-verify -q -o $z "$OUT/$z.zone.signed"
-    # namerno nema $PDS/$z.ds
+    # no $PDS/$z.ds on purpose
 }
 
-# B7 – DS sa SHA-1 (digest tip 1). Zona je ispravna.
+# B7 – DS with SHA-1 (digest type 1). The zone is correct.
 break_b7() {
     z=b7-ds-sha1.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -237,7 +237,7 @@ break_b7() {
     dnssec-dsfromkey -1 "$(ksk_file $z)" > "$PDS/$z.ds"
 }
 
-# B8 – višak starih DS zapisa: ispravan DS + DS starog KSK (keys/old/).
+# B8 – leftover old DS records: the correct DS + the DS of the old KSK (keys/old/).
 break_b8() {
     z=b8-ds-extra.test
     old=$(ksk_file $z "$KEYDIR/old")
@@ -247,15 +247,15 @@ break_b8() {
     { cat "$BUILD/dsset-$z."; dnssec-dsfromkey -2 "$old"; } > "$PDS/$z.ds"
 }
 
-# C1 – zastareo algoritam: ključevi su RSASHA1 (algoritam 5), vidi keygen.sh.
+# C1 – deprecated algorithm: the keys are RSASHA1 (algorithm 5), see keygen.sh.
 break_c1() {
     z=c1-rsasha1.test
     sign_raw $z "$SIG_START" "$SIG_END"
     good_ds $z
 }
 
-# C2 – dva algoritma u DNSKEY skupu i u DS-u, a zapisi su potpisani samo sa 13.
-# KSK algoritma 8 (keys/alg8/) samo objavimo – nema ga u $KEYDIR, pa ništa ne potpisuje.
+# C2 – two algorithms in the DNSKEY set and in the DS, but records are signed only with 13.
+# The algorithm-8 KSK (keys/alg8/) is only published – it's not in $KEYDIR, so it signs nothing.
 break_c2() {
     z=c2-two-alg.test
     alg8=$(ksk_file $z "$KEYDIR/alg8")
@@ -265,7 +265,7 @@ break_c2() {
     { dnssec-dsfromkey -2 "$(ksk_file $z)"; dnssec-dsfromkey -2 "$alg8"; } > "$PDS/$z.ds"
 }
 
-# C3 – slab RSA ključ: RSASHA256 sa 1024 bita, vidi keygen.sh. Zona je ispravna.
+# C3 – weak RSA key: RSASHA256 with 1024 bits, see keygen.sh. The zone is correct.
 break_c3() {
     z=c3-rsa1024.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -273,9 +273,9 @@ break_c3() {
     good_ds $z
 }
 
-# D2 – pogrešna lista tipova u NSEC: izvor ima www TXT, pa NSEC za www kaže
-# "A TXT RRSIG NSEC". Posle potpisivanja obrišemo TXT (i njegov RRSIG) –
-# NSEC ostaje ispravno potpisan, ali laže da TXT postoji.
+# D2 – wrong type list in the NSEC: the source has www TXT, so the NSEC for www says
+# "A TXT RRSIG NSEC". After signing we delete the TXT (and its RRSIG) –
+# the NSEC stays correctly signed, but lies that TXT exists.
 break_d2() {
     z=d2-bitmap.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -283,7 +283,7 @@ break_d2() {
     good_ds $z
 }
 
-# D3 – negativan odgovor bez potpisa: obriši sve RRSIG nad NSEC zapisima.
+# D3 – negative answer without signatures: delete all RRSIGs over NSEC records.
 break_d3() {
     z=d3-nsec-nosig.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -291,8 +291,8 @@ break_d3() {
     good_ds $z
 }
 
-# D5 – NSEC3PARAM se ne slaže sa NSEC3: lanac je bez salt-a, a NSEC3PARAM
-# (uzet iz drugog potpisivanja istim ključem, pa je ispravno potpisan) ima salt "abcd".
+# D5 – NSEC3PARAM doesn't match the NSEC3 chain: the chain has no salt, while the NSEC3PARAM
+# (taken from a second signing run with the same key, so it is correctly signed) has salt "abcd".
 break_d5() {
     z=d5-nsec3param.test
     sign_raw $z "$SIG_START" "$SIG_END" -3 - -H 0
@@ -306,8 +306,8 @@ break_d5() {
     good_ds $z
 }
 
-# D6 – NSEC i NSEC3 pomešani: NSEC3 zona + NSEC zapisi (sa potpisima)
-# iz drugog potpisivanja iste zone, kao da prelazak NSEC → NSEC3 nije završen.
+# D6 – NSEC and NSEC3 mixed: an NSEC3 zone + NSEC records (with signatures)
+# from a second signing run of the same zone, as if the NSEC → NSEC3 migration never finished.
 break_d6() {
     z=d6-nsec-mixed.test
     sign_raw $z "$SIG_START" "$SIG_END" -3 - -H 0
@@ -318,8 +318,8 @@ break_d6() {
     good_ds $z
 }
 
-# E2 – KSK rollover, DS zamenjen prerano: u roditelju je već DS novog KSK
-# (keys/next/), a zona još uvek objavljuje i koristi samo stari.
+# E2 – KSK rollover, DS replaced too early: the parent already has the DS of the new KSK
+# (keys/next/), while the zone still publishes and uses only the old one.
 break_e2() {
     z=e2-ksk-ds-early.test
     new=$(ksk_file $z "$KEYDIR/next")
@@ -328,8 +328,8 @@ break_e2() {
     dnssec-dsfromkey -2 "$new" > "$PDS/$z.ds"
 }
 
-# E3 – za početak ISPRAVNA zona. Kvari je e3-rollover.sh (uživo): resolver
-# kešira zapise potpisane starim ZSK-om, a stari ZSK odmah nestaje iz zone.
+# E3 – the zone starts out CORRECT. e3-rollover.sh breaks it (live): the resolver
+# caches records signed with the old ZSK, and the old ZSK vanishes from the zone at once.
 break_e3() {
     z=e3-rollover.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -337,7 +337,7 @@ break_e3() {
     good_ds $z
 }
 
-# E4 – CDS ne odgovara ključevima: objavi (ispravno potpisan) CDS sa pogrešnim digest-om.
+# E4 – CDS doesn't match the keys: publish a (correctly signed) CDS with a wrong digest.
 break_e4() {
     z=e4-cds.test
     { cat "$SRC/$z.zone"; echo
@@ -348,8 +348,8 @@ break_e4() {
     good_ds $z
 }
 
-# F1 – sekundarni server ima staru zonu: auth1 dobija ispravnu zonu,
-# auth2 staru kopiju (serial iz izvora, potpisi istekli pre 7 dana).
+# F1 – the secondary server has a stale zone: auth1 gets the correct zone,
+# auth2 a stale copy (serial from the source, signatures expired 7 days ago).
 break_f1() {
     z=f1-stale-secondary.test
     sign_raw $z "$SIG_START" "$SIG_END"
@@ -358,8 +358,8 @@ break_f1() {
     good_ds $z
 }
 
-# F2 – server ne radi sa velikim odgovorima: zona je ispravna, ali je služi
-# auth3 (bez TCP-a, UDP do 512 bajtova). Veliki TXT + RRSIG ne staje u 512.
+# F2 – the server can't handle large answers: the zone is correct, but it is served by
+# auth3 (no TCP, UDP up to 512 bytes). The large TXT + RRSIG doesn't fit in 512.
 break_f2() {
     z=f2-tcp-edns.test
     signzone "$SRC/$z.zone" "$OUT/auth3/$z.zone.signed" $z "$SIG_START" "$SIG_END" unixtime
@@ -367,11 +367,11 @@ break_f2() {
     good_ds $z
 }
 
-# ---------- E1 / E3: zamena ZSK-a uživo ----------
+# ---------- E1 / E3: live ZSK replacement ----------
 
-# Novi ZSK odmah u upotrebi, stari odmah izbačen.
-# Stari ZSK ide u keys/retired/, da ga dnssec-signzone -S više ne vidi.
-#   $1 = zona (e1-rollover.test ili e3-rollover.test)
+# The new ZSK is used right away, the old one is dropped right away.
+# The old ZSK goes to keys/retired/, so dnssec-signzone -S no longer sees it.
+#   $1 = zone (e1-rollover.test or e3-rollover.test)
 rollover() {
     z=$1
     old=$(grep -l 'DNSKEY 256' "$KEYDIR"/K"$z".+013+*.key | head -n 1)
@@ -387,7 +387,7 @@ rollover() {
     cp "$OUT/$z.zone.signed" auth1/
 }
 
-# ---------- glavni deo ----------
+# ---------- main ----------
 
 if [ "${1:-}" = "rollover" ]; then
     case ${2:-} in

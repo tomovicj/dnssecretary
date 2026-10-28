@@ -9,5 +9,5 @@ mail.d2-bitmap.test.   IN A    10.53.0.81
 d2-bitmap.test.        IN MX   10 mail.d2-bitmap.test.
 d2-bitmap.test.        IN TXT  "D2: pogresna lista tipova u NSEC"
 
-; break.sh briše ovaj zapis POSLE potpisivanja – NSEC za www i dalje kaže da TXT postoji
+; break.sh deletes this record AFTER signing – the NSEC for www still claims TXT exists
 www.d2-bitmap.test.    IN TXT  "obrisati posle potpisivanja"

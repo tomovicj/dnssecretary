@@ -1,24 +1,24 @@
 #!/bin/sh
-# keygen.sh – pravi KSK i ZSK za svaku zonu u labu.
-# Pokreni JEDNOM. Ako ključevi već postoje, zona se preskače.
-# (Ključ živi dugo, potpis kratko – zato je ovo odvojeno od sign.sh.)
+# keygen.sh – makes a KSK and a ZSK for every zone in the lab.
+# Run it ONCE. If a zone already has keys, it is skipped.
+# (A key lives long, a signature short – that's why this is separate from sign.sh.)
 #
-# Pokretanje sa hosta:
+# Run from the host:
 #   docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/keygen.sh
 
 set -eu
-cd "$(dirname "$0")/.."      # radi iz korena laba, odakle god da je pozvan
+cd "$(dirname "$0")/.."      # work from the lab root, wherever it was called from
 
 KEYDIR=keys
-ALG=ECDSAP256SHA256          # algoritam 13
-ZONES=". test. good.test."   # imena SA tačkom na kraju, isto kao u imenima fajlova
+ALG=ECDSAP256SHA256          # algorithm 13
+ZONES=". test. good.test."   # names WITH the trailing dot, same as in the file names
 
-# Pokvarene zone iz kataloga grešaka (vidi scripts/break.sh)
+# Broken zones from the error catalogue (see scripts/break.sh)
 # Tab "Prvo (MVP)":
 ZONES="$ZONES a1-expired.test. a3-nosig.test. a4-bogus.test. a6-expiring.test."
 ZONES="$ZONES b1-ds-stale.test. b2-ds-digest.test. b4-ds-unsigned.test."
 ZONES="$ZONES d1-nsec-broken.test. d4-nsec3-iter.test. e1-rollover.test."
-# Tab "Kasnije":
+# Tab "Kasnije" (later):
 ZONES="$ZONES a2-notyet.test. a5-unknown-key.test. a7-ttl-long.test."
 ZONES="$ZONES b3-ds-alg.test. b5-dnskey-zsk.test. b6-island.test. b7-ds-sha1.test. b8-ds-extra.test."
 ZONES="$ZONES c1-rsasha1.test. c2-two-alg.test. c3-rsa1024.test."
@@ -28,18 +28,18 @@ ZONES="$ZONES f1-stale-secondary.test. f2-tcp-edns.test."
 
 mkdir -p "$KEYDIR"
 
-# Algoritam za zonu. Skoro sve zone koriste 13, osim grešaka C1 i C3.
+# Algorithm for a zone. Almost all zones use 13, except errors C1 and C3.
 alg_for() {
     case $1 in
-        c1-rsasha1.test.) echo "RSASHA1" ;;              # algoritam 5 (zastareo)
-        c3-rsa1024.test.) echo "RSASHA256 -b 1024" ;;    # algoritam 8, slab ključ
+        c1-rsasha1.test.) echo "RSASHA1" ;;              # algorithm 5 (deprecated)
+        c3-rsa1024.test.) echo "RSASHA256 -b 1024" ;;    # algorithm 8, weak key
         *)                echo "$ALG" ;;
     esac
 }
 
-# Da li za zonu već postoji bar jedan ključ (u folderu $2, default $KEYDIR)?
-# Fajlovi izgledaju ovako: K<zona>+<algoritam>+<keytag>.key
-# npr.  K.+013+12345.key   Ktest.+013+23456.key   Kc1-rsasha1.test.+005+34567.key
+# Does the zone already have at least one key (in directory $2, default $KEYDIR)?
+# The files look like this: K<zone>+<algorithm>+<keytag>.key
+# e.g.  K.+013+12345.key   Ktest.+013+23456.key   Kc1-rsasha1.test.+005+34567.key
 has_keys() {
     ls "${2:-$KEYDIR}"/K"$1"+*.key >/dev/null 2>&1
 }
@@ -52,11 +52,11 @@ for zone in $ZONES; do
 
     alg=$(alg_for "$zone")
     echo ">> $zone: pravim KSK i ZSK ($alg)"
-    # $alg namerno bez navodnika: može da sadrži i "-b 1024".
+    # $alg unquoted on purpose: it can also contain "-b 1024".
     # shellcheck disable=SC2086
-    # -f KSK  -> flags 257 (SEP bit). Na ovaj ključ pokazuje DS u roditelju.
+    # -f KSK  -> flags 257 (SEP bit). The DS in the parent points to this key.
     ksk=$(dnssec-keygen -q -K "$KEYDIR" -a $alg -f KSK "$zone")
-    # bez -f  -> flags 256. Ovaj ključ potpisuje ostatak zone.
+    # no -f   -> flags 256. This key signs the rest of the zone.
     # shellcheck disable=SC2086
     zsk=$(dnssec-keygen -q -K "$KEYDIR" -a $alg "$zone")
 
@@ -64,9 +64,9 @@ for zone in $ZONES; do
     echo "   ZSK: $zsk"
 done
 
-# Dodatni ključ koji zona NE koristi za potpisivanje (zato je u posebnom folderu,
-# da ga dnssec-signzone -S ne nađe). Pravi se samo ako već ne postoji.
-#   $1 = folder u $KEYDIR, $2 = zona, ostalo = opcije za dnssec-keygen
+# An extra key the zone does NOT sign with (that's why it lives in a separate directory,
+# so dnssec-signzone -S doesn't find it). Made only if it doesn't exist yet.
+#   $1 = directory in $KEYDIR, $2 = zone, rest = options for dnssec-keygen
 extra_key() {
     dir=$KEYDIR/$1; zone=$2; shift 2
     mkdir -p "$dir"
@@ -78,14 +78,14 @@ extra_key() {
     fi
 }
 
-# B1, B8: "stari" KSK. Njegov DS ostaje u test. zoni posle promene ključa.
+# B1, B8: the "old" KSK. Its DS stays in the test. zone after the key change.
 extra_key old  b1-ds-stale.test.     -a "$ALG" -f KSK
 extra_key old  b8-ds-extra.test.     -a "$ALG" -f KSK
-# E2: "novi" KSK čiji DS ode kod roditelja pre nego što je ključ objavljen.
+# E2: the "new" KSK whose DS reaches the parent before the key is published.
 extra_key next e2-ksk-ds-early.test. -a "$ALG" -f KSK
-# A5: drugi ZSK. Njime se potpisuju zapisi, a u DNSKEY skupu ga nema.
+# A5: a second ZSK. It signs the records, but it is not in the DNSKEY set.
 extra_key k2   a5-unknown-key.test.  -a "$ALG"
-# C2: KSK algoritma 8. Objavljen je u DNSKEY skupu (i DS ga ima), ali ništa ne potpisuje.
+# C2: an algorithm-8 KSK. It is published in the DNSKEY set (and has a DS), but signs nothing.
 extra_key alg8 c2-two-alg.test.      -a RSASHA256 -b 2048 -f KSK
 
 echo

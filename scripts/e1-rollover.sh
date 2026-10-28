@@ -1,16 +1,16 @@
 #!/bin/sh
-# e1-rollover.sh – greška E1 uživo: ZSK promenjen prebrzo.
+# e1-rollover.sh – error E1 live: ZSK replaced too quickly.
 #
-# 1. Resolver upita DNSKEY za e1-rollover.test i stavi ga u keš (TTL 3600 s).
-# 2. Zamenimo ZSK BEZ prethodnog objavljivanja: novi odmah potpisuje, stari odmah nestaje.
-# 3. auth1 služi novu zonu, a resolver i dalje ima STARI DNSKEY skup u kešu
-#    -> potpis novim ZSK ne može da se proveri -> SERVFAIL, dok keš ne istekne.
+# 1. The resolver queries the DNSKEY for e1-rollover.test and caches it (TTL 3600 s).
+# 2. We replace the ZSK WITHOUT pre-publishing: the new one signs at once, the old one vanishes at once.
+# 3. auth1 serves the new zone, while the resolver still has the OLD DNSKEY set in its cache
+#    -> the signature by the new ZSK can't be verified -> SERVFAIL until the cache expires.
 #
-# Pokretanje sa hosta (lab mora da radi: docker compose up -d):
+# Run from the host (the lab must be running: docker compose up -d):
 #   sh scripts/e1-rollover.sh
 #
-# Za ponovni pokušaj: sign.sh + docker compose restart root tld auth1 auth2 auth3 resolver.
-# Izlaz: 0 ako se greška pojavila, 1 ako nije (koristi ga CI).
+# To try again: sign.sh + docker compose restart root tld auth1 auth2 auth3 resolver.
+# Exit: 0 if the error appeared, 1 if it didn't (used by CI).
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -26,7 +26,7 @@ q() {
 }
 
 echo ">> 1. čistim keš za $Z i punim ga DNSKEY skupom (stari ZSK)"
-# Samo DNSKEY, ne www: inače bi resolver keširao i ispravan odgovor za www.
+# Only DNSKEY, not www: otherwise the resolver would also cache a valid answer for www.
 docker compose exec -T resolver unbound-control flush_zone $Z >/dev/null
 echo "   DNSKEY $Z: $(q $Z DNSKEY)"
 
@@ -43,7 +43,7 @@ echo
 echo "Očekivano: SERVFAIL, EDE 9 ili 6. Resolver vidi potpis ključem kog nema u kešu."
 echo "Popravka: vrati stari ZSK u DNSKEY skup i sačekaj TTL (vidi katalog, E1)."
 
-# Izlaz za CI: 0 samo ako se greška zaista pojavila.
+# Exit for CI: 0 only if the error really appeared.
 case $got in
     SERVFAIL*) echo "E1: ok" ;;
     *)         echo "E1: GREŠKA – očekivan SERVFAIL"; exit 1 ;;

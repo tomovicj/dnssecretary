@@ -1,19 +1,19 @@
 #!/bin/sh
-# e3-rollover.sh – greška E3 uživo: stari ZSK obrisan pre isteka TTL-a.
+# e3-rollover.sh – error E3 live: old ZSK removed before its TTL expired.
 #
-# 1. Resolver kešira www (potpisan STARIM ZSK-om, TTL 3600 s).
-# 2. Zamenimo ZSK i stari odmah izbacimo iz DNSKEY skupa (bez čekanja TTL-a).
-# 3. Brišemo samo DNSKEY iz keša resolvera – kao da mu je TTL kraći od TTL-a za www.
-# 4. Validator iza keša (ovde delv u client kontejneru) dobija stari potpis za www
-#    iz keša i NOVI DNSKEY skup bez starog ključa -> potpis ne može da se proveri.
-#    Sam Unbound i dalje odgovara sa AD (www je proverio ranije), pa greška pogađa
-#    samo deo korisnika – zato je u katalogu "SERVFAIL za deo korisnika".
+# 1. The resolver caches www (signed with the OLD ZSK, TTL 3600 s).
+# 2. We replace the ZSK and drop the old one from the DNSKEY set at once (no waiting for TTL).
+# 3. We flush only the DNSKEY from the resolver cache – as if its TTL were shorter than www's.
+# 4. A validator behind the cache (here delv in the client container) gets the old signature
+#    for www from the cache and the NEW DNSKEY set without the old key -> can't verify it.
+#    Unbound itself still answers with AD (it verified www earlier), so the error hits
+#    only some users – hence "SERVFAIL za deo korisnika" in the catalogue.
 #
-# Pokretanje sa hosta (lab mora da radi: docker compose up -d):
+# Run from the host (the lab must be running: docker compose up -d):
 #   sh scripts/e3-rollover.sh
 #
-# Za ponovni pokušaj: sign.sh + docker compose restart root tld auth1 auth2 auth3 resolver.
-# Izlaz: 0 ako se greška pojavila, 1 ako nije (koristi ga CI).
+# To try again: sign.sh + docker compose restart root tld auth1 auth2 auth3 resolver.
+# Exit: 0 if the error appeared, 1 if it didn't (used by CI).
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -28,7 +28,7 @@ q() {
          END { print s, ad e }'
 }
 
-# delv sam proverava potpise (trust anchor iz sign.sh), resolver mu služi samo kao keš.
+# delv verifies signatures itself (trust anchor from sign.sh); the resolver is only its cache.
 delv_www() {
     docker compose exec -T client delv @10.53.0.53 -a /lab/delv-anchor.conf +cd \
         www.$Z A 2>&1 | grep -E '^; (fully validated|unsigned)|resolution failed|validating' | head -n 2
@@ -55,7 +55,7 @@ echo
 echo "Očekivano: resolver i dalje NOERROR AD (iz keša), a delv ne može da proveri potpis."
 echo "Popravka: vrati stari ZSK u DNSKEY skup dok ne istekne TTL (vidi katalog, E3)."
 
-# Izlaz za CI: 0 samo ako resolver i dalje radi, a delv pada.
+# Exit for CI: 0 only if the resolver still works and delv fails.
 case $got in
     "NOERROR AD"*) ;;
     *) echo "E3: GREŠKA – resolver je trebalo da vrati NOERROR AD iz keša"; exit 1 ;;
