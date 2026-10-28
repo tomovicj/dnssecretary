@@ -1,0 +1,62 @@
+# CI za lab: shellcheck nad skriptama + ceo lab od nule (ključevi, potpisivanje,
+# serveri) i provera da svaka pokvarena zona daje očekivani rezultat.
+# Pokreće se samo na push na main i na pull request (ne na svaki push na granu).
+name: lab
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# Novi push na isti PR prekida stari run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Ista verzija kao lokalno; podešavanja su u .shellcheckrc
+      - name: shellcheck
+        run: docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh
+
+  lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker compose build
+
+      - name: Ključevi (keygen.sh)
+        run: docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/keygen.sh
+
+      - name: Potpisivanje (sign.sh)
+        run: docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/sign.sh
+
+      - name: Pokreni lab
+        run: docker compose up -d
+
+      - name: Provera zona (check.sh)
+        run: sh scripts/check.sh
+
+      # Rollover skripte menjaju zone, zato idu posle check.sh.
+      - name: E1 uživo (e1-rollover.sh)
+        run: sh scripts/e1-rollover.sh
+
+      - name: E3 uživo (e3-rollover.sh)
+        run: sh scripts/e3-rollover.sh
+
+      - name: Logovi servera
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Ugasi lab
+        if: always()
+        run: docker compose down

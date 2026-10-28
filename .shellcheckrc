@@ -1,0 +1,3 @@
+# Awk programi su namerno u jednostrukim navodnicima.
+disable=SC2016
+shell=sh

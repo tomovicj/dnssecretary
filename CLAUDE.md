@@ -19,7 +19,14 @@ docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/sign.sh      
 docker compose up -d                                                              # start root, tld, auth1, resolver, client
 docker compose restart root tld auth1 auth2 auth3 resolver                        # reload after re-signing
 sh scripts/clean.sh [-n dry-run] [-k keep keys] [-y no prompt]                    # back to the post-clone state
+sh scripts/check.sh                                                               # test: every zone vs. expected rcode/AD (exit 1 on mismatch); STRICT_EDE=1 also checks EDE
+sh scripts/e1-rollover.sh && sh scripts/e3-rollover.sh                            # live rollover errors (exit 1 if the error doesn't appear); re-run sign.sh afterwards
+docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh  # lint (settings in .shellcheckrc)
 ```
+
+CI (`.github/workflows/lab.yml`, push to `main` and PRs only) runs shellcheck and then the whole lab from scratch: build → keygen → sign → `up -d` → `check.sh` → both rollover scripts.
+
+Package versions in `image/Dockerfile` are pinned (`alpine:3.20.10`, `unbound~1.20.0`, …), because the expected results in `check.sh` depend on them. Unbound 1.20 decides EDE codes, clock-skew tolerance and the NSEC3 iteration limit. When bumping a version, re-run `check.sh` and update the expectations.
 
 Signature validity can be overridden with `SIG_START` / `SIG_END` (dnssec-signzone time syntax, default `now-3600` / `now+2592000`). This is meant for later lab phases, such as testing expired signatures.
 

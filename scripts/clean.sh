@@ -40,8 +40,8 @@ add() {
 }
 
 add build                    # privremeni fajlovi, dsset-*, *.zone.in
-add */*.signed               # potpisane zone u root/, tld/, auth1/ (i auth2/ kasnije)
-add dsset-* *.zone.in        # ako je nešto ikad završilo u korenu
+add ./*/*.signed             # potpisane zone u root/, tld/, auth1/, auth2/, auth3/
+add ./dsset-* ./*.zone.in    # ako je nešto ikad završilo u korenu
 add resolver/root.key        # trust anchor za Unbound
 add client/delv-anchor.conf  # trust anchor za delv
 [ "$KEEP_KEYS" -eq 1 ] || add keys
@@ -70,6 +70,7 @@ if [ "$YES" -ne 1 ]; then
 fi
 
 # $TARGETS namerno bez navodnika: treba da se podeli na više putanja.
+# shellcheck disable=SC2086
 if ! rm -rf -- $TARGETS; then
     echo
     echo "Neki fajlovi nisu obrisani – verovatno pripadaju root-u"

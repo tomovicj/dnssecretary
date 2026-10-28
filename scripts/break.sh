@@ -151,6 +151,7 @@ break_d1() {
 # dnssec-signzone odbija > 150 iteracija, zato ldns-signzone (čita iste BIND ključeve).
 break_d4() {
     z=d4-nsec3-iter.test
+    # shellcheck disable=SC2012  # imena ključeva su bezbedna (K<zona>+013+<broj>)
     keys=$(ls "$KEYDIR"/K$z.+013+*.private | sed 's/\.private$//')
     # shellcheck disable=SC2086  # $keys namerno bez navodnika: više ključeva
     ldns-signzone -n -t 200 -s abcdef -o $z -f "$OUT/$z.zone.signed" \
@@ -373,16 +374,16 @@ break_f2() {
 #   $1 = zona (e1-rollover.test ili e3-rollover.test)
 rollover() {
     z=$1
-    old=$(grep -l 'DNSKEY 256' "$KEYDIR"/K$z.+013+*.key | head -n 1)
+    old=$(grep -l 'DNSKEY 256' "$KEYDIR"/K"$z".+013+*.key | head -n 1)
     [ -n "$old" ] || { echo "Nema ZSK za $z – pokreni keygen.sh"; exit 1; }
 
     mkdir -p "$KEYDIR/retired"
     mv "$old" "${old%.key}.private" "$KEYDIR/retired/"
-    new=$(dnssec-keygen -q -K "$KEYDIR" -a ECDSAP256SHA256 $z)
+    new=$(dnssec-keygen -q -K "$KEYDIR" -a ECDSAP256SHA256 "$z")
     echo ">> $z: stari ZSK $(basename "${old%.key}") -> keys/retired/, novi ZSK $new"
 
-    sign_raw $z "$SIG_START" "$SIG_END"
-    dnssec-verify -q -o $z "$OUT/$z.zone.signed"
+    sign_raw "$z" "$SIG_START" "$SIG_END"
+    dnssec-verify -q -o "$z" "$OUT/$z.zone.signed"
     cp "$OUT/$z.zone.signed" auth1/
 }
 

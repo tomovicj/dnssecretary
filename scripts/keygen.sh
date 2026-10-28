@@ -53,9 +53,11 @@ for zone in $ZONES; do
     alg=$(alg_for "$zone")
     echo ">> $zone: pravim KSK i ZSK ($alg)"
     # $alg namerno bez navodnika: može da sadrži i "-b 1024".
+    # shellcheck disable=SC2086
     # -f KSK  -> flags 257 (SEP bit). Na ovaj ključ pokazuje DS u roditelju.
     ksk=$(dnssec-keygen -q -K "$KEYDIR" -a $alg -f KSK "$zone")
     # bez -f  -> flags 256. Ovaj ključ potpisuje ostatak zone.
+    # shellcheck disable=SC2086
     zsk=$(dnssec-keygen -q -K "$KEYDIR" -a $alg "$zone")
 
     echo "   KSK: $ksk"

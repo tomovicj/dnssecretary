@@ -13,6 +13,7 @@
 #   sh scripts/e3-rollover.sh
 #
 # Za ponovni pokušaj: sign.sh + docker compose restart root tld auth1 auth2 auth3 resolver.
+# Izlaz: 0 ako se greška pojavila, 1 ako nije (koristi ga CI).
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -46,8 +47,20 @@ sleep 2
 echo ">> 3. iz keša resolvera brišem samo DNSKEY (www ostaje)"
 docker compose exec -T resolver unbound-control flush_type $Z DNSKEY >/dev/null
 
-echo "   resolver: www.$Z A: $(q www.$Z A)"
-echo "   delv:     $(delv_www)"
+got=$(q www.$Z A)
+dv=$(delv_www)
+echo "   resolver: www.$Z A: $got"
+echo "   delv:     $dv"
 echo
 echo "Očekivano: resolver i dalje NOERROR AD (iz keša), a delv ne može da proveri potpis."
 echo "Popravka: vrati stari ZSK u DNSKEY skup dok ne istekne TTL (vidi katalog, E3)."
+
+# Izlaz za CI: 0 samo ako resolver i dalje radi, a delv pada.
+case $got in
+    "NOERROR AD"*) ;;
+    *) echo "E3: GREŠKA – resolver je trebalo da vrati NOERROR AD iz keša"; exit 1 ;;
+esac
+case $dv in
+    *"resolution failed"*) echo "E3: ok" ;;
+    *) echo "E3: GREŠKA – delv je trebalo da padne"; exit 1 ;;
+esac
