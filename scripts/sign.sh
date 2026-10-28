@@ -5,7 +5,7 @@
 # Pokretanje sa hosta:
 #   docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/sign.sh
 # Posle toga:
-#   docker compose restart root tld auth1 resolver
+#   docker compose restart root tld auth1 auth2 auth3 resolver
 #
 # Važenje potpisa možeš da promeniš preko env promenljivih (trebaće u fazi 2):
 #   SIG_START=now-3600  SIG_END=now+2592000   (default: od pre 1h do za 30 dana)
@@ -73,8 +73,15 @@ fi
 sign_zone good.test "$SRC/good.test.zone" "$BUILD/good.test.zone.signed"
 #   -> nastaje $BUILD/dsset-good.test.
 
-# ---------- 2. test. (roditelj od good.test) ----------
-with_ds "$SRC/test.zone" "$BUILD/dsset-good.test." "$BUILD/test.zone.in"
+# ---------- 1b. pokvarene zone (katalog grešaka) ----------
+# Bez dnssec-verify – namerno su pokvarene. Vidi scripts/break.sh.
+rm -rf "$BUILD/broken" "$BUILD/parent-ds" "$BUILD/tmp-break"
+sh scripts/break.sh
+#   -> nastaju $BUILD/broken/{,auth2/,auth3/}*.zone.signed i $BUILD/parent-ds/*.ds
+
+# ---------- 2. test. (roditelj od good.test i pokvarenih zona) ----------
+cat "$BUILD/dsset-good.test." "$BUILD"/parent-ds/*.ds > "$BUILD/dsset-test-children"
+with_ds "$SRC/test.zone" "$BUILD/dsset-test-children" "$BUILD/test.zone.in"
 sign_zone test "$BUILD/test.zone.in" "$BUILD/test.zone.signed"
 #   -> nastaje $BUILD/dsset-test.
 
@@ -101,7 +108,10 @@ awk '{ for (i = 1; i <= NF; i++) if ($i == "DS") {
 cp "$BUILD/root.zone.signed"      root/
 cp "$BUILD/test.zone.signed"      tld/
 cp "$BUILD/good.test.zone.signed" auth1/
+cp "$BUILD"/broken/*.zone.signed  auth1/
+cp "$BUILD"/broken/auth2/*.signed  auth2/   # F1: stara zona na "sekundarnom"
+cp "$BUILD"/broken/auth3/*.signed  auth3/   # F2: server bez TCP-a
 
 echo
 echo "Gotovo. Sad pokreni na hostu:"
-echo "  docker compose restart root tld auth1 resolver"
+echo "  docker compose restart root tld auth1 auth2 auth3 resolver"

@@ -1,0 +1,10 @@
+$TTL 3600
+b1-ds-stale.test.        IN SOA  ns1.b1-ds-stale.test. admin.b1-ds-stale.test. ( 1 3600 900 604800 300 )
+b1-ds-stale.test.        IN NS   ns1.b1-ds-stale.test.
+ns1.b1-ds-stale.test.    IN A    10.53.0.11
+
+; Test records
+www.b1-ds-stale.test.    IN A    10.53.0.80
+mail.b1-ds-stale.test.   IN A    10.53.0.81
+b1-ds-stale.test.        IN MX   10 mail.b1-ds-stale.test.
+b1-ds-stale.test.        IN TXT  "B1: DS pokazuje na kljuc koji ne postoji"

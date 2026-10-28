@@ -1,0 +1,10 @@
+$TTL 3600
+b7-ds-sha1.test.        IN SOA  ns1.b7-ds-sha1.test. admin.b7-ds-sha1.test. ( 1 3600 900 604800 300 )
+b7-ds-sha1.test.        IN NS   ns1.b7-ds-sha1.test.
+ns1.b7-ds-sha1.test.    IN A    10.53.0.11
+
+; Test records
+www.b7-ds-sha1.test.    IN A    10.53.0.80
+mail.b7-ds-sha1.test.   IN A    10.53.0.81
+b7-ds-sha1.test.        IN MX   10 mail.b7-ds-sha1.test.
+b7-ds-sha1.test.        IN TXT  "B7: DS koristi SHA-1"

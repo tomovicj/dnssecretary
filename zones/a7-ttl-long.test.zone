@@ -1,0 +1,10 @@
+$TTL 2592000                    ; 30 dana – a potpisi važe samo 7 (vidi break.sh)
+a7-ttl-long.test.        IN SOA  ns1.a7-ttl-long.test. admin.a7-ttl-long.test. ( 1 3600 900 604800 300 )
+a7-ttl-long.test.        IN NS   ns1.a7-ttl-long.test.
+ns1.a7-ttl-long.test.    IN A    10.53.0.11
+
+; Test records
+www.a7-ttl-long.test.    IN A    10.53.0.80
+mail.a7-ttl-long.test.   IN A    10.53.0.81
+a7-ttl-long.test.        IN MX   10 mail.a7-ttl-long.test.
+a7-ttl-long.test.        IN TXT  "A7: TTL duzi od vazenja potpisa"

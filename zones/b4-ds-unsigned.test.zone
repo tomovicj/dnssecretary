@@ -1,0 +1,10 @@
+$TTL 3600
+b4-ds-unsigned.test.        IN SOA  ns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. ( 1 3600 900 604800 300 )
+b4-ds-unsigned.test.        IN NS   ns1.b4-ds-unsigned.test.
+ns1.b4-ds-unsigned.test.    IN A    10.53.0.11
+
+; Test records
+www.b4-ds-unsigned.test.    IN A    10.53.0.80
+mail.b4-ds-unsigned.test.   IN A    10.53.0.81
+b4-ds-unsigned.test.        IN MX   10 mail.b4-ds-unsigned.test.
+b4-ds-unsigned.test.        IN TXT  "B4: DS postoji, a zona nije potpisana"

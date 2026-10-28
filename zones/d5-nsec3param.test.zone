@@ -1,0 +1,10 @@
+$TTL 3600
+d5-nsec3param.test.        IN SOA  ns1.d5-nsec3param.test. admin.d5-nsec3param.test. ( 1 3600 900 604800 300 )
+d5-nsec3param.test.        IN NS   ns1.d5-nsec3param.test.
+ns1.d5-nsec3param.test.    IN A    10.53.0.11
+
+; Test records
+www.d5-nsec3param.test.    IN A    10.53.0.80
+mail.d5-nsec3param.test.   IN A    10.53.0.81
+d5-nsec3param.test.        IN MX   10 mail.d5-nsec3param.test.
+d5-nsec3param.test.        IN TXT  "D5: NSEC3PARAM se ne slaze sa NSEC3"

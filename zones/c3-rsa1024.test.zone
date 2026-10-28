@@ -1,0 +1,10 @@
+$TTL 3600
+c3-rsa1024.test.        IN SOA  ns1.c3-rsa1024.test. admin.c3-rsa1024.test. ( 1 3600 900 604800 300 )
+c3-rsa1024.test.        IN NS   ns1.c3-rsa1024.test.
+ns1.c3-rsa1024.test.    IN A    10.53.0.11
+
+; Test records
+www.c3-rsa1024.test.    IN A    10.53.0.80
+mail.c3-rsa1024.test.   IN A    10.53.0.81
+c3-rsa1024.test.        IN MX   10 mail.c3-rsa1024.test.
+c3-rsa1024.test.        IN TXT  "C3: slab RSA kljuc (1024 bita)"

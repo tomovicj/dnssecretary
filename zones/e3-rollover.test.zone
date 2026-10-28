@@ -1,0 +1,10 @@
+$TTL 3600
+e3-rollover.test.        IN SOA  ns1.e3-rollover.test. admin.e3-rollover.test. ( 1 3600 900 604800 300 )
+e3-rollover.test.        IN NS   ns1.e3-rollover.test.
+ns1.e3-rollover.test.    IN A    10.53.0.11
+
+; Test records
+www.e3-rollover.test.    IN A    10.53.0.80
+mail.e3-rollover.test.   IN A    10.53.0.81
+e3-rollover.test.        IN MX   10 mail.e3-rollover.test.
+e3-rollover.test.        IN TXT  "E3: stari ZSK obrisan pre isteka TTL-a"

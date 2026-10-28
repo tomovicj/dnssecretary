@@ -1,0 +1,10 @@
+$TTL 3600
+b8-ds-extra.test.        IN SOA  ns1.b8-ds-extra.test. admin.b8-ds-extra.test. ( 1 3600 900 604800 300 )
+b8-ds-extra.test.        IN NS   ns1.b8-ds-extra.test.
+ns1.b8-ds-extra.test.    IN A    10.53.0.11
+
+; Test records
+www.b8-ds-extra.test.    IN A    10.53.0.80
+mail.b8-ds-extra.test.   IN A    10.53.0.81
+b8-ds-extra.test.        IN MX   10 mail.b8-ds-extra.test.
+b8-ds-extra.test.        IN TXT  "B8: visak starih DS zapisa"
