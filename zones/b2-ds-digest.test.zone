@@ -1,0 +1,10 @@
+$TTL 3600
+b2-ds-digest.test.        IN SOA  ns1.b2-ds-digest.test. admin.b2-ds-digest.test. ( 1 3600 900 604800 300 )
+b2-ds-digest.test.        IN NS   ns1.b2-ds-digest.test.
+ns1.b2-ds-digest.test.    IN A    10.53.0.11
+
+; Test records
+www.b2-ds-digest.test.    IN A    10.53.0.80
+mail.b2-ds-digest.test.   IN A    10.53.0.81
+b2-ds-digest.test.        IN MX   10 mail.b2-ds-digest.test.
+b2-ds-digest.test.        IN TXT  "B2: DS ima pogresan digest"

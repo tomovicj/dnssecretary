@@ -1,0 +1,10 @@
+$TTL 3600
+a1-expired.test.        IN SOA  ns1.a1-expired.test. admin.a1-expired.test. ( 1 3600 900 604800 300 )
+a1-expired.test.        IN NS   ns1.a1-expired.test.
+ns1.a1-expired.test.    IN A    10.53.0.11
+
+; Test records
+www.a1-expired.test.    IN A    10.53.0.80
+mail.a1-expired.test.   IN A    10.53.0.81
+a1-expired.test.        IN MX   10 mail.a1-expired.test.
+a1-expired.test.        IN TXT  "A1: istekao potpis"

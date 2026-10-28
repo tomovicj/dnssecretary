@@ -7,3 +7,26 @@ a.root-servers.test.    IN A    10.53.0.2
 ; delegacija za good.test.
 good.test.              IN NS   ns1.good.test.
 ns1.good.test.          IN A    10.53.0.11         ; glue
+
+; delegacije za pokvarene zone (katalog grešaka, tab "Prvo (MVP)")
+; DS-ove dodaje sign.sh iz build/parent-ds/ (namerno loše za B1, B2, B4).
+a1-expired.test.             IN NS   ns1.a1-expired.test.
+ns1.a1-expired.test.         IN A    10.53.0.11         ; glue
+a3-nosig.test.               IN NS   ns1.a3-nosig.test.
+ns1.a3-nosig.test.           IN A    10.53.0.11         ; glue
+a4-bogus.test.               IN NS   ns1.a4-bogus.test.
+ns1.a4-bogus.test.           IN A    10.53.0.11         ; glue
+a6-expiring.test.            IN NS   ns1.a6-expiring.test.
+ns1.a6-expiring.test.        IN A    10.53.0.11         ; glue
+b1-ds-stale.test.            IN NS   ns1.b1-ds-stale.test.
+ns1.b1-ds-stale.test.        IN A    10.53.0.11         ; glue
+b2-ds-digest.test.           IN NS   ns1.b2-ds-digest.test.
+ns1.b2-ds-digest.test.       IN A    10.53.0.11         ; glue
+b4-ds-unsigned.test.         IN NS   ns1.b4-ds-unsigned.test.
+ns1.b4-ds-unsigned.test.     IN A    10.53.0.11         ; glue
+d1-nsec-broken.test.         IN NS   ns1.d1-nsec-broken.test.
+ns1.d1-nsec-broken.test.     IN A    10.53.0.11         ; glue
+d4-nsec3-iter.test.          IN NS   ns1.d4-nsec3-iter.test.
+ns1.d4-nsec3-iter.test.      IN A    10.53.0.11         ; glue
+e1-rollover.test.            IN NS   ns1.e1-rollover.test.
+ns1.e1-rollover.test.        IN A    10.53.0.11         ; glue

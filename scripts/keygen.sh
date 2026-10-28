@@ -13,6 +13,11 @@ KEYDIR=keys
 ALG=ECDSAP256SHA256          # algoritam 13
 ZONES=". test. good.test."   # imena SA tačkom na kraju, isto kao u imenima fajlova
 
+# Pokvarene zone iz kataloga grešaka (vidi scripts/break.sh)
+ZONES="$ZONES a1-expired.test. a3-nosig.test. a4-bogus.test. a6-expiring.test."
+ZONES="$ZONES b1-ds-stale.test. b2-ds-digest.test. b4-ds-unsigned.test."
+ZONES="$ZONES d1-nsec-broken.test. d4-nsec3-iter.test. e1-rollover.test."
+
 mkdir -p "$KEYDIR"
 
 # Da li za zonu već postoji bar jedan ključ?
@@ -37,6 +42,17 @@ for zone in $ZONES; do
     echo "   KSK: $ksk"
     echo "   ZSK: $zsk"
 done
+
+# B1: "stari" KSK koji zona više ne koristi. Njegov DS ide u test. zonu,
+# kao da je vlasnik promenio ključ, a DS kod registra ostao isti.
+OLD=$KEYDIR/old
+mkdir -p "$OLD"
+if ls "$OLD"/Kb1-ds-stale.test.+013+*.key >/dev/null 2>&1; then
+    echo ">> b1-ds-stale.test.: stari KSK već postoji, preskačem"
+else
+    echo ">> b1-ds-stale.test.: pravim stari KSK u $OLD/"
+    dnssec-keygen -q -K "$OLD" -a "$ALG" -f KSK b1-ds-stale.test. >/dev/null
+fi
 
 echo
 echo "Gotovo. Ključevi su u $KEYDIR/ (.key = javni deo, .private = TAJNI deo)."

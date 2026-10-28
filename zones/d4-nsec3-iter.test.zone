@@ -1,0 +1,10 @@
+$TTL 3600
+d4-nsec3-iter.test.        IN SOA  ns1.d4-nsec3-iter.test. admin.d4-nsec3-iter.test. ( 1 3600 900 604800 300 )
+d4-nsec3-iter.test.        IN NS   ns1.d4-nsec3-iter.test.
+ns1.d4-nsec3-iter.test.    IN A    10.53.0.11
+
+; Test records
+www.d4-nsec3-iter.test.    IN A    10.53.0.80
+mail.d4-nsec3-iter.test.   IN A    10.53.0.81
+d4-nsec3-iter.test.        IN MX   10 mail.d4-nsec3-iter.test.
+d4-nsec3-iter.test.        IN TXT  "D4: NSEC3 podesavanja protiv RFC 9276"
