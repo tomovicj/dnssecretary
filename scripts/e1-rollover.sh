@@ -9,7 +9,8 @@
 # Pokretanje sa hosta (lab mora da radi: docker compose up -d):
 #   sh scripts/e1-rollover.sh
 #
-# Za ponovni pokušaj: sign.sh + docker compose restart root tld auth1 resolver.
+# Za ponovni pokušaj: sign.sh + docker compose restart root tld auth1 auth2 auth3 resolver.
+# Izlaz: 0 ako se greška pojavila, 1 ako nije (koristi ga CI).
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -36,7 +37,14 @@ echo ">> 3. auth1 učitava novu zonu (resolver NE restartujemo – keš ostaje)"
 docker compose restart auth1 >/dev/null 2>&1
 sleep 2
 
-echo "   www.$Z A: $(q www.$Z A)"
+got=$(q www.$Z A)
+echo "   www.$Z A: $got"
 echo
 echo "Očekivano: SERVFAIL, EDE 9 ili 6. Resolver vidi potpis ključem kog nema u kešu."
 echo "Popravka: vrati stari ZSK u DNSKEY skup i sačekaj TTL (vidi katalog, E1)."
+
+# Izlaz za CI: 0 samo ako se greška zaista pojavila.
+case $got in
+    SERVFAIL*) echo "E1: ok" ;;
+    *)         echo "E1: GREŠKA – očekivan SERVFAIL"; exit 1 ;;
+esac
