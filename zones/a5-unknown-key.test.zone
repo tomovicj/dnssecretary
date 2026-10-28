@@ -1,0 +1,10 @@
+$TTL 3600
+a5-unknown-key.test.        IN SOA  ns1.a5-unknown-key.test. admin.a5-unknown-key.test. ( 1 3600 900 604800 300 )
+a5-unknown-key.test.        IN NS   ns1.a5-unknown-key.test.
+ns1.a5-unknown-key.test.    IN A    10.53.0.11
+
+; Test records
+www.a5-unknown-key.test.    IN A    10.53.0.80
+mail.a5-unknown-key.test.   IN A    10.53.0.81
+a5-unknown-key.test.        IN MX   10 mail.a5-unknown-key.test.
+a5-unknown-key.test.        IN TXT  "A5: potpis kljucem koji nije u DNSKEY skupu"

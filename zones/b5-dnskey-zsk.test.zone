@@ -1,0 +1,10 @@
+$TTL 3600
+b5-dnskey-zsk.test.        IN SOA  ns1.b5-dnskey-zsk.test. admin.b5-dnskey-zsk.test. ( 1 3600 900 604800 300 )
+b5-dnskey-zsk.test.        IN NS   ns1.b5-dnskey-zsk.test.
+ns1.b5-dnskey-zsk.test.    IN A    10.53.0.11
+
+; Test records
+www.b5-dnskey-zsk.test.    IN A    10.53.0.80
+mail.b5-dnskey-zsk.test.   IN A    10.53.0.81
+b5-dnskey-zsk.test.        IN MX   10 mail.b5-dnskey-zsk.test.
+b5-dnskey-zsk.test.        IN TXT  "B5: DNSKEY skup nije potpisan KSK-om"

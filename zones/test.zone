@@ -30,3 +30,47 @@ d4-nsec3-iter.test.          IN NS   ns1.d4-nsec3-iter.test.
 ns1.d4-nsec3-iter.test.      IN A    10.53.0.11         ; glue
 e1-rollover.test.            IN NS   ns1.e1-rollover.test.
 ns1.e1-rollover.test.        IN A    10.53.0.11         ; glue
+
+; tab "Kasnije"
+a2-notyet.test.                 IN NS   ns1.a2-notyet.test.
+ns1.a2-notyet.test.             IN A    10.53.0.11         ; glue
+a5-unknown-key.test.            IN NS   ns1.a5-unknown-key.test.
+ns1.a5-unknown-key.test.        IN A    10.53.0.11         ; glue
+a7-ttl-long.test.               IN NS   ns1.a7-ttl-long.test.
+ns1.a7-ttl-long.test.           IN A    10.53.0.11         ; glue
+b3-ds-alg.test.                 IN NS   ns1.b3-ds-alg.test.
+ns1.b3-ds-alg.test.             IN A    10.53.0.11         ; glue
+b5-dnskey-zsk.test.             IN NS   ns1.b5-dnskey-zsk.test.
+ns1.b5-dnskey-zsk.test.         IN A    10.53.0.11         ; glue
+b6-island.test.                 IN NS   ns1.b6-island.test.
+ns1.b6-island.test.             IN A    10.53.0.11         ; glue
+b7-ds-sha1.test.                IN NS   ns1.b7-ds-sha1.test.
+ns1.b7-ds-sha1.test.            IN A    10.53.0.11         ; glue
+b8-ds-extra.test.               IN NS   ns1.b8-ds-extra.test.
+ns1.b8-ds-extra.test.           IN A    10.53.0.11         ; glue
+c1-rsasha1.test.                IN NS   ns1.c1-rsasha1.test.
+ns1.c1-rsasha1.test.            IN A    10.53.0.11         ; glue
+c2-two-alg.test.                IN NS   ns1.c2-two-alg.test.
+ns1.c2-two-alg.test.            IN A    10.53.0.11         ; glue
+c3-rsa1024.test.                IN NS   ns1.c3-rsa1024.test.
+ns1.c3-rsa1024.test.            IN A    10.53.0.11         ; glue
+d2-bitmap.test.                 IN NS   ns1.d2-bitmap.test.
+ns1.d2-bitmap.test.             IN A    10.53.0.11         ; glue
+d3-nsec-nosig.test.             IN NS   ns1.d3-nsec-nosig.test.
+ns1.d3-nsec-nosig.test.         IN A    10.53.0.11         ; glue
+d5-nsec3param.test.             IN NS   ns1.d5-nsec3param.test.
+ns1.d5-nsec3param.test.         IN A    10.53.0.11         ; glue
+d6-nsec-mixed.test.             IN NS   ns1.d6-nsec-mixed.test.
+ns1.d6-nsec-mixed.test.         IN A    10.53.0.11         ; glue
+e2-ksk-ds-early.test.           IN NS   ns1.e2-ksk-ds-early.test.
+ns1.e2-ksk-ds-early.test.       IN A    10.53.0.11         ; glue
+e3-rollover.test.               IN NS   ns1.e3-rollover.test.
+ns1.e3-rollover.test.           IN A    10.53.0.11         ; glue
+e4-cds.test.                    IN NS   ns1.e4-cds.test.
+ns1.e4-cds.test.                IN A    10.53.0.11         ; glue
+f1-stale-secondary.test.        IN NS   ns1.f1-stale-secondary.test.
+ns1.f1-stale-secondary.test.    IN A    10.53.0.11         ; glue
+f1-stale-secondary.test.        IN NS   ns2.f1-stale-secondary.test.
+ns2.f1-stale-secondary.test.    IN A    10.53.0.12         ; glue (auth2)
+f2-tcp-edns.test.               IN NS   ns1.f2-tcp-edns.test.
+ns1.f2-tcp-edns.test.           IN A    10.53.0.13         ; glue (auth3)

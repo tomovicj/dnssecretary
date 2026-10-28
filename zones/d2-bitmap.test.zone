@@ -1,0 +1,13 @@
+$TTL 3600
+d2-bitmap.test.        IN SOA  ns1.d2-bitmap.test. admin.d2-bitmap.test. ( 1 3600 900 604800 300 )
+d2-bitmap.test.        IN NS   ns1.d2-bitmap.test.
+ns1.d2-bitmap.test.    IN A    10.53.0.11
+
+; Test records
+www.d2-bitmap.test.    IN A    10.53.0.80
+mail.d2-bitmap.test.   IN A    10.53.0.81
+d2-bitmap.test.        IN MX   10 mail.d2-bitmap.test.
+d2-bitmap.test.        IN TXT  "D2: pogresna lista tipova u NSEC"
+
+; break.sh briše ovaj zapis POSLE potpisivanja – NSEC za www i dalje kaže da TXT postoji
+www.d2-bitmap.test.    IN TXT  "obrisati posle potpisivanja"

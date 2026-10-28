@@ -30,7 +30,7 @@ docker compose exec -T resolver unbound-control flush_zone $Z >/dev/null
 echo "   DNSKEY $Z: $(q $Z DNSKEY)"
 
 echo ">> 2. menjam ZSK bez prethodnog objavljivanja"
-docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/break.sh e1-rollover 2>/dev/null
+docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/break.sh rollover $Z 2>/dev/null
 
 echo ">> 3. auth1 učitava novu zonu (resolver NE restartujemo – keš ostaje)"
 docker compose restart auth1 >/dev/null 2>&1

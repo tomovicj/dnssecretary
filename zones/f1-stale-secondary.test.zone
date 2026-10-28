@@ -1,0 +1,12 @@
+$TTL 3600
+f1-stale-secondary.test.        IN SOA  ns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. ( 1 3600 900 604800 300 )
+f1-stale-secondary.test.        IN NS   ns1.f1-stale-secondary.test.
+f1-stale-secondary.test.        IN NS   ns2.f1-stale-secondary.test.
+ns1.f1-stale-secondary.test.    IN A    10.53.0.11
+ns2.f1-stale-secondary.test.    IN A    10.53.0.12   ; auth2 – sekundarni sa starom zonom
+
+; Test records
+www.f1-stale-secondary.test.    IN A    10.53.0.80
+mail.f1-stale-secondary.test.   IN A    10.53.0.81
+f1-stale-secondary.test.        IN MX   10 mail.f1-stale-secondary.test.
+f1-stale-secondary.test.        IN TXT  "F1: sekundarni server ima staru zonu"
