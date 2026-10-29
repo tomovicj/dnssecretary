@@ -1,0 +1,6 @@
+# Everything here runs inside Linux containers or under sh, so text files must have LF
+# line endings, even when checked out on Windows (core.autocrlf=true would turn them into CRLF
+# and sh fails with "set: Illegal option -").
+* text=auto eol=lf
+
+*.pdf binary
