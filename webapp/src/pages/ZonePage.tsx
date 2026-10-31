@@ -2,10 +2,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../api/client";
 import type { CatalogEntry, Diagnosis, Job, ZoneDetail } from "../api/types";
-import { StateLabel, VerifiedBadge } from "../components/Badges";
+import { StatePill, VerifiedBadge } from "../components/Badges";
 import { ScriptDiff, ScriptEditor } from "../components/ScriptEditor";
-import { SIDE_LABEL, ago, shortZone } from "./dashboard";
-import { JOB_STATE, duration, editState, findingsCount, jobTitle, symptom, upsertJob, where } from "./zone";
+import { ago, shortZone } from "./dashboard";
+import {
+  FIXED_BY,
+  JOB_STATE,
+  duration,
+  editState,
+  findingsCount,
+  jobTitle,
+  rfcUrl,
+  symptom,
+  upsertJob,
+  verifiedText,
+  where,
+} from "./zone";
 
 /** The catalogue, loaded once for every zone screen. */
 let catalogOnce: Promise<Map<string, CatalogEntry>> | null = null;
@@ -19,8 +31,8 @@ function useCatalog(): Map<string, CatalogEntry> {
 }
 
 /**
- * One zone: what is wrong (left), the fix script the admin can edit, simulate and execute
- * (right), the last run's live log and verify result, and the zone's history.
+ * One zone: what is wrong (left), and the fix in three steps (right): review the script
+ * (edit it if needed), simulate and execute it, and the last run's live log and verify result.
  */
 export function ZonePage() {
   const { zone = "" } = useParams();
@@ -106,7 +118,7 @@ export function ZonePage() {
 
   if (!detail) {
     return (
-      <main className="page">
+      <main className="page zone-page">
         <BackLink />
         {error ? (
           <div className="alert" role="alert">
@@ -121,20 +133,22 @@ export function ZonePage() {
 
   const generated = detail.script.generated;
   const state = editState(script, generated, detail.script.lastSimulated);
-  const side = detail.issues[0] ? SIDE_LABEL[detail.issues[0].side].toLowerCase() : "";
+  const first = detail.issues[0];
 
   return (
-    <main className="page">
+    <main className="page zone-page">
       <BackLink />
 
       <div className="zone-head">
-        <StateLabel status={detail.status} />
         <h1 className="mono">{shortZone(detail.zone)}</h1>
+        <StatePill status={detail.status} />
         <span className="muted">
-          {detail.status === "OK" ? "no problem in the last scan" : `broken since ${ago(detail.brokenSince, now)} · who fixes: ${side}`}
+          {detail.status === "OK"
+            ? "no problem in the last scan"
+            : `since ${ago(detail.brokenSince, now)}${first ? ` · fixed by ${FIXED_BY[first.side]}` : ""}`}
         </span>
         <div className="spacer" />
-        {detail.status !== "OK" && <VerifiedBadge verified={detail.verified} />}
+        {detail.status !== "OK" && <VerifiedBadge verified={detail.verified} label={verifiedText(detail.verified, now)} />}
       </div>
 
       {error && (
@@ -158,10 +172,14 @@ export function ZonePage() {
         </section>
 
         <section aria-label="Fix" className="card zone-right">
+          <div className="fix-head">
+            <h2>Proposed fix</h2>
+            <span className="muted small">shell script · runs in /lab with ZONE set</span>
+          </div>
+
           {generated === "" ? (
-            <div className="panel">
-              <h2>No fix script</h2>
-              <p className="muted">
+            <div className="step">
+              <p className="muted" style={{ margin: 0 }}>
                 {detail.status === "OK"
                   ? "Nothing to fix."
                   : "There is no automatic fix for these errors; the catalogue's steps are on the left."}
@@ -169,64 +187,78 @@ export function ZonePage() {
             </div>
           ) : (
             <>
-              <div className="fix-head">
-                <h2>Proposed fix</h2>
-                <span className="muted small">shell script · runs in /lab with ZONE set</span>
-                <div className="spacer" />
-                <span className={`edit-badge${state.edited ? " edited" : ""}`}>{state.label}</span>
-              </div>
-
-              <div className="tabs" role="tablist" aria-label="Script view">
-                <button type="button" role="tab" aria-selected={view === "script"} onClick={() => setView("script")}>
-                  Script
-                </button>
-                <button type="button" role="tab" aria-selected={view === "diff"} onClick={() => setView("diff")}>
-                  Changes vs generated
-                </button>
-                <div className="spacer" />
-                {state.edited && (
-                  <button type="button" className="link-button" onClick={() => setScript(generated)}>
-                    Reset to generated
+              <div className="step">
+                <div className="step-head">
+                  <span className="step-no" aria-hidden="true">
+                    1
+                  </span>
+                  <h3>Review the script</h3>
+                  <div className="spacer" />
+                  {state.edited && (
+                    <button type="button" className="link-button" onClick={() => setScript(generated)}>
+                      Reset to generated
+                    </button>
+                  )}
+                  <span className={`edit-badge${state.edited ? " edited" : ""}`}>{state.label}</span>
+                </div>
+                <div className="tabs" role="tablist" aria-label="Script view">
+                  <button type="button" role="tab" aria-selected={view === "script"} onClick={() => setView("script")}>
+                    Script
                   </button>
-                )}
-              </div>
-
-              <div className="fix-body">
+                  <button type="button" role="tab" aria-selected={view === "diff"} onClick={() => setView("diff")}>
+                    Changes vs generated
+                  </button>
+                </div>
                 {view === "script" ? (
-                  <ScriptEditor value={script} onChange={setScript} label="Fix script" />
+                  <div className="step-body">
+                    <p className="muted small" style={{ margin: 0 }}>
+                      You can edit the script. An edited script is simulated again before it can run.
+                    </p>
+                    <ScriptEditor value={script} onChange={setScript} label="Fix script" />
+                  </div>
                 ) : state.edited ? (
                   <ScriptDiff original={generated} current={script} label="Changes against the generated script" />
                 ) : (
-                  <p className="muted">No changes: this is the generated script.</p>
+                  <p className="muted" style={{ margin: 0 }}>
+                    No changes: this is the generated script.
+                  </p>
                 )}
               </div>
 
-              <div className="fix-actions">
-                <button type="button" className="button big" disabled={busy} onClick={() => start(api.simulate(zone, script))}>
-                  Simulate
-                </button>
-                <button type="button" className="button big primary" disabled={busy} onClick={execute}>
-                  Execute on hosting
-                </button>
-                <span className="check">
-                  <input
-                    id="skip-sim"
-                    type="checkbox"
-                    checked={skipSimulation}
-                    onChange={(e) => setSkipSimulation(e.target.checked)}
-                  />
-                  <label htmlFor="skip-sim">Skip the simulation (asks to confirm)</label>
-                </span>
-                <p className="muted small hint">
+              <div className="step">
+                <div className="step-head">
+                  <span className="step-no" aria-hidden="true">
+                    2
+                  </span>
+                  <h3>Test it, then run it</h3>
+                </div>
+                <div className="fix-actions">
+                  <button type="button" className="button big" disabled={busy} onClick={() => start(api.simulate(zone, script))}>
+                    Simulate
+                  </button>
+                  <button type="button" className="button big primary" disabled={busy} onClick={execute}>
+                    Execute on hosting
+                  </button>
+                  <span className="check">
+                    <input
+                      id="skip-sim"
+                      type="checkbox"
+                      checked={skipSimulation}
+                      onChange={(e) => setSkipSimulation(e.target.checked)}
+                    />
+                    <label htmlFor="skip-sim">Skip the simulation (asks to confirm)</label>
+                  </span>
+                </div>
+                <p className="muted small" style={{ margin: 0 }}>
                   {skipSimulation
-                    ? "Execute runs this script on the hosting right away. Afterwards the zone is checked live again."
-                    : "Execute first simulates exactly this script and runs it on the hosting only if the simulation passes. Afterwards the zone is checked live again."}
+                    ? "Execute runs this script on the hosting right away, then the zone is checked live again."
+                    : "Execute simulates this exact script first. It runs on the hosting only if the simulation passes, then the zone is checked live again."}
                 </p>
               </div>
             </>
           )}
 
-          {current && <RunPanel job={current} output={output} setOutput={setOutput} />}
+          <RunPanel job={current} output={output} setOutput={setOutput} />
         </section>
       </div>
     </main>
@@ -247,126 +279,156 @@ function BackLink() {
 function DiagnosisCard({ d, entry }: { d: Diagnosis; entry?: CatalogEntry }) {
   const first = d.findings[0];
   const facts = first ? Object.entries(first.facts) : [];
+  const rows: [string, string][] = [
+    ...(entry ? ([["Effect", symptom(entry)]] as [string, string][]) : []),
+    ["Cause", d.rootCause],
+    ...(entry ? ([["Fix", entry.fix]] as [string, string][]) : []),
+  ];
   return (
-    <article className="card panel diagnosis">
+    <article className="card diagnosis">
       <div className="diagnosis-head">
         <span className="issue-id">{d.id}</span>
         <h2>{entry?.title ?? d.id}</h2>
         <span className={`severity ${d.severity}`}>{d.severity}</span>
       </div>
       {first && (
-        <div className="field">
-          <h3>What we found</h3>
+        <div className="diagnosis-found">
           <p>
             {findingsCount(d)}. Example: <code>{where(first)}</code>
             {first.evidence && ` – ${first.evidence}`}
           </p>
+          {facts.length > 0 && (
+            <dl className="facts">
+              {facts.map(([k, v]) => (
+                <div key={k}>
+                  <dt>{k}</dt>
+                  <dd className="mono">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </div>
       )}
-      {facts.length > 0 && (
-        <dl className="facts">
-          {facts.map(([k, v]) => (
-            <div key={k}>
-              <dt>{k}</dt>
-              <dd className="mono">{v}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
-      {entry && (
-        <div className="field">
-          <h3>Effect</h3>
-          <p>{symptom(entry)}</p>
+      <dl className="definitions">
+        {rows.map(([term, text]) => (
+          <div key={term}>
+            <dt>{term}</dt>
+            <dd>{text}</dd>
+          </div>
+        ))}
+      </dl>
+      {entry && entry.rfc.length > 0 && (
+        <div className="references">
+          References:{" "}
+          {entry.rfc.map((ref, i) => {
+            const url = rfcUrl(ref);
+            return (
+              <span key={ref}>
+                {i > 0 && ", "}
+                {url ? (
+                  <a href={url} target="_blank" rel="noreferrer">
+                    {ref}
+                  </a>
+                ) : (
+                  ref
+                )}
+              </span>
+            );
+          })}
         </div>
       )}
-      <div className="field">
-        <h3>Cause</h3>
-        <p>{d.rootCause}</p>
-      </div>
-      {entry && (
-        <div className="field">
-          <h3>Fix</h3>
-          <p>{entry.fix}</p>
-        </div>
-      )}
-      <p className="muted small" style={{ margin: 0 }}>
-        Who fixes: {SIDE_LABEL[d.side]}
-        {entry && entry.rfc.length > 0 && ` · References: ${entry.rfc.join(", ")}`}
-      </p>
     </article>
   );
 }
 
-function RunPanel({ job, output, setOutput }: { job: Job; output: "log" | "verify"; setOutput: (o: "log" | "verify") => void }) {
+function RunPanel({ job, output, setOutput }: { job: Job | null; output: "log" | "verify"; setOutput: (o: "log" | "verify") => void }) {
   const logBox = useRef<HTMLPreElement>(null);
-  const lines = job.log ?? [];
+  const lines = job?.log ?? [];
   useEffect(() => {
     const el = logBox.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [lines.length]);
 
-  const running = job.state === "QUEUED" || job.state === "RUNNING";
+  const running = job !== null && (job.state === "QUEUED" || job.state === "RUNNING");
   return (
-    <div className="run" aria-live="polite">
-      <div className="run-head">
-        <h2>
-          Last run: {job.kind === "SIMULATION" ? "simulation" : job.kind === "EXECUTION" ? "execution" : "demo"} {job.id}
-        </h2>
-        <span className={`job-state ${job.state}`}>
-          {JOB_STATE[job.state]}
-          {duration(job) && ` · ${duration(job)}`}
+    <div className="step run" aria-live="polite">
+      <div className="step-head">
+        <span className="step-no" aria-hidden="true">
+          3
         </span>
+        <h3>Result of the last run</h3>
+        {job && (
+          <span className={`run-pill ${job.state}`}>
+            {job.id} {JOB_STATE[job.state].toLowerCase()}
+            {duration(job) && ` · ${duration(job)}`}
+          </span>
+        )}
         <div className="spacer" />
-        <div className="chips" role="tablist" aria-label="Run output">
-          <button type="button" role="tab" className="chip" aria-pressed={output === "log"} aria-selected={output === "log"} onClick={() => setOutput("log")}>
-            Log
-          </button>
-          <button type="button" role="tab" className="chip" aria-pressed={output === "verify"} aria-selected={output === "verify"} onClick={() => setOutput("verify")}>
-            Verify result
-          </button>
-        </div>
-      </div>
-      {job.error && <p className="run-error">{job.error}</p>}
-      {output === "log" ? (
-        <pre ref={logBox} className="code log">
-          {lines.length ? lines.join("\n") : running ? "waiting for output…" : "(no output)"}
-        </pre>
-      ) : job.verify ? (
-        <div className="verify">
-          <p style={{ margin: 0 }}>
-            {job.verify.ok
-              ? "No critical error left. The resolver validated every sample."
-              : job.verify.remaining.length
-                ? `Still found: ${job.verify.remaining.join(", ")}.`
-                : "The resolver does not validate the zone."}
-          </p>
-          <div className="table-wrap">
-            <table className="answers">
-              <thead>
-                <tr>
-                  <th scope="col">Question</th>
-                  <th scope="col">Answer</th>
-                  <th scope="col">AD</th>
-                  <th scope="col">Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                {job.verify.answers.map((a) => (
-                  <tr key={`${a.qname} ${a.qtype}`}>
-                    <td className="mono">
-                      {a.qname} {a.qtype}
-                    </td>
-                    <td className="mono">{a.rcode}</td>
-                    <td>{a.ad ? "yes" : "no"}</td>
-                    <td className={a.ok ? "ok" : "bad"}>{a.ok ? "ok" : "FAIL"}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {job && (
+          <div className="chips" role="tablist" aria-label="Run output">
+            <button type="button" role="tab" className="chip" aria-pressed={output === "log"} aria-selected={output === "log"} onClick={() => setOutput("log")}>
+              Log
+            </button>
+            <button type="button" role="tab" className="chip" aria-pressed={output === "verify"} aria-selected={output === "verify"} onClick={() => setOutput("verify")}>
+              Verify result
+            </button>
           </div>
-        </div>
+        )}
+      </div>
+      {!job ? (
+        <p className="muted" style={{ margin: 0 }}>
+          No simulation or execution yet.
+        </p>
       ) : (
-        <p className="muted">{running ? "The verify runs after the script." : "No verify: the script did not get that far."}</p>
+        <>
+          <p className="muted small" style={{ margin: 0 }}>
+            {jobTitle(job)}
+          </p>
+          {job.error && <p className="run-error">{job.error}</p>}
+          {output === "log" ? (
+            <pre ref={logBox} className="code log">
+              {lines.length ? lines.join("\n") : running ? "waiting for output…" : "(no output)"}
+            </pre>
+          ) : job.verify ? (
+            <div className="verify">
+              <p style={{ margin: 0 }}>
+                {job.verify.ok
+                  ? "No critical error left. The resolver validated every sample."
+                  : job.verify.remaining.length
+                    ? `Still found: ${job.verify.remaining.join(", ")}.`
+                    : "The resolver does not validate the zone."}
+              </p>
+              <div className="table-wrap">
+                <table className="answers">
+                  <thead>
+                    <tr>
+                      <th scope="col">Question</th>
+                      <th scope="col">Answer</th>
+                      <th scope="col">AD</th>
+                      <th scope="col">Result</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {job.verify.answers.map((a) => (
+                      <tr key={`${a.qname} ${a.qtype}`}>
+                        <td className="mono">
+                          {a.qname} {a.qtype}
+                        </td>
+                        <td className="mono">{a.rcode}</td>
+                        <td>{a.ad ? "yes" : "no"}</td>
+                        <td className={a.ok ? "ok" : "bad"}>{a.ok ? "ok" : "FAIL"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : (
+            <p className="muted" style={{ margin: 0 }}>
+              {running ? "The verify runs after the script." : "No verify: the script did not get that far."}
+            </p>
+          )}
+        </>
       )}
     </div>
   );
@@ -374,7 +436,7 @@ function RunPanel({ job, output, setOutput }: { job: Job; output: "log" | "verif
 
 function History({ jobs, currentId, onShow, now }: { jobs: Job[]; currentId: string | null; onShow: (id: string) => void; now: number }) {
   return (
-    <article className="card panel">
+    <article className="card history-card">
       <h2>History</h2>
       {jobs.length === 0 ? (
         <p className="muted">No simulation or execution yet.</p>
@@ -383,7 +445,7 @@ function History({ jobs, currentId, onShow, now }: { jobs: Job[]; currentId: str
           {jobs.map((j) => (
             <li key={j.id}>
               <button type="button" className={`history-item${j.id === currentId ? " current" : ""}`} onClick={() => onShow(j.id)}>
-                <span className="mono">{j.id}</span>
+                <span className="mono muted">{j.id}</span>
                 <span>{jobTitle(j)}</span>
                 <span className={`job-state ${j.state}`}>{JOB_STATE[j.state]}</span>
                 <span className="muted small when">

@@ -11,8 +11,18 @@ export function StateLabel({ status }: { status: Status }) {
   );
 }
 
+/** The zone screen's header: the state as a tinted pill. */
+export function StatePill({ status }: { status: Status }) {
+  return (
+    <span className={`state-pill ${status}`}>
+      <span className="dot" aria-hidden="true" />
+      {STATUS_LABEL[status]}
+    </span>
+  );
+}
+
 /** The "Auto-fix verified" column: the sandbox's verdict on the zone's fix script. */
-export function VerifiedBadge({ verified }: { verified: Verified }) {
+export function VerifiedBadge({ verified, label }: { verified: Verified; label?: string }) {
   const s = verified.state;
   return (
     <span className={`badge ${s}`}>
@@ -29,7 +39,7 @@ export function VerifiedBadge({ verified }: { verified: Verified }) {
         )}
         {s === "NONE" && <path d="M3.5 7 H10.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />}
       </svg>
-      {VERIFIED_LABEL[s]}
+      {label ?? VERIFIED_LABEL[s]}
     </span>
   );
 }

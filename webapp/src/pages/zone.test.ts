@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Job } from "../api/types";
-import { duration, editState, jobTitle, symptom, upsertJob } from "./zone";
+import { duration, editState, jobTitle, rfcUrl, symptom, upsertJob, verifiedText } from "./zone";
 
 const job = (id: string, startedAt: string | undefined, extra: Partial<Job> = {}): Job => ({
   id, kind: "SIMULATION", state: "RUNNING", edited: false, script: "", startedAt, ...extra,
@@ -20,6 +20,16 @@ describe("zone screen logic", () => {
     expect(duration(job("sim-1", "2026-11-01T10:00:00Z"))).toBe("");
     expect(symptom({ symptom: "SERVFAIL", ede: "7 (Signature Expired)" } as never)).toBe("SERVFAIL · EDE 7 (Signature Expired)");
     expect(symptom({ symptom: "works", ede: "none" } as never)).toBe("works");
+  });
+
+  it("words the header's verdict and links RFCs", () => {
+    const now = Date.parse("2026-11-01T10:00:40Z");
+    expect(verifiedText({ state: "PASS", at: "2026-11-01T10:00:00Z", jobId: "sim-1" }, now)).toBe("Fix verified in sandbox just now");
+    expect(verifiedText({ state: "FAIL", at: "2026-11-01T09:58:00Z", jobId: "sim-1" }, now)).toBe("Fix failed in sandbox 3 min ago");
+    expect(verifiedText({ state: "RUNNING", at: null, jobId: "sim-2" }, now)).toBe("Simulating the fix");
+    expect(rfcUrl("RFC 4035 §5.3.1")).toBe("https://www.rfc-editor.org/rfc/rfc4035#section-5.3.1");
+    expect(rfcUrl("RFC 8624")).toBe("https://www.rfc-editor.org/rfc/rfc8624");
+    expect(rfcUrl("ISC KB 123")).toBeNull();
   });
 
   it("merges a job event into the list, newest first, keeping a loaded log", () => {
