@@ -3,6 +3,8 @@ package rs.port53.dnssecretary.diagnose.rules;
 import java.util.ArrayList;
 import java.util.List;
 import org.xbill.DNS.DSRecord;
+import rs.port53.dnssecretary.catalog.Catalog;
+import rs.port53.dnssecretary.catalog.CatalogEntry;
 import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.check.CheckContext;
 import rs.port53.dnssecretary.collect.LocalKey;
@@ -14,6 +16,12 @@ import rs.port53.dnssecretary.model.Diagnosis;
 /** B1 or E2: a DS that points to a key in keys/next/ is an early KSK rollover (E2), not a stale DS (B1). */
 public final class KeyDirectoryRule implements DiagnosisRule {
 
+    private final Catalog catalog;
+
+    public KeyDirectoryRule(Catalog catalog) {
+        this.catalog = catalog;
+    }
+
     @Override
     public List<Diagnosis> apply(List<Diagnosis> diagnoses, ZoneSnapshot s, CheckContext ctx) {
         List<Diagnosis> out = new ArrayList<>();
@@ -21,8 +29,9 @@ public final class KeyDirectoryRule implements DiagnosisRule {
             // If the diagnosis is B1, we are checking the keys
             if (d.id() == ErrorId.B1 && pointsToNextKey(s)) {
                 // If it points to 'next' key, change ID to E2
-                // Other data (severity, side, rootCause, findings) are transferred or adjusted from the catalogue
-                out.add(new Diagnosis(ErrorId.E2, d.severity(), d.side(), "KSK changed and DS is transferred too early.", d.findings()));
+                // Severity and findings stay; side and root cause come from the catalogue
+                CatalogEntry e2 = catalog.get(ErrorId.E2);
+                out.add(new Diagnosis(ErrorId.E2, d.severity(), e2.side(), e2.cause(), d.findings()));
             } else {
                 out.add(d);
             }

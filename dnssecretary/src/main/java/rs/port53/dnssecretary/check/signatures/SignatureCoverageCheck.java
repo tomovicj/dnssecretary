@@ -13,6 +13,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
+/** A3: RRsets in the zone file without any RRSIG. */
 public class SignatureCoverageCheck implements Check {
 
     @Override
@@ -28,7 +29,7 @@ public class SignatureCoverageCheck implements Check {
             if (sr.sigs().isEmpty()) {
                 findings.add(new Finding(
                         ErrorId.A3, Severity.CRITICAL, sr.name(), sr.type(),
-                        "RRset nema nijedan RRSIG.",
+                        "RRset has no RRSIG.",
                         Map.of()
                 ));
             }

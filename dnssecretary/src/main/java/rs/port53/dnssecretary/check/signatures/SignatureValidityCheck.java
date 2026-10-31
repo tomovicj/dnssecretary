@@ -17,10 +17,8 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
+/** A1, A2, A6: RRSIG validity period in the zone file (expired, not yet valid, expiring soon). */
 public class SignatureValidityCheck implements Check {
-
-    // Prag za A6 (možeš kasnije premestiti u Thresholds)
-    private static final Duration A6_MAX_REMAINING = Duration.ofDays(7);
 
     @Override
     public Set<ErrorId> detects() {
@@ -31,38 +29,39 @@ public class SignatureValidityCheck implements Check {
     public List<Finding> run(ZoneSnapshot snapshot, CheckContext ctx) {
         List<Finding> findings = new ArrayList<>();
         Instant now = ctx.now();
+        Duration warn = Duration.ofDays(ctx.thresholds().signatureExpiryWarnDays());
 
         for (SignedRRset sr : snapshot.zoneRRsets()) {
             for (RRSIGRecord sig : sr.sigs()) {
                 Instant inception = sig.getTimeSigned();
                 Instant expire = sig.getExpire();
 
-                // A2: inception u budućnosti
+                // A2: inception in the future
                 if (inception.isAfter(now)) {
                     findings.add(new Finding(
                             ErrorId.A2, Severity.CRITICAL, sr.name(), sr.type(),
-                            "RRSIG još nije važeći: počinje " + inception + ". Proveri NTP.",
+                            "RRSIG not valid yet: starts " + inception + ". Check NTP.",
                             Map.of("inception", inception.toString())
                     ));
                     continue;
                 }
 
-                // A1: istekao
+                // A1: expired
                 if (expire.isBefore(now)) {
                     findings.add(new Finding(
                             ErrorId.A1, Severity.CRITICAL, sr.name(), sr.type(),
-                            "RRSIG je istekao " + expire + ".",
+                            "RRSIG expired " + expire + ".",
                             Map.of("expiration", expire.toString())
                     ));
                     continue;
                 }
 
-                // A6: uskoro ističe
+                // A6: expires soon
                 Duration remaining = Duration.between(now, expire);
-                if (remaining.compareTo(A6_MAX_REMAINING) < 0) {
+                if (remaining.compareTo(warn) < 0) {
                     findings.add(new Finding(
                             ErrorId.A6, Severity.RISK, sr.name(), sr.type(),
-                            "RRSIG ističe za " + remaining.toDays() + " dana.",
+                            "RRSIG expires in " + remaining.toDays() + " days.",
                             Map.of("days_left", String.valueOf(remaining.toDays()))
                     ));
                 }

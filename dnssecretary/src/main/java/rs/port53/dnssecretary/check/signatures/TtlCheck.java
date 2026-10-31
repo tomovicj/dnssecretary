@@ -17,6 +17,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
+/** A7: RRset TTL longer than the remaining validity of its RRSIG. */
 public class TtlCheck implements Check {
 
     @Override
@@ -36,13 +37,13 @@ public class TtlCheck implements Check {
                 long remainingSec = Duration.between(now, sig.getExpire()).getSeconds();
 
                 if (remainingSec <= 0) {
-                    continue; // To je A1, ne A7
+                    continue; // that's A1, not A7
                 }
 
                 if (dataTtl > remainingSec) {
                     findings.add(new Finding(
                             ErrorId.A7, Severity.RISK, sr.name(), sr.type(),
-                            "TTL (" + dataTtl + "s) je veći od preostalog važenja potpisa (" + remainingSec + "s).",
+                            "TTL (" + dataTtl + "s) is longer than the remaining signature validity (" + remainingSec + "s).",
                             Map.of("ttl", String.valueOf(dataTtl), "remaining", String.valueOf(remainingSec))
                     ));
                     break;

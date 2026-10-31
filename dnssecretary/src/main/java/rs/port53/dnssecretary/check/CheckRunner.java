@@ -5,19 +5,18 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 import rs.port53.dnssecretary.catalog.ErrorId;
-import rs.port53.dnssecretary.collect.ZoneSnapshot;
-import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.check.algorithms.AlgorithmPolicyCheck;
 import rs.port53.dnssecretary.check.algorithms.KeyStrengthCheck;
-
-
-import rs.port53.dnssecretary.check.signatures.SignatureValidityCheck;
+import rs.port53.dnssecretary.check.delegation.DelegationCheck;
 import rs.port53.dnssecretary.check.signatures.SignatureCoverageCheck;
 import rs.port53.dnssecretary.check.signatures.SignatureCryptoCheck;
+import rs.port53.dnssecretary.check.signatures.SignatureValidityCheck;
 import rs.port53.dnssecretary.check.signatures.TtlCheck;
+import rs.port53.dnssecretary.collect.ZoneSnapshot;
+import rs.port53.dnssecretary.model.Finding;
 
 /** Runs all checks over a snapshot. A check that throws doesn't stop the others. */
-public final class  CheckRunner {
+public final class CheckRunner {
 
     /**
      * @param failures "CheckName: message" for every check that threw (a bug in the tool, exit 3)
@@ -42,10 +41,10 @@ public final class  CheckRunner {
                 new SignatureCryptoCheck(),     // A4, A5
                 new TtlCheck(),                 // A7
                 new AlgorithmPolicyCheck(),     // C1, C2
-                new KeyStrengthCheck()          // C3
+                new KeyStrengthCheck(),         // C3
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
-                new rs.port53.dnssecretary.check.delegation.DelegationCheck()
+                new DelegationCheck()           // B1–B4, B6, B8
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
         );

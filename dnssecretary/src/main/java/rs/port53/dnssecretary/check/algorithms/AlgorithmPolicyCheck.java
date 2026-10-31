@@ -19,12 +19,11 @@ import rs.port53.dnssecretary.model.Severity;
 /** C1, C2: deprecated algorithms and keys with multiple algorithms that aren't fully signed. */
 public final class AlgorithmPolicyCheck implements Check {
 
-    // Algoritmi koji se smatraju zastarelim (RFC 8624)
+    // Deprecated algorithms (RFC 8624)
     private static final Set<Integer> DEPRECATED_ALGS = Set.of(1, 3, 5, 6, 7, 12);
 
     @Override
     public Set<ErrorId> detects() {
-        // Registruj tek kada run() bude spreman
         return EnumSet.of(ErrorId.C1, ErrorId.C2);
     }
 
@@ -35,13 +34,13 @@ public final class AlgorithmPolicyCheck implements Check {
 
         if (keys.isEmpty()) return out;
 
-        // --- C1: Zastareli algoritmi ---
+        // C1: deprecated algorithms
         for (DNSKEYRecord key : keys) {
             if (DEPRECATED_ALGS.contains(key.getAlgorithm())) {
                 out.add(new Finding(
                         ErrorId.C1,
                         Severity.RISK,
-                        s.zone(), // <--- SAMO OVAKO
+                        s.zone(),
                         Type.DNSKEY,
                         key.toString(),
                         Map.of("algorithm", String.valueOf(key.getAlgorithm()))
@@ -49,19 +48,19 @@ public final class AlgorithmPolicyCheck implements Check {
             }
         }
 
-        // --- C2: Više algoritama, potpisi pokrivaju samo neke ---
+        // C2: several algorithms, signatures cover only some
         Set<Integer> keyAlgs = keys.stream()
                 .map(DNSKEYRecord::getAlgorithm)
                 .collect(Collectors.toSet());
 
         if (keyAlgs.size() > 1) {
-            // Skupimo sve algoritme koji se stvarno koriste u RRSIG-ovima
+            // All algorithms actually used in RRSIGs
             Set<Integer> sigAlgs = s.zoneRRsets().stream()
                     .flatMap(set -> set.sigs().stream())
                     .map(RRSIGRecord::getAlgorithm)
                     .collect(Collectors.toSet());
 
-            // Ako neki ključ (algoritam) nema nijedan svoj potpis, to je C2
+            // An algorithm with keys but no signatures is C2
             Set<Integer> missingAlgs = keyAlgs.stream()
                     .filter(alg -> !sigAlgs.contains(alg))
                     .collect(Collectors.toSet());
@@ -70,7 +69,7 @@ public final class AlgorithmPolicyCheck implements Check {
                 out.add(new Finding(
                         ErrorId.C2,
                         Severity.CRITICAL,
-                        s.zone(), // <--- SAMO OVAKO
+                        s.zone(),
                         Type.DNSKEY,
                         "Keys have algorithms " + keyAlgs + " but signatures only for " + sigAlgs,
                         Map.of("missingAlgorithms", missingAlgs.toString())

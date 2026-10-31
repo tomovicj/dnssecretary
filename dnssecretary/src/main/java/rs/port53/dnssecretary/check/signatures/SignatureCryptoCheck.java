@@ -19,6 +19,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
+/** A4, A5: RRSIGs that don't verify, or that point to a key not in the DNSKEY set. */
 public class SignatureCryptoCheck implements Check {
 
     @Override
@@ -33,10 +34,10 @@ public class SignatureCryptoCheck implements Check {
 
         SignedRRset dnskeySet = snapshot.dnskey();
         if (dnskeySet == null) {
-            return findings; // Nema DNSKEY, to su druge greške (B4)
+            return findings; // no DNSKEY: that's another error (B4)
         }
 
-        // Mapa ključeva: "algoritam/keyTag" -> DNSKEYRecord
+        // Keys by "algorithm/keyTag"
         Map<String, DNSKEYRecord> keys = new HashMap<>();
         for (DNSKEYRecord k : dnskeySet.records(DNSKEYRecord.class)) {
             keys.put(k.getAlgorithm() + "/" + k.getFootprint(), k);
@@ -47,24 +48,25 @@ public class SignatureCryptoCheck implements Check {
                 String keyId = sig.getAlgorithm() + "/" + sig.getFootprint();
                 DNSKEYRecord dnskey = keys.get(keyId);
 
-                // A5: ključ ne postoji
+                // A5: the key doesn't exist
                 if (dnskey == null) {
                     findings.add(new Finding(
                             ErrorId.A5, Severity.CRITICAL, sr.name(), sr.type(),
-                            "RRSIG koristi ključ footprint=" + sig.getFootprint() + " koga nema u DNSKEY skupu.",
+                            "RRSIG uses key tag " + sig.getFootprint() + ", which is not in the DNSKEY set.",
                             Map.of("keyTag", String.valueOf(sig.getFootprint()))
                     ));
                     continue;
                 }
 
-                // A4: kriptografska provera
+                // A4: cryptographic check (dnsjava throws when it fails)
                 try {
-                    // U dnsjava 3.6.5, verify baca izuzetak ako ne prođe
                     DNSSEC.verify(sr.toRRset(), sig, dnskey, now);
+                } catch (DNSSEC.SignatureExpiredException | DNSSEC.SignatureNotYetValidException e) {
+                    // validity period: A1/A2, SignatureValidityCheck
                 } catch (Exception e) {
                     findings.add(new Finding(
                             ErrorId.A4, Severity.CRITICAL, sr.name(), sr.type(),
-                            "Kriptografska provera potpisa nije prošla.",
+                            "Signature does not verify: " + e.getMessage(),
                             Map.of("keyTag", String.valueOf(sig.getFootprint()))
                     ));
                 }

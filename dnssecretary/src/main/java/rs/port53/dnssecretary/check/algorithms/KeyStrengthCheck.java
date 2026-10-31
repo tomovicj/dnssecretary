@@ -29,14 +29,14 @@ public final class KeyStrengthCheck implements Check {
 
         for (DNSKEYRecord key : s.dnskey().records(DNSKEYRecord.class)) {
             try {
-                // U dnsjavi, getPublicKey() za RSA vraća RSAPublicKey
+                // For RSA, dnsjava's getPublicKey() returns an RSAPublicKey
                 if (key.getPublicKey() instanceof RSAPublicKey rsa) {
                     int bits = rsa.getModulus().bitLength();
-                    if (bits < 2048) {
+                    if (bits < ctx.thresholds().minRsaBits()) {
                         out.add(new Finding(
                                 ErrorId.C3,
                                 Severity.RISK,
-                                s.zone(), // <--- SAMO OVAKO
+                                s.zone(),
                                 Type.DNSKEY,
                                 key.toString(),
                                 Map.of("keyTag", String.valueOf(key.getFootprint()), "bits", String.valueOf(bits))
@@ -44,8 +44,7 @@ public final class KeyStrengthCheck implements Check {
                     }
                 }
             } catch (Exception e) {
-                // Ako ne možemo da izvučemo ključ, preskačemo (ili logujemo u konzolu)
-                System.err.println("Failed to read key: " + e.getMessage());
+                // A key dnsjava can't parse is not a weak RSA key; skip it
             }
         }
 
