@@ -7,6 +7,8 @@ import java.util.Set;
 import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
+import rs.port53.dnssecretary.check.algorithms.AlgorithmPolicyCheck;
+import rs.port53.dnssecretary.check.algorithms.KeyStrengthCheck;
 
 /** Runs all checks over a snapshot. A check that throws doesn't stop the others. */
 public final class CheckRunner {
@@ -29,6 +31,9 @@ public final class CheckRunner {
     public static List<Check> defaultChecks() {
         return List.of(
                 // A, C – signatures, TTL, algorithms, key strength (role 2)
+
+                new AlgorithmPolicyCheck(),
+                new KeyStrengthCheck()
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
 
