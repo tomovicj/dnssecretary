@@ -7,7 +7,13 @@
 #   reload <service>   load the changed files on that server (auth1, tld, ...)
 #   flush <zone>       drop the resolver's cached answers for the zone
 
-LAB_PROJECT=${LAB_PROJECT:-dnssec-lab}   # compose project name of the lab
+# The lab's compose project: given, else the project of the container this runs in (the web app),
+# else dnssec-lab (the name of the repo's directory).
+if [ -z "${LAB_PROJECT:-}" ]; then
+    LAB_PROJECT=$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}' \
+        "$(hostname)" 2>/dev/null || true)
+fi
+LAB_PROJECT=${LAB_PROJECT:-dnssec-lab}
 
 lab_container() {
     id=$(docker ps -q --filter "label=com.docker.compose.project=$LAB_PROJECT" \

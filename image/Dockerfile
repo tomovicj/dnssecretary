@@ -17,3 +17,8 @@ RUN apk add --no-cache \
 # The jar itself is built on the host and mounted (compose service "app").
 FROM lab AS app
 RUN apk add --no-cache openjdk21-jre-headless~21.0
+
+# The web app: DNSSECretary + the Docker CLI, to start the sandbox, restart the lab's
+# servers and run scripts/demo.sh (the socket is mounted by compose, profile "web").
+FROM app AS web
+RUN apk add --no-cache docker-cli~26.1.5

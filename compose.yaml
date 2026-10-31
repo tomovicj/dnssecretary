@@ -1,4 +1,5 @@
 networks:
+  web: {}                   # only for the web app's published port (dnslab can't publish ports)
   dnslab:
     internal: true          # No network access
     ipam:
@@ -71,3 +72,21 @@ services:
     entrypoint: ["java", "-jar", "/lab/dnssecretary/target/dnssecretary.jar",
                  "--config", "/lab/dnssecretary/config/lab.yaml"]
     networks: [dnslab]
+
+  web:                      # the web app (DNSSECretary serve) on http://localhost:8080: sh scripts/web.sh
+    build: { context: ./image, target: web }
+    image: dnslab-web
+    profiles: ["web"]
+    user: "${LAB_UID:-1000}:${LAB_GID:-1000}"   # files it writes stay the lab owner's (set by web.sh)
+    group_add: ["${DOCKER_GID:-0}"]             # may use the Docker socket
+    volumes:
+      - ./:/lab
+      - /var/run/docker.sock:/var/run/docker.sock   # sandbox, restarts, demo.sh – a DEMO only: this is root on the host
+    working_dir: /lab
+    environment:
+      HOST_LAB_DIR: ${HOST_LAB_DIR:-}             # the lab's path on the host (Docker mounts host paths)
+      HOME: /tmp
+    command: ["java", "-jar", "/lab/dnssecretary/target/dnssecretary.jar",
+              "--config", "/lab/dnssecretary/config/lab.yaml", "serve", "--port", "8080"]
+    ports: ["127.0.0.1:8080:8080"]
+    networks: [dnslab, web]

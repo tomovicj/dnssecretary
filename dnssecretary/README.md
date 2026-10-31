@@ -57,6 +57,34 @@ Docker CLI and socket, and `HOST_LAB_DIR` (Docker mounts host paths).
 Limit: the sandbox resolver starts with an empty cache, so for E1/E3 it proves that the fixed zone
 validates, not that caches holding the old key are served (in the lab they are: both keys sign).
 
+## Web app (`dnssecretary serve`)
+
+`sh scripts/web.sh` starts it in the compose service `web` on http://localhost:8080 (the jar must be
+built and the lab running; `sh scripts/web.sh logs`, `stop`). It has the Docker socket, so it is a demo
+only. Package `web/`:
+
+- `Scanner`: every 20 s (and right after an execution or a demo action) collect → check → diagnose →
+  plan → script for every zone, 4 at a time, into `ZoneStore` (memory only).
+- When a zone gets a new fix script, `JobService` simulates it in the sandbox (`SandboxRunner`, 2 at a
+  time): that is the "verified" column. Executions (`ProdRunner`) and demo actions (`scripts/demo.sh`)
+  change the lab one at a time, under a write lock; scans and simulations hold the read lock.
+- `WebApp`: the routes (Javalin), and `webapp/dist` with a SPA fallback when it is built.
+
+| Method | Path | |
+| --- | --- | --- |
+| GET | `/api/zones` | `ZoneRow` for every zone, broken first |
+| GET | `/api/zones/{zone}` | `ZoneDetail`: the row + the report (as `check --json`) + the script + the zone's jobs |
+| POST | `/api/zones/{zone}/simulations` | `{"script": "…"}` (default: the generated one) → `Job`, 202 |
+| POST | `/api/zones/{zone}/executions` | `{"script": "…", "simulateFirst": true}` → `Job`, 202 |
+| GET | `/api/jobs`, `/api/jobs/{id}` | jobs, newest first; one job with its log |
+| POST | `/api/scan` | scan every zone now |
+| GET | `/api/events` | SSE (`Accept: text/event-stream`): `zone`, `job`, `log` |
+| GET | `/api/demo/scenarios` | catalogue zones that `break` accepts |
+| POST | `/api/demo/break`, `/api/demo/heal`, `/api/demo/reset` | `{"zone": "…"}` for break → `Job` (kind `DEMO`), 202 |
+
+The JSON shapes are the records in `web/Api.java` (the contract in the pivot plan). Errors are
+`{"error": "…"}` with 400 or 404.
+
 **Demo:** `sh scripts/demo.sh heal` (every zone correct; C1/C3 stay at risk), `break <zone>` (that zone
 broken again; E1/E3 by a live rollover), `reset` (back to 30 broken zones, `keys/` and
 `auth3/unbound.conf` restored from `build/demo/`). It needs only the Docker CLI.
@@ -106,7 +134,7 @@ If the lab containers were started before the `app` service existed, recreate th
 
 ```
 rs.port53.dnssecretary
-├── cli/       picocli commands: check, fix, verify, catalog, snapshot
+├── cli/       picocli commands: check, fix, verify, catalog, snapshot, serve
 ├── config/    AppConfig (config/lab.yaml), Thresholds
 ├── catalog/   Catalog, CatalogEntry, ErrorId (A1..F2)
 ├── dns/       DnsClient, DelegationWalker, ChainValidator, TrustAnchor, Dnssec (DS match, verify), Records
@@ -116,6 +144,7 @@ rs.port53.dnssecretary
 ├── diagnose/  Diagnoser, DiagnosisRule, Analysis  ← rules (F1 instead of A1, B1 vs E2, …) go here
 ├── fix/       FixPlanner → FixPlan (FixAction) → ScriptGenerator (sh script), ScriptRunner
 ├── run/       SandboxRunner (simulate.sh), ProdRunner (prod.sh + live verify), RunResult
+├── web/       WebApp (Javalin routes), Scanner, ZoneStore, JobService, Events (SSE), Api (JSON shapes)
 ├── verify/    Verifier (checks + the resolver's AD bit), VerifyResult (JSON), LiveVerifier
 ├── model/     Finding, Diagnosis, Severity, FixSide
 ├── report/    Report, TextReport, JsonReport, Messages
