@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       # Same version as locally; settings are in .shellcheckrc
       - name: shellcheck
-        run: docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh scripts/fixenv/*.sh
+        run: docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh scripts/fixenv/*.sh scripts/sandbox/*.sh
 
   # DNSSECretary (Java): unit tests on the recorded snapshots, offline.
   app:
