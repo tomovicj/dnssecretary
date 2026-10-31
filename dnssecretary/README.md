@@ -42,12 +42,28 @@ with `ZONE` set, after a helpers file from `scripts/fixenv/` that defines `reloa
   `build/dnssecretary/reload`; `scripts/dnssecretary.sh` restarts, flushes and runs `verify`.
 - `fixenv/prod.sh`: for a container with the Docker CLI and socket (the web app): `docker restart`
   and `unbound-control` on the lab's containers, found by their compose labels.
-- `fixenv/sandbox.sh`: for the sandbox (web app, role 2).
+- `fixenv/sandbox.sh`: for the sandbox: restarts the server's process, `unbound-control` on the sandbox resolver.
+
+**Sandbox** (the web app's "verified" column): `sh scripts/simulate.sh <zone> <script>` copies the lab to
+`build/sandbox/<job>/` and runs `scripts/sandbox/run.sh` in a container with `--network none` and
+NET_ADMIN. The lab's addresses go on `lo` and every server runs there as its own process, so zone
+files, glue and the trust anchor work unchanged. The script runs, then `dnssecretary verify --json`
+against the sandbox's own servers; the last output line is `SANDBOX-RESULT {"scriptExit": N, "verify": …}`.
+Exit 0 = verified. About 5 s per run; the copy is deleted afterwards. From Java: `run/SandboxRunner`
+(simulation) and `run/ProdRunner` (execution on the lab with `prod.sh`, then a live verify through
+`verify/LiveVerifier`); both return a `RunResult` (PASS / FAIL / ERROR). Inside a container they need the
+Docker CLI and socket, and `HOST_LAB_DIR` (Docker mounts host paths).
+
+Limit: the sandbox resolver starts with an empty cache, so for E1/E3 it proves that the fixed zone
+validates, not that caches holding the old key are served (in the lab they are: both keys sign).
+
+**Demo:** `sh scripts/demo.sh heal` (every zone correct; C1/C3 stay at risk), `break <zone>` (that zone
+broken again; E1/E3 by a live rollover), `reset` (back to 30 broken zones, `keys/` and
+`auth3/unbound.conf` restored from `build/demo/`). It needs only the Docker CLI.
 
 `dnssec-verify` in the script stops it (`-e`) before a broken zone is copied to a server. `zones/` is
 never changed, but `KeyRollover`, `RepublishKey` and `ServerConfig` change `keys/` and
-`auth3/unbound.conf`. To get the broken lab back after a demo: restore `keys/` (`sign.sh` alone
-doesn't), `git checkout auth3/unbound.conf`, run `sign.sh` and restart the servers.
+`auth3/unbound.conf`; `sh scripts/demo.sh reset` puts them back (`sign.sh` alone doesn't).
 
 ## Build and run
 
@@ -99,7 +115,8 @@ rs.port53.dnssecretary
 ├── check/     Check, CheckContext, CheckRunner   ← checks go here, in subpackages per group
 ├── diagnose/  Diagnoser, DiagnosisRule, Analysis  ← rules (F1 instead of A1, B1 vs E2, …) go here
 ├── fix/       FixPlanner → FixPlan (FixAction) → ScriptGenerator (sh script), ScriptRunner
-├── verify/    Verifier (live: checks + the resolver's AD bit)
+├── run/       SandboxRunner (simulate.sh), ProdRunner (prod.sh + live verify), RunResult
+├── verify/    Verifier (checks + the resolver's AD bit), VerifyResult (JSON), LiveVerifier
 ├── model/     Finding, Diagnosis, Severity, FixSide
 ├── report/    Report, TextReport, JsonReport, Messages
 └── json/      Jackson setup for dnsjava types

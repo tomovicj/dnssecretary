@@ -87,6 +87,9 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/e3-rollover.sh` | host | Breaks E3 live: caches `www`, swaps the ZSK and removes the old one at once. `delv` fails, Unbound itself doesn't. |
 | `scripts/clean.sh` | host | Removes everything generated. `-n` dry run, `-k` keep keys, `-y` don't ask. |
 | `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
+| `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
+| `scripts/demo.sh` | host / web | Web app demo: `heal` (every zone correct), `break <zone>` (one zone broken again, E1/E3 live), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
+| `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue zone correctly. C1/C3 stay "at risk" (weak keys by design). |
 | `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
 
 After running a rollover script, run `sign.sh` and restart the servers to get a clean lab again.
@@ -170,5 +173,5 @@ Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `resolver/root.key`, 
 To run shellcheck locally:
 
 ```sh
-docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh
+docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh scripts/fixenv/*.sh scripts/sandbox/*.sh
 ```

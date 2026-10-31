@@ -78,6 +78,8 @@ sign_zone good.test "$SRC/good.test.zone" "$BUILD/good.test.zone.signed"
 rm -rf "$BUILD/broken" "$BUILD/parent-ds" "$BUILD/tmp-break"
 sh scripts/break.sh
 #   -> produces $BUILD/broken/{,auth2/,auth3/}*.zone.signed and $BUILD/parent-ds/*.ds
+# Keep the broken DS set: scripts/demo.sh break puts a zone back into its broken state.
+cp -a "$BUILD/parent-ds" "$BUILD/broken/parent-ds"
 
 # ---------- 2. test. (parent of good.test and the broken zones) ----------
 # A separate script, because DNSSECretary re-signs only test. when it fixes a DS.
