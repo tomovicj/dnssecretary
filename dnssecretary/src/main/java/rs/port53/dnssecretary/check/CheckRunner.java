@@ -7,6 +7,8 @@ import java.util.Set;
 import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
+import rs.port53.dnssecretary.check.algorithms.AlgorithmPolicyCheck;
+import rs.port53.dnssecretary.check.algorithms.KeyStrengthCheck;
 
 
 import rs.port53.dnssecretary.check.signatures.SignatureValidityCheck;
@@ -38,7 +40,10 @@ public final class CheckRunner {
                 new SignatureValidityCheck(),   // A1, A2, A6
                 new SignatureCoverageCheck(),   // A3
                 new SignatureCryptoCheck(),     // A4, A5
-                new TtlCheck()                  // A7
+                new TtlCheck(),                 // A7
+                new AlgorithmPolicyCheck(),     // C1, C2
+                new KeyStrengthCheck()          // C3
+
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
