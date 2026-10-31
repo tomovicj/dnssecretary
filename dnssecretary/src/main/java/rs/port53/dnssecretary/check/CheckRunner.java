@@ -9,7 +9,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 
 /** Runs all checks over a snapshot. A check that throws doesn't stop the others. */
-public final class CheckRunner {
+public final class  CheckRunner {
 
     /**
      * @param failures "CheckName: message" for every check that threw (a bug in the tool, exit 3)
@@ -31,6 +31,7 @@ public final class CheckRunner {
                 // A, C – signatures, TTL, algorithms, key strength (role 2)
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
+                new rs.port53.dnssecretary.check.delegation.DelegationCheck()
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
         );
