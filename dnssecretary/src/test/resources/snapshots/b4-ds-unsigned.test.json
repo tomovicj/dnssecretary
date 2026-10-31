@@ -1,6 +1,6 @@
 {
   "zone" : "b4-ds-unsigned.test.",
-  "collectedAt" : "2026-10-31T10:58:20.510312522Z",
+  "collectedAt" : "2026-10-31T11:28:44.977473245Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tDS\t50645 13 2 012801C15E52350794C945A3604C9B12B14729B6F015F9183DD2FEB098605604" ],
-      "sigs" : [ "b4-ds-unsigned.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. PcnLm1FHrChaghWECxL0P8kOclD/E1Bc9mJdbnKldJ746cSb6LCFb9f0viYpo+CZ1HchF4B566dZvPwxYWMshQ==" ]
+      "sigs" : [ "b4-ds-unsigned.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. avC9566SsOsKU8H2/gL5TN0CS+pKxLjMGBwHd4Tr6L2jwqZLt330fopr1jWDbd/HDm1XOuPmzM2ZwSWZviVBgg==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -307,7 +307,7 @@
         "name" : "b4-ds-unsigned.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tTXT\t\"B4: DS postoji, a zona nije potpisana\"" ],
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tTXT\t\"B4: DS exists, but the zone is unsigned\"" ],
         "sigs" : [ ]
       } ],
       "authority" : [ {
@@ -325,12 +325,12 @@
         "sigs" : [ ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 132,
+      "size" : 134,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-5074a846.b4-ds-unsigned.test.",
+      "qname" : "dnssecretary-06f97da7.b4-ds-unsigned.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -381,7 +381,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "b4-ds-unsigned.test.\t3600\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300", "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test.", "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11", "www.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.80", "mail.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.81", "b4-ds-unsigned.test.\t3600\tIN\tMX\t10 mail.b4-ds-unsigned.test.", "b4-ds-unsigned.test.\t3600\tIN\tTXT\t\"B4: DS postoji, a zona nije potpisana\"" ],
+  "fullZone" : [ "b4-ds-unsigned.test.\t3600\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300", "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test.", "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11", "www.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.80", "mail.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.81", "b4-ds-unsigned.test.\t3600\tIN\tMX\t10 mail.b4-ds-unsigned.test.", "b4-ds-unsigned.test.\t3600\tIN\tTXT\t\"B4: DS exists, but the zone is unsigned\"" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Kb4-ds-unsigned.test.+013+19123.key",
@@ -496,7 +496,7 @@
       } ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-5074a846.b4-ds-unsigned.test.",
+      "qname" : "dnssecretary-06f97da7.b4-ds-unsigned.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -511,7 +511,7 @@
       "size" : 245,
       "ede" : [ {
         "code" : 9,
-        "text" : "validation failure <dnssecretary-5074a846.b4-ds-unsigned.test. A IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
+        "text" : "validation failure <dnssecretary-06f97da7.b4-ds-unsigned.test. A IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
       } ],
       "error" : null
     } ]

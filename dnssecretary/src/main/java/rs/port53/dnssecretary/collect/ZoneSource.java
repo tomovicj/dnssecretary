@@ -14,7 +14,7 @@ public interface ZoneSource {
 
     /**
      * @param servers  the zone's name server addresses (for AXFR)
-     * @param warnings add a Serbian message here when the zone can't be loaded
+     * @param warnings add a message for the report here when the zone can't be loaded
      */
     Optional<List<Record>> load(Name zone, List<InetAddress> servers, List<String> warnings);
 

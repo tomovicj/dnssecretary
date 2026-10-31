@@ -7,4 +7,4 @@ ns1.c1-rsasha1.test.    IN A    10.53.0.11
 www.c1-rsasha1.test.    IN A    10.53.0.80
 mail.c1-rsasha1.test.   IN A    10.53.0.81
 c1-rsasha1.test.        IN MX   10 mail.c1-rsasha1.test.
-c1-rsasha1.test.        IN TXT  "C1: zastareo algoritam (5, RSASHA1)"
+c1-rsasha1.test.        IN TXT  "C1: deprecated algorithm (5, RSASHA1)"

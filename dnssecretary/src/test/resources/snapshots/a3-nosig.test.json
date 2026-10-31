@@ -1,6 +1,6 @@
 {
   "zone" : "a3-nosig.test.",
-  "collectedAt" : "2026-10-31T10:58:19.978808792Z",
+  "collectedAt" : "2026-10-31T11:28:44.449854272Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "a3-nosig.test.\t\t3600\tIN\tDS\t46797 13 2 7D485679C7A2653362939D328226E2970126614ED0C4EF53EF01EDC29DD49316" ],
-      "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. qE1CWy20AAHIoX9+z0y/pODA+RqJL1nY8RpEvnha8UVLEGNhAObD83hGTe6gTK6aAn/niypW2/6Rp3Z3+Q2CIg==" ]
+      "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. j8lbFjFiErVjBNUwqL9MCl08Q5sE4eh1hmZe78YZFmGEza6OCjG4DkSPixWVKXujXyyMO19EFhiKbIfBqngCFQ==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "a3-nosig.test.\t\t3600\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t3600\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       } ],
       "authority" : [ {
         "name" : "a3-nosig.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a3-nosig.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==" ]
+        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 445,
@@ -114,7 +114,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t256 3 13 2AM0OZPBosnAcPGx7awg/F+/DKd8YTikhYXwpEv12yO/ivASLwx+mjPX5WRp9A7uCZhZKxUtNKxRYbZTph1FeA==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t257 3 13 cwMKNEASDDfeSTdC74nxxgJfVaNJx28GvJP6arsNyfx05ZACodSRGpf05T75nXyL2hJg3Iu7UQgwOv+9L5MDFg==" ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. TYDYZT0SMnmn4HkMLtyEN0UmEe9VPiSghnsyBXb3x6OyPqZ/Hm8itkgeJao60s6NzOGu75B9Lb1YrJAIOPoOSQ==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 46797 a3-nosig.test. 1cr+HERC6oJYgPOAWKigRsFHW0CnkpuYBlg2FbQse8v0BGydsjehw6tIoVKRCqZpcMvtXmc1EljnsaYijqy4Zw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. jpAojq1yO2WnGq49IaZLiPoujZAnPaRwCpsxtJ6aGGuvlT/WBV/tdE7E+0j5Eq4OBv440pKbILsi5MyxjDOIGw==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 46797 a3-nosig.test. wVRg8IuQRAuaaGAYkVy3ZV1RYq8bK1N3pQvOPaILjZIbW+6QjayOTa0NKKGIWgoSFBC11J12zVJ9JSKCmQbYXQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       }, {
         "name" : "a3-nosig.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       }, {
         "name" : "a3-nosig.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       }, {
         "name" : "a3-nosig.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -231,14 +231,14 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a3-nosig.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==" ]
+        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 314,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==" ]
+        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 294,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tMX\t10 mail.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. fJwZEe5tY8zW8beRzmC6ZxtLjQ4jG1wcEC6pCcwylk+EWadA/oIVUw5AHqKKTGaHIWtzU/wEN76KBoTAj9yD7w==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. ZXCOL1ALJBJ6ZpWs2TGosu9h2Yss9ZRwKSoLM9tnhfE8XaBDCMSns+UU2hX/WWyWLiMeoL7cJU4i5SaHpHlvgg==" ]
       } ],
       "authority" : [ {
         "name" : "a3-nosig.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==" ]
       } ],
       "additional" : [ {
         "name" : "mail.a3-nosig.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.a3-nosig.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. YWlh2RO2B1RofH45tU0q9Bx4j1JmzRH1v+ubN4k8IMPidGLPdlmwKHwM/6e3Y2IVbf7meX6Ew4pwlNOFextMWw==" ]
+        "sigs" : [ "mail.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. XIH/3EmQqvsIUwQkVtExq+LXLOHQF6uq8o4rMeBMsZiezm8+sR7mY4x+aGAatiBbpv/VrbSMX+tLg1jYoctCWw==" ]
       }, {
         "name" : "ns1.a3-nosig.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==" ]
+        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 549,
@@ -325,30 +325,30 @@
         "name" : "a3-nosig.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "a3-nosig.test.\t\t3600\tIN\tTXT\t\"A3: zapis bez potpisa\"" ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. k+wIF9J/fzfnGxO/XTo+Lhj+7iP+3ScdKN2FJQdMum4BDFjRFzF/sJ3OA3pkvuxZcVG6LDyQKLhQE8C8NM8ahg==" ]
+        "records" : [ "a3-nosig.test.\t\t3600\tIN\tTXT\t\"A3: record without a signature\"" ],
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. QYQeSA2yoMxf3qyuJSKCTVSNZfI30adW9EsU+QNdS5awg+96leKKbBEmyLpJXbixrMrxPUoNl76PfxuZxtgVUw==" ]
       } ],
       "authority" : [ {
         "name" : "a3-nosig.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a3-nosig.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==" ]
+        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 437,
+      "size" : 446,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-2d61efda.a3-nosig.test.",
+      "qname" : "dnssecretary-dbe0a5e3.a3-nosig.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==" ]
       }, {
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       }, {
         "name" : "a3-nosig.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,7 +411,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "a3-nosig.test.\t\t3600\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==", "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test.", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==", "a3-nosig.test.\t\t3600\tIN\tMX\t10 mail.a3-nosig.test.", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. fJwZEe5tY8zW8beRzmC6ZxtLjQ4jG1wcEC6pCcwylk+EWadA/oIVUw5AHqKKTGaHIWtzU/wEN76KBoTAj9yD7w==", "a3-nosig.test.\t\t3600\tIN\tTXT\t\"A3: zapis bez potpisa\"", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. k+wIF9J/fzfnGxO/XTo+Lhj+7iP+3ScdKN2FJQdMum4BDFjRFzF/sJ3OA3pkvuxZcVG6LDyQKLhQE8C8NM8ahg==", "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t256 3 13 2AM0OZPBosnAcPGx7awg/F+/DKd8YTikhYXwpEv12yO/ivASLwx+mjPX5WRp9A7uCZhZKxUtNKxRYbZTph1FeA==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t257 3 13 cwMKNEASDDfeSTdC74nxxgJfVaNJx28GvJP6arsNyfx05ZACodSRGpf05T75nXyL2hJg3Iu7UQgwOv+9L5MDFg==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. TYDYZT0SMnmn4HkMLtyEN0UmEe9VPiSghnsyBXb3x6OyPqZ/Hm8itkgeJao60s6NzOGu75B9Lb1YrJAIOPoOSQ==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 46797 a3-nosig.test. 1cr+HERC6oJYgPOAWKigRsFHW0CnkpuYBlg2FbQse8v0BGydsjehw6tIoVKRCqZpcMvtXmc1EljnsaYijqy4Zw==", "www.a3-nosig.test.\t3600\tIN\tA\t10.53.0.80", "www.a3-nosig.test.\t300\tIN\tNSEC\ta3-nosig.test. A RRSIG NSEC", "www.a3-nosig.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 21915 a3-nosig.test. cleeodwG5zWaddwbwAdpUc17Z+c79dY1cu0XsVKTli4OknaTe4LfOfs8SeAuedD9YDsw7uiDNGC5DuLFfFEg4g==", "mail.a3-nosig.test.\t3600\tIN\tA\t10.53.0.81", "mail.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. YWlh2RO2B1RofH45tU0q9Bx4j1JmzRH1v+ubN4k8IMPidGLPdlmwKHwM/6e3Y2IVbf7meX6Ew4pwlNOFextMWw==", "mail.a3-nosig.test.\t300\tIN\tNSEC\tns1.a3-nosig.test. A RRSIG NSEC", "mail.a3-nosig.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 21915 a3-nosig.test. 81Ye2HnOLjERgGW9hjZTalEwT/To+GRbTNiM4PufwW3RvQJMk6IOVXMW5/aMx6ywc/E20IId9bTWLJRoQhWuGw==", "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11", "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==", "ns1.a3-nosig.test.\t300\tIN\tNSEC\twww.a3-nosig.test. A RRSIG NSEC", "ns1.a3-nosig.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 21915 a3-nosig.test. PK6dWk2T8+3eFMnRdFAIEb6cNod3jr1QCzv0+BJmS7nxKzn8eTUj8Ftd5JvsnviNwhkn6B4IRsMg8CBLFcVfzw==" ],
+  "fullZone" : [ "a3-nosig.test.\t\t3600\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==", "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test.", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==", "a3-nosig.test.\t\t3600\tIN\tMX\t10 mail.a3-nosig.test.", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. ZXCOL1ALJBJ6ZpWs2TGosu9h2Yss9ZRwKSoLM9tnhfE8XaBDCMSns+UU2hX/WWyWLiMeoL7cJU4i5SaHpHlvgg==", "a3-nosig.test.\t\t3600\tIN\tTXT\t\"A3: record without a signature\"", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. QYQeSA2yoMxf3qyuJSKCTVSNZfI30adW9EsU+QNdS5awg+96leKKbBEmyLpJXbixrMrxPUoNl76PfxuZxtgVUw==", "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t256 3 13 2AM0OZPBosnAcPGx7awg/F+/DKd8YTikhYXwpEv12yO/ivASLwx+mjPX5WRp9A7uCZhZKxUtNKxRYbZTph1FeA==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t257 3 13 cwMKNEASDDfeSTdC74nxxgJfVaNJx28GvJP6arsNyfx05ZACodSRGpf05T75nXyL2hJg3Iu7UQgwOv+9L5MDFg==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. jpAojq1yO2WnGq49IaZLiPoujZAnPaRwCpsxtJ6aGGuvlT/WBV/tdE7E+0j5Eq4OBv440pKbILsi5MyxjDOIGw==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 46797 a3-nosig.test. wVRg8IuQRAuaaGAYkVy3ZV1RYq8bK1N3pQvOPaILjZIbW+6QjayOTa0NKKGIWgoSFBC11J12zVJ9JSKCmQbYXQ==", "www.a3-nosig.test.\t3600\tIN\tA\t10.53.0.80", "www.a3-nosig.test.\t300\tIN\tNSEC\ta3-nosig.test. A RRSIG NSEC", "www.a3-nosig.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112819 20261031102819 21915 a3-nosig.test. c61n2wRFvhvW/efmz8K2lhkvaGW8iX8vSNT9ZZqUYrOdPRL731wDim1VMovXERLrfnUWEY0SlpwXP3NpT4lP2Q==", "mail.a3-nosig.test.\t3600\tIN\tA\t10.53.0.81", "mail.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. XIH/3EmQqvsIUwQkVtExq+LXLOHQF6uq8o4rMeBMsZiezm8+sR7mY4x+aGAatiBbpv/VrbSMX+tLg1jYoctCWw==", "mail.a3-nosig.test.\t300\tIN\tNSEC\tns1.a3-nosig.test. A RRSIG NSEC", "mail.a3-nosig.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112819 20261031102819 21915 a3-nosig.test. TB2EGd8dHfQQp84X6YKalHIUZV4tuPnNNVCmTUVVrJyeA/tqhHGylWJr9CA0GmmiFzizTWpMu4qzQ9sMfPmjfg==", "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11", "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==", "ns1.a3-nosig.test.\t300\tIN\tNSEC\twww.a3-nosig.test. A RRSIG NSEC", "ns1.a3-nosig.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112819 20261031102819 21915 a3-nosig.test. R5eY+/KrPuzmlKGAqrsAiNPAFMd3Ge0SQkjDoUCwFKxv3vDdPKNeVikPrVmQTUaAYDrRVR8CKJfg8WEwGZIRRQ==" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Ka3-nosig.test.+013+21915.key",
@@ -436,8 +436,8 @@
         "name" : "a3-nosig.test.",
         "type" : "DNSKEY",
         "ttl" : 3600,
-        "records" : [ "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t257 3 13 cwMKNEASDDfeSTdC74nxxgJfVaNJx28GvJP6arsNyfx05ZACodSRGpf05T75nXyL2hJg3Iu7UQgwOv+9L5MDFg==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t256 3 13 2AM0OZPBosnAcPGx7awg/F+/DKd8YTikhYXwpEv12yO/ivASLwx+mjPX5WRp9A7uCZhZKxUtNKxRYbZTph1FeA==" ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. TYDYZT0SMnmn4HkMLtyEN0UmEe9VPiSghnsyBXb3x6OyPqZ/Hm8itkgeJao60s6NzOGu75B9Lb1YrJAIOPoOSQ==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 46797 a3-nosig.test. 1cr+HERC6oJYgPOAWKigRsFHW0CnkpuYBlg2FbQse8v0BGydsjehw6tIoVKRCqZpcMvtXmc1EljnsaYijqy4Zw==" ]
+        "records" : [ "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t256 3 13 2AM0OZPBosnAcPGx7awg/F+/DKd8YTikhYXwpEv12yO/ivASLwx+mjPX5WRp9A7uCZhZKxUtNKxRYbZTph1FeA==", "a3-nosig.test.\t\t3600\tIN\tDNSKEY\t257 3 13 cwMKNEASDDfeSTdC74nxxgJfVaNJx28GvJP6arsNyfx05ZACodSRGpf05T75nXyL2hJg3Iu7UQgwOv+9L5MDFg==" ],
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. jpAojq1yO2WnGq49IaZLiPoujZAnPaRwCpsxtJ6aGGuvlT/WBV/tdE7E+0j5Eq4OBv440pKbILsi5MyxjDOIGw==", "a3-nosig.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 46797 a3-nosig.test. wVRg8IuQRAuaaGAYkVy3ZV1RYq8bK1N3pQvOPaILjZIbW+6QjayOTa0NKKGIWgoSFBC11J12zVJ9JSKCmQbYXQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -479,7 +479,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tNS\tns1.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. Yi5vN1boKYawAxQozGLKqvDZKWLYE8yrCNcAn5+6v0qtwd4n1gBlaXF4Cv3wAjKelCIVTQUTPbWFaEye46CZDg==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. RxvbLklFoEigiNo9pVcu+WtoE7F5ft8U+5AI+cjjwQEk7q5YjXbt6+rrDhk6bdmxCTx12XavG2QjntsClYeHZA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -487,7 +487,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a3-nosig.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 21915 a3-nosig.test. sFpCzT1f/YnAbnqUpgj4uHgMHUyFVxXNdj9I7ulwQG6EAu1ILHI4/dhplCxqg78EZB2de+dtsktXRpZCNw98BQ==" ]
+        "sigs" : [ "ns1.a3-nosig.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 21915 a3-nosig.test. 0CijghfMjyTbaiDtpZ7GzfTiksagezxF6YEdSXnJS/nZ4TRBAQKpRNJKd2lDMlCk1ZIECcC+4dtvgmhli52fSw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 294,
@@ -507,7 +507,7 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "a3-nosig.test.\t\t3600\tIN\tMX\t10 mail.a3-nosig.test." ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. fJwZEe5tY8zW8beRzmC6ZxtLjQ4jG1wcEC6pCcwylk+EWadA/oIVUw5AHqKKTGaHIWtzU/wEN76KBoTAj9yD7w==" ]
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. ZXCOL1ALJBJ6ZpWs2TGosu9h2Yss9ZRwKSoLM9tnhfE8XaBDCMSns+UU2hX/WWyWLiMeoL7cJU4i5SaHpHlvgg==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -528,17 +528,17 @@
         "name" : "a3-nosig.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "a3-nosig.test.\t\t3600\tIN\tTXT\t\"A3: zapis bez potpisa\"" ],
-        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. k+wIF9J/fzfnGxO/XTo+Lhj+7iP+3ScdKN2FJQdMum4BDFjRFzF/sJ3OA3pkvuxZcVG6LDyQKLhQE8C8NM8ahg==" ]
+        "records" : [ "a3-nosig.test.\t\t3600\tIN\tTXT\t\"A3: record without a signature\"" ],
+        "sigs" : [ "a3-nosig.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. QYQeSA2yoMxf3qyuJSKCTVSNZfI30adW9EsU+QNdS5awg+96leKKbBEmyLpJXbixrMrxPUoNl76PfxuZxtgVUw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
       "ednsPayload" : 1232,
-      "size" : 185,
+      "size" : 194,
       "ede" : [ ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-2d61efda.a3-nosig.test.",
+      "qname" : "dnssecretary-dbe0a5e3.a3-nosig.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -552,13 +552,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a3-nosig.test.\t\t300\tIN\tNSEC\tmail.a3-nosig.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 21915 a3-nosig.test. Ix96ymltqOCClV7jLua1RVNzoYAtNH5I4Cyc2oAFGdHwWYr2i8G/q6rKd6SAHzj67yMuQN2asBR+LkMwFnu2hw==" ]
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 21915 a3-nosig.test. BR8pU4bhkX+rQSeLx3JeeOpVg/NbNxgU4YvSg9W3s9rxI04UDF8EJAosMAmIO6661w609A/G+PXE4i4nvuG0ow==" ]
       }, {
         "name" : "a3-nosig.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 21915 a3-nosig.test. ecGAkqmI+YYXAKf9lzRLvMeS3rY7VxjqNoZmezRTSc50s2N80+qV7oC1P98rCTqW7a9btDdAP3TBmlqIvePM5Q==" ]
+        "records" : [ "a3-nosig.test.\t\t300\tIN\tSOA\tns1.a3-nosig.test. admin.a3-nosig.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a3-nosig.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 21915 a3-nosig.test. C0MwpJ1A8M1vopM0/I6KmD32qcQSrF98ls8u/MQ1bdpuPOP0a+xXTPgB3GK/jcl7W9U67gcd2dE2qRFSakMYew==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,

@@ -107,7 +107,7 @@
             <resource>
                 <directory>../catalog</directory>
                 <includes>
-                    <include>katalog.yaml</include>
+                    <include>catalog.yaml</include>
                 </includes>
             </resource>
         </resources>

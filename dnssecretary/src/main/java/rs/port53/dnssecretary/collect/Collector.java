@@ -30,7 +30,7 @@ import rs.port53.dnssecretary.dns.TrustAnchor;
 /**
  * collect: asks the network everything the checks need about one zone and returns
  * a {@link ZoneSnapshot}. The only step (besides apply) that does I/O.
- * Steps follow docs/predlog-java.md 3.4.
+ * Steps follow docs/java-proposal.md 3.4.
  */
 public final class Collector {
 
@@ -64,7 +64,7 @@ public final class Collector {
             try {
                 anchors = TrustAnchor.load(Path.of(config.dns().trustAnchor()));
             } catch (IOException e) {
-                warnings.add("Ne mogu da učitam trust anchor " + config.dns().trustAnchor() + ": " + e.getMessage());
+                warnings.add("Can't load the trust anchor " + config.dns().trustAnchor() + ": " + e.getMessage());
             }
         }
 
@@ -73,7 +73,7 @@ public final class Collector {
         List<ChainLink> chain = walker.chain(d.cuts());
         ChainValidator.Result chainResult = ChainValidator.validate(anchors, chain, now);
         if (!chainResult.secure()) {
-            warnings.add("Lanac poverenja do roditelja (" + d.parent().zone() + ") nije ispravan: "
+            warnings.add("The chain of trust to the parent (" + d.parent().zone() + ") is broken: "
                     + String.join("; ", chainResult.problems()));
         }
 
@@ -91,7 +91,7 @@ public final class Collector {
         LinkedHashSet<InetAddress> seen = new LinkedHashSet<>();
         ns.forEach((host, addrs) -> {
             if (addrs.isEmpty()) {
-                warnings.add("Name server " + host + " nema adresu.");
+                warnings.add("Name server " + host + " has no address.");
             }
             for (InetAddress a : addrs) {
                 if (seen.add(a)) {
@@ -125,7 +125,7 @@ public final class Collector {
         Response apex = client.queryAny(known, zone, Type.NS, Options.AUTH);
         for (Record r : apex.answer(zone, Type.NS).records()) {
             if (r instanceof NSRecord n && !ns.containsKey(n.getTarget())) {
-                warnings.add("NS " + n.getTarget() + " postoji u zoni, ali ne i u delegaciji kod roditelja.");
+                warnings.add("NS " + n.getTarget() + " is in the zone, but not in the parent's delegation.");
                 ns.put(n.getTarget(), walker.resolve(n.getTarget()));
             }
         }
@@ -136,7 +136,7 @@ public final class Collector {
         Response soa = client.query(a, zone, Type.SOA, Options.AUTH);
         if (!soa.ok()) {
             // Unreachable: don't wait for a timeout on every other query.
-            String why = "server ne odgovara na SOA (" + soa.error() + ")";
+            String why = "server doesn't answer SOA (" + soa.error() + ")";
             return new NameserverView(host, a, soa,
                     Response.failed(zone, Type.DNSKEY, a, "udp", why),
                     Response.failed(zone, Type.CDS, a, "udp", why),

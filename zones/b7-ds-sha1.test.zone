@@ -7,4 +7,4 @@ ns1.b7-ds-sha1.test.    IN A    10.53.0.11
 www.b7-ds-sha1.test.    IN A    10.53.0.80
 mail.b7-ds-sha1.test.   IN A    10.53.0.81
 b7-ds-sha1.test.        IN MX   10 mail.b7-ds-sha1.test.
-b7-ds-sha1.test.        IN TXT  "B7: DS koristi SHA-1"
+b7-ds-sha1.test.        IN TXT  "B7: DS uses SHA-1"

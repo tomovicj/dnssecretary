@@ -7,4 +7,4 @@ ns1.c3-rsa1024.test.    IN A    10.53.0.11
 www.c3-rsa1024.test.    IN A    10.53.0.80
 mail.c3-rsa1024.test.   IN A    10.53.0.81
 c3-rsa1024.test.        IN MX   10 mail.c3-rsa1024.test.
-c3-rsa1024.test.        IN TXT  "C3: slab RSA kljuc (1024 bita)"
+c3-rsa1024.test.        IN TXT  "C3: weak RSA key (1024 bits)"

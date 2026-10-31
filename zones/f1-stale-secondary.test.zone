@@ -9,4 +9,4 @@ ns2.f1-stale-secondary.test.    IN A    10.53.0.12   ; auth2 – secondary with 
 www.f1-stale-secondary.test.    IN A    10.53.0.80
 mail.f1-stale-secondary.test.   IN A    10.53.0.81
 f1-stale-secondary.test.        IN MX   10 mail.f1-stale-secondary.test.
-f1-stale-secondary.test.        IN TXT  "F1: sekundarni server ima staru zonu"
+f1-stale-secondary.test.        IN TXT  "F1: secondary server has a stale zone"

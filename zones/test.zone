@@ -8,7 +8,7 @@ a.root-servers.test.    IN A    10.53.0.2
 good.test.              IN NS   ns1.good.test.
 ns1.good.test.          IN A    10.53.0.11         ; glue
 
-; delegations for the broken zones (error catalogue, tab "Prvo (MVP)")
+; delegations for the broken zones (error catalogue, MVP tab)
 ; sign.sh adds their DS-es from build/parent-ds/ (deliberately wrong for some errors).
 a1-expired.test.             IN NS   ns1.a1-expired.test.
 ns1.a1-expired.test.         IN A    10.53.0.11         ; glue
@@ -31,7 +31,7 @@ ns1.d4-nsec3-iter.test.      IN A    10.53.0.11         ; glue
 e1-rollover.test.            IN NS   ns1.e1-rollover.test.
 ns1.e1-rollover.test.        IN A    10.53.0.11         ; glue
 
-; tab "Kasnije" (later)
+; later tab
 a2-notyet.test.                 IN NS   ns1.a2-notyet.test.
 ns1.a2-notyet.test.             IN A    10.53.0.11         ; glue
 a5-unknown-key.test.            IN NS   ns1.a5-unknown-key.test.

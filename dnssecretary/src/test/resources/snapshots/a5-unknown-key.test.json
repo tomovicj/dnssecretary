@@ -1,6 +1,6 @@
 {
   "zone" : "a5-unknown-key.test.",
-  "collectedAt" : "2026-10-31T10:58:20.134523234Z",
+  "collectedAt" : "2026-10-31T11:28:44.603390179Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "a5-unknown-key.test.\t3600\tIN\tDS\t34487 13 2 39229ECD0AB22752D194F2EEDF18C7654BFD578A04221507FA72B0B2ACF85FF2" ],
-      "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. ZEPedGiLmuI2wjR32XcXUaFyu/OntT7XP0D3w9OvOJav94yONGUiREMUtKrmARTUoNVhVU23aVmWIKkmsP+98A==" ]
+      "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. WB1K4bdmTLWA/yR48Lbejl/Xp/aA+8+ui0Kfv0GL1dTH0N5K9xzX+HwLLg9c0u6Wl2AwISJPrVl6vgBAgrH+tA==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "a5-unknown-key.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "a5-unknown-key.test.\t3600\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==" ]
+        "records" : [ "a5-unknown-key.test.\t3600\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==" ]
       } ],
       "authority" : [ {
         "name" : "a5-unknown-key.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test." ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. mjJamHg/X30ydK3SbLw5Xcv0szCDx9WFF4BglBWkw65mHO9LIE0vNmPc3xrYdA77VJd4u48ghwwUvKyLYY469A==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. sBw7I5KSMQ6+F8yydYu2hyCSVCBgRF17SAKtWzuuCNs8iwkjjklPmC48FjeWyjKBNjjHFy16sCyehJ1xEkxYMQ==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a5-unknown-key.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. o673x6kX4kIQgVmmbGtzbGKDZpffvp/oWcPmoUAimEmCIXcfL4HwScZ+s6Si89VZadwL7nJGUtP6rNek3OcmRg==" ]
+        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bqXhoKj+bRD0RMFVEU/d2oj818IKNUpuXq2iRPbYkqt7qACSlpMChQvPTISi6JilqIt0sV0h2/gsDzMgU+VVzg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 469,
@@ -114,7 +114,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t256 3 13 nJBMAJF1zsocC3GZieo0joryCzywQpXONmM5l3V9XLMRcikxj0Hyct+G6cDY6vGtMpytCWt4WIwQI++SyBvQ+A==", "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t257 3 13 XWjfxjuD13E2BZv/3u9gAq/25+DnnYvlY3TPbT19R/NsvnjbXwY0Wu8xZlbmYtduKRzyTXYQJNuLJ1Oqy15xBQ==" ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 17428 a5-unknown-key.test. dL76mw4SnsV+pakYOvog1h0HdW72tLGXSjzhIc+0L9ahHScWZXiFe6mf3J4f4YVC9C7dbE677/hBNCcl5kK5Gw==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 34487 a5-unknown-key.test. V0lr9p3jthM1FBglbdl5FlMmQk8DTCxqQXxXl2nypHrSbJrFYtyqoq4ZrCexqiGUhWhF2zWt4GFCNIAt9ZFJzQ==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 17428 a5-unknown-key.test. 7k2LBLnciEkCH21i8ccyPwA4xG2d1ILQbPgBTOm/3vIpXOglfE++ziplO/5Y/Z6aApSHw7nM/8bm/V3Xx8gKtA==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 34487 a5-unknown-key.test. 3pMI1n0UUYIiQHPQUhc9KL2RP+RSs71L71RDa06TGAYDFzRyj9k+ZViP+qdwsvUj1RqaObMLS1Gx3w7Snh8DWw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "a5-unknown-key.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==" ]
+        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==" ]
       }, {
         "name" : "a5-unknown-key.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 3jX3BUg9+1Io+qCA1yjACJNGMS0IzPHaRGlvfB/70XKa2teGYYnLxta/IFf/VwagF5/GCLYChaZCh62nK5Fqxw==" ]
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 37274 a5-unknown-key.test. Ci9yGDSCjjxTmdUszRek7tAZg1AVrls8cwf9ZQAxzGviQ+ktQmZOjglWXETKZMvUTsuoukfN/QHQUdLvrn/aVA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "a5-unknown-key.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==" ]
+        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==" ]
       }, {
         "name" : "a5-unknown-key.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 3jX3BUg9+1Io+qCA1yjACJNGMS0IzPHaRGlvfB/70XKa2teGYYnLxta/IFf/VwagF5/GCLYChaZCh62nK5Fqxw==" ]
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 37274 a5-unknown-key.test. Ci9yGDSCjjxTmdUszRek7tAZg1AVrls8cwf9ZQAxzGviQ+ktQmZOjglWXETKZMvUTsuoukfN/QHQUdLvrn/aVA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "a5-unknown-key.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==" ]
+        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==" ]
       }, {
         "name" : "a5-unknown-key.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 3jX3BUg9+1Io+qCA1yjACJNGMS0IzPHaRGlvfB/70XKa2teGYYnLxta/IFf/VwagF5/GCLYChaZCh62nK5Fqxw==" ]
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 37274 a5-unknown-key.test. Ci9yGDSCjjxTmdUszRek7tAZg1AVrls8cwf9ZQAxzGviQ+ktQmZOjglWXETKZMvUTsuoukfN/QHQUdLvrn/aVA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -224,21 +224,21 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. hGKtJtOH8SWqa95M5PFoCtADlhjaTKCdNugsIVxIwE9tmn4aA9R2y6tv+a76Xg7MvQrsIixkM6VUlIlfwX4GRA==" ]
+        "sigs" : [ "www.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. C+Zomon2Jvr+UhGJlG+PpcORyg8BnA3TN9OYuUyK+4QKT9TuCxKF3zWoiJrHUxHvYZ2EyCTsVEwPyBOux7Vx0w==" ]
       } ],
       "authority" : [ {
         "name" : "a5-unknown-key.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test." ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. mjJamHg/X30ydK3SbLw5Xcv0szCDx9WFF4BglBWkw65mHO9LIE0vNmPc3xrYdA77VJd4u48ghwwUvKyLYY469A==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. sBw7I5KSMQ6+F8yydYu2hyCSVCBgRF17SAKtWzuuCNs8iwkjjklPmC48FjeWyjKBNjjHFy16sCyehJ1xEkxYMQ==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a5-unknown-key.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. o673x6kX4kIQgVmmbGtzbGKDZpffvp/oWcPmoUAimEmCIXcfL4HwScZ+s6Si89VZadwL7nJGUtP6rNek3OcmRg==" ]
+        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bqXhoKj+bRD0RMFVEU/d2oj818IKNUpuXq2iRPbYkqt7qACSlpMChQvPTISi6JilqIt0sV0h2/gsDzMgU+VVzg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 447,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test." ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. mjJamHg/X30ydK3SbLw5Xcv0szCDx9WFF4BglBWkw65mHO9LIE0vNmPc3xrYdA77VJd4u48ghwwUvKyLYY469A==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. sBw7I5KSMQ6+F8yydYu2hyCSVCBgRF17SAKtWzuuCNs8iwkjjklPmC48FjeWyjKBNjjHFy16sCyehJ1xEkxYMQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. o673x6kX4kIQgVmmbGtzbGKDZpffvp/oWcPmoUAimEmCIXcfL4HwScZ+s6Si89VZadwL7nJGUtP6rNek3OcmRg==" ]
+        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bqXhoKj+bRD0RMFVEU/d2oj818IKNUpuXq2iRPbYkqt7qACSlpMChQvPTISi6JilqIt0sV0h2/gsDzMgU+VVzg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 312,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tMX\t10 mail.a5-unknown-key.test." ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. oagyuD4jllYJ0FuyMEVridgeKu/phEMpelIPpsMCHUDW6U5JPV5cDXVgYBI2SPva/o8B014f/7ITC2EaPAyTxQ==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. fJyH1RsSSSeAAIIcChgFuyxi+o8vA/7w79odsx1AfqOJO7wyk0L92g90CV21L4KlXWXUtqa9FFU6131OzOtGSg==" ]
       } ],
       "authority" : [ {
         "name" : "a5-unknown-key.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test." ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. mjJamHg/X30ydK3SbLw5Xcv0szCDx9WFF4BglBWkw65mHO9LIE0vNmPc3xrYdA77VJd4u48ghwwUvKyLYY469A==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. sBw7I5KSMQ6+F8yydYu2hyCSVCBgRF17SAKtWzuuCNs8iwkjjklPmC48FjeWyjKBNjjHFy16sCyehJ1xEkxYMQ==" ]
       } ],
       "additional" : [ {
         "name" : "mail.a5-unknown-key.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. iqNZ8PwgtTkXFr3bEsDPkj8xveUY928KpTymKKOmF/50kYPAYNuhIsPKmyFCIjw5BMutXBEFzh+w71ZsnkBtog==" ]
+        "sigs" : [ "mail.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. 3OEZ7MmZa9GxzTONtcshdQFQMj8CKb9bSOMNOoMNfyGcl6wLU2Wkj6qUwsk9cQrUYDQVvudpmUf83IQUfv3PTw==" ]
       }, {
         "name" : "ns1.a5-unknown-key.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. o673x6kX4kIQgVmmbGtzbGKDZpffvp/oWcPmoUAimEmCIXcfL4HwScZ+s6Si89VZadwL7nJGUtP6rNek3OcmRg==" ]
+        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bqXhoKj+bRD0RMFVEU/d2oj818IKNUpuXq2iRPbYkqt7qACSlpMChQvPTISi6JilqIt0sV0h2/gsDzMgU+VVzg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 579,
@@ -325,30 +325,30 @@
         "name" : "a5-unknown-key.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "a5-unknown-key.test.\t3600\tIN\tTXT\t\"A5: potpis kljucem koji nije u DNSKEY skupu\"" ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. YV4rF7AQJiW7OHUzKQtYs8mxGVRVsVVRx435vd8XQZisDZxTdxQBOSS9CS3f9C4VCbydUpUNM8LbtWi99NsEWQ==" ]
+        "records" : [ "a5-unknown-key.test.\t3600\tIN\tTXT\t\"A5: signed by a key that is not in the DNSKEY set\"" ],
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bbC/oLsKLhqd1eHReikabQ3CG7Az42KNCcM7NDrBa9bbb+hWb4CIX1u5a5pmWykEs/fvnn6/u9JRufyTIQP74A==" ]
       } ],
       "authority" : [ {
         "name" : "a5-unknown-key.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test." ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. mjJamHg/X30ydK3SbLw5Xcv0szCDx9WFF4BglBWkw65mHO9LIE0vNmPc3xrYdA77VJd4u48ghwwUvKyLYY469A==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. sBw7I5KSMQ6+F8yydYu2hyCSVCBgRF17SAKtWzuuCNs8iwkjjklPmC48FjeWyjKBNjjHFy16sCyehJ1xEkxYMQ==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a5-unknown-key.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. o673x6kX4kIQgVmmbGtzbGKDZpffvp/oWcPmoUAimEmCIXcfL4HwScZ+s6Si89VZadwL7nJGUtP6rNek3OcmRg==" ]
+        "sigs" : [ "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bqXhoKj+bRD0RMFVEU/d2oj818IKNUpuXq2iRPbYkqt7qACSlpMChQvPTISi6JilqIt0sV0h2/gsDzMgU+VVzg==" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 483,
+      "size" : 489,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-cbd06f9b.a5-unknown-key.test.",
+      "qname" : "dnssecretary-3bbeae45.a5-unknown-key.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 3jX3BUg9+1Io+qCA1yjACJNGMS0IzPHaRGlvfB/70XKa2teGYYnLxta/IFf/VwagF5/GCLYChaZCh62nK5Fqxw==" ]
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 37274 a5-unknown-key.test. Ci9yGDSCjjxTmdUszRek7tAZg1AVrls8cwf9ZQAxzGviQ+ktQmZOjglWXETKZMvUTsuoukfN/QHQUdLvrn/aVA==" ]
       }, {
         "name" : "a5-unknown-key.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==" ]
+        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "a5-unknown-key.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==" ]
+        "records" : [ "a5-unknown-key.test.\t300\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==" ]
       }, {
         "name" : "a5-unknown-key.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 3jX3BUg9+1Io+qCA1yjACJNGMS0IzPHaRGlvfB/70XKa2teGYYnLxta/IFf/VwagF5/GCLYChaZCh62nK5Fqxw==" ]
+        "sigs" : [ "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 37274 a5-unknown-key.test. Ci9yGDSCjjxTmdUszRek7tAZg1AVrls8cwf9ZQAxzGviQ+ktQmZOjglWXETKZMvUTsuoukfN/QHQUdLvrn/aVA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,7 +411,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t256 3 13 nJBMAJF1zsocC3GZieo0joryCzywQpXONmM5l3V9XLMRcikxj0Hyct+G6cDY6vGtMpytCWt4WIwQI++SyBvQ+A==", "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t257 3 13 XWjfxjuD13E2BZv/3u9gAq/25+DnnYvlY3TPbT19R/NsvnjbXwY0Wu8xZlbmYtduKRzyTXYQJNuLJ1Oqy15xBQ==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 17428 a5-unknown-key.test. dL76mw4SnsV+pakYOvog1h0HdW72tLGXSjzhIc+0L9ahHScWZXiFe6mf3J4f4YVC9C7dbE677/hBNCcl5kK5Gw==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 34487 a5-unknown-key.test. V0lr9p3jthM1FBglbdl5FlMmQk8DTCxqQXxXl2nypHrSbJrFYtyqoq4ZrCexqiGUhWhF2zWt4GFCNIAt9ZFJzQ==", "a5-unknown-key.test.\t3600\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793444003 3600 900 604800 300", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. G//081WyA9p0smESiZjlnfi7uq6DXjVseEgvukhCYkDLFHmZK6iW54fLNBvGycLvnvB5kpbkWgAKh0Nl+Zhygw==", "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test.", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. mjJamHg/X30ydK3SbLw5Xcv0szCDx9WFF4BglBWkw65mHO9LIE0vNmPc3xrYdA77VJd4u48ghwwUvKyLYY469A==", "a5-unknown-key.test.\t3600\tIN\tMX\t10 mail.a5-unknown-key.test.", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. oagyuD4jllYJ0FuyMEVridgeKu/phEMpelIPpsMCHUDW6U5JPV5cDXVgYBI2SPva/o8B014f/7ITC2EaPAyTxQ==", "a5-unknown-key.test.\t3600\tIN\tTXT\t\"A5: potpis kljucem koji nije u DNSKEY skupu\"", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. YV4rF7AQJiW7OHUzKQtYs8mxGVRVsVVRx435vd8XQZisDZxTdxQBOSS9CS3f9C4VCbydUpUNM8LbtWi99NsEWQ==", "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 3jX3BUg9+1Io+qCA1yjACJNGMS0IzPHaRGlvfB/70XKa2teGYYnLxta/IFf/VwagF5/GCLYChaZCh62nK5Fqxw==", "www.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.80", "www.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. hGKtJtOH8SWqa95M5PFoCtADlhjaTKCdNugsIVxIwE9tmn4aA9R2y6tv+a76Xg7MvQrsIixkM6VUlIlfwX4GRA==", "www.a5-unknown-key.test.\t300\tIN\tNSEC\ta5-unknown-key.test. A RRSIG NSEC", "www.a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 37274 a5-unknown-key.test. DqzRTq9/EH78mx65Ut5/acmN8qmq9J+Ox4lIU4vfyWeIYOpWOXZEgkZLW++54pPaN+HxzrP4lmqk8IEGH56g9A==", "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11", "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. o673x6kX4kIQgVmmbGtzbGKDZpffvp/oWcPmoUAimEmCIXcfL4HwScZ+s6Si89VZadwL7nJGUtP6rNek3OcmRg==", "ns1.a5-unknown-key.test.\t300\tIN\tNSEC\twww.a5-unknown-key.test. A RRSIG NSEC", "ns1.a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 37274 a5-unknown-key.test. /IyLhdZ+RuPjBTa26JavYhkMXKqcSE0nqN8J34fL9hq6NLLZAZruIJ4lMs0ys7ctGaXMOfT7NFw26xoxgbUF6Q==", "mail.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.81", "mail.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 37274 a5-unknown-key.test. iqNZ8PwgtTkXFr3bEsDPkj8xveUY928KpTymKKOmF/50kYPAYNuhIsPKmyFCIjw5BMutXBEFzh+w71ZsnkBtog==", "mail.a5-unknown-key.test.\t300\tIN\tNSEC\tns1.a5-unknown-key.test. A RRSIG NSEC", "mail.a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 37274 a5-unknown-key.test. 6smPNyva8E4Xsrtl1ckiObZFGDUJBrXWhIFurUqMbwl4C4RTIudbYZEvqclr78yRI9fCytGhXIHWaUjBlPhPmQ==" ],
+  "fullZone" : [ "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t256 3 13 nJBMAJF1zsocC3GZieo0joryCzywQpXONmM5l3V9XLMRcikxj0Hyct+G6cDY6vGtMpytCWt4WIwQI++SyBvQ+A==", "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t257 3 13 XWjfxjuD13E2BZv/3u9gAq/25+DnnYvlY3TPbT19R/NsvnjbXwY0Wu8xZlbmYtduKRzyTXYQJNuLJ1Oqy15xBQ==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 17428 a5-unknown-key.test. 7k2LBLnciEkCH21i8ccyPwA4xG2d1ILQbPgBTOm/3vIpXOglfE++ziplO/5Y/Z6aApSHw7nM/8bm/V3Xx8gKtA==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 34487 a5-unknown-key.test. 3pMI1n0UUYIiQHPQUhc9KL2RP+RSs71L71RDa06TGAYDFzRyj9k+ZViP+qdwsvUj1RqaObMLS1Gx3w7Snh8DWw==", "a5-unknown-key.test.\t3600\tIN\tSOA\tns1.a5-unknown-key.test. admin.a5-unknown-key.test. 1793446100 3600 900 604800 300", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. HTMtDejxWL7VOuGeth3Ny6Wibro2V6eT0onRmnCFZIUATQqRpxtku616b+qWeYgeir+3ICicYQR5t/TIuo6z/w==", "a5-unknown-key.test.\t3600\tIN\tNS\tns1.a5-unknown-key.test.", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. sBw7I5KSMQ6+F8yydYu2hyCSVCBgRF17SAKtWzuuCNs8iwkjjklPmC48FjeWyjKBNjjHFy16sCyehJ1xEkxYMQ==", "a5-unknown-key.test.\t3600\tIN\tMX\t10 mail.a5-unknown-key.test.", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. fJyH1RsSSSeAAIIcChgFuyxi+o8vA/7w79odsx1AfqOJO7wyk0L92g90CV21L4KlXWXUtqa9FFU6131OzOtGSg==", "a5-unknown-key.test.\t3600\tIN\tTXT\t\"A5: signed by a key that is not in the DNSKEY set\"", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bbC/oLsKLhqd1eHReikabQ3CG7Az42KNCcM7NDrBa9bbb+hWb4CIX1u5a5pmWykEs/fvnn6/u9JRufyTIQP74A==", "a5-unknown-key.test.\t300\tIN\tNSEC\tmail.a5-unknown-key.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 37274 a5-unknown-key.test. Ci9yGDSCjjxTmdUszRek7tAZg1AVrls8cwf9ZQAxzGviQ+ktQmZOjglWXETKZMvUTsuoukfN/QHQUdLvrn/aVA==", "ns1.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.11", "ns1.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. bqXhoKj+bRD0RMFVEU/d2oj818IKNUpuXq2iRPbYkqt7qACSlpMChQvPTISi6JilqIt0sV0h2/gsDzMgU+VVzg==", "ns1.a5-unknown-key.test.\t300\tIN\tNSEC\twww.a5-unknown-key.test. A RRSIG NSEC", "ns1.a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112820 20261031102820 37274 a5-unknown-key.test. QXn7NiwH6IQZBgDbswGrQL9Lg56XnmnhrpHhFIGSsfL7NAeDy49r32Ev0Lu/iAxgyz+6PmRlkloqIwLUMAPjOQ==", "www.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.80", "www.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. C+Zomon2Jvr+UhGJlG+PpcORyg8BnA3TN9OYuUyK+4QKT9TuCxKF3zWoiJrHUxHvYZ2EyCTsVEwPyBOux7Vx0w==", "www.a5-unknown-key.test.\t300\tIN\tNSEC\ta5-unknown-key.test. A RRSIG NSEC", "www.a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112820 20261031102820 37274 a5-unknown-key.test. gc1nKWlP+E7xNDufo69rgPdcdXBSID8m47cU/Yh0jUsr7ICwXDcMRBWWRZFEqnmEsY9TRNnEU9TfAh3tur2d5w==", "mail.a5-unknown-key.test.\t3600\tIN\tA\t10.53.0.81", "mail.a5-unknown-key.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 37274 a5-unknown-key.test. 3OEZ7MmZa9GxzTONtcshdQFQMj8CKb9bSOMNOoMNfyGcl6wLU2Wkj6qUwsk9cQrUYDQVvudpmUf83IQUfv3PTw==", "mail.a5-unknown-key.test.\t300\tIN\tNSEC\tns1.a5-unknown-key.test. A RRSIG NSEC", "mail.a5-unknown-key.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112820 20261031102820 37274 a5-unknown-key.test. fglrWgiaelUEAO+uEmEH7sASfXjgRoOp7WbyehhhPNrU/AmHhWiPv3UQoMjCpczMAtCbtIiRk9UC+gq0gu+iEQ==" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Ka5-unknown-key.test.+013+17428.key",
@@ -441,7 +441,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t257 3 13 XWjfxjuD13E2BZv/3u9gAq/25+DnnYvlY3TPbT19R/NsvnjbXwY0Wu8xZlbmYtduKRzyTXYQJNuLJ1Oqy15xBQ==", "a5-unknown-key.test.\t3600\tIN\tDNSKEY\t256 3 13 nJBMAJF1zsocC3GZieo0joryCzywQpXONmM5l3V9XLMRcikxj0Hyct+G6cDY6vGtMpytCWt4WIwQI++SyBvQ+A==" ],
-        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 17428 a5-unknown-key.test. dL76mw4SnsV+pakYOvog1h0HdW72tLGXSjzhIc+0L9ahHScWZXiFe6mf3J4f4YVC9C7dbE677/hBNCcl5kK5Gw==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 34487 a5-unknown-key.test. V0lr9p3jthM1FBglbdl5FlMmQk8DTCxqQXxXl2nypHrSbJrFYtyqoq4ZrCexqiGUhWhF2zWt4GFCNIAt9ZFJzQ==" ]
+        "sigs" : [ "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 17428 a5-unknown-key.test. 7k2LBLnciEkCH21i8ccyPwA4xG2d1ILQbPgBTOm/3vIpXOglfE++ziplO/5Y/Z6aApSHw7nM/8bm/V3Xx8gKtA==", "a5-unknown-key.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 34487 a5-unknown-key.test. 3pMI1n0UUYIiQHPQUhc9KL2RP+RSs71L71RDa06TGAYDFzRyj9k+ZViP+qdwsvUj1RqaObMLS1Gx3w7Snh8DWw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -524,7 +524,7 @@
       } ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-cbd06f9b.a5-unknown-key.test.",
+      "qname" : "dnssecretary-3bbeae45.a5-unknown-key.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -539,7 +539,7 @@
       "size" : 225,
       "ede" : [ {
         "code" : 9,
-        "text" : "validation failure <dnssecretary-cbd06f9b.a5-unknown-key.test. A IN>: signatures from unknown keys from 10.53.0.11 for <a5-unknown-key.test. NSEC IN>"
+        "text" : "validation failure <dnssecretary-3bbeae45.a5-unknown-key.test. A IN>: signatures from unknown keys from 10.53.0.11 for <a5-unknown-key.test. NSEC IN>"
       } ],
       "error" : null
     } ]

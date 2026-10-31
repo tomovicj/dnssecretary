@@ -1,7 +1,7 @@
 #!/bin/sh
 # check.sh – asks the resolver about every broken zone and checks the result is as expected.
 # "Expected" is what was verified with Unbound 1.20 (the lab resolver).
-# Where that differs from the error catalogue, the description says "(katalog: ...)".
+# Where that differs from the error catalogue, the description says "(catalogue: ...)".
 #
 # Run from the host (the lab must be running: docker compose up -d):
 #   sh scripts/check.sh              status and AD must match, EDE only warns
@@ -29,7 +29,7 @@ ask() {
         /^;; ->>HEADER<<-/ { sub(/,.*/, "", $6); status = $6 }
         /^;; flags:/       { ad = ($0 ~ / ad[ ;]/) ? "AD" : "--" }
         /^; EDE:/          { code = $3; sub(/^; EDE: /, ""); sub(/\):.*/, ")"); ede = $0 }   # full reason: docker compose logs resolver
-        END { printf "%s %s %s %s", (status == "" ? "NEMA-ODGOVORA" : status), (ad == "" ? "--" : ad),
+        END { printf "%s %s %s %s", (status == "" ? "NO-ANSWER" : status), (ad == "" ? "--" : ad),
                                     (code == "" ? "-" : code), ede }'
 }
 
@@ -45,16 +45,16 @@ row() {
     shown="$status $ad ${*:--}"     # for display: the EDE text already contains the code
 
     if [ "$status" != "$want_status" ] || [ "$ad" != "$want_ad" ]; then
-        mark="GREŠKA"; FAIL=$((FAIL + 1))
+        mark="ERROR"; FAIL=$((FAIL + 1))
     elif [ "$ede" != "$want_ede" ]; then
-        if [ "$STRICT_EDE" = 1 ]; then mark="GREŠKA"; FAIL=$((FAIL + 1)); else mark="EDE?"; WARN=$((WARN + 1)); fi
+        if [ "$STRICT_EDE" = 1 ]; then mark="ERROR"; FAIL=$((FAIL + 1)); else mark="EDE?"; WARN=$((WARN + 1)); fi
     else
         mark="ok"
     fi
 
-    printf '%-6s %-3s %-30s %-4s | dobijeno:  %s\n' "$mark" "$id" "$name" "$type" "$shown"
+    printf '%-6s %-3s %-30s %-4s | got:      %s\n' "$mark" "$id" "$name" "$type" "$shown"
     if [ "$mark" != ok ]; then
-        printf '       %-40s | očekivano: %s %s %s – %s\n' "" "$want_status" "$want_ad" "$want_ede" "$desc"
+        printf '       %-40s | expected: %s %s %s – %s\n' "" "$want_status" "$want_ad" "$want_ede" "$desc"
     fi
 }
 
@@ -62,51 +62,51 @@ row() {
 i=0
 until [ "$(ask www.good.test A | cut -d' ' -f1-2)" = "NOERROR AD" ]; do
     i=$((i + 1))
-    [ $i -lt 30 ] || { echo "Lab ne odgovara (www.good.test nije NOERROR AD posle 30 s)."; exit 1; }
+    [ $i -lt 30 ] || { echo "The lab doesn't answer (www.good.test is not NOERROR AD after 30 s)."; exit 1; }
     sleep 1
 done
 
-echo "       ID  upit                           tip"
+echo "       ID  query                          type"
 echo "------------------------------------------------------------------------------"
-row OK  www.good.test                 A     NOERROR  AD -  "ispravna zona"
+row OK  www.good.test                 A     NOERROR  AD -  "correct zone"
 
-echo; echo "=== Prvo (MVP) ==="
-row A1  www.a1-expired.test           A     SERVFAIL -- 7  "istekao potpis"
-row A3  www.a3-nosig.test             A     SERVFAIL -- 10 "zapis bez potpisa"
-row A4  www.a4-bogus.test             A     SERVFAIL -- 6  "neispravan potpis"
-row A6  www.a6-expiring.test          A     NOERROR  AD -  "radi, ali potpis ističe za 2 dana"
-row B1  www.b1-ds-stale.test          A     SERVFAIL -- 6  "DS na nepostojeći ključ (katalog: EDE 9)"
-row B2  www.b2-ds-digest.test         A     SERVFAIL -- 6  "pogrešan DS digest"
-row B4  www.b4-ds-unsigned.test       A     SERVFAIL -- 9  "DS postoji, zona nepotpisana"
-row D1  www.d1-nsec-broken.test       A     NOERROR  AD -  "postojeće ime radi"
-row D1  missing.d1-nsec-broken.test   A     SERVFAIL -- 6  "pokidan NSEC lanac"
-row D4  www.d4-nsec3-iter.test        A     NOERROR  AD -  "postojeće ime radi"
-row D4  missing.d4-nsec3-iter.test    A     NXDOMAIN -- -  "iteracije > 150 -> insecure, bez EDE 27"
-row E1  www.e1-rollover.test          A     NOERROR  AD -  "ispravna pre e1-rollover.sh"
+echo; echo "=== MVP ==="
+row A1  www.a1-expired.test           A     SERVFAIL -- 7  "expired signature"
+row A3  www.a3-nosig.test             A     SERVFAIL -- 10 "record without a signature"
+row A4  www.a4-bogus.test             A     SERVFAIL -- 6  "invalid signature"
+row A6  www.a6-expiring.test          A     NOERROR  AD -  "works, but the signature expires in 2 days"
+row B1  www.b1-ds-stale.test          A     SERVFAIL -- 6  "DS for a key that doesn't exist (catalogue: EDE 9)"
+row B2  www.b2-ds-digest.test         A     SERVFAIL -- 6  "wrong DS digest"
+row B4  www.b4-ds-unsigned.test       A     SERVFAIL -- 9  "DS exists, zone unsigned"
+row D1  www.d1-nsec-broken.test       A     NOERROR  AD -  "an existing name works"
+row D1  missing.d1-nsec-broken.test   A     SERVFAIL -- 6  "broken NSEC chain"
+row D4  www.d4-nsec3-iter.test        A     NOERROR  AD -  "an existing name works"
+row D4  missing.d4-nsec3-iter.test    A     NXDOMAIN -- -  "iterations > 150 -> insecure, no EDE 27"
+row E1  www.e1-rollover.test          A     NOERROR  AD -  "correct before e1-rollover.sh"
 
-echo; echo "=== Kasnije ==="
-row A2  www.a2-notyet.test            A     SERVFAIL -- 8  "potpis još nije važeći"
-row A5  www.a5-unknown-key.test       A     SERVFAIL -- 9  "potpis ključem van DNSKEY skupa"
-row A7  www.a7-ttl-long.test          A     NOERROR  AD -  "TTL 30 dana, potpis 7"
-row B3  www.b3-ds-alg.test            A     SERVFAIL -- 6  "DS i DNSKEY različit algoritam"
-row B5  www.b5-dnskey-zsk.test        A     SERVFAIL -- 6  "DNSKEY skup bez potpisa KSK-a"
-row B6  www.b6-island.test            A     NOERROR  -- -  "ostrvo: radi bez AD"
-row B7  www.b7-ds-sha1.test           A     NOERROR  AD -  "DS SHA-1 (Unbound ga podržava)"
-row B8  www.b8-ds-extra.test          A     NOERROR  AD -  "višak starog DS-a"
-row C1  www.c1-rsasha1.test           A     NOERROR  AD -  "algoritam 5 (Unbound ga podržava)"
-row C2  www.c2-two-alg.test           A     NOERROR  AD -  "dva algoritma (Unbound je blag; katalog: SERVFAIL kod nekih)"
+echo; echo "=== Later ==="
+row A2  www.a2-notyet.test            A     SERVFAIL -- 8  "signature not yet valid"
+row A5  www.a5-unknown-key.test       A     SERVFAIL -- 9  "signed by a key outside the DNSKEY set"
+row A7  www.a7-ttl-long.test          A     NOERROR  AD -  "TTL 30 days, signature 7"
+row B3  www.b3-ds-alg.test            A     SERVFAIL -- 6  "DS and DNSKEY algorithms differ"
+row B5  www.b5-dnskey-zsk.test        A     SERVFAIL -- 6  "DNSKEY set without a KSK signature"
+row B6  www.b6-island.test            A     NOERROR  -- -  "island: works without AD"
+row B7  www.b7-ds-sha1.test           A     NOERROR  AD -  "DS SHA-1 (Unbound supports it)"
+row B8  www.b8-ds-extra.test          A     NOERROR  AD -  "leftover old DS"
+row C1  www.c1-rsasha1.test           A     NOERROR  AD -  "algorithm 5 (Unbound supports it)"
+row C2  www.c2-two-alg.test           A     NOERROR  AD -  "two algorithms (Unbound is lenient; catalogue: SERVFAIL on some)"
 row C3  www.c3-rsa1024.test           A     NOERROR  AD -  "RSA 1024"
-row D2  www.d2-bitmap.test            TXT   SERVFAIL -- 6  "NSEC bitmap laže za TXT"
-row D3  missing.d3-nsec-nosig.test    A     SERVFAIL -- 12 "NSEC bez potpisa"
-row D5  missing.d5-nsec3param.test    A     SERVFAIL -- 12 "NSEC3PARAM ne odgovara lancu"
-row D6  missing.d6-nsec-mixed.test    A     NXDOMAIN AD -  "NSD šalje samo NSEC3 (katalog: SERVFAIL)"
-row E2  www.e2-ksk-ds-early.test      A     SERVFAIL -- 6  "DS novog KSK-a prerano"
-row E3  www.e3-rollover.test          A     NOERROR  AD -  "ispravna pre e3-rollover.sh"
-row E4  e4-cds.test                   CDS   NOERROR  AD -  "CDS sa pogrešnim digest-om"
-row F1  www.f1-stale-secondary.test   A     NOERROR  AD -  "Unbound ponovi upit na auth1"
-row F2  www.f2-tcp-edns.test          A     NOERROR  AD -  "mali odgovor radi"
-row F2  big.f2-tcp-edns.test          TXT   SERVFAIL -- -  "veliki odgovor: nema TCP-a (katalog: EDE 22/23)"
+row D2  www.d2-bitmap.test            TXT   SERVFAIL -- 6  "NSEC bitmap lies about TXT"
+row D3  missing.d3-nsec-nosig.test    A     SERVFAIL -- 12 "NSEC without signatures"
+row D5  missing.d5-nsec3param.test    A     SERVFAIL -- 12 "NSEC3PARAM doesn't match the chain"
+row D6  missing.d6-nsec-mixed.test    A     NXDOMAIN AD -  "NSD sends only NSEC3 (catalogue: SERVFAIL)"
+row E2  www.e2-ksk-ds-early.test      A     SERVFAIL -- 6  "DS of the new KSK too early"
+row E3  www.e3-rollover.test          A     NOERROR  AD -  "correct before e3-rollover.sh"
+row E4  e4-cds.test                   CDS   NOERROR  AD -  "CDS with a wrong digest"
+row F1  www.f1-stale-secondary.test   A     NOERROR  AD -  "Unbound retries on auth1"
+row F2  www.f2-tcp-edns.test          A     NOERROR  AD -  "a small answer works"
+row F2  big.f2-tcp-edns.test          TXT   SERVFAIL -- -  "large answer: no TCP (catalogue: EDE 22/23)"
 
 echo
-echo "Grešaka: $FAIL, upozorenja za EDE: $WARN."
+echo "Errors: $FAIL, EDE warnings: $WARN."
 [ "$FAIL" -eq 0 ]

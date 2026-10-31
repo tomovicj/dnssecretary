@@ -1,6 +1,6 @@
 #!/bin/sh
 # break.sh – makes one BROKEN zone for every error in the catalogue
-# (DNSSECretary-katalog-gresaka, tabs "Prvo (MVP)" and "Kasnije").
+# (catalog/catalog.yaml: the MVP and later tabs of the team sheet).
 #
 # You normally don't run it by hand: sign.sh calls it after good.test and before
 # the test. zone, because test. has to get the DS records of these zones.
@@ -77,7 +77,7 @@ edit_zone() {
     mv "$f.tmp" "$f"
 }
 
-# ---------- errors: tab "Prvo (MVP)" ----------
+# ---------- errors: MVP tab ----------
 
 # A1 – expired signature. Valid from 37 days ago until 7 days ago.
 # (Unbound tolerates up to 1 day of clock skew – val-sig-skew-max – so "yesterday" isn't enough.)
@@ -116,7 +116,7 @@ break_a6() {
 break_b1() {
     z=b1-ds-stale.test
     old=$(ksk_file $z "$KEYDIR/old")
-    [ -n "$old" ] || { echo "Nema starog KSK za $z – pokreni keygen.sh"; exit 1; }
+    [ -n "$old" ] || { echo "No old KSK for $z – run keygen.sh"; exit 1; }
     sign_raw $z "$SIG_START" "$SIG_END"
     dnssec-dsfromkey -2 "$old" > "$PDS/$z.ds"
 }
@@ -168,7 +168,7 @@ break_e1() {
     good_ds $z
 }
 
-# ---------- errors: tab "Kasnije" ----------
+# ---------- errors: later tab ----------
 
 # A2 – signature not yet valid: it starts only in 7 days (as if the server clock were off).
 # "Tomorrow" isn't enough: Unbound tolerates up to 1 day of clock skew (val-sig-skew-max).
@@ -241,7 +241,7 @@ break_b7() {
 break_b8() {
     z=b8-ds-extra.test
     old=$(ksk_file $z "$KEYDIR/old")
-    [ -n "$old" ] || { echo "Nema starog KSK za $z – pokreni keygen.sh"; exit 1; }
+    [ -n "$old" ] || { echo "No old KSK for $z – run keygen.sh"; exit 1; }
     sign_raw $z "$SIG_START" "$SIG_END"
     dnssec-verify -q -o $z "$OUT/$z.zone.signed"
     { cat "$BUILD/dsset-$z."; dnssec-dsfromkey -2 "$old"; } > "$PDS/$z.ds"
@@ -259,7 +259,7 @@ break_c1() {
 break_c2() {
     z=c2-two-alg.test
     alg8=$(ksk_file $z "$KEYDIR/alg8")
-    [ -n "$alg8" ] || { echo "Nema KSK algoritma 8 za $z – pokreni keygen.sh"; exit 1; }
+    [ -n "$alg8" ] || { echo "No algorithm-8 KSK for $z – run keygen.sh"; exit 1; }
     { cat "$SRC/$z.zone"; echo; dnskey_of "$alg8"; } > "$TMP/$z.in"
     signzone "$TMP/$z.in" "$OUT/$z.zone.signed" $z "$SIG_START" "$SIG_END" unixtime
     { dnssec-dsfromkey -2 "$(ksk_file $z)"; dnssec-dsfromkey -2 "$alg8"; } > "$PDS/$z.ds"
@@ -323,7 +323,7 @@ break_d6() {
 break_e2() {
     z=e2-ksk-ds-early.test
     new=$(ksk_file $z "$KEYDIR/next")
-    [ -n "$new" ] || { echo "Nema novog KSK za $z – pokreni keygen.sh"; exit 1; }
+    [ -n "$new" ] || { echo "No new KSK for $z – run keygen.sh"; exit 1; }
     sign_raw $z "$SIG_START" "$SIG_END"
     dnssec-dsfromkey -2 "$new" > "$PDS/$z.ds"
 }
@@ -375,12 +375,12 @@ break_f2() {
 rollover() {
     z=$1
     old=$(grep -l 'DNSKEY 256' "$KEYDIR"/K"$z".+013+*.key | head -n 1)
-    [ -n "$old" ] || { echo "Nema ZSK za $z – pokreni keygen.sh"; exit 1; }
+    [ -n "$old" ] || { echo "No ZSK for $z – run keygen.sh"; exit 1; }
 
     mkdir -p "$KEYDIR/retired"
     mv "$old" "${old%.key}.private" "$KEYDIR/retired/"
     new=$(dnssec-keygen -q -K "$KEYDIR" -a ECDSAP256SHA256 "$z")
-    echo ">> $z: stari ZSK $(basename "${old%.key}") -> keys/retired/, novi ZSK $new"
+    echo ">> $z: old ZSK $(basename "${old%.key}") -> keys/retired/, new ZSK $new"
 
     sign_raw "$z" "$SIG_START" "$SIG_END"
     dnssec-verify -q -o "$z" "$OUT/$z.zone.signed"
@@ -392,13 +392,13 @@ rollover() {
 if [ "${1:-}" = "rollover" ]; then
     case ${2:-} in
         e1-rollover.test|e3-rollover.test) rollover "$2" ;;
-        *) echo "Upotreba: sh scripts/break.sh rollover e1-rollover.test|e3-rollover.test"; exit 1 ;;
+        *) echo "Usage: sh scripts/break.sh rollover e1-rollover.test|e3-rollover.test"; exit 1 ;;
     esac
     exit 0
 fi
 
 for e in a1 a3 a4 a6 b1 b2 b4 d1 d4 e1 \
          a2 a5 a7 b3 b5 b6 b7 b8 c1 c2 c3 d2 d3 d5 d6 e2 e3 e4 f1 f2; do
-    echo ">> pokvarena zona: $e"
+    echo ">> broken zone: $e"
     break_$e
 done

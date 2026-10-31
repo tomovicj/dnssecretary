@@ -7,4 +7,4 @@ ns1.a1-expired.test.    IN A    10.53.0.11
 www.a1-expired.test.    IN A    10.53.0.80
 mail.a1-expired.test.   IN A    10.53.0.81
 a1-expired.test.        IN MX   10 mail.a1-expired.test.
-a1-expired.test.        IN TXT  "A1: istekao potpis"
+a1-expired.test.        IN TXT  "A1: expired signature"

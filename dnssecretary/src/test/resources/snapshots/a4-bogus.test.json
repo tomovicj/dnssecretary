@@ -1,6 +1,6 @@
 {
   "zone" : "a4-bogus.test.",
-  "collectedAt" : "2026-10-31T10:58:20.059551407Z",
+  "collectedAt" : "2026-10-31T11:28:44.530532155Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "a4-bogus.test.\t\t3600\tIN\tDS\t6123 13 2 2006F0027936276419C5012D9DB0DC90072CE7DAB5C2C6C9B35FE83BEE53A069" ],
-      "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. FNYeRTmi0VeQOvtXwUQ4AsaUKxXTqcfkxifb8eg3SYGM+/k2l4jZ0cOeJqfWeV0VvRT1XoumtCf3DU2M48loaQ==" ]
+      "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. IamoeQyELtNWaTbMQX7wcp59P8ghCh/ltF4uaH3bzItv48B3omGaIcLMu0ZkK0A6DX5psfg9J1SuDqTBAypapA==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "a4-bogus.test.\t\t3600\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t3600\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       } ],
       "authority" : [ {
         "name" : "a4-bogus.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a4-bogus.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==" ]
+        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 445,
@@ -114,7 +114,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t256 3 13 XSLaNZfOpNay1n2k3YBrBdb7RutvTpmNet9Oq5aV5UPjuOG3SkamAll6u+lV7uux2E6M7CUHmAk3OZ3AzAhRcQ==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t257 3 13 WPwWOY1KCfyTdwi42yAMV/+by3JDrJk/a4F+g5zlnCOKstpEUwT0+/O4JmgaVrDJxLZAYHpJm3SW38/4JwWDxQ==" ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 6123 a4-bogus.test. 3SSCrx4Lw0fM1OIsvYVsjsgzJJHQn24zNNbysvl9+/weBlVmMFlftCNTV17sZ3jNqWQGvg94LOQbeJ/ifKjp8w==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. ZdZB8i0vTPKBt9R12XNchHm6u2lWP/OF72IsEQimJlDC9IPUj7JMvp0L5cpgUJfCGRzvwgmGW3ov/IyUH2G1Ng==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 6123 a4-bogus.test. jbiLOWlRTRD2h/ugzq1CgI04NDpXFb07LVK4m6lIeG4C0oKFif+6WQOZLyvdQb6tQO8DK0VBkD74qITyzd5bew==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. D1+rKb4Gfq5GojT8H0a2vJwhGbXVoPUkEVw7pd/BxD32RhLfVBKY9ANMqJjvEmjCZpbRWY0FdFOhOvP1BYlwrQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       }, {
         "name" : "a4-bogus.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       }, {
         "name" : "a4-bogus.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       }, {
         "name" : "a4-bogus.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -224,21 +224,21 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.a4-bogus.test.\t3600\tIN\tA\t10.53.0.99" ],
-        "sigs" : [ "www.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. WCtNQjyEgcgrl09lKNxsQ4f6absZp/Ww1hWID8me4mik2vcQIK2MuWWpcdSjZ4GEn3LvCw3Wfq6EUkL7Tsnn2Q==" ]
+        "sigs" : [ "www.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. sX1QxjW4IrJkciiiRh0fqtYutjuxEzq3U8WKiCVD2EmUu3ARgJATqQyxayxd618vwj22ZULZac+gbag3xMNU2g==" ]
       } ],
       "authority" : [ {
         "name" : "a4-bogus.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a4-bogus.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==" ]
+        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 423,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==" ]
+        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 294,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tMX\t10 mail.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. ghf4Q8bGNR/GeMqolrikY039u8vVua48PUSPyqpbJEk7e2cgunWm6NQJNXhMxWNlVNbXprg4fRdfzuPND0z44Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. Hmp+IkF4hk0WtYA5WInwJwqCWPF1Mf8UwJKfdDFXIPZO/Yl3yi87Ej8HjlL82AK7b1IB5fWhDK1KMBJ1dcLHBA==" ]
       } ],
       "authority" : [ {
         "name" : "a4-bogus.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==" ]
       } ],
       "additional" : [ {
         "name" : "mail.a4-bogus.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.a4-bogus.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. TOUrnOyJm7DSI4aqQFPpx0u3x/rtpfAn6f8eYg90FxXWg4NDCzNkWVOmy6ore4UUjMVqqxP5ZOXYZ4Kwje6kQg==" ]
+        "sigs" : [ "mail.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. INFmP0cO3zFfo/VORiEXSi4Qxv8eXtEQ0cyVKqoIf3S/q8uFZXwqOTOYuUKc3eI9q9Ko3fMUQhyYRc9d6x9SoA==" ]
       }, {
         "name" : "ns1.a4-bogus.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==" ]
+        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 549,
@@ -325,22 +325,22 @@
         "name" : "a4-bogus.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "a4-bogus.test.\t\t3600\tIN\tTXT\t\"A4: neispravan potpis\"" ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. DOVWxKQzfZADkUzlmC5ahhM0NWRGdt9tvFgoBXlu4NQGX5EZBA2xwrqf2EtaRtXjksBCIGVp4mrnTTThnsUt4g==" ]
+        "records" : [ "a4-bogus.test.\t\t3600\tIN\tTXT\t\"A4: invalid signature\"" ],
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. wFq7rq3dtcywT+92TepZoixa/FLuvdCNcXQs/OTFzo+ujqVwK45XzBC4pDnavF4kxZGOXLzSamgUS2lUHc2MRg==" ]
       } ],
       "authority" : [ {
         "name" : "a4-bogus.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a4-bogus.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==" ]
+        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 437,
@@ -348,7 +348,7 @@
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-723f9757.a4-bogus.test.",
+      "qname" : "dnssecretary-4fee3338.a4-bogus.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==" ]
       }, {
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       }, {
         "name" : "a4-bogus.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,7 +411,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "a4-bogus.test.\t\t3600\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==", "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test.", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==", "a4-bogus.test.\t\t3600\tIN\tMX\t10 mail.a4-bogus.test.", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. ghf4Q8bGNR/GeMqolrikY039u8vVua48PUSPyqpbJEk7e2cgunWm6NQJNXhMxWNlVNbXprg4fRdfzuPND0z44Q==", "a4-bogus.test.\t\t3600\tIN\tTXT\t\"A4: neispravan potpis\"", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. DOVWxKQzfZADkUzlmC5ahhM0NWRGdt9tvFgoBXlu4NQGX5EZBA2xwrqf2EtaRtXjksBCIGVp4mrnTTThnsUt4g==", "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t256 3 13 XSLaNZfOpNay1n2k3YBrBdb7RutvTpmNet9Oq5aV5UPjuOG3SkamAll6u+lV7uux2E6M7CUHmAk3OZ3AzAhRcQ==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t257 3 13 WPwWOY1KCfyTdwi42yAMV/+by3JDrJk/a4F+g5zlnCOKstpEUwT0+/O4JmgaVrDJxLZAYHpJm3SW38/4JwWDxQ==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 6123 a4-bogus.test. 3SSCrx4Lw0fM1OIsvYVsjsgzJJHQn24zNNbysvl9+/weBlVmMFlftCNTV17sZ3jNqWQGvg94LOQbeJ/ifKjp8w==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. ZdZB8i0vTPKBt9R12XNchHm6u2lWP/OF72IsEQimJlDC9IPUj7JMvp0L5cpgUJfCGRzvwgmGW3ov/IyUH2G1Ng==", "www.a4-bogus.test.\t3600\tIN\tA\t10.53.0.99", "www.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. WCtNQjyEgcgrl09lKNxsQ4f6absZp/Ww1hWID8me4mik2vcQIK2MuWWpcdSjZ4GEn3LvCw3Wfq6EUkL7Tsnn2Q==", "www.a4-bogus.test.\t300\tIN\tNSEC\ta4-bogus.test. A RRSIG NSEC", "www.a4-bogus.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 32433 a4-bogus.test. IeV58DQRI4O3beRwlMAnET1QX8mN5Su4zTmNZtYSFw4SLJBtl8Yq3zlsjuhLVVCqJ3JNnCB4WanJpa1McrsBvQ==", "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11", "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==", "ns1.a4-bogus.test.\t300\tIN\tNSEC\twww.a4-bogus.test. A RRSIG NSEC", "ns1.a4-bogus.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 32433 a4-bogus.test. bmeju49v44kimLA1AAFNAbqe/tYu8yyoKPEGrueJxSQJrhAYxdlAJYUlIRD+sJ5MEtuEHF3syxGIbSFKBMJdig==", "mail.a4-bogus.test.\t3600\tIN\tA\t10.53.0.81", "mail.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. TOUrnOyJm7DSI4aqQFPpx0u3x/rtpfAn6f8eYg90FxXWg4NDCzNkWVOmy6ore4UUjMVqqxP5ZOXYZ4Kwje6kQg==", "mail.a4-bogus.test.\t300\tIN\tNSEC\tns1.a4-bogus.test. A RRSIG NSEC", "mail.a4-bogus.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105323 20261031095323 32433 a4-bogus.test. Ao+VHIAgaGIyr8DKEQicsdM3qSRc30o27TphHohRZy+D+wYdiD2YQ3sskE7GkeoGN4S8//pfxk0sToEgAKRPBA==" ],
+  "fullZone" : [ "a4-bogus.test.\t\t3600\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==", "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test.", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==", "a4-bogus.test.\t\t3600\tIN\tMX\t10 mail.a4-bogus.test.", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. Hmp+IkF4hk0WtYA5WInwJwqCWPF1Mf8UwJKfdDFXIPZO/Yl3yi87Ej8HjlL82AK7b1IB5fWhDK1KMBJ1dcLHBA==", "a4-bogus.test.\t\t3600\tIN\tTXT\t\"A4: invalid signature\"", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. wFq7rq3dtcywT+92TepZoixa/FLuvdCNcXQs/OTFzo+ujqVwK45XzBC4pDnavF4kxZGOXLzSamgUS2lUHc2MRg==", "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t256 3 13 XSLaNZfOpNay1n2k3YBrBdb7RutvTpmNet9Oq5aV5UPjuOG3SkamAll6u+lV7uux2E6M7CUHmAk3OZ3AzAhRcQ==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t257 3 13 WPwWOY1KCfyTdwi42yAMV/+by3JDrJk/a4F+g5zlnCOKstpEUwT0+/O4JmgaVrDJxLZAYHpJm3SW38/4JwWDxQ==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 6123 a4-bogus.test. jbiLOWlRTRD2h/ugzq1CgI04NDpXFb07LVK4m6lIeG4C0oKFif+6WQOZLyvdQb6tQO8DK0VBkD74qITyzd5bew==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. D1+rKb4Gfq5GojT8H0a2vJwhGbXVoPUkEVw7pd/BxD32RhLfVBKY9ANMqJjvEmjCZpbRWY0FdFOhOvP1BYlwrQ==", "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11", "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==", "ns1.a4-bogus.test.\t300\tIN\tNSEC\twww.a4-bogus.test. A RRSIG NSEC", "ns1.a4-bogus.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112819 20261031102819 32433 a4-bogus.test. XuInvXP2E/fZnlai8/jtNXNsqm/cydPmiP9c3c4U6z+8FkqEx0X8Tokb/WmvPjo6jbDMQGwWffKecOSX+07tPg==", "www.a4-bogus.test.\t3600\tIN\tA\t10.53.0.99", "www.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. sX1QxjW4IrJkciiiRh0fqtYutjuxEzq3U8WKiCVD2EmUu3ARgJATqQyxayxd618vwj22ZULZac+gbag3xMNU2g==", "www.a4-bogus.test.\t300\tIN\tNSEC\ta4-bogus.test. A RRSIG NSEC", "www.a4-bogus.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112819 20261031102819 32433 a4-bogus.test. SYsRYOVSDc8y7PxFappi9K15+r/a8Whme5IfBSuT9zYpX+qmQDlZNva1QnDcQZrd/2537WXrfjmBBj21HWf1sw==", "mail.a4-bogus.test.\t3600\tIN\tA\t10.53.0.81", "mail.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. INFmP0cO3zFfo/VORiEXSi4Qxv8eXtEQ0cyVKqoIf3S/q8uFZXwqOTOYuUKc3eI9q9Ko3fMUQhyYRc9d6x9SoA==", "mail.a4-bogus.test.\t300\tIN\tNSEC\tns1.a4-bogus.test. A RRSIG NSEC", "mail.a4-bogus.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112819 20261031102819 32433 a4-bogus.test. 1fdaxa7dV3iRH3iunS0JcbE77Gq31lIWxNPy1M1V5DqHfnaeL/mihXu+eADqhGe1TEeqAIOQGp59wbGAuyAGmA==" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Ka4-bogus.test.+013+06123.key",
@@ -436,8 +436,8 @@
         "name" : "a4-bogus.test.",
         "type" : "DNSKEY",
         "ttl" : 3600,
-        "records" : [ "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t257 3 13 WPwWOY1KCfyTdwi42yAMV/+by3JDrJk/a4F+g5zlnCOKstpEUwT0+/O4JmgaVrDJxLZAYHpJm3SW38/4JwWDxQ==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t256 3 13 XSLaNZfOpNay1n2k3YBrBdb7RutvTpmNet9Oq5aV5UPjuOG3SkamAll6u+lV7uux2E6M7CUHmAk3OZ3AzAhRcQ==" ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 6123 a4-bogus.test. 3SSCrx4Lw0fM1OIsvYVsjsgzJJHQn24zNNbysvl9+/weBlVmMFlftCNTV17sZ3jNqWQGvg94LOQbeJ/ifKjp8w==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. ZdZB8i0vTPKBt9R12XNchHm6u2lWP/OF72IsEQimJlDC9IPUj7JMvp0L5cpgUJfCGRzvwgmGW3ov/IyUH2G1Ng==" ]
+        "records" : [ "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t256 3 13 XSLaNZfOpNay1n2k3YBrBdb7RutvTpmNet9Oq5aV5UPjuOG3SkamAll6u+lV7uux2E6M7CUHmAk3OZ3AzAhRcQ==", "a4-bogus.test.\t\t3600\tIN\tDNSKEY\t257 3 13 WPwWOY1KCfyTdwi42yAMV/+by3JDrJk/a4F+g5zlnCOKstpEUwT0+/O4JmgaVrDJxLZAYHpJm3SW38/4JwWDxQ==" ],
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 6123 a4-bogus.test. jbiLOWlRTRD2h/ugzq1CgI04NDpXFb07LVK4m6lIeG4C0oKFif+6WQOZLyvdQb6tQO8DK0VBkD74qITyzd5bew==", "a4-bogus.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. D1+rKb4Gfq5GojT8H0a2vJwhGbXVoPUkEVw7pd/BxD32RhLfVBKY9ANMqJjvEmjCZpbRWY0FdFOhOvP1BYlwrQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -479,7 +479,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tNS\tns1.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. VhOw9ELgsJW6Y4UKfHWNhJJNFbWq9Uy5dCLkoEwgGZ2DROGEvKQW7ToWvgb3Y3tINGxGInNH5oI0psQogmeNEg==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. SskjpaHF75/8yUnaOq2NEi6+KtTvSnsPju967+ZjCZ1wBbqbfKQp/5S3YEn+nNwJDaODuGHA/UQonpkdHkbCrw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -487,7 +487,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.a4-bogus.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105323 20261031095323 32433 a4-bogus.test. Iz45+CC1NRf5vEjqhDlzqKJeS8wWmWF7b6M9/wIKu1QA3GicBuaHByjUGZ7mQg9J6yCetLxFrI4YOgBQFyufOA==" ]
+        "sigs" : [ "ns1.a4-bogus.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112819 20261031102819 32433 a4-bogus.test. bM/I07v1PU1SXnssoBQczSaxEHZoy9vSrmCHFj1SfK7qjaEiYhCeEFktSo4KdkN2xY33UY5TpcNzGhY2Iyp8Ww==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 294,
@@ -507,7 +507,7 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "a4-bogus.test.\t\t3600\tIN\tMX\t10 mail.a4-bogus.test." ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. ghf4Q8bGNR/GeMqolrikY039u8vVua48PUSPyqpbJEk7e2cgunWm6NQJNXhMxWNlVNbXprg4fRdfzuPND0z44Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. Hmp+IkF4hk0WtYA5WInwJwqCWPF1Mf8UwJKfdDFXIPZO/Yl3yi87Ej8HjlL82AK7b1IB5fWhDK1KMBJ1dcLHBA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -528,8 +528,8 @@
         "name" : "a4-bogus.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "a4-bogus.test.\t\t3600\tIN\tTXT\t\"A4: neispravan potpis\"" ],
-        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. DOVWxKQzfZADkUzlmC5ahhM0NWRGdt9tvFgoBXlu4NQGX5EZBA2xwrqf2EtaRtXjksBCIGVp4mrnTTThnsUt4g==" ]
+        "records" : [ "a4-bogus.test.\t\t3600\tIN\tTXT\t\"A4: invalid signature\"" ],
+        "sigs" : [ "a4-bogus.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. wFq7rq3dtcywT+92TepZoixa/FLuvdCNcXQs/OTFzo+ujqVwK45XzBC4pDnavF4kxZGOXLzSamgUS2lUHc2MRg==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -538,7 +538,7 @@
       "ede" : [ ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-723f9757.a4-bogus.test.",
+      "qname" : "dnssecretary-4fee3338.a4-bogus.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -552,13 +552,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a4-bogus.test.\t\t300\tIN\tNSEC\tmail.a4-bogus.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105323 20261031095323 32433 a4-bogus.test. sRXoWay8hP3ZYMeA0tL1mQxpP1fR9Kv1gQ0L3HW895B6iRXzf1pbCRkhUD4EhltvP2Ta4A/J0YCD8uDM0nWa9Q==" ]
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112819 20261031102819 32433 a4-bogus.test. RcENAQ8aK+DDcquto9+hjSVRenkKGML62WtN+VoW59VfbPZU9Mohe4p5ot8PbvWg5H6ZOX91Y8H/T0I5t/iHFg==" ]
       }, {
         "name" : "a4-bogus.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105323 20261031095323 32433 a4-bogus.test. NaOPXYjOR+/csgQeu3V4YepNMF1hY/nqKoCUCJ2LqKPkUm7GkD87OPT509QznOoI++OabZoOIkLnePWAzxlK8g==" ]
+        "records" : [ "a4-bogus.test.\t\t300\tIN\tSOA\tns1.a4-bogus.test. admin.a4-bogus.test. 1793446099 3600 900 604800 300" ],
+        "sigs" : [ "a4-bogus.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112819 20261031102819 32433 a4-bogus.test. QTne0wAsYXVG0ZQ4+TjDoAKm6r7nXsm+Tt7TN3kBXCwgN89xDN55NVfOlnAl9LPjBBZgvzKEIQmJnlK5llKf1Q==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,

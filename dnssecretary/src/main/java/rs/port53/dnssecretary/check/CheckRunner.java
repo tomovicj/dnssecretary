@@ -24,7 +24,7 @@ public final class CheckRunner {
 
     /**
      * All checks of the tool. Add yours here (one line, in your group's section),
-     * see docs/predlog-java.md 3.5 for which class detects what.
+     * see docs/java-proposal.md 3.5 for which class detects what.
      */
     public static List<Check> defaultChecks() {
         return List.of(

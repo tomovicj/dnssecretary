@@ -93,7 +93,7 @@ After running a rollover script, run `sign.sh` and restart the servers to get a 
 
 ## Broken zones
 
-Each zone is named `<id>-<short>.test` and is delegated from `test.`. The IDs come from the team's error catalogue (`DNSSECretary-katalog-gresaka`). "Result" is what Unbound 1.20 returns, as checked by `check.sh`.
+Each zone is named `<id>-<short>.test` and is delegated from `test.`. The IDs come from the team's error catalogue ([`catalog/catalog.yaml`](catalog/catalog.yaml)). "Result" is what Unbound 1.20 returns, as checked by `check.sh`.
 
 | ID | Zone | Error | Result (Unbound 1.20) |
 |----|------|-------|----------------------|
@@ -146,7 +146,7 @@ Some results differ from what other resolvers would return. For example, BIND ma
 ```
 zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them)
 scripts/          keygen, sign, break, check, rollover and clean scripts + DNSSECretary wrappers
-catalog/          the error catalogue (katalog.yaml), shared by DNSSECretary and the lab
+catalog/          the error catalogue (catalog.yaml), shared by DNSSECretary and the lab
 dnssecretary/     DNSSECretary, the Java tool (Maven project, see its README)
 docs/             design documents
 root/ tld/        NSD configs for the root and test. servers

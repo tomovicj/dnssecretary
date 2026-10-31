@@ -7,4 +7,4 @@ ns1.b5-dnskey-zsk.test.    IN A    10.53.0.11
 www.b5-dnskey-zsk.test.    IN A    10.53.0.80
 mail.b5-dnskey-zsk.test.   IN A    10.53.0.81
 b5-dnskey-zsk.test.        IN MX   10 mail.b5-dnskey-zsk.test.
-b5-dnskey-zsk.test.        IN TXT  "B5: DNSKEY skup nije potpisan KSK-om"
+b5-dnskey-zsk.test.        IN TXT  "B5: DNSKEY set not signed by the KSK"

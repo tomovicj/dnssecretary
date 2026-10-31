@@ -23,7 +23,7 @@ mkdir -p "$OUT"
 docker compose restart resolver >/dev/null
 sleep 2
 
-echo ">> snimam sve zone iz kataloga u $OUT/"
+echo ">> recording every catalogue zone into $OUT/"
 sh scripts/dnssecretary.sh snapshot --catalog -d "$OUT"
 
 if [ "$ROLLOVER" = 1 ]; then
@@ -32,7 +32,7 @@ if [ "$ROLLOVER" = 1 ]; then
     sh scripts/e3-rollover.sh
     sh scripts/dnssecretary.sh snapshot e3-rollover.test -d "$OUT"
     echo
-    echo "E1/E3 su pokvareni uživo. Za čist lab:"
+    echo "E1/E3 are broken live. For a clean lab:"
     echo "  docker compose run --rm --user \$(id -u):\$(id -g) signer sh scripts/sign.sh"
     echo "  docker compose restart root tld auth1 auth2 auth3 resolver"
 fi

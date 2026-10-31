@@ -14,7 +14,7 @@ import org.xbill.DNS.ZoneTransferIn;
 
 /**
  * AXFR from the zone's name servers, first one that allows it.
- * In the lab NSD doesn't allow transfers yet (docs/predlog-java.md 2.5, point 8).
+ * In the lab NSD doesn't allow transfers yet (docs/java-proposal.md 2.5, point 8).
  */
 public final class AxfrZoneSource implements ZoneSource {
 
@@ -37,7 +37,7 @@ public final class AxfrZoneSource implements ZoneSource {
                 errors.add(server.getHostAddress() + ": " + e.getMessage());
             }
         }
-        warnings.add("AXFR nije uspeo (" + String.join("; ", errors) + ") – provere rade samo nad uzorcima.");
+        warnings.add("AXFR failed (" + String.join("; ", errors) + ") – checks only see the sampled names.");
         return Optional.empty();
     }
 }

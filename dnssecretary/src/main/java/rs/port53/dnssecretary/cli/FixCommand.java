@@ -8,21 +8,21 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 import rs.port53.dnssecretary.report.Messages;
 
-/** fix: plan → apply (role 5, docs/predlog-java.md 3.7). Only the interface for now. */
+/** fix: plan → apply (role 5, docs/java-proposal.md 3.7). Only the interface for now. */
 @Command(name = "fix", mixinStandardHelpOptions = true,
-        description = "Popravi zonu. Podrazumevano samo ispiše plan (dry-run).")
+        description = "Fix a zone. By default only prints the plan (dry run).")
 final class FixCommand implements Callable<Integer> {
 
     @Spec
     CommandSpec spec;
 
-    @Parameters(paramLabel = "<zona>")
+    @Parameters(paramLabel = "<zone>")
     String zone;
 
-    @Option(names = "--apply", description = "Zaista primeni plan (potpiši, isporuči, upiši reload listu).")
+    @Option(names = "--apply", description = "Really apply the plan (sign, deliver, write the reload list).")
     boolean apply;
 
-    @Option(names = "--lab-copy-secondary", description = "F1 u labu: kopiraj ispravnu zonu na auth2.")
+    @Option(names = "--lab-copy-secondary", description = "F1 in the lab: copy the correct zone to auth2.")
     boolean labCopySecondary;
 
     @Override

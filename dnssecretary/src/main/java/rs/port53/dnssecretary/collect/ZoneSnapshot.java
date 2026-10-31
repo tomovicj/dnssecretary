@@ -12,7 +12,7 @@ import org.xbill.DNS.Type;
  * Everything collected about one zone at one moment. Pure data – checks never do I/O.
  * Saved as JSON by {@link SnapshotIO}; unit tests run on saved snapshots.
  *
- * <p>Sources (column "Izvor" in docs/predlog-java.md 3.5):
+ * <p>Sources (column "Source" in docs/java-proposal.md 3.5):
  * P = {@link #parentDs}, {@link #chain}; L = {@link #nameservers}; Z = {@link #fullZone};
  * R = {@link #resolver}; K = {@link #localKeys}.
  *
@@ -27,7 +27,7 @@ import org.xbill.DNS.Type;
  * @param fullZone    all records of the zone (file / AXFR), if available
  * @param localKeys   public keys of this zone from the key directory (empty if not configured)
  * @param resolver    the resolver's view, if a resolver is configured
- * @param warnings    problems while collecting (Serbian, for the report), e.g. "AXFR odbijen"
+ * @param warnings    problems while collecting, for the report, e.g. "AXFR failed"
  */
 public record ZoneSnapshot(
         Name zone,

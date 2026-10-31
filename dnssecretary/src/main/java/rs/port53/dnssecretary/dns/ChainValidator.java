@@ -16,7 +16,7 @@ import rs.port53.dnssecretary.collect.ChainLink;
  */
 public final class ChainValidator {
 
-    /** @param problems in Serbian, for the report; empty when secure */
+    /** @param problems for the report; empty when secure */
     public record Result(boolean secure, List<String> problems) {}
 
     private ChainValidator() {}
@@ -24,7 +24,7 @@ public final class ChainValidator {
     public static Result validate(List<Record> anchors, List<ChainLink> chain, Instant now) {
         List<String> problems = new ArrayList<>();
         if (anchors.isEmpty()) {
-            problems.add("nema trust anchor-a");
+            problems.add("no trust anchor");
             return new Result(false, problems);
         }
         List<DNSKEYRecord> parentKeys = List.of();
@@ -33,7 +33,7 @@ public final class ChainValidator {
             String zone = link.zone().toString();
             List<DNSKEYRecord> keys = link.dnskey().records(DNSKEYRecord.class);
             if (keys.isEmpty()) {
-                problems.add("zona " + zone + " nema DNSKEY");
+                problems.add("zone " + zone + " has no DNSKEY");
                 break;
             }
 
@@ -41,27 +41,27 @@ public final class ChainValidator {
             if (i == 0) {
                 entry = keys.stream().filter(k -> anchors.stream().anyMatch(a -> anchorMatches(a, k))).toList();
                 if (entry.isEmpty()) {
-                    problems.add("nijedan DNSKEY zone " + zone + " ne odgovara trust anchor-u");
+                    problems.add("no DNSKEY of zone " + zone + " matches the trust anchor");
                     break;
                 }
             } else {
                 String parent = chain.get(i - 1).zone().toString();
                 if (link.ds().isEmpty()) {
-                    problems.add("zona " + parent + " nema DS za " + zone);
+                    problems.add("zone " + parent + " has no DS for " + zone);
                     break;
                 }
                 if (!Dnssec.isSignedBy(link.ds(), parentKeys, now)) {
-                    problems.add("DS za " + zone + " nema ispravan potpis zone " + parent);
+                    problems.add("the DS for " + zone + " has no valid signature by zone " + parent);
                 }
                 List<DSRecord> ds = link.ds().records(DSRecord.class);
                 entry = keys.stream().filter(k -> ds.stream().anyMatch(d -> Dnssec.dsMatches(d, k))).toList();
                 if (entry.isEmpty()) {
-                    problems.add("nijedan DNSKEY zone " + zone + " ne odgovara DS-u u zoni " + parent);
+                    problems.add("no DNSKEY of zone " + zone + " matches the DS in zone " + parent);
                     break;
                 }
             }
             if (!Dnssec.isSignedBy(link.dnskey(), entry, now)) {
-                problems.add("DNSKEY skup zone " + zone + " nije ispravno potpisan ključem na koji pokazuje DS/anchor");
+                problems.add("the DNSKEY set of zone " + zone + " is not validly signed by the key the DS/anchor points to");
             }
             parentKeys = keys;
         }

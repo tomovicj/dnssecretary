@@ -1,7 +1,7 @@
 # DNSSECretary (Java)
 
 The tool that checks a zone, explains every DNSSEC error in plain language and fixes it.
-Design: [`docs/predlog-java.md`](../docs/predlog-java.md). Error catalogue: [`catalog/katalog.yaml`](../catalog/katalog.yaml).
+Design: [`docs/java-proposal.md`](../docs/java-proposal.md). Error catalogue: [`catalog/catalog.yaml`](../catalog/catalog.yaml).
 
 Pipeline: `collect → check → diagnose → plan → apply → verify`.
 Done so far: `collect` (DNS, delegation walk, chain of trust, snapshots), the catalogue, the CLI and
@@ -57,12 +57,12 @@ rs.port53.dnssecretary
 ├── check/     Check, CheckContext, CheckRunner   ← checks go here, in subpackages per group
 ├── diagnose/  Diagnoser, DiagnosisRule            ← rules (F1 instead of A1, B1 vs E2, …) go here
 ├── model/     Finding, Diagnosis, Severity, FixSide
-├── report/    Report, TextReport (Serbian), JsonReport, Messages
+├── report/    Report, TextReport, JsonReport, Messages
 └── json/      Jackson setup for dnsjava types
 ```
 
-Code, names and comments in English; everything the user reads (report, messages, catalogue) in Serbian,
-in `katalog.yaml` and `src/main/resources/rs/port53/dnssecretary/messages.properties`.
+All text is in English: code, comments and everything the user reads. User-facing texts live in
+`catalog/catalog.yaml` and `src/main/resources/rs/port53/dnssecretary/messages.properties`, not in the code.
 
 ## What a check gets: `ZoneSnapshot`
 

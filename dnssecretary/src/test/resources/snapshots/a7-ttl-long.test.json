@@ -1,6 +1,6 @@
 {
   "zone" : "a7-ttl-long.test.",
-  "collectedAt" : "2026-10-31T10:58:20.272219011Z",
+  "collectedAt" : "2026-10-31T11:28:44.741864934Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "a7-ttl-long.test.\t3600\tIN\tDS\t20576 13 2 381D6E5E9A3ED474C6B1B88512CC8BF96FEAE54A51E856800267D1E8F248FC63" ],
-      "sigs" : [ "a7-ttl-long.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. 2tTb6ZfKQAqrp6dO515Y8DB0QyggCzs86Cmle1ZWmAjz1EqZtnAwa+RN9/j2mRDYEk85rf7A+5HqKwvR2+vcNg==" ]
+      "sigs" : [ "a7-ttl-long.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. dmnTGKig5YZ8NT0advDu1Wm6xTjQDaFMkDFv7prlTNueorGrMpZcFBcDLGfQMcXLN8j0Y1iUabr8daQYk7f+7A==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 2592000,
-        "records" : [ "a7-ttl-long.test.\t2592000\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t2592000\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t2592000\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t2592000\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       } ],
       "authority" : [ {
         "name" : "a7-ttl-long.test.",
         "type" : "NS",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a7-ttl-long.test.",
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==" ]
+        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 457,
@@ -114,7 +114,7 @@
         "type" : "DNSKEY",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tDNSKEY\t256 3 13 +DLdxCCaWNFKFFIIgPjJdpMhtLgawlOs5NtdYVgXq9QwEBs2FP2xESbheMVJTUS4za5oq620AZ7jbgC2jqFLMQ==", "a7-ttl-long.test.\t2592000\tIN\tDNSKEY\t257 3 13 a4vziWGogJky9AdJzE0sGXPu/cfYP2ekNzICKiBtKxHEQ4NZ4MplWyi/zn66TjHPABIazV6rJoHvAkE3rKyzzw==" ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. Oblae/pAKzDrAepfLkjK3pxosUnB8qOmE7t6K16TlPB7ZmO30mSMSfnLy2NwLPCYn99eErbkBllkCq/ozzg3Hg==", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107105323 20261031095323 20576 a7-ttl-long.test. obNhnidNMWNoV7UNBZ3LW4/S+DAj+yZGlMgdl5X/YPm2ADeYurTapxDN2M5QC6VSrSyKPt92Bq/g/McCVVUGeA==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. maKNP3lruhM+Lb9562In1dF5RtohnpugRMrGYlk2GyNyqJV9imipuBTcmRuhfUls6pwiOm9povfgaDwlvfqqgA==", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107112820 20261031102820 20576 a7-ttl-long.test. T80rI1pM5BTjdKDmrOWT510uCeLCYyd+FWLT6/fNILmaz4U2shmf1sNGTSmhD6rPKgpEijtooUjf4aVfXZeUtQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       }, {
         "name" : "a7-ttl-long.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==" ]
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       }, {
         "name" : "a7-ttl-long.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==" ]
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       }, {
         "name" : "a7-ttl-long.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==" ]
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -224,21 +224,21 @@
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "www.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. +YHNzJW7zjR4wmZ4qYulL2o+y+R+7IsUgvZNVi2WD/3xTgGsa1txdyu01Ie/VAG6q28RSZOSUFk/1VDWcrIaZQ==" ]
+        "sigs" : [ "www.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. fXq2eLddbXMfapwpHIilorDAsUrVoy+aZrM0sjOYtVfp25AmqEkDQuObru7pnZrzmjrBBlbikzlAA0sNXK5/hw==" ]
       } ],
       "authority" : [ {
         "name" : "a7-ttl-long.test.",
         "type" : "NS",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a7-ttl-long.test.",
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==" ]
+        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 435,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==" ]
+        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 303,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tMX\t10 mail.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tMX 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. oYvPU1y35xZGz/ZJHZJ7UVMu+xI2fHXQF/61dC+v8XOLMq+qUhWD9pqWamHG/WahqP4xUCrgsuQrIWvs/A7f8g==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tMX 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. WuWDVrVDl7skymkcUm704lGY4GDfhV1WpFllppWtzRQgHcI6qTDjSipOQ+5JYAQrV6QoN0Aiz/DxgLyEUhKAJQ==" ]
       } ],
       "authority" : [ {
         "name" : "a7-ttl-long.test.",
         "type" : "NS",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==" ]
       } ],
       "additional" : [ {
         "name" : "mail.a7-ttl-long.test.",
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "mail.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. qhIQhJW5MSYTzgnlroC//1jg10IUnN5qw136jDSsDHakUXrJ70RIk8Gr45RJR3R1jd5AIc02k7Nuj+OEH4c58w==" ]
+        "sigs" : [ "mail.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. Ha8mwL0yqTf7IORU4h9pox6H5zikyiINp/GQA2A2o63ZYle+HL0YVc8F9IwPymBt+24vuvjU7ZIHuCFBOAcMRQ==" ]
       }, {
         "name" : "ns1.a7-ttl-long.test.",
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==" ]
+        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 564,
@@ -325,30 +325,30 @@
         "name" : "a7-ttl-long.test.",
         "type" : "TXT",
         "ttl" : 2592000,
-        "records" : [ "a7-ttl-long.test.\t2592000\tIN\tTXT\t\"A7: TTL duzi od vazenja potpisa\"" ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tTXT 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. jvJSu6IFOFp9ybivar3YLMe4ctCeiQSOXnn10yxZHgj+vi5EhIG8e7nSRtZmSw9ZjMMo1uX614DQPv++ZX8d0Q==" ]
+        "records" : [ "a7-ttl-long.test.\t2592000\tIN\tTXT\t\"A7: TTL longer than signature validity\"" ],
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tTXT 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. 5IKNu1trRAAOQPgAHYA9hLnDVhzQP1jYmbx8WBjQhcz8Rsq3mvQQAQFPdlB4fX44WnBUFZqcisZcFkzSSm5aAw==" ]
       } ],
       "authority" : [ {
         "name" : "a7-ttl-long.test.",
         "type" : "NS",
         "ttl" : 2592000,
         "records" : [ "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==" ]
+        "sigs" : [ "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.a7-ttl-long.test.",
         "type" : "A",
         "ttl" : 2592000,
         "records" : [ "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==" ]
+        "sigs" : [ "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 459,
+      "size" : 466,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-94362796.a7-ttl-long.test.",
+      "qname" : "dnssecretary-b0b0b04b.a7-ttl-long.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==" ]
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==" ]
       }, {
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       }, {
         "name" : "a7-ttl-long.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==" ]
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,7 +411,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "a7-ttl-long.test.\t2592000\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==", "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test.", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==", "a7-ttl-long.test.\t2592000\tIN\tMX\t10 mail.a7-ttl-long.test.", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tMX 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. oYvPU1y35xZGz/ZJHZJ7UVMu+xI2fHXQF/61dC+v8XOLMq+qUhWD9pqWamHG/WahqP4xUCrgsuQrIWvs/A7f8g==", "a7-ttl-long.test.\t2592000\tIN\tTXT\t\"A7: TTL duzi od vazenja potpisa\"", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tTXT 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. jvJSu6IFOFp9ybivar3YLMe4ctCeiQSOXnn10yxZHgj+vi5EhIG8e7nSRtZmSw9ZjMMo1uX614DQPv++ZX8d0Q==", "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==", "a7-ttl-long.test.\t2592000\tIN\tDNSKEY\t256 3 13 +DLdxCCaWNFKFFIIgPjJdpMhtLgawlOs5NtdYVgXq9QwEBs2FP2xESbheMVJTUS4za5oq620AZ7jbgC2jqFLMQ==", "a7-ttl-long.test.\t2592000\tIN\tDNSKEY\t257 3 13 a4vziWGogJky9AdJzE0sGXPu/cfYP2ekNzICKiBtKxHEQ4NZ4MplWyi/zn66TjHPABIazV6rJoHvAkE3rKyzzw==", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. Oblae/pAKzDrAepfLkjK3pxosUnB8qOmE7t6K16TlPB7ZmO30mSMSfnLy2NwLPCYn99eErbkBllkCq/ozzg3Hg==", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107105323 20261031095323 20576 a7-ttl-long.test. obNhnidNMWNoV7UNBZ3LW4/S+DAj+yZGlMgdl5X/YPm2ADeYurTapxDN2M5QC6VSrSyKPt92Bq/g/McCVVUGeA==", "www.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.80", "www.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. +YHNzJW7zjR4wmZ4qYulL2o+y+R+7IsUgvZNVi2WD/3xTgGsa1txdyu01Ie/VAG6q28RSZOSUFk/1VDWcrIaZQ==", "www.a7-ttl-long.test.\t300\tIN\tNSEC\ta7-ttl-long.test. A RRSIG NSEC", "www.a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261107105323 20261031095323 6420 a7-ttl-long.test. XeIrI7FnR2/XZQ+syNRQGxoMz8PR7Ag5TF4Iw4taqseq5D6IXsUxGlRIFQme72M0QMOLkAiqJDlYxrYGXJ9AzA==", "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11", "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==", "ns1.a7-ttl-long.test.\t300\tIN\tNSEC\twww.a7-ttl-long.test. A RRSIG NSEC", "ns1.a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261107105323 20261031095323 6420 a7-ttl-long.test. tVOGlpay31sU1/fQPFhIAUub8CLxJRIfShZIkBDxVYnUVV52J2uU72nLUbLExz/WgSM53CQMIbQvPI9no0RWjQ==", "mail.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.81", "mail.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. qhIQhJW5MSYTzgnlroC//1jg10IUnN5qw136jDSsDHakUXrJ70RIk8Gr45RJR3R1jd5AIc02k7Nuj+OEH4c58w==", "mail.a7-ttl-long.test.\t300\tIN\tNSEC\tns1.a7-ttl-long.test. A RRSIG NSEC", "mail.a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261107105323 20261031095323 6420 a7-ttl-long.test. hn6o6Fi6H9V1G5ZH7U6bP7+bLxfR3go3+EOj1ss6GX4oyi/0AfbtlBxZQLTXZJhxKc/2QHKWLt0UjIslbnyLCQ==" ],
+  "fullZone" : [ "a7-ttl-long.test.\t2592000\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==", "a7-ttl-long.test.\t2592000\tIN\tNS\tns1.a7-ttl-long.test.", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==", "a7-ttl-long.test.\t2592000\tIN\tMX\t10 mail.a7-ttl-long.test.", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tMX 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. WuWDVrVDl7skymkcUm704lGY4GDfhV1WpFllppWtzRQgHcI6qTDjSipOQ+5JYAQrV6QoN0Aiz/DxgLyEUhKAJQ==", "a7-ttl-long.test.\t2592000\tIN\tTXT\t\"A7: TTL longer than signature validity\"", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tTXT 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. 5IKNu1trRAAOQPgAHYA9hLnDVhzQP1jYmbx8WBjQhcz8Rsq3mvQQAQFPdlB4fX44WnBUFZqcisZcFkzSSm5aAw==", "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==", "a7-ttl-long.test.\t2592000\tIN\tDNSKEY\t256 3 13 +DLdxCCaWNFKFFIIgPjJdpMhtLgawlOs5NtdYVgXq9QwEBs2FP2xESbheMVJTUS4za5oq620AZ7jbgC2jqFLMQ==", "a7-ttl-long.test.\t2592000\tIN\tDNSKEY\t257 3 13 a4vziWGogJky9AdJzE0sGXPu/cfYP2ekNzICKiBtKxHEQ4NZ4MplWyi/zn66TjHPABIazV6rJoHvAkE3rKyzzw==", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. maKNP3lruhM+Lb9562In1dF5RtohnpugRMrGYlk2GyNyqJV9imipuBTcmRuhfUls6pwiOm9povfgaDwlvfqqgA==", "a7-ttl-long.test.\t608400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107112820 20261031102820 20576 a7-ttl-long.test. T80rI1pM5BTjdKDmrOWT510uCeLCYyd+FWLT6/fNILmaz4U2shmf1sNGTSmhD6rPKgpEijtooUjf4aVfXZeUtQ==", "ns1.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.11", "ns1.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==", "ns1.a7-ttl-long.test.\t300\tIN\tNSEC\twww.a7-ttl-long.test. A RRSIG NSEC", "ns1.a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261107112820 20261031102820 6420 a7-ttl-long.test. QCJZgI54yx9IFroOETVBTBb3IJJJM67aheVaogSedFTpLI4elhijZfeM15PDINFb5v/mg1UzszpF7asY/syZjQ==", "www.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.80", "www.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. fXq2eLddbXMfapwpHIilorDAsUrVoy+aZrM0sjOYtVfp25AmqEkDQuObru7pnZrzmjrBBlbikzlAA0sNXK5/hw==", "www.a7-ttl-long.test.\t300\tIN\tNSEC\ta7-ttl-long.test. A RRSIG NSEC", "www.a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261107112820 20261031102820 6420 a7-ttl-long.test. 4hT1+bsU6Uli6LyBR9Pugof0/B31qJB0SlSyrUsc2pFR7Xb5qVsMfvsjAGtBfBgPXbP1wxcJhcT09Us0mhTxug==", "mail.a7-ttl-long.test.\t2592000\tIN\tA\t10.53.0.81", "mail.a7-ttl-long.test.\t608400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. Ha8mwL0yqTf7IORU4h9pox6H5zikyiINp/GQA2A2o63ZYle+HL0YVc8F9IwPymBt+24vuvjU7ZIHuCFBOAcMRQ==", "mail.a7-ttl-long.test.\t300\tIN\tNSEC\tns1.a7-ttl-long.test. A RRSIG NSEC", "mail.a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261107112820 20261031102820 6420 a7-ttl-long.test. gu74zt9/JfNZTIacT9j4AwfKBhrFGC5mpl9P/5DyvreFWoouK5Kv8nVbe5muVR0et8bLmNOghDXDhhH6+4rSPw==" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Ka7-ttl-long.test.+013+06420.key",
@@ -437,7 +437,7 @@
         "type" : "DNSKEY",
         "ttl" : 86400,
         "records" : [ "a7-ttl-long.test.\t86400\tIN\tDNSKEY\t256 3 13 +DLdxCCaWNFKFFIIgPjJdpMhtLgawlOs5NtdYVgXq9QwEBs2FP2xESbheMVJTUS4za5oq620AZ7jbgC2jqFLMQ==", "a7-ttl-long.test.\t86400\tIN\tDNSKEY\t257 3 13 a4vziWGogJky9AdJzE0sGXPu/cfYP2ekNzICKiBtKxHEQ4NZ4MplWyi/zn66TjHPABIazV6rJoHvAkE3rKyzzw==" ],
-        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. Oblae/pAKzDrAepfLkjK3pxosUnB8qOmE7t6K16TlPB7ZmO30mSMSfnLy2NwLPCYn99eErbkBllkCq/ozzg3Hg==", "a7-ttl-long.test.\t86400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107105323 20261031095323 20576 a7-ttl-long.test. obNhnidNMWNoV7UNBZ3LW4/S+DAj+yZGlMgdl5X/YPm2ADeYurTapxDN2M5QC6VSrSyKPt92Bq/g/McCVVUGeA==" ]
+        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. maKNP3lruhM+Lb9562In1dF5RtohnpugRMrGYlk2GyNyqJV9imipuBTcmRuhfUls6pwiOm9povfgaDwlvfqqgA==", "a7-ttl-long.test.\t86400\tIN\tRRSIG\tDNSKEY 13 2 2592000 20261107112820 20261031102820 20576 a7-ttl-long.test. T80rI1pM5BTjdKDmrOWT510uCeLCYyd+FWLT6/fNILmaz4U2shmf1sNGTSmhD6rPKgpEijtooUjf4aVfXZeUtQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -460,7 +460,7 @@
         "type" : "A",
         "ttl" : 86400,
         "records" : [ "www.a7-ttl-long.test.\t86400\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.a7-ttl-long.test.\t86400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. +YHNzJW7zjR4wmZ4qYulL2o+y+R+7IsUgvZNVi2WD/3xTgGsa1txdyu01Ie/VAG6q28RSZOSUFk/1VDWcrIaZQ==" ]
+        "sigs" : [ "www.a7-ttl-long.test.\t86400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. fXq2eLddbXMfapwpHIilorDAsUrVoy+aZrM0sjOYtVfp25AmqEkDQuObru7pnZrzmjrBBlbikzlAA0sNXK5/hw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -482,7 +482,7 @@
         "type" : "NS",
         "ttl" : 86400,
         "records" : [ "a7-ttl-long.test.\t86400\tIN\tNS\tns1.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tNS 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. fD2Tfue+8JSMW6f6n72Z6thGlfruEmDj/1d1cT7ZwnErY0Ldfhk5nyORTVvIK1Pi6g+EmBv+qgDQALbdn9Ar/A==" ]
+        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tNS 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. xt+PX9tGIbm3MxnvfD6PC84rvbyYziCwSWBIXDFkcpHLh6VTf4nRapYbclJ45BSlDPDYOXjmA4qKXMALONRg9w==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -490,7 +490,7 @@
         "type" : "A",
         "ttl" : 86400,
         "records" : [ "ns1.a7-ttl-long.test.\t86400\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.a7-ttl-long.test.\t86400\tIN\tRRSIG\tA 13 3 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. PUJOidKR4Frrg+xLDf9d0sA5w6ag/tQwm5nFAPX8QRXSA0ZmSh4xmoJdF2vvC1nGpGfC3iG1UBAcbwqV1al9Hg==" ]
+        "sigs" : [ "ns1.a7-ttl-long.test.\t86400\tIN\tRRSIG\tA 13 3 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. vekTs3WWpzmilpC71gNJ6TLR8Vn0DEJssYbERoX3/YuT+9XRsbgBwlr7h3J+y1PnCi35ZLre/L152MgCoRPWuw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 303,
@@ -510,7 +510,7 @@
         "type" : "MX",
         "ttl" : 86400,
         "records" : [ "a7-ttl-long.test.\t86400\tIN\tMX\t10 mail.a7-ttl-long.test." ],
-        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tMX 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. oYvPU1y35xZGz/ZJHZJ7UVMu+xI2fHXQF/61dC+v8XOLMq+qUhWD9pqWamHG/WahqP4xUCrgsuQrIWvs/A7f8g==" ]
+        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tMX 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. WuWDVrVDl7skymkcUm704lGY4GDfhV1WpFllppWtzRQgHcI6qTDjSipOQ+5JYAQrV6QoN0Aiz/DxgLyEUhKAJQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -531,17 +531,17 @@
         "name" : "a7-ttl-long.test.",
         "type" : "TXT",
         "ttl" : 86400,
-        "records" : [ "a7-ttl-long.test.\t86400\tIN\tTXT\t\"A7: TTL duzi od vazenja potpisa\"" ],
-        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tTXT 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. jvJSu6IFOFp9ybivar3YLMe4ctCeiQSOXnn10yxZHgj+vi5EhIG8e7nSRtZmSw9ZjMMo1uX614DQPv++ZX8d0Q==" ]
+        "records" : [ "a7-ttl-long.test.\t86400\tIN\tTXT\t\"A7: TTL longer than signature validity\"" ],
+        "sigs" : [ "a7-ttl-long.test.\t86400\tIN\tRRSIG\tTXT 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. 5IKNu1trRAAOQPgAHYA9hLnDVhzQP1jYmbx8WBjQhcz8Rsq3mvQQAQFPdlB4fX44WnBUFZqcisZcFkzSSm5aAw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
       "ednsPayload" : 1232,
-      "size" : 201,
+      "size" : 208,
       "ede" : [ ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-94362796.a7-ttl-long.test.",
+      "qname" : "dnssecretary-b0b0b04b.a7-ttl-long.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -555,13 +555,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "a7-ttl-long.test.\t300\tIN\tNSEC\tmail.a7-ttl-long.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107105323 20261031095323 6420 a7-ttl-long.test. /SHJ/ZhEIK/maeNBT/4+yeZEGzzFESRtp1TiopwVxGOC+4y6ax6Z+3fj/JEKDgBb9uXU3yAVK5sByxIrWcPBtg==" ]
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261107112820 20261031102820 6420 a7-ttl-long.test. lQIVH3Y01x9ZeK0/yx8bHHivqpIMPt2uBIYVi6Qhd4uQGirT5CVFCzR7WoeqLkD+Ne5p5OlipuKC6NMn8bTOuQ==" ]
       }, {
         "name" : "a7-ttl-long.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793444003 3600 900 604800 300" ],
-        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107105323 20261031095323 6420 a7-ttl-long.test. kpo/JkTkOedcR5bxt8R7sDOwIPB46fbZ/RZQ4W4chhD6pHPMx3HliSg9XV/XjkwB9DPaQZK3A6j2CMUZybCF2w==" ]
+        "records" : [ "a7-ttl-long.test.\t300\tIN\tSOA\tns1.a7-ttl-long.test. admin.a7-ttl-long.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "a7-ttl-long.test.\t300\tIN\tRRSIG\tSOA 13 2 2592000 20261107112820 20261031102820 6420 a7-ttl-long.test. i1lDjfsHAph++U4omCO81SEewxA4eQGDMFAhatTSlV20zo3ph+nkai4VvRtQOPSVhcCaOA340LUT4psUU07OnA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,

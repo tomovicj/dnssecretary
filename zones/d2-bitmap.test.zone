@@ -7,7 +7,7 @@ ns1.d2-bitmap.test.    IN A    10.53.0.11
 www.d2-bitmap.test.    IN A    10.53.0.80
 mail.d2-bitmap.test.   IN A    10.53.0.81
 d2-bitmap.test.        IN MX   10 mail.d2-bitmap.test.
-d2-bitmap.test.        IN TXT  "D2: pogresna lista tipova u NSEC"
+d2-bitmap.test.        IN TXT  "D2: wrong type list in NSEC"
 
 ; break.sh deletes this record AFTER signing – the NSEC for www still claims TXT exists
-www.d2-bitmap.test.    IN TXT  "obrisati posle potpisivanja"
+www.d2-bitmap.test.    IN TXT  "delete after signing"

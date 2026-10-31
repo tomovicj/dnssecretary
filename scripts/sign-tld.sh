@@ -21,9 +21,9 @@ BUILD=build
 SIG_START=${SIG_START:-now-3600}
 SIG_END=${SIG_END:-now+2592000}
 
-[ -f "$BUILD/dsset-good.test." ] || { echo "Nema $BUILD/dsset-good.test. – pokreni prvo sign.sh"; exit 1; }
+[ -f "$BUILD/dsset-good.test." ] || { echo "Missing $BUILD/dsset-good.test. – run sign.sh first"; exit 1; }
 
-echo ">> potpisujem: test"
+echo ">> signing: test"
 cat "$BUILD/dsset-good.test." "$BUILD"/parent-ds/*.ds > "$BUILD/dsset-test-children"
 { cat "$SRC/test.zone"; echo; cat "$BUILD/dsset-test-children"; } > "$BUILD/test.zone.in"
 

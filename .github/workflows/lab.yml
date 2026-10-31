@@ -36,7 +36,7 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-      - name: Unit testovi (mvn verify)
+      - name: Unit tests (mvn verify)
         run: mvn -B -f dnssecretary/pom.xml verify
       - uses: actions/upload-artifact@v4
         with:
@@ -57,16 +57,16 @@ jobs:
       - name: Build image
         run: docker compose build
 
-      - name: Ključevi (keygen.sh)
+      - name: Keys (keygen.sh)
         run: docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/keygen.sh
 
-      - name: Potpisivanje (sign.sh)
+      - name: Signing (sign.sh)
         run: docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/sign.sh
 
-      - name: Pokreni lab
+      - name: Start the lab
         run: docker compose up -d
 
-      - name: Provera zona (check.sh)
+      - name: Check zones (check.sh)
         run: sh scripts/check.sh
 
       # The jar runs in the "app" container on the lab network. Snapshots go to build/,
@@ -81,19 +81,19 @@ jobs:
         run: sh scripts/snapshots.sh build/snapshots
 
       # The rollover scripts change zones, so they run after check.sh.
-      - name: E1 uživo (e1-rollover.sh)
+      - name: E1 live (e1-rollover.sh)
         run: sh scripts/e1-rollover.sh
 
-      - name: E3 uživo (e3-rollover.sh)
+      - name: E3 live (e3-rollover.sh)
         run: sh scripts/e3-rollover.sh
 
-      - name: DNSSECretary collect posle rollover-a (E1, E3)
+      - name: DNSSECretary collect after the rollovers (E1, E3)
         run: sh scripts/dnssecretary.sh snapshot e1-rollover.test e3-rollover.test -d build/snapshots
 
-      - name: Logovi servera
+      - name: Server logs
         if: failure()
         run: docker compose logs --no-color
 
-      - name: Ugasi lab
+      - name: Stop the lab
         if: always()
         run: docker compose down

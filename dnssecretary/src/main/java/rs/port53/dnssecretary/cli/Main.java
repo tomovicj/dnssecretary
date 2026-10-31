@@ -29,11 +29,11 @@ import rs.port53.dnssecretary.report.Messages;
 @Command(name = "dnssecretary",
         mixinStandardHelpOptions = true,
         version = "dnssecretary 1.0-SNAPSHOT",
-        description = "Pronalazi, objašnjava i popravlja DNSSEC greške u zoni.",
+        description = "Finds, explains and fixes DNSSEC errors in a zone.",
         subcommands = {CheckCommand.class, FixCommand.class, VerifyCommand.class,
                 CatalogCommand.class, SnapshotCommand.class},
-        exitCodeListHeading = "%nExit kodovi:%n",
-        exitCodeList = {"0:ispravno", "1:samo rizici", "2:bar jedna kritična greška", "3:greška alata"})
+        exitCodeListHeading = "%nExit codes:%n",
+        exitCodeList = {"0:ok", "1:only risks", "2:at least one critical error", "3:tool error"})
 public final class Main implements Callable<Integer> {
 
     public static final int EXIT_TOOL_ERROR = 3;
@@ -41,8 +41,8 @@ public final class Main implements Callable<Integer> {
     @Spec
     CommandSpec spec;
 
-    @Option(names = "--config", paramLabel = "<fajl>",
-            description = "Konfiguracija (npr. config/lab.yaml). Potrebna za sve što ide na mrežu.")
+    @Option(names = "--config", paramLabel = "<file>",
+            description = "Configuration (e.g. config/lab.yaml). Needed for everything that goes to the network.")
     Path configFile;
 
     private AppConfig config;
@@ -117,7 +117,7 @@ public final class Main implements Callable<Integer> {
         try {
             return Name.fromString(s, Name.root);
         } catch (org.xbill.DNS.TextParseException e) {
-            throw new IllegalArgumentException("Neispravno ime zone: " + s, e);
+            throw new IllegalArgumentException("Invalid zone name: " + s, e);
         }
     }
 }

@@ -59,7 +59,7 @@ public final class DelegationWalker {
 
     public Delegation walk(Name zone) throws CollectException {
         if (zone.equals(Name.root)) {
-            throw new CollectException("Root zona nema roditelja i ne može se proveravati ovim alatom.");
+            throw new CollectException("The root zone has no parent and can't be checked with this tool.");
         }
         List<Cut> cuts = new ArrayList<>();
         Cut cur = new Cut(Name.root, rootServers);
@@ -68,14 +68,14 @@ public final class DelegationWalker {
         for (int step = 0; step < MAX_STEPS; step++) {
             Response r = client.queryAny(cur.servers(), zone, Type.NS, Options.AUTH);
             if (!r.ok()) {
-                throw new CollectException("Nijedan server zone " + cur.zone() + " ne odgovara (" + r.error() + ").");
+                throw new CollectException("No server of zone " + cur.zone() + " answers (" + r.error() + ").");
             }
             if (r.rcode() == Rcode.NXDOMAIN) {
-                throw new CollectException("Zona " + zone + " ne postoji (NXDOMAIN od servera zone " + cur.zone() + ").");
+                throw new CollectException("Zone " + zone + " doesn't exist (NXDOMAIN from the servers of zone " + cur.zone() + ").");
             }
             if (r.rcode() != Rcode.NOERROR) {
-                throw new CollectException("Server zone " + cur.zone() + " vraća " + Rcode.string(r.rcode())
-                        + " za " + zone + ".");
+                throw new CollectException("A server of zone " + cur.zone() + " returns " + Rcode.string(r.rcode())
+                        + " for " + zone + ".");
             }
 
             Optional<SignedRRset> referral = referral(r, zone, cur.zone());
@@ -87,7 +87,7 @@ public final class DelegationWalker {
                 }
                 List<InetAddress> servers = ns.values().stream().flatMap(List::stream).distinct().toList();
                 if (servers.isEmpty()) {
-                    throw new CollectException("Nema adresa name servera za zonu " + cut + ".");
+                    throw new CollectException("No name server addresses for zone " + cut + ".");
                 }
                 cur = new Cut(cut, servers);
                 cuts.add(cur);
@@ -103,9 +103,9 @@ public final class DelegationWalker {
                     return new Delegation(zone, cuts, ns, r);
                 }
             }
-            throw new CollectException(zone + " nije zona: server zone " + cur.zone() + " nema delegaciju za nju.");
+            throw new CollectException(zone + " is not a zone: the servers of zone " + cur.zone() + " have no delegation for it.");
         }
-        throw new CollectException("Previše koraka pri traženju delegacije za " + zone + ".");
+        throw new CollectException("Too many steps while looking for the delegation of " + zone + ".");
     }
 
     /** For every cut: its DNSKEY (from its own servers) and its DS (from the cut above it). */

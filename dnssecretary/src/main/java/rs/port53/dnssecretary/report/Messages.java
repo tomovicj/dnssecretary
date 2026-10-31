@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/** User-facing texts from rs/port53/dnssecretary/messages.properties (Serbian). */
+/** User-facing texts from rs/port53/dnssecretary/messages.properties. */
 public final class Messages {
 
     private static final ResourceBundle BUNDLE = ResourceBundle.getBundle("rs.port53.dnssecretary.messages", Locale.ROOT);
