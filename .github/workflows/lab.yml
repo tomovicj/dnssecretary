@@ -1,4 +1,4 @@
-# Lab CI: shellcheck over the scripts, DNSSECretary unit tests, and the whole lab from
+# Lab CI: shellcheck over the scripts, DNSSECretary unit tests, the web app's front end, and the whole lab from
 # scratch (keys, signing, servers) with a check that every broken zone gives the expected
 # result and that DNSSECretary can collect every zone.
 # Runs only on push to main and on pull requests (not on every branch push).
@@ -42,6 +42,28 @@ jobs:
         with:
           name: dnssecretary-jar
           path: dnssecretary/target/dnssecretary.jar
+
+  # Web app front end (webapp/): typecheck, unit tests on the mock backend, production build.
+  webapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webapp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: webapp/package-lock.json
+      - name: Install (npm ci)
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit tests (vitest)
+        run: npm test
+      - name: Build (webapp/dist)
+        run: npm run build
 
   lab:
     runs-on: ubuntu-latest
