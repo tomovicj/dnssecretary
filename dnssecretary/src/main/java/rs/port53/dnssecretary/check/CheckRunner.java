@@ -44,9 +44,12 @@ public final class CheckRunner {
                 new KeyStrengthCheck(),         // C3
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
-                new DelegationCheck()           // B1–B4, B6, B8
+                new DelegationCheck(),          // B1–B4, B6, B8
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
+                new rs.port53.dnssecretary.check.denial.DenialChainCheck(),   // D1, D2, D3, D6
+                new rs.port53.dnssecretary.check.denial.Nsec3PolicyCheck()    // D4, D5
+
         );
     }
 
