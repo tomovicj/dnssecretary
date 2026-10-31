@@ -44,7 +44,7 @@ public final class CheckRunner {
                 new KeyStrengthCheck(),         // C3
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
-                new DelegationCheck()           // B1–B4, B6, B8
+                new DelegationCheck()
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
         );
