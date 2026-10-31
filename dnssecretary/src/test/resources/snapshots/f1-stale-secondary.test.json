@@ -1,0 +1,988 @@
+{
+  "zone" : "f1-stale-secondary.test.",
+  "collectedAt" : "2026-10-31T10:58:21.358543237Z",
+  "parent" : "test.",
+  "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
+  "chain" : [ {
+    "zone" : ".",
+    "servers" : [ "10.53.0.2" ],
+    "ds" : {
+      "name" : ".",
+      "type" : "DS",
+      "ttl" : 0,
+      "records" : [ ],
+      "sigs" : [ ]
+    },
+    "dnskey" : {
+      "name" : ".",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+    }
+  }, {
+    "zone" : "test.",
+    "servers" : [ "10.53.0.3" ],
+    "ds" : {
+      "name" : "test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+    },
+    "dnskey" : {
+      "name" : "test.",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+    }
+  } ],
+  "parentDs" : {
+    "qname" : "f1-stale-secondary.test.",
+    "qtype" : "DS",
+    "server" : "10.53.0.3",
+    "transport" : "udp",
+    "rcode" : "NOERROR",
+    "aa" : true,
+    "tc" : false,
+    "ad" : false,
+    "answer" : [ {
+      "name" : "f1-stale-secondary.test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "f1-stale-secondary.test.\t3600\tIN\tDS\t24704 13 2 678B17EDE15DA7F5A12624CFE7B942E18072101216F58CE0E7DABD59D9F7452A" ],
+      "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. 4K4NT00bx478BbZmxh6oF3qk3DBpJWsDreGwI1CVyO4sIFXAyj3jaUpoimQ6ZUw9LJQSmG9y3WgLai13WS4AuA==" ]
+    } ],
+    "authority" : [ ],
+    "additional" : [ ],
+    "ednsPayload" : 1232,
+    "size" : 200,
+    "ede" : [ ],
+    "error" : null
+  },
+  "delegation" : [ "ns1.f1-stale-secondary.test.", "ns2.f1-stale-secondary.test." ],
+  "nameservers" : [ {
+    "host" : "ns1.f1-stale-secondary.test.",
+    "address" : "10.53.0.11",
+    "soa" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 638,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t256 3 13 lDCPodt6o2hjAkRKpnuoAz9kvAo4mpAOYUaQUXJIY1XIgukCq4immidv7+N1BToLYYRT9NyG5uz1LIuD+DWHHg==", "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t257 3 13 j93PjGfHmJ0SswwpGtOqb5ttioFmnsuN7VpW+V+RylsMj/ylFv/9bztBqtJZBOc9BTlQmeuav/Jx0MAUkftI7A==" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 24704 f1-stale-secondary.test. PmdPI583P7Jmk7+jV9LfmNPbfPD8KiGOP8FB5ynfD6muWDVRvKcQLSI6gfM/FuFHnbEpqSyRNz5AHPV4JtV8VQ==", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. r/xwUVY4xyF196MmosdnzuRkiP86EbBzA5bEqaJgvawaTADbp0kLZSIZMPt7S+GnoccmwIgsdTVc7WaJY4KXjw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 450,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.f1-stale-secondary.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. tH1md55oi2pS0P5/PQ7rvPfJ7jGclwXgjuhMo1ivkX5wD5BSxqmdF12NRqnlmG3Gsv1Wq8rGfqMxDO783B2YYw==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 616,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 477,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tMX\t10 mail.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. hSy1R84X3S5/AK2pANVGf9144fisJglR0qU89cHqB4SoyKbxkn1xFJ61j+wpaobRetUzujIhXN16cAz/SM6HRg==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ "mail.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. ogPbvfCUgawtHoFwHnqVve3hyt9S0uE+HG4PiIi1C6lX1ee9Y6cA3OKbAfQbZXbTiM4XQK1L9AlrvIudbf3AFA==" ]
+      }, {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 752,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tTXT\t\"F1: sekundarni server ima staru zonu\"" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. PVU0DY0v8LrEaNATHHu/8Jcc6YMCLrZgeP5N9sPDmaWn9WltnPHvc6/Y3GdT5DK5QSlii3VepyZneOXPUbbdnw==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 645,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-d567bf46.f1-stale-secondary.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 409,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  }, {
+    "host" : "ns2.f1-stale-secondary.test.",
+    "address" : "10.53.0.12",
+    "soa" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Vvr+2OH2mrtdPcc8qzstIDxJcoCV3I/ixbHEy36rq7P7Qu34EYSWILSayDqCe6mbHAmeH0YLhKFS3JKLKlq2Sg==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. +8UOjLx/xFjmsuB2tLUgUAHWpmemzoqXT5m/VphoO8eiO6uDpC4CbRStBuwEfX3u7TfY6aUf9FWj8vHrpxISFA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. A1Mv8dUzbB/o5R4G3P7wSCqmXPUQENpB7SGQAYdgQzB/uklZvwYkTtjUnIATAQdvBV28uNHRPRqnBNYA0uZ7ag==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. k0RD4S2CVhiFJ3SronrueDk3+vB9HfvbRytvcl0cAwoXrVEZTQxvWHQ1Fox/1co4aYabEtQFBinaSwRIfRp0ug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 638,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t256 3 13 lDCPodt6o2hjAkRKpnuoAz9kvAo4mpAOYUaQUXJIY1XIgukCq4immidv7+N1BToLYYRT9NyG5uz1LIuD+DWHHg==", "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t257 3 13 j93PjGfHmJ0SswwpGtOqb5ttioFmnsuN7VpW+V+RylsMj/ylFv/9bztBqtJZBOc9BTlQmeuav/Jx0MAUkftI7A==" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261024105325 20260924105325 24704 f1-stale-secondary.test. 8r6hoPzeH0G+TO7EM3oczLfa+mvNt49xEDu05lpm+Ps+26OcP5z4jvzjNYP7H2EceOvUKC3mrpooxEhL7Xmr7w==", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. rKK5FY85qgVtnHDh5tpoyMDRM3QYcV6dpEE6uWsbKDWG4sgzKUgG6RzqZOvCKvqs6pTG2nkQmkTBe8TjR0+U2Q==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 450,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Vvr+2OH2mrtdPcc8qzstIDxJcoCV3I/ixbHEy36rq7P7Qu34EYSWILSayDqCe6mbHAmeH0YLhKFS3JKLKlq2Sg==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261024105325 20260924105325 27354 f1-stale-secondary.test. plKmMTDWHSmlPWyI7FUHhNomY234v4dO9loLyGxYlyHCXunMWny+fpIzoCFc7ON0k4gDJBMcIoVpP/qCESaAQg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Vvr+2OH2mrtdPcc8qzstIDxJcoCV3I/ixbHEy36rq7P7Qu34EYSWILSayDqCe6mbHAmeH0YLhKFS3JKLKlq2Sg==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261024105325 20260924105325 27354 f1-stale-secondary.test. plKmMTDWHSmlPWyI7FUHhNomY234v4dO9loLyGxYlyHCXunMWny+fpIzoCFc7ON0k4gDJBMcIoVpP/qCESaAQg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Vvr+2OH2mrtdPcc8qzstIDxJcoCV3I/ixbHEy36rq7P7Qu34EYSWILSayDqCe6mbHAmeH0YLhKFS3JKLKlq2Sg==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261024105325 20260924105325 27354 f1-stale-secondary.test. plKmMTDWHSmlPWyI7FUHhNomY234v4dO9loLyGxYlyHCXunMWny+fpIzoCFc7ON0k4gDJBMcIoVpP/qCESaAQg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.f1-stale-secondary.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. XUiHKSQ9fMYTqq+dzy2CCRwHu6c6etxtMTWeqmxoJjzHIB4wXaf6nc6aeeX3VnxRoiLg+7E6LrarJOdLrCZK9w==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. +8UOjLx/xFjmsuB2tLUgUAHWpmemzoqXT5m/VphoO8eiO6uDpC4CbRStBuwEfX3u7TfY6aUf9FWj8vHrpxISFA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. A1Mv8dUzbB/o5R4G3P7wSCqmXPUQENpB7SGQAYdgQzB/uklZvwYkTtjUnIATAQdvBV28uNHRPRqnBNYA0uZ7ag==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. k0RD4S2CVhiFJ3SronrueDk3+vB9HfvbRytvcl0cAwoXrVEZTQxvWHQ1Fox/1co4aYabEtQFBinaSwRIfRp0ug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 616,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. +8UOjLx/xFjmsuB2tLUgUAHWpmemzoqXT5m/VphoO8eiO6uDpC4CbRStBuwEfX3u7TfY6aUf9FWj8vHrpxISFA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. A1Mv8dUzbB/o5R4G3P7wSCqmXPUQENpB7SGQAYdgQzB/uklZvwYkTtjUnIATAQdvBV28uNHRPRqnBNYA0uZ7ag==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. k0RD4S2CVhiFJ3SronrueDk3+vB9HfvbRytvcl0cAwoXrVEZTQxvWHQ1Fox/1co4aYabEtQFBinaSwRIfRp0ug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 477,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tMX\t10 mail.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. 1wwAJcXBaNvtY1mhjQMEBqczh4lYfgBnxYjLEcOGAoRHYH3ibtzGtTEho3K6vXNLpbRH4Xm1LxeMfwNdiLueeQ==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. +8UOjLx/xFjmsuB2tLUgUAHWpmemzoqXT5m/VphoO8eiO6uDpC4CbRStBuwEfX3u7TfY6aUf9FWj8vHrpxISFA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ "mail.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. WyaBrq3hxHMJot4B0N1VxoMBOpp8GcQC5nV6Y/C+SDcy13pZFl2DmyxkKS8oNIr2iXat6+vh2LfF8mGEEEutKQ==" ]
+      }, {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. A1Mv8dUzbB/o5R4G3P7wSCqmXPUQENpB7SGQAYdgQzB/uklZvwYkTtjUnIATAQdvBV28uNHRPRqnBNYA0uZ7ag==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. k0RD4S2CVhiFJ3SronrueDk3+vB9HfvbRytvcl0cAwoXrVEZTQxvWHQ1Fox/1co4aYabEtQFBinaSwRIfRp0ug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 752,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tTXT\t\"F1: sekundarni server ima staru zonu\"" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Xj9Q1hBKyXTdzqiEqNhEQixMlHCkB9f4QDYgiaCTew6GP6wedaxBtQyQSnq4GEnzTviYDW/kcVuumdeXJJLtwA==" ]
+      } ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. +8UOjLx/xFjmsuB2tLUgUAHWpmemzoqXT5m/VphoO8eiO6uDpC4CbRStBuwEfX3u7TfY6aUf9FWj8vHrpxISFA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. A1Mv8dUzbB/o5R4G3P7wSCqmXPUQENpB7SGQAYdgQzB/uklZvwYkTtjUnIATAQdvBV28uNHRPRqnBNYA0uZ7ag==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. k0RD4S2CVhiFJ3SronrueDk3+vB9HfvbRytvcl0cAwoXrVEZTQxvWHQ1Fox/1co4aYabEtQFBinaSwRIfRp0ug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 645,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-d567bf46.f1-stale-secondary.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261024105325 20260924105325 27354 f1-stale-secondary.test. plKmMTDWHSmlPWyI7FUHhNomY234v4dO9loLyGxYlyHCXunMWny+fpIzoCFc7ON0k4gDJBMcIoVpP/qCESaAQg==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Vvr+2OH2mrtdPcc8qzstIDxJcoCV3I/ixbHEy36rq7P7Qu34EYSWILSayDqCe6mbHAmeH0YLhKFS3JKLKlq2Sg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 409,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.12",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261024105325 20260924105325 27354 f1-stale-secondary.test. Vvr+2OH2mrtdPcc8qzstIDxJcoCV3I/ixbHEy36rq7P7Qu34EYSWILSayDqCe6mbHAmeH0YLhKFS3JKLKlq2Sg==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261024105325 20260924105325 27354 f1-stale-secondary.test. plKmMTDWHSmlPWyI7FUHhNomY234v4dO9loLyGxYlyHCXunMWny+fpIzoCFc7ON0k4gDJBMcIoVpP/qCESaAQg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 387,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  } ],
+  "fullZone" : [ "f1-stale-secondary.test.\t3600\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==", "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==", "f1-stale-secondary.test.\t3600\tIN\tMX\t10 mail.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. hSy1R84X3S5/AK2pANVGf9144fisJglR0qU89cHqB4SoyKbxkn1xFJ61j+wpaobRetUzujIhXN16cAz/SM6HRg==", "f1-stale-secondary.test.\t3600\tIN\tTXT\t\"F1: sekundarni server ima staru zonu\"", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. PVU0DY0v8LrEaNATHHu/8Jcc6YMCLrZgeP5N9sPDmaWn9WltnPHvc6/Y3GdT5DK5QSlii3VepyZneOXPUbbdnw==", "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==", "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t256 3 13 lDCPodt6o2hjAkRKpnuoAz9kvAo4mpAOYUaQUXJIY1XIgukCq4immidv7+N1BToLYYRT9NyG5uz1LIuD+DWHHg==", "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t257 3 13 j93PjGfHmJ0SswwpGtOqb5ttioFmnsuN7VpW+V+RylsMj/ylFv/9bztBqtJZBOc9BTlQmeuav/Jx0MAUkftI7A==", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 24704 f1-stale-secondary.test. PmdPI583P7Jmk7+jV9LfmNPbfPD8KiGOP8FB5ynfD6muWDVRvKcQLSI6gfM/FuFHnbEpqSyRNz5AHPV4JtV8VQ==", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. r/xwUVY4xyF196MmosdnzuRkiP86EbBzA5bEqaJgvawaTADbp0kLZSIZMPt7S+GnoccmwIgsdTVc7WaJY4KXjw==", "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12", "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==", "ns2.f1-stale-secondary.test.\t300\tIN\tNSEC\twww.f1-stale-secondary.test. A RRSIG NSEC", "ns2.f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Fk9aj+2cMVdT3UEgnOV11ivIaoYElAFMRUFB3an0DcfbkH7BrYj/HdRVKM34862dpJlPzQS589CvGpo6Fx8qpQ==", "mail.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.81", "mail.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. ogPbvfCUgawtHoFwHnqVve3hyt9S0uE+HG4PiIi1C6lX1ee9Y6cA3OKbAfQbZXbTiM4XQK1L9AlrvIudbf3AFA==", "mail.f1-stale-secondary.test.\t300\tIN\tNSEC\tns1.f1-stale-secondary.test. A RRSIG NSEC", "mail.f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. eIpBsazLhVSboZ9BPBnzKGTTZP5aebBVPRMXOmYm60+0CRi8+mqCIJQmjX/PT9qpK+D5b4qlK9a67svjt3aUBw==", "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11", "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==", "ns1.f1-stale-secondary.test.\t300\tIN\tNSEC\tns2.f1-stale-secondary.test. A RRSIG NSEC", "ns1.f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3Lnd4niNBxHwtiLResHtzZTnYeB1+moSpbUS/xIvEcsOKKhGVytO1HfaUcRJjCPtJGeu93mXdOSR3mmvz1hnrw==", "www.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.80", "www.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. tH1md55oi2pS0P5/PQ7rvPfJ7jGclwXgjuhMo1ivkX5wD5BSxqmdF12NRqnlmG3Gsv1Wq8rGfqMxDO783B2YYw==", "www.f1-stale-secondary.test.\t300\tIN\tNSEC\tf1-stale-secondary.test. A RRSIG NSEC", "www.f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. qZNZX8yRH79w1Ps7h/k1DfCDaUli9JCP3iRmnU1imy5onASrCPFtX3Fn012GxS9T417AxX8xtJLdpewWUy/JnA==" ],
+  "localKeys" : [ {
+    "location" : "",
+    "file" : "Kf1-stale-secondary.test.+013+24704.key",
+    "key" : "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t257 3 13 j93PjGfHmJ0SswwpGtOqb5ttioFmnsuN7VpW+V+RylsMj/ylFv/9bztBqtJZBOc9BTlQmeuav/Jx0MAUkftI7A=="
+  }, {
+    "location" : "",
+    "file" : "Kf1-stale-secondary.test.+013+27354.key",
+    "key" : "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t256 3 13 lDCPodt6o2hjAkRKpnuoAz9kvAo4mpAOYUaQUXJIY1XIgukCq4immidv7+N1BToLYYRT9NyG5uz1LIuD+DWHHg=="
+  } ],
+  "resolver" : {
+    "address" : "10.53.0.53",
+    "dnskey" : {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t257 3 13 j93PjGfHmJ0SswwpGtOqb5ttioFmnsuN7VpW+V+RylsMj/ylFv/9bztBqtJZBOc9BTlQmeuav/Jx0MAUkftI7A==", "f1-stale-secondary.test.\t3600\tIN\tDNSKEY\t256 3 13 lDCPodt6o2hjAkRKpnuoAz9kvAo4mpAOYUaQUXJIY1XIgukCq4immidv7+N1BToLYYRT9NyG5uz1LIuD+DWHHg==" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 24704 f1-stale-secondary.test. PmdPI583P7Jmk7+jV9LfmNPbfPD8KiGOP8FB5ynfD6muWDVRvKcQLSI6gfM/FuFHnbEpqSyRNz5AHPV4JtV8VQ==", "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. r/xwUVY4xyF196MmosdnzuRkiP86EbBzA5bEqaJgvawaTADbp0kLZSIZMPt7S+GnoccmwIgsdTVc7WaJY4KXjw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 450,
+      "ede" : [ ],
+      "error" : null
+    },
+    "answers" : [ {
+      "qname" : "www.f1-stale-secondary.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "www.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. tH1md55oi2pS0P5/PQ7rvPfJ7jGclwXgjuhMo1ivkX5wD5BSxqmdF12NRqnlmG3Gsv1Wq8rGfqMxDO783B2YYw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 191,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tNS\tns1.f1-stale-secondary.test.", "f1-stale-secondary.test.\t3600\tIN\tNS\tns2.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. G4oZ+/vcBZIccc2V/KtcNv21zk/nRN6uyEIMyDBGT2At3zZeUUGwys+yffg2RUpx/pi49Sh1RZ+Z7OzdPDA5mw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. 3eSIIMhGoHB+nsK3dJg/PStRIsCTn4P8Svte/7rkRB/1DOdnk+x8iHRvDnKkheFK+xvrLxXNufL9kLSMROWR2g==" ]
+      }, {
+        "name" : "ns2.f1-stale-secondary.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tA\t10.53.0.12" ],
+        "sigs" : [ "ns2.f1-stale-secondary.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. fEm+TBsNrgrvLxmaYmhcoo9fC2DPdklVIbzrlDJLvVmMPWW6dM5jUHXwgfhrnkUPE/aLesQeFLhSFa5eYKsbug==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 477,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tMX\t10 mail.f1-stale-secondary.test." ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. hSy1R84X3S5/AK2pANVGf9144fisJglR0qU89cHqB4SoyKbxkn1xFJ61j+wpaobRetUzujIhXN16cAz/SM6HRg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 192,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "f1-stale-secondary.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "f1-stale-secondary.test.\t3600\tIN\tTXT\t\"F1: sekundarni server ima staru zonu\"" ],
+        "sigs" : [ "f1-stale-secondary.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. PVU0DY0v8LrEaNATHHu/8Jcc6YMCLrZgeP5N9sPDmaWn9WltnPHvc6/Y3GdT5DK5QSlii3VepyZneOXPUbbdnw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 220,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "dnssecretary-d567bf46.f1-stale-secondary.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tNSEC\tmail.f1-stale-secondary.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 27354 f1-stale-secondary.test. Q/ebzIosPOFP9ysdtBlSrKjuebAAIYoxW2SwiLhG2Y6pMKS54rrpWv/TvqXtW94xQ7TGgTT6FizQXwd9GFyn6Q==" ]
+      }, {
+        "name" : "f1-stale-secondary.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "f1-stale-secondary.test.\t300\tIN\tSOA\tns1.f1-stale-secondary.test. admin.f1-stale-secondary.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "f1-stale-secondary.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 27354 f1-stale-secondary.test. Ifb31P/lb3xnDcKkDtJK4/D6InxPxuHHpFhap5S/FiVoX0ZM5qgh6/a+cNT9Q8IlyTA/WHDvZsE8Tej9+j0YIw==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 409,
+      "ede" : [ ],
+      "error" : null
+    } ]
+  },
+  "warnings" : [ ]
+}

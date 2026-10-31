@@ -80,10 +80,9 @@ sh scripts/break.sh
 #   -> produces $BUILD/broken/{,auth2/,auth3/}*.zone.signed and $BUILD/parent-ds/*.ds
 
 # ---------- 2. test. (parent of good.test and the broken zones) ----------
-cat "$BUILD/dsset-good.test." "$BUILD"/parent-ds/*.ds > "$BUILD/dsset-test-children"
-with_ds "$SRC/test.zone" "$BUILD/dsset-test-children" "$BUILD/test.zone.in"
-sign_zone test "$BUILD/test.zone.in" "$BUILD/test.zone.signed"
-#   -> produces $BUILD/dsset-test.
+# A separate script, because DNSSECretary re-signs only test. when it fixes a DS.
+sh scripts/sign-tld.sh
+#   -> produces $BUILD/dsset-test. and delivers tld/test.zone.signed
 
 # ---------- 3. root (parent of test.) ----------
 with_ds "$SRC/root.zone" "$BUILD/dsset-test." "$BUILD/root.zone.in"
@@ -106,7 +105,6 @@ awk '{ for (i = 1; i <= NF; i++) if ($i == "DS") {
 
 # ---------- 5. delivery to the servers ----------
 cp "$BUILD/root.zone.signed"      root/
-cp "$BUILD/test.zone.signed"      tld/
 cp "$BUILD/good.test.zone.signed" auth1/
 cp "$BUILD"/broken/*.zone.signed  auth1/
 cp "$BUILD"/broken/auth2/*.signed  auth2/   # F1: stale zone on the "secondary"

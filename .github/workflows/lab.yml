@@ -1,5 +1,6 @@
-# Lab CI: shellcheck over the scripts + the whole lab from scratch (keys, signing,
-# servers) and a check that every broken zone gives the expected result.
+# Lab CI: shellcheck over the scripts, DNSSECretary unit tests, and the whole lab from
+# scratch (keys, signing, servers) with a check that every broken zone gives the expected
+# result and that DNSSECretary can collect every zone.
 # Runs only on push to main and on pull requests (not on every branch push).
 name: lab
 
@@ -25,11 +26,33 @@ jobs:
       - name: shellcheck
         run: docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh
 
+  # DNSSECretary (Java): unit tests on the recorded snapshots, offline.
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Unit testovi (mvn verify)
+        run: mvn -B -f dnssecretary/pom.xml verify
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dnssecretary-jar
+          path: dnssecretary/target/dnssecretary.jar
+
   lab:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
 
       - name: Build image
         run: docker compose build
@@ -46,12 +69,26 @@ jobs:
       - name: Provera zona (check.sh)
         run: sh scripts/check.sh
 
+      # The jar runs in the "app" container on the lab network. Snapshots go to build/,
+      # this only checks that collect works for every zone (the tests use the committed ones).
+      - name: DNSSECretary jar
+        run: mvn -B -f dnssecretary/pom.xml package -DskipTests
+
+      - name: DNSSECretary image
+        run: docker compose build app
+
+      - name: DNSSECretary collect (snapshots.sh)
+        run: sh scripts/snapshots.sh build/snapshots
+
       # The rollover scripts change zones, so they run after check.sh.
       - name: E1 uživo (e1-rollover.sh)
         run: sh scripts/e1-rollover.sh
 
       - name: E3 uživo (e3-rollover.sh)
         run: sh scripts/e3-rollover.sh
+
+      - name: DNSSECretary collect posle rollover-a (E1, E3)
+        run: sh scripts/dnssecretary.sh snapshot e1-rollover.test e3-rollover.test -d build/snapshots
 
       - name: Logovi servera
         if: failure()

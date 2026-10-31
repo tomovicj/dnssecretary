@@ -1,0 +1,66 @@
+package rs.port53.dnssecretary.check;
+
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+import rs.port53.dnssecretary.catalog.ErrorId;
+import rs.port53.dnssecretary.collect.ZoneSnapshot;
+import rs.port53.dnssecretary.model.Finding;
+
+/** Runs all checks over a snapshot. A check that throws doesn't stop the others. */
+public final class CheckRunner {
+
+    /**
+     * @param failures "CheckName: message" for every check that threw (a bug in the tool, exit 3)
+     */
+    public record Result(List<Finding> findings, List<String> failures) {}
+
+    private final List<Check> checks;
+
+    public CheckRunner(List<Check> checks) {
+        this.checks = List.copyOf(checks);
+    }
+
+    /**
+     * All checks of the tool. Add yours here (one line, in your group's section),
+     * see docs/predlog-java.md 3.5 for which class detects what.
+     */
+    public static List<Check> defaultChecks() {
+        return List.of(
+                // A, C – signatures, TTL, algorithms, key strength (role 2)
+
+                // B, E – delegation, DS, CDS, cache and rollover (role 3)
+
+                // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
+        );
+    }
+
+    public static CheckRunner withDefaultChecks() {
+        return new CheckRunner(defaultChecks());
+    }
+
+    public List<Check> checks() {
+        return checks;
+    }
+
+    /** The errors at least one registered check can report. */
+    public Set<ErrorId> detectable() {
+        Set<ErrorId> out = EnumSet.noneOf(ErrorId.class);
+        checks.forEach(c -> out.addAll(c.detects()));
+        return out;
+    }
+
+    public Result run(ZoneSnapshot snapshot, CheckContext ctx) {
+        List<Finding> findings = new ArrayList<>();
+        List<String> failures = new ArrayList<>();
+        for (Check c : checks) {
+            try {
+                findings.addAll(c.run(snapshot, ctx));
+            } catch (RuntimeException e) {
+                failures.add(c.name() + ": " + e);
+            }
+        }
+        return new Result(findings, failures);
+    }
+}

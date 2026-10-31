@@ -1,0 +1,636 @@
+{
+  "zone" : "e4-cds.test.",
+  "collectedAt" : "2026-10-31T10:58:21.308431951Z",
+  "parent" : "test.",
+  "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
+  "chain" : [ {
+    "zone" : ".",
+    "servers" : [ "10.53.0.2" ],
+    "ds" : {
+      "name" : ".",
+      "type" : "DS",
+      "ttl" : 0,
+      "records" : [ ],
+      "sigs" : [ ]
+    },
+    "dnskey" : {
+      "name" : ".",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+    }
+  }, {
+    "zone" : "test.",
+    "servers" : [ "10.53.0.3" ],
+    "ds" : {
+      "name" : "test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+    },
+    "dnskey" : {
+      "name" : "test.",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+    }
+  } ],
+  "parentDs" : {
+    "qname" : "e4-cds.test.",
+    "qtype" : "DS",
+    "server" : "10.53.0.3",
+    "transport" : "udp",
+    "rcode" : "NOERROR",
+    "aa" : true,
+    "tc" : false,
+    "ad" : false,
+    "answer" : [ {
+      "name" : "e4-cds.test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "e4-cds.test.\t\t3600\tIN\tDS\t46291 13 2 C1BC1CC0FAF65D9748D3F02EF9260C1F6143E63F1F6C85454ACCF514C7374D52" ],
+      "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. 1pbeYDRr6NShxvz1Re5NBd9CegPKCz6A47iBLIiCLDe4NH7mYwvUDjkwbExUVIriXpgwFEGabn5Qedt65hLykw==" ]
+    } ],
+    "authority" : [ ],
+    "additional" : [ ],
+    "ednsPayload" : 1232,
+    "size" : 188,
+    "ede" : [ ],
+    "error" : null
+  },
+  "delegation" : [ "ns1.e4-cds.test." ],
+  "nameservers" : [ {
+    "host" : "ns1.e4-cds.test.",
+    "address" : "10.53.0.11",
+    "soa" : {
+      "qname" : "e4-cds.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==" ]
+      } ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 437,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "e4-cds.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tDNSKEY\t256 3 13 zR9nX1TFid0qrRlZE5AH3/YOK6KIErr+dYuLdyrtTyjA52EcEUur4Q1bOEZO4aN9NtiRCslmVKrY2drJCAgGiw==", "e4-cds.test.\t\t3600\tIN\tDNSKEY\t257 3 13 zu0oir9ExCJoq8yRCyxH1haWxqR8E3l0SBKbe8NAxxFpT/0h84IqmjeHVbjXgkVFqibUpcHGA2J7GMnNj6Ql7Q==" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. gUHjAnHTa9/gNG1rqv+npmBTjBWxgWyaRgeUSIVwz0Kx+weLNYCCFhFjDEz3H7BA1PcH6iKkL3I8nrhat8GmTg==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. X0EOlZthoJP7HyxJfogD52xRQasgLIj7wu1q7RMJd46rpBkl0bqTFa69CdT0mzVcRrwHd/abjS769r/je94sRg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 414,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "e4-cds.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "CDS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tCDS\t46291 13 2 01BC1CC0FAF65D9748D3F02EF9260C1F6143E63F1F6C85454ACCF514C7374D52" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eJXcIJ7B90Q0qZvii9N6e8UKip8AMTniUwaD15cESL9esb0cBPW32D9holUlpqRk6AhE//9lTnzm9CQwPgF+2w==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. yYY8POGWj65ddlA9Z5rQpDtdSu7+Ul3YcMCtO/h+6e08kWCEPoVeNw2x9TfrA+WKsOGWYsuE3i9q4KgMadEE1g==" ]
+      } ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 550,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "e4-cds.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==" ]
+      }, {
+        "name" : "e4-cds.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tNSEC\tmail.e4-cds.test. NS SOA MX TXT RRSIG NSEC DNSKEY CDS" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 5595 e4-cds.test. wFQhNah/pEQuMIQ4dfpPyq3V/q3mMcoFwQVaVTI800FW7xHrpGh0/aMjhas5I02fU8LAyg6MzNjgrxrgBbqduA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 340,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "e4-cds.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==" ]
+      }, {
+        "name" : "e4-cds.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tNSEC\tmail.e4-cds.test. NS SOA MX TXT RRSIG NSEC DNSKEY CDS" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 5595 e4-cds.test. wFQhNah/pEQuMIQ4dfpPyq3V/q3mMcoFwQVaVTI800FW7xHrpGh0/aMjhas5I02fU8LAyg6MzNjgrxrgBbqduA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 340,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.e4-cds.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.e4-cds.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. /Dxa+OuoIwXw/6H6GqQw451m0BeUSsR2idpC3UwM69tG/abozxy+Z/jvx/SyIzNb4a3rlwTfGJMcvPfJMrZn8A==" ]
+      } ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 415,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 288,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tMX\t10 mail.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. Pbues8UMMQhrIT/NQ6ZmPDgmgVhvpT6GIZUc6fY1lVz3jYFFT4ZQCX9Y67IAT1Qc7UZzITnsbsLYZDjLYqM+IQ==" ]
+      } ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.e4-cds.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ "mail.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. NK4h588w8aLJun26h9wZZMYrjoVniAydCnRhTHZcN5SJBubE2iFmvMrM6p3pIJNvECF4BsjSnb1IgnfBiVj/Zg==" ]
+      }, {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 539,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tTXT\t\"E4: CDS ne odgovara kljucevima\"" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. ByFMPnsU/pvJjPSkG3V9YLsGNVEyDmijwAxFz4nnN7Iktk9DbA0UWRxp3Ozoia+xYsRuVDj+uIPM2MQTwgmtpg==" ]
+      } ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 438,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "CDS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tCDS\t46291 13 2 01BC1CC0FAF65D9748D3F02EF9260C1F6143E63F1F6C85454ACCF514C7374D52" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eJXcIJ7B90Q0qZvii9N6e8UKip8AMTniUwaD15cESL9esb0cBPW32D9holUlpqRk6AhE//9lTnzm9CQwPgF+2w==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. yYY8POGWj65ddlA9Z5rQpDtdSu7+Ul3YcMCtO/h+6e08kWCEPoVeNw2x9TfrA+WKsOGWYsuE3i9q4KgMadEE1g==" ]
+      } ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 550,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-f5ac6fd3.e4-cds.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tNSEC\tmail.e4-cds.test. NS SOA MX TXT RRSIG NSEC DNSKEY CDS" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 5595 e4-cds.test. wFQhNah/pEQuMIQ4dfpPyq3V/q3mMcoFwQVaVTI800FW7xHrpGh0/aMjhas5I02fU8LAyg6MzNjgrxrgBbqduA==" ]
+      }, {
+        "name" : "e4-cds.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 362,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==" ]
+      }, {
+        "name" : "e4-cds.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tNSEC\tmail.e4-cds.test. NS SOA MX TXT RRSIG NSEC DNSKEY CDS" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 5595 e4-cds.test. wFQhNah/pEQuMIQ4dfpPyq3V/q3mMcoFwQVaVTI800FW7xHrpGh0/aMjhas5I02fU8LAyg6MzNjgrxrgBbqduA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 340,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  } ],
+  "fullZone" : [ "e4-cds.test.\t\t3600\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300", "e4-cds.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==", "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test.", "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==", "e4-cds.test.\t\t3600\tIN\tMX\t10 mail.e4-cds.test.", "e4-cds.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. Pbues8UMMQhrIT/NQ6ZmPDgmgVhvpT6GIZUc6fY1lVz3jYFFT4ZQCX9Y67IAT1Qc7UZzITnsbsLYZDjLYqM+IQ==", "e4-cds.test.\t\t3600\tIN\tTXT\t\"E4: CDS ne odgovara kljucevima\"", "e4-cds.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. ByFMPnsU/pvJjPSkG3V9YLsGNVEyDmijwAxFz4nnN7Iktk9DbA0UWRxp3Ozoia+xYsRuVDj+uIPM2MQTwgmtpg==", "e4-cds.test.\t\t300\tIN\tNSEC\tmail.e4-cds.test. NS SOA MX TXT RRSIG NSEC DNSKEY CDS", "e4-cds.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 5595 e4-cds.test. wFQhNah/pEQuMIQ4dfpPyq3V/q3mMcoFwQVaVTI800FW7xHrpGh0/aMjhas5I02fU8LAyg6MzNjgrxrgBbqduA==", "e4-cds.test.\t\t3600\tIN\tDNSKEY\t256 3 13 zR9nX1TFid0qrRlZE5AH3/YOK6KIErr+dYuLdyrtTyjA52EcEUur4Q1bOEZO4aN9NtiRCslmVKrY2drJCAgGiw==", "e4-cds.test.\t\t3600\tIN\tDNSKEY\t257 3 13 zu0oir9ExCJoq8yRCyxH1haWxqR8E3l0SBKbe8NAxxFpT/0h84IqmjeHVbjXgkVFqibUpcHGA2J7GMnNj6Ql7Q==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. gUHjAnHTa9/gNG1rqv+npmBTjBWxgWyaRgeUSIVwz0Kx+weLNYCCFhFjDEz3H7BA1PcH6iKkL3I8nrhat8GmTg==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. X0EOlZthoJP7HyxJfogD52xRQasgLIj7wu1q7RMJd46rpBkl0bqTFa69CdT0mzVcRrwHd/abjS769r/je94sRg==", "e4-cds.test.\t\t3600\tIN\tCDS\t46291 13 2 01BC1CC0FAF65D9748D3F02EF9260C1F6143E63F1F6C85454ACCF514C7374D52", "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eJXcIJ7B90Q0qZvii9N6e8UKip8AMTniUwaD15cESL9esb0cBPW32D9holUlpqRk6AhE//9lTnzm9CQwPgF+2w==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. yYY8POGWj65ddlA9Z5rQpDtdSu7+Ul3YcMCtO/h+6e08kWCEPoVeNw2x9TfrA+WKsOGWYsuE3i9q4KgMadEE1g==", "mail.e4-cds.test.\t3600\tIN\tA\t10.53.0.81", "mail.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. NK4h588w8aLJun26h9wZZMYrjoVniAydCnRhTHZcN5SJBubE2iFmvMrM6p3pIJNvECF4BsjSnb1IgnfBiVj/Zg==", "mail.e4-cds.test.\t300\tIN\tNSEC\tns1.e4-cds.test. A RRSIG NSEC", "mail.e4-cds.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 5595 e4-cds.test. MqPyAatgNcIgR2mnjyWW4gMAzIquaJBfKj6njRD5aoSyFacMKw4s4kd0nUmYbFpaTp1FTfosBigcEj0JqCKffw==", "www.e4-cds.test.\t3600\tIN\tA\t10.53.0.80", "www.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. /Dxa+OuoIwXw/6H6GqQw451m0BeUSsR2idpC3UwM69tG/abozxy+Z/jvx/SyIzNb4a3rlwTfGJMcvPfJMrZn8A==", "www.e4-cds.test.\t300\tIN\tNSEC\te4-cds.test. A RRSIG NSEC", "www.e4-cds.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 5595 e4-cds.test. ASqO4ESX3Hx8aXwNvo7bL06SOKhuhaOxbzCpew4MkCGfohK9uWll2nJAxKsKDoIEnEpdcB81h2n8G7hxgEu58g==", "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11", "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==", "ns1.e4-cds.test.\t300\tIN\tNSEC\twww.e4-cds.test. A RRSIG NSEC", "ns1.e4-cds.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 5595 e4-cds.test. jib5H3yJimpBAME1bcb5adJDWiY3CyUUjMxYGIAIox8eJF4HnmoCRPoPiykyrdjYNtBraUdYoK9tQGlY/mCjZw==" ],
+  "localKeys" : [ {
+    "location" : "",
+    "file" : "Ke4-cds.test.+013+05595.key",
+    "key" : "e4-cds.test.\t\t3600\tIN\tDNSKEY\t256 3 13 zR9nX1TFid0qrRlZE5AH3/YOK6KIErr+dYuLdyrtTyjA52EcEUur4Q1bOEZO4aN9NtiRCslmVKrY2drJCAgGiw=="
+  }, {
+    "location" : "",
+    "file" : "Ke4-cds.test.+013+46291.key",
+    "key" : "e4-cds.test.\t\t3600\tIN\tDNSKEY\t257 3 13 zu0oir9ExCJoq8yRCyxH1haWxqR8E3l0SBKbe8NAxxFpT/0h84IqmjeHVbjXgkVFqibUpcHGA2J7GMnNj6Ql7Q=="
+  } ],
+  "resolver" : {
+    "address" : "10.53.0.53",
+    "dnskey" : {
+      "qname" : "e4-cds.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tDNSKEY\t257 3 13 zu0oir9ExCJoq8yRCyxH1haWxqR8E3l0SBKbe8NAxxFpT/0h84IqmjeHVbjXgkVFqibUpcHGA2J7GMnNj6Ql7Q==", "e4-cds.test.\t\t3600\tIN\tDNSKEY\t256 3 13 zR9nX1TFid0qrRlZE5AH3/YOK6KIErr+dYuLdyrtTyjA52EcEUur4Q1bOEZO4aN9NtiRCslmVKrY2drJCAgGiw==" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. gUHjAnHTa9/gNG1rqv+npmBTjBWxgWyaRgeUSIVwz0Kx+weLNYCCFhFjDEz3H7BA1PcH6iKkL3I8nrhat8GmTg==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. X0EOlZthoJP7HyxJfogD52xRQasgLIj7wu1q7RMJd46rpBkl0bqTFa69CdT0mzVcRrwHd/abjS769r/je94sRg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 414,
+      "ede" : [ ],
+      "error" : null
+    },
+    "answers" : [ {
+      "qname" : "www.e4-cds.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "www.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.e4-cds.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. /Dxa+OuoIwXw/6H6GqQw451m0BeUSsR2idpC3UwM69tG/abozxy+Z/jvx/SyIzNb4a3rlwTfGJMcvPfJMrZn8A==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 167,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tNS\tns1.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eSWyxBCg7z8azMkWMGSuLMRK2nekzsoWl3ICBVOJqDbTueyTZdfUodDKsNMv03cQdloeTwDwd2Vnq7XCcKJ+pg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.e4-cds.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.e4-cds.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.e4-cds.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 5595 e4-cds.test. O+lGU/HmK7WmXGyUhmjZuRppI914opOPbmc5tUTEGVUXeK3Jk6p/rJYCceaVnC7I0/GViL/mC6SLPZtjmE0ZrA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 288,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tMX\t10 mail.e4-cds.test." ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. Pbues8UMMQhrIT/NQ6ZmPDgmgVhvpT6GIZUc6fY1lVz3jYFFT4ZQCX9Y67IAT1Qc7UZzITnsbsLYZDjLYqM+IQ==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 168,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tTXT\t\"E4: CDS ne odgovara kljucevima\"" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. ByFMPnsU/pvJjPSkG3V9YLsGNVEyDmijwAxFz4nnN7Iktk9DbA0UWRxp3Ozoia+xYsRuVDj+uIPM2MQTwgmtpg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 190,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "e4-cds.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "CDS",
+        "ttl" : 3600,
+        "records" : [ "e4-cds.test.\t\t3600\tIN\tCDS\t46291 13 2 01BC1CC0FAF65D9748D3F02EF9260C1F6143E63F1F6C85454ACCF514C7374D52" ],
+        "sigs" : [ "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. eJXcIJ7B90Q0qZvii9N6e8UKip8AMTniUwaD15cESL9esb0cBPW32D9holUlpqRk6AhE//9lTnzm9CQwPgF+2w==", "e4-cds.test.\t\t3600\tIN\tRRSIG\tCDS 13 2 3600 20261130105325 20261031095325 46291 e4-cds.test. yYY8POGWj65ddlA9Z5rQpDtdSu7+Ul3YcMCtO/h+6e08kWCEPoVeNw2x9TfrA+WKsOGWYsuE3i9q4KgMadEE1g==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 302,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "dnssecretary-f5ac6fd3.e4-cds.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "e4-cds.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tNSEC\tmail.e4-cds.test. NS SOA MX TXT RRSIG NSEC DNSKEY CDS" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 5595 e4-cds.test. wFQhNah/pEQuMIQ4dfpPyq3V/q3mMcoFwQVaVTI800FW7xHrpGh0/aMjhas5I02fU8LAyg6MzNjgrxrgBbqduA==" ]
+      }, {
+        "name" : "e4-cds.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "e4-cds.test.\t\t300\tIN\tSOA\tns1.e4-cds.test. admin.e4-cds.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "e4-cds.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 5595 e4-cds.test. OUwHiyOTyn3EaxBEgTbAS7DrUTo9K3Lj3rYjD9tWZojFHLjYv6Dh19rMgaI9LcZP/CIqbp8jsgHsS08AdOZGHw==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 362,
+      "ede" : [ ],
+      "error" : null
+    } ]
+  },
+  "warnings" : [ ]
+}

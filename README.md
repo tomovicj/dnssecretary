@@ -81,10 +81,13 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/keygen.sh` | signer | Makes a KSK + ZSK per zone, plus extra keys some errors need (`keys/old`, `next`, `k2`, `alg8`). |
 | `scripts/sign.sh` | signer | Signs bottom-up: `good.test` → broken zones → `test.` → root. Then builds the trust anchor and copies zones to the servers. |
 | `scripts/break.sh` | signer | Called by `sign.sh`. Builds the broken zones and the DS records their parent should have. |
+| `scripts/sign-tld.sh` | signer | Step 2 of `sign.sh`: re-signs only `test.` with the children's DS records and copies it to `tld/`. DNSSECretary uses it to fix a DS in the lab. |
 | `scripts/check.sh` | host | Queries every zone and compares rcode / AD / EDE with the expected result. Exits 1 on mismatch. `STRICT_EDE=1` also fails on wrong EDE codes. |
 | `scripts/e1-rollover.sh` | host | Breaks E1 live: caches the DNSKEY set, then swaps the ZSK without pre-publishing it. |
 | `scripts/e3-rollover.sh` | host | Breaks E3 live: caches `www`, swaps the ZSK and removes the old one at once. `delv` fails, Unbound itself doesn't. |
 | `scripts/clean.sh` | host | Removes everything generated. `-n` dry run, `-k` keep keys, `-y` don't ask. |
+| `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
+| `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
 
 After running a rollover script, run `sign.sh` and restart the servers to get a clean lab again.
 
@@ -142,23 +145,27 @@ Some results differ from what other resolvers would return. For example, BIND ma
 
 ```
 zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them)
-scripts/          keygen, sign, break, check, rollover and clean scripts
+scripts/          keygen, sign, break, check, rollover and clean scripts + DNSSECretary wrappers
+catalog/          the error catalogue (katalog.yaml), shared by DNSSECretary and the lab
+dnssecretary/     DNSSECretary, the Java tool (Maven project, see its README)
+docs/             design documents
 root/ tld/        NSD configs for the root and test. servers
 auth1/ auth2/     NSD configs for the authoritative servers
 auth3/            Unbound auth-zone config (error F2)
 resolver/         Unbound resolver config and root hints
-image/Dockerfile  the shared image (pinned versions)
+image/Dockerfile  the shared image (pinned versions); stage "app" adds a Java runtime
 compose.yaml      network and services
 ```
 
-Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `resolver/root.key`, `client/delv-anchor.conf`. Every team member generates their own keys, so trust anchors differ between machines.
+Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `resolver/root.key`, `client/delv-anchor.conf`, `dnssecretary/target/`. Every team member generates their own keys, so trust anchors differ between machines.
 
 ## CI
 
 `.github/workflows/lab.yml` runs on pushes to `main` and on pull requests. It runs:
 
 1. `shellcheck` over `scripts/`.
-2. The whole lab from scratch: build → `keygen.sh` → `sign.sh` → `up -d` → `check.sh` → both rollover scripts.
+2. DNSSECretary unit tests (`mvn verify`, offline, on the recorded snapshots).
+3. The whole lab from scratch: build → `keygen.sh` → `sign.sh` → `up -d` → `check.sh` → DNSSECretary collect for every zone (`snapshots.sh`) → both rollover scripts → collect for E1/E3.
 
 To run shellcheck locally:
 

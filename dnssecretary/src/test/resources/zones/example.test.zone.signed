@@ -1,0 +1,9 @@
+; Hand-made fixture for RecordsTest (signatures are not real).
+$TTL 3600
+example.test.     IN SOA  ns1.example.test. admin.example.test. ( 1 3600 900 604800 300 )
+example.test.     IN NS   ns1.example.test.
+ns1               IN A    10.53.0.11
+www         300   IN A    10.53.0.80
+www         300   IN A    10.53.0.81
+www         300   IN RRSIG A 13 3 300 20261130000000 20261031000000 12345 example.test. AAAA
+www               IN RRSIG TXT 13 3 3600 20261130000000 20261031000000 12345 example.test. AAAA

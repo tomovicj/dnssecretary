@@ -7,7 +7,12 @@ keys/
 build/
 dsset-*
 *.signed
+# ...except the hand-made test fixture of DNSSECretary
+!dnssecretary/src/test/resources/zones/*.signed
 *.zone.in
+
+# DNSSECretary build output (the jar is built on the host, see dnssecretary/README.md)
+dnssecretary/target/
 
 # The trust anchor depends on the root key, so it differs for every team member
 resolver/root.key

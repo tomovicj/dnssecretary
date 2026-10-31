@@ -1,0 +1,487 @@
+# DNSSECretary – error catalogue, machine-readable.
+# Source: the team sheet "DNSSECretary-katalog-gresaka" (tabs "Prvo (MVP)", "Kasnije", "Akcije").
+# Shared by the Java tool (loaded as a classpath resource) and the lab scripts.
+#
+# Keys are in English, texts in Serbian (Latin script).
+#   severity: CRITICAL (validation fails, SERVFAIL) | RISK (works, but unsafe or bad practice)
+#   side:     ZONE (we fix it in the zone) | PARENT (DS at the parent/registrar) | OPERATOR (server, text only)
+#   recipe:   action numbers from "actions" below, in order
+#   lab:      zone  – the lab zone that reproduces the error
+#             probe – the query that shows the error ("@" = zone apex)
+#             setup – a script that must run first (the error only appears live)
+#
+# The tool is stricter than Unbound: what the tool must report comes from here, not from check.sh.
+
+actions:
+  - { id: 1, name: Potpiši,         description: "Ponovo potpiši zonu (re-sign)", where: Naša zona }
+  - { id: 2, name: Podešavanja,     description: "Promeni podešavanja potpisivanja: trajanje potpisa, rano obnavljanje, jitter, TTL, NSEC/NSEC3 parametri", where: "Naša zona (posle toga uvek 1)" }
+  - { id: 3, name: Novi ključ,      description: "Generiši novi ključ (KSK, ZSK ili CSK; algoritam 13)", where: Naša zona }
+  - { id: 4, name: DNSKEY skup,     description: "Dodaj ili ukloni ključ iz DNSKEY skupa", where: "Naša zona (posle toga uvek 1)" }
+  - { id: 5, name: DS kod registra, description: "Generiši DS (ili CDS/CDNSKEY) i uputstvo za registra: dodaj ili zameni DS", where: Parent / registar }
+  - { id: 6, name: Ukloni DS,       description: "Ukloni DS kod registra", where: Parent / registar }
+  - { id: 7, name: Čekaj TTL,       description: "Sačekaj da istekne TTL (keš resolvera)", where: Vreme }
+  - { id: 8, name: Server,          description: "Popravi server: prenos zone, TCP 53, EDNS", where: Infrastruktura }
+
+errors:
+
+  # ---------- A: signatures (RRSIG) ----------
+
+  - id: A1
+    title: Istekao potpis
+    group: Potpisi (RRSIG)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "7 (Signature Expired)"
+    cause: Ponovno potpisivanje je stalo (cron, server ugašen, zaboravljeno).
+    detection: Datum isteka u RRSIG je u prošlosti.
+    fix: Ponovo potpiši zonu sa novim datumima.
+    recipe: "1 Potpiši → Provera"
+    rfc: ["RFC 4035 §5.3.1"]
+    lab: { zone: a1-expired.test, probe: "www A" }
+
+  - id: A2
+    title: Potpis još nije važeći
+    group: Potpisi (RRSIG)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "8 (Signature Not Yet Valid)"
+    cause: Loš sat na serveru za potpisivanje.
+    detection: Datum početka (inception) u RRSIG je u budućnosti.
+    fix: Ponovo potpiši + upozorenje da se proveri NTP.
+    recipe: "1 Potpiši → Provera + upozorenje: proveri NTP"
+    rfc: ["RFC 4035 §5.3.1"]
+    lab: { zone: a2-notyet.test, probe: "www A" }
+
+  - id: A3
+    title: Zapis bez potpisa (RRset nema RRSIG)
+    group: Potpisi (RRSIG)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "10 (RRSIGs Missing)"
+    cause: Zapis dodat ručno u potpisanu zonu, a zona nije ponovo potpisana.
+    detection: Za svaki RRset proveri da postoji RRSIG.
+    fix: Ponovo potpiši zonu.
+    recipe: "1 Potpiši → Provera"
+    rfc: ["RFC 4035 §2.2"]
+    lab: { zone: a3-nosig.test, probe: "www A" }
+
+  - id: A4
+    title: Neispravan potpis
+    group: Potpisi (RRSIG)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6 (DNSSEC Bogus)"
+    cause: Podaci promenjeni posle potpisivanja (npr. ručna izmena IP adrese).
+    detection: Kriptografska provera potpisa ne prolazi.
+    fix: Ponovo potpiši zonu.
+    recipe: "1 Potpiši → Provera"
+    rfc: ["RFC 4035 §5.3"]
+    lab: { zone: a4-bogus.test, probe: "www A" }
+
+  - id: A5
+    title: Potpis napravljen ključem koji nije u DNSKEY skupu
+    group: Potpisi (RRSIG)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "9 ili 6"
+    cause: Ključ obrisan iz zone, a stari potpisi ostali.
+    detection: Key tag iz RRSIG ne postoji u DNSKEY skupu.
+    fix: Ponovo potpiši postojećim ključem.
+    recipe: "1 Potpiši (postojećim ključem) → Provera"
+    rfc: ["RFC 4035 §5.3.1"]
+    lab: { zone: a5-unknown-key.test, probe: "www A" }
+
+  - id: A6
+    title: Potpis uskoro ističe (premalo vremena za popravku)
+    group: Potpisi (RRSIG)
+    mvp: true
+    severity: RISK
+    side: ZONE
+    symptom: radi, ali rizik
+    ede: nema (domen radi)
+    cause: "Loša politika: potpisi traju kratko ili se obnavljaju prekasno."
+    detection: Preostalo vreme važenja < praga (npr. < 7 dana).
+    fix: Ponovo potpiši + predloži bolja vremena (rano obnavljanje, jitter).
+    recipe: "2 Podešavanja (rano obnavljanje, jitter) → 1 Potpiši → Provera"
+    rfc: ["RFC 6781 §4.4.2"]
+    lab: { zone: a6-expiring.test, probe: "www A" }
+
+  - id: A7
+    title: TTL duži od preostale važnosti potpisa
+    group: Potpisi (RRSIG)
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: radi, ali rizik
+    ede: nema
+    cause: TTL podešen bez obzira na trajanje potpisa.
+    detection: Uporedi TTL zapisa sa (expiration − sada). Porediti TTL zapisa, ne RRSIG-a (dnssec-signzone skrati TTL RRSIG-a).
+    fix: Smanji TTL ili produži važenje potpisa.
+    recipe: "2 Podešavanja (manji TTL) → 1 Potpiši → Provera"
+    rfc: ["RFC 4035 §5.3.3", "RFC 6781 §4.4.2"]
+    lab: { zone: a7-ttl-long.test, probe: "www A" }
+
+  # ---------- B: keys and chain of trust ----------
+
+  - id: B1
+    title: DS pokazuje na ključ koji ne postoji
+    group: Ključevi i lanac poverenja
+    mvp: true
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 (DNSKEY Missing) ili 6 (Unbound 1.20: 6)"
+    cause: Promenjen ključ ili DNS provajder, a DS kod registra nije promenjen.
+    detection: Key tag / hash iz DS ne odgovara nijednom DNSKEY u zoni.
+    fix: Generiši tačan DS za trenutni KSK + koraci za registra.
+    recipe: "5 DS kod registra → Provera"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b1-ds-stale.test, probe: "www A" }
+
+  - id: B2
+    title: DS ima pogrešan hash (digest)
+    group: Ključevi i lanac poverenja
+    mvp: true
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "6 ili 9"
+    cause: Greška pri kopiranju DS-a kod registra.
+    detection: Izračunaj hash DNSKEY-a i uporedi sa digest-om u DS.
+    fix: Generiši tačan DS + koraci za registra.
+    recipe: "5 DS kod registra → Provera"
+    rfc: ["RFC 4034 §5.1.4", "RFC 4035 §5.2"]
+    lab: { zone: b2-ds-digest.test, probe: "www A" }
+
+  - id: B3
+    title: DS i DNSKEY imaju različit algoritam
+    group: Ključevi i lanac poverenja
+    mvp: false
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 ili 6"
+    cause: Promena algoritma, a DS nije ažuriran.
+    detection: Uporedi polje algorithm u DS i DNSKEY.
+    fix: Generiši tačan DS + koraci za registra.
+    recipe: "5 DS kod registra → Provera"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b3-ds-alg.test, probe: "www A" }
+
+  - id: B4
+    title: DS postoji, a zona nije potpisana
+    group: Ključevi i lanac poverenja
+    mvp: true
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 ili 10"
+    cause: Vlasnik je 'ugasio' DNSSEC, ali nije obrisao DS kod registra. Česta greška u .rs.
+    detection: Parent ima DS, a zona nema DNSKEY/RRSIG.
+    fix: "Dve opcije: obriši DS kod registra ILI ponovo potpiši zonu."
+    recipe: "Opcija A: 6 Ukloni DS → Provera; Opcija B: 3 Novi ključ → 1 Potpiši → 5 DS kod registra → Provera"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b4-ds-unsigned.test, probe: "www A" }
+
+  - id: B5
+    title: DNSKEY skup nije potpisan KSK-om (na koji pokazuje DS)
+    group: Ključevi i lanac poverenja
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6 ili 10"
+    cause: Greška u podešavanju alata za potpisivanje.
+    detection: Proveri da RRSIG nad DNSKEY koristi ključ iz DS-a.
+    fix: Ponovo potpiši DNSKEY skup KSK-om.
+    recipe: "1 Potpiši (DNSKEY skup KSK-om) → Provera"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b5-dnskey-zsk.test, probe: "www A" }
+
+  - id: B6
+    title: Zona potpisana, ali nema DS u parent zoni ('ostrvo')
+    group: Ključevi i lanac poverenja
+    mvp: false
+    severity: RISK
+    side: PARENT
+    symptom: radi, bez zaštite
+    ede: nema (odgovor bez AD flag-a)
+    cause: DS nikad nije poslat registru.
+    detection: Zona ima DNSKEY, parent nema DS.
+    fix: Generiši DS + koraci za registra.
+    recipe: "5 DS kod registra → Provera"
+    rfc: ["RFC 4033 §2", "RFC 4035 §4.3"]
+    lab: { zone: b6-island.test, probe: "www A" }
+
+  - id: B7
+    title: DS koristi SHA-1 (digest tip 1)
+    group: Ključevi i lanac poverenja
+    mvp: false
+    severity: RISK
+    side: PARENT
+    symptom: radi, ali rizik
+    ede: "2 (Unsupported DS Digest Type) ako resolver ne podržava"
+    cause: Stari alat ili stara podešavanja.
+    detection: Polje digest type = 1.
+    fix: Generiši DS sa SHA-256 (tip 2).
+    recipe: "5 DS kod registra (SHA-256) → Provera"
+    rfc: ["RFC 8624 §3.3"]
+    lab: { zone: b7-ds-sha1.test, probe: "www A" }
+
+  - id: B8
+    title: Višak starih DS zapisa
+    group: Ključevi i lanac poverenja
+    mvp: false
+    severity: RISK
+    side: PARENT
+    symptom: radi, ali rizik
+    ede: nema
+    cause: Posle promene ključa stari DS nije obrisan.
+    detection: DS koji ne odgovara nijednom DNSKEY, uz bar jedan ispravan.
+    fix: Lista DS-ova za brisanje kod registra.
+    recipe: "6 Ukloni DS (stari DS) → Provera"
+    rfc: ["RFC 6781 §4.1.2", "RFC 7583 §3.3"]
+    lab: { zone: b8-ds-extra.test, probe: "www A" }
+
+  # ---------- C: algorithms ----------
+
+  - id: C1
+    title: Zastareo algoritam (1, 3, 5, 6, 7, 12)
+    group: Algoritmi
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: radi, ali rizik / radi, bez zaštite
+    ede: "1 (Unsupported DNSKEY Algorithm) ako resolver ne podržava algoritam (Unbound 1.20 podržava 5 → AD)"
+    cause: Stara zona, nikad migrirana.
+    detection: Algoritam u DNSKEY/DS sa liste zastarelih.
+    fix: Plan prelaska na algoritam 13.
+    recipe: "3 Novi ključ (novi algoritam) → 4 DNSKEY skup (dodaj) → 1 Potpiši (oba algoritma) → 7 Čekaj TTL → 5 DS kod registra → 7 Čekaj TTL → 4 DNSKEY skup (ukloni stare) → 1 Potpiši → Provera"
+    rfc: ["RFC 8624 §3.1"]
+    lab: { zone: c1-rsasha1.test, probe: "www A" }
+
+  - id: C2
+    title: Ključevi dva algoritma, ali zapisi nisu potpisani oba
+    group: Algoritmi
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: "SERVFAIL kod nekih resolvera (Unbound: radi, AD)"
+    ede: "6"
+    cause: Pogrešan redosled pri promeni algoritma.
+    detection: Za svaki algoritam u DNSKEY skupu proveri da svaki RRset ima RRSIG.
+    fix: Potpiši sve zapise svim algoritmima.
+    recipe: "1 Potpiši (svim algoritmima) → Provera"
+    rfc: ["RFC 4035 §2.2", "RFC 6840 §5.11"]
+    lab: { zone: c2-two-alg.test, probe: "www A" }
+
+  - id: C3
+    title: Slab RSA ključ (< 2048 bita)
+    group: Algoritmi
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: radi, ali rizik
+    ede: nema
+    cause: Stara podešavanja.
+    detection: Izračunaj dužinu RSA ključa iz DNSKEY.
+    fix: Novi ključ 2048+ bita ili prelazak na 13.
+    recipe: "ZSK: 3 Novi ključ → 4 DNSKEY skup (dodaj novi) → 1 Potpiši → 7 Čekaj TTL → 1 Potpiši (potpiši novim) → 7 Čekaj TTL → 4 DNSKEY skup (ukloni stari) → 1 Potpiši → Provera; KSK: 3 Novi ključ → 4 DNSKEY skup (dodaj novi) → 1 Potpiši → 7 Čekaj TTL → 5 DS kod registra (novi DS) → 7 Čekaj TTL → 4 DNSKEY skup (ukloni stari) → 1 Potpiši → Provera"
+    rfc: ["RFC 6781 §3.4.2", "RFC 8624"]
+    lab: { zone: c3-rsa1024.test, probe: "www A" }
+
+  # ---------- D: authenticated denial of existence (NSEC/NSEC3) ----------
+
+  - id: D1
+    title: Pokidan NSEC/NSEC3 lanac
+    group: Dokaz nepostojanja (NSEC/NSEC3)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL za nepostojeća imena
+    ede: "12 (NSEC Missing) ili 6"
+    cause: Ručna izmena potpisane zone ili greška alata.
+    detection: "Prođi ceo lanac: svaki zapis pokazuje na sledeći, poslednji se vraća na početak."
+    fix: Ponovo potpiši zonu (novi lanac).
+    recipe: "1 Potpiši → Provera"
+    rfc: ["RFC 4034 §4", "RFC 4035 §3.1.3"]
+    lab: { zone: d1-nsec-broken.test, probe: "missing A" }
+
+  - id: D2
+    title: Pogrešna lista tipova (bitmap)
+    group: Dokaz nepostojanja (NSEC/NSEC3)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6"
+    cause: Ručna izmena ili greška alata.
+    detection: Uporedi listu tipova u NSEC sa stvarnim zapisima.
+    fix: Ponovo potpiši zonu.
+    recipe: "1 Potpiši → Provera"
+    rfc: ["RFC 4034 §4.1.2"]
+    lab: { zone: d2-bitmap.test, probe: "www TXT" }
+
+  - id: D3
+    title: Negativan odgovor bez NSEC/NSEC3 ili bez potpisa
+    group: Dokaz nepostojanja (NSEC/NSEC3)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "12 (NSEC Missing)"
+    cause: Greška servera ili zone.
+    detection: Upitaj nepostojeće ime i proveri sadržaj odgovora.
+    fix: Ponovo potpiši zonu.
+    recipe: "1 Potpiši → Provera; ako je problem servera: 8 Server → Provera"
+    rfc: ["RFC 4035 §3.1.3"]
+    lab: { zone: d3-nsec-nosig.test, probe: "missing A" }
+
+  - id: D4
+    title: NSEC3 podešavanja protiv RFC 9276
+    group: Dokaz nepostojanja (NSEC/NSEC3)
+    mvp: true
+    severity: RISK
+    side: ZONE
+    symptom: NXDOMAIN bez AD (Unbound) / SERVFAIL (drugi resolveri)
+    ede: "27 ako ga resolver šalje (Unbound 1.20 ne šalje; > 150 iteracija → odgovor bez AD)"
+    cause: "Stara podešavanja: iterations > 0, salt nije prazan, nepotreban opt-out."
+    detection: "Pročitaj NSEC3PARAM: iterations, salt, opt-out flag."
+    fix: Ponovo potpiši sa iterations=0, bez salt-a, bez opt-out.
+    recipe: "2 Podešavanja (iterations=0, bez salt-a, bez opt-out) → 1 Potpiši → Provera"
+    rfc: ["RFC 9276"]
+    lab: { zone: d4-nsec3-iter.test, probe: "missing A" }
+
+  - id: D5
+    title: NSEC3PARAM se ne slaže sa NSEC3 zapisima
+    group: Dokaz nepostojanja (NSEC/NSEC3)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6 ili 12 (Unbound 1.20: 12 – NSD po NSEC3PARAM ne nađe NSEC3 lanac)"
+    cause: Promena parametara bez ponovnog potpisivanja.
+    detection: Uporedi salt/iterations u NSEC3PARAM i NSEC3.
+    fix: Ponovo potpiši sa jednim skupom parametara.
+    recipe: "2 Podešavanja (jedan skup parametara) → 1 Potpiši → Provera"
+    rfc: ["RFC 5155 §4"]
+    lab: { zone: d5-nsec3param.test, probe: "missing A" }
+
+  - id: D6
+    title: NSEC i NSEC3 pomešani u istoj zoni
+    group: Dokaz nepostojanja (NSEC/NSEC3)
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: radi, ali rizik (NSD šalje samo NSEC3; Unbound AD)
+    ede: nema
+    cause: Prelazak NSEC → NSEC3 nije završen.
+    detection: Zona sadrži oba tipa zapisa.
+    fix: Ponovo potpiši samo jednim tipom.
+    recipe: "2 Podešavanja (samo NSEC ili samo NSEC3) → 1 Potpiši → Provera"
+    rfc: ["RFC 5155"]
+    lab: { zone: d6-nsec-mixed.test, probe: "missing A" }
+
+  # ---------- E: key rollover ----------
+
+  - id: E1
+    title: ZSK promenjen prebrzo (novi ključ nije unapred objavljen)
+    group: Promena ključeva (rollover)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL za deo korisnika
+    ede: "9 ili 6"
+    cause: Novi ključ korišćen odmah; resolveri još imaju stari DNSKEY skup u kešu.
+    detection: Prati DNSKEY skup kroz vreme; uporedi sa TTL-om DNSKEY zapisa.
+    fix: Vrati stari ključ u DNSKEY skup dok ne istekne TTL; zatim ispravan redosled.
+    recipe: "4 DNSKEY skup (vrati stari ključ) → 1 Potpiši → 7 Čekaj TTL → Provera; zatim ispravno: 3 Novi ključ → 4 DNSKEY skup (dodaj novi) → 1 Potpiši → 7 Čekaj TTL → 1 Potpiši (potpiši novim) → 7 Čekaj TTL → 4 DNSKEY skup (ukloni stari) → 1 Potpiši → Provera"
+    rfc: ["RFC 6781 §4.1.1.1", "RFC 7583 §3.2"]
+    lab: { zone: e1-rollover.test, probe: "www A", setup: scripts/e1-rollover.sh }
+
+  - id: E2
+    title: KSK promenjen, a DS zamenjen prerano ili prekasno
+    group: Promena ključeva (rollover)
+    mvp: false
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 ili 6"
+    cause: Pogrešan redosled koraka kod KSK rollover-a.
+    detection: Prati DS i DNSKEY kroz vreme; uporedi sa TTL-om DS-a. Bez pristupa ključevima izgleda isto kao B1.
+    fix: Plan koraka sa tačnim vremenima.
+    recipe: "4 DNSKEY skup (oba KSK u skupu) → 1 Potpiši → 5 DS kod registra (ispravan DS) → 7 Čekaj TTL → Provera; zatim ispravno: 3 Novi ključ → 4 DNSKEY skup (dodaj novi) → 1 Potpiši → 7 Čekaj TTL → 5 DS kod registra (novi DS) → 7 Čekaj TTL → 4 DNSKEY skup (ukloni stari) → 1 Potpiši → Provera"
+    rfc: ["RFC 6781 §4.1.2", "RFC 7583 §3.3"]
+    lab: { zone: e2-ksk-ds-early.test, probe: "www A" }
+
+  - id: E3
+    title: Stari ključ obrisan pre isteka TTL-a
+    group: Promena ključeva (rollover)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL za deo korisnika (validator iza keša, npr. delv ili forwarder; sam Unbound vraća AD iz keša)
+    ede: "9 ili 6"
+    cause: Stari ključ uklonjen odmah posle promene; potpisi u kešu ga još traže.
+    detection: Prati DNSKEY skup kroz vreme; uporedi sa TTL-om.
+    fix: Vrati stari ključ dok ne isteknu TTL-ovi.
+    recipe: "4 DNSKEY skup (vrati stari ključ) → 1 Potpiši → 7 Čekaj TTL → 4 DNSKEY skup (ukloni ga) → 1 Potpiši → Provera"
+    rfc: ["RFC 6781 §4.1.1.1", "RFC 7583 §3.2"]
+    lab: { zone: e3-rollover.test, probe: "www A", setup: scripts/e3-rollover.sh }
+
+  - id: E4
+    title: CDS/CDNSKEY ne odgovaraju ključevima
+    group: Promena ključeva (rollover)
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: radi, ali rizik
+    ede: nema
+    cause: Pogrešno generisani CDS/CDNSKEY zapisi.
+    detection: Uporedi CDS/CDNSKEY sa DNSKEY skupom.
+    fix: Generiši ispravne CDS/CDNSKEY.
+    recipe: "5 DS kod registra (ispravni CDS/CDNSKEY) → 1 Potpiši → Provera"
+    rfc: ["RFC 7344", "RFC 8078"]
+    lab: { zone: e4-cds.test, probe: "@ CDS" }
+
+  # ---------- F: differences between name servers ----------
+
+  - id: F1
+    title: Sekundarni server ima staru zonu sa isteklim potpisima
+    group: Razlike između name servera
+    mvp: false
+    severity: CRITICAL
+    side: OPERATOR
+    symptom: "SERVFAIL povremeno (Unbound: radi – ponovi upit na drugom serveru)"
+    ede: "7 (samo upitom direktno na sekundarni server)"
+    cause: Prenos zone (AXFR/IXFR) ne radi.
+    detection: Upitaj svaki name server posebno; uporedi SOA serial i potpise.
+    fix: "Uputstvo: popravi prenos zone."
+    recipe: "8 Server (prenos zone) → Provera"
+    rfc: ["RFC 1996", "RFC 5936"]
+    lab: { zone: f1-stale-secondary.test, probe: "www A" }
+
+  - id: F2
+    title: Server ne vraća DNSSEC zapise ili ne radi sa velikim odgovorima
+    group: Razlike između name servera
+    mvp: false
+    severity: CRITICAL
+    side: OPERATOR
+    symptom: SERVFAIL za velike odgovore (mali odgovori rade)
+    ede: "22 ili 23 (Unbound 1.20: SERVFAIL bez EDE)"
+    cause: Blokiran TCP 53, mali EDNS buffer, loš firewall.
+    detection: Upitaj svaki server sa DO bitom, preko UDP i TCP.
+    fix: "Uputstvo: otvori TCP 53, podesi EDNS."
+    recipe: "8 Server (TCP 53, EDNS) → Provera"
+    rfc: ["RFC 7766", "RFC 6891"]
+    lab: { zone: f2-tcp-edns.test, probe: "big TXT" }
