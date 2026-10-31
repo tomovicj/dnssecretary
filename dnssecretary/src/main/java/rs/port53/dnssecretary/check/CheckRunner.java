@@ -8,6 +8,12 @@ import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 
+
+import rs.port53.dnssecretary.check.signatures.SignatureValidityCheck;
+import rs.port53.dnssecretary.check.signatures.SignatureCoverageCheck;
+import rs.port53.dnssecretary.check.signatures.SignatureCryptoCheck;
+import rs.port53.dnssecretary.check.signatures.TtlCheck;
+
 /** Runs all checks over a snapshot. A check that throws doesn't stop the others. */
 public final class CheckRunner {
 
@@ -29,7 +35,10 @@ public final class CheckRunner {
     public static List<Check> defaultChecks() {
         return List.of(
                 // A, C – signatures, TTL, algorithms, key strength (role 2)
-
+                new SignatureValidityCheck(),   // A1, A2, A6
+                new SignatureCoverageCheck(),   // A3
+                new SignatureCryptoCheck(),     // A4, A5
+                new TtlCheck()                  // A7
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
