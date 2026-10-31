@@ -144,6 +144,7 @@ public final class WebApp {
             boolean simulateFirst = req == null || req.simulateFirst() == null || req.simulateFirst();
             ctx.status(202).json(jobs.execute(z, script(z, req), simulateFirst).view(false));
         });
+        app.get("/api/catalog", ctx -> ctx.json(catalog.entries()));
         app.get("/api/jobs", ctx -> ctx.json(store.jobs()));
         app.get("/api/jobs/{id}", ctx -> ctx.json(store.job(ctx.pathParam("id")).view(true)));
         app.post("/api/scan", ctx -> {

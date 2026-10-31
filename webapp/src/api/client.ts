@@ -1,4 +1,4 @@
-import type { Job, Scenario, ServerEvent, ZoneDetail, ZoneRow } from "./types";
+import type { CatalogEntry, Job, Scenario, ServerEvent, ZoneDetail, ZoneRow } from "./types";
 import { mockBackend } from "./mock";
 
 /** Everything the UI needs from the server. The real one talks HTTP + SSE; mock.ts fakes it. */
@@ -6,7 +6,10 @@ export interface Backend {
   zones(): Promise<ZoneRow[]>;
   zone(zone: string): Promise<ZoneDetail>;
   jobs(): Promise<Job[]>;
+  /** One job with its log. */
   job(id: string): Promise<Job>;
+  /** The 30 catalogue entries (titles, causes, fixes, RFCs). */
+  catalog(): Promise<CatalogEntry[]>;
   /** Try a script in the sandbox (default: the generated one). */
   simulate(zone: string, script?: string): Promise<Job>;
   /** Run a script on the hosting; by default only after a simulation of it passes. */
@@ -16,7 +19,7 @@ export interface Backend {
   demoBreak(zone: string): Promise<Job>;
   demoHeal(): Promise<Job>;
   demoReset(): Promise<Job>;
-  /** Live events; returns the function that stops them. */
+  /** Live events; returns the function that stops them. All subscribers share one connection. */
   subscribe(onEvent: (e: ServerEvent) => void, onStatus: (s: ConnectionStatus) => void): () => void;
 }
 
@@ -57,6 +60,7 @@ export function httpBackend(): Backend {
     zone: (zone) => call("GET", `/api/zones/${zonePath(zone)}`),
     jobs: () => call("GET", "/api/jobs"),
     job: (id) => call("GET", `/api/jobs/${encodeURIComponent(id)}`),
+    catalog: () => call("GET", "/api/catalog"),
     simulate: (zone, script) => call("POST", `/api/zones/${zonePath(zone)}/simulations`, { script }),
     execute: (zone, script, simulateFirst = true) =>
       call("POST", `/api/zones/${zonePath(zone)}/executions`, { script, simulateFirst }),
@@ -65,17 +69,49 @@ export function httpBackend(): Backend {
     demoBreak: (zone) => call("POST", "/api/demo/break", { zone }),
     demoHeal: () => call("POST", "/api/demo/heal"),
     demoReset: () => call("POST", "/api/demo/reset"),
-    subscribe(onEvent, onStatus) {
-      // EventSource reconnects by itself; it sends "Accept: text/event-stream", which the server needs.
-      const es = new EventSource("/api/events");
-      onStatus("connecting");
-      es.onopen = () => onStatus("open");
-      es.onerror = () => onStatus("reconnecting");
+    subscribe: eventHub(),
+  };
+}
+
+/**
+ * One EventSource for every subscriber (the dashboard, the zone screen, the demo panel), opened
+ * with the first and closed with the last. EventSource reconnects by itself; it sends
+ * "Accept: text/event-stream", which the server needs.
+ */
+function eventHub(): Backend["subscribe"] {
+  let es: EventSource | null = null;
+  let status: ConnectionStatus = "connecting";
+  const events = new Set<(e: ServerEvent) => void>();
+  const statuses = new Set<(s: ConnectionStatus) => void>();
+  const setStatus = (s: ConnectionStatus) => {
+    status = s;
+    statuses.forEach((f) => f(s));
+  };
+  return (onEvent, onStatus) => {
+    events.add(onEvent);
+    statuses.add(onStatus);
+    if (es === null) {
+      es = new EventSource("/api/events");
+      setStatus("connecting");
+      es.onopen = () => setStatus("open");
+      es.onerror = () => setStatus("reconnecting");
       for (const type of ["zone", "job", "log"] as const) {
-        es.addEventListener(type, (m) => onEvent({ type, data: JSON.parse((m as MessageEvent).data) } as ServerEvent));
+        es.addEventListener(type, (m) => {
+          const e = { type, data: JSON.parse((m as MessageEvent).data) } as ServerEvent;
+          events.forEach((f) => f(e));
+        });
       }
-      return () => es.close();
-    },
+    } else {
+      onStatus(status);
+    }
+    return () => {
+      events.delete(onEvent);
+      statuses.delete(onStatus);
+      if (events.size === 0 && es !== null) {
+        es.close();
+        es = null;
+      }
+    };
   };
 }
 

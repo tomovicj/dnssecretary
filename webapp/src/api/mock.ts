@@ -1,21 +1,54 @@
 import type { Backend, ConnectionStatus } from "./client";
-import type { Issue, Job, Scenario, ServerEvent, Status, Verified, ZoneDetail, ZoneRow } from "./types";
+import type {
+  CatalogEntry,
+  Diagnosis,
+  Issue,
+  Job,
+  Scenario,
+  ServerEvent,
+  Status,
+  Verified,
+  VerifyResult,
+  ZoneDetail,
+  ZoneRow,
+} from "./types";
 
 // A backend without a server, for "npm run mock" and the tests: the lab's 31 zones,
 // a few of them broken, and jobs that finish after a moment. Same shapes as the real API.
+// A script that contains "BAD" fails in the mock sandbox; everything else passes.
 
 const MIN = 60_000;
 const DAY = 24 * 60 * MIN;
 
-const ISSUES: Record<string, Issue> = {
-  A1: { id: "A1", title: "Expired signature", severity: "CRITICAL", side: "ZONE" },
-  A6: { id: "A6", title: "Signature expires soon (too little time to fix it)", severity: "RISK", side: "ZONE" },
-  B1: { id: "B1", title: "DS points to a key that does not exist", severity: "CRITICAL", side: "PARENT" },
-  B7: { id: "B7", title: "DS uses SHA-1 (digest type 1)", severity: "RISK", side: "PARENT" },
-  C3: { id: "C3", title: "Weak RSA key (< 2048 bits)", severity: "RISK", side: "ZONE" },
-  E1: { id: "E1", title: "ZSK replaced too quickly (the new key was not pre-published)", severity: "CRITICAL", side: "ZONE" },
-  F1: { id: "F1", title: "Secondary server has a stale zone with expired signatures", severity: "CRITICAL", side: "OPERATOR" },
-};
+/** The catalogue entries the mock's broken zones use (the real API has all 30). */
+const CATALOG: CatalogEntry[] = [
+  ["A1", "Expired signature", "ZONE", "CRITICAL", "SERVFAIL", "7 (Signature Expired)", "Re-signing stopped (cron job, server down, forgotten).", "Re-sign the zone with new dates.", ["RFC 4035 §5.3.1"]],
+  ["A6", "Signature expires soon (too little time to fix it)", "ZONE", "RISK", "works, for now", "none", "Bad policy: signatures are short-lived or refreshed too late.", "Re-sign now and refresh signatures well before they expire.", ["RFC 6781 §4.4.2"]],
+  ["B1", "DS points to a key that does not exist", "PARENT", "CRITICAL", "SERVFAIL", "9 (DNSKEY Missing)", "The KSK was replaced, but the DS at the parent was not.", "Publish the DS of the current KSK at the parent.", ["RFC 4035 §5.2"]],
+  ["B7", "DS uses SHA-1 (digest type 1)", "PARENT", "RISK", "works", "none", "Old registrar defaults.", "Publish a SHA-256 DS and remove the SHA-1 one.", ["RFC 8624 §3.3"]],
+  ["C3", "Weak RSA key (< 2048 bits)", "ZONE", "RISK", "works", "none", "Old settings.", "A new key of 2048+ bits, or a move to algorithm 13.", ["RFC 6781 §3.4.2", "RFC 8624"]],
+  ["E1", "ZSK replaced too quickly (the new key was not pre-published)", "ZONE", "CRITICAL", "SERVFAIL", "9 or 6", "The new ZSK signed before resolvers had it in their cache.", "Put the old key back into the DNSKEY set until the TTL expires; then follow the correct order.", ["RFC 6781 §4.1.1"]],
+  ["F1", "Secondary server has a stale zone with expired signatures", "OPERATOR", "CRITICAL", "SERVFAIL (sometimes)", "7 (Signature Expired)", "Zone transfers to the secondary stopped.", "Fix the transfer and refresh the secondary.", ["RFC 1996"]],
+].map(([id, title, side, severity, symptom, ede, cause, fix, rfc]) => ({
+  id: id as string,
+  title: title as string,
+  group: "",
+  mvp: true,
+  severity: severity as CatalogEntry["severity"],
+  side: side as CatalogEntry["side"],
+  symptom: symptom as string,
+  ede: ede as string,
+  cause: cause as string,
+  detection: "",
+  fix: fix as string,
+  recipe: "",
+  rfc: rfc as string[],
+  lab: { zone: "", probe: "www A", setup: null },
+}));
+
+const ISSUES: Record<string, Issue> = Object.fromEntries(
+  CATALOG.map((e) => [e.id, { id: e.id, title: e.title, severity: e.severity, side: e.side }]),
+);
 
 const ZONES = [
   "good.test", "a1-expired.test", "a2-notyet.test", "a3-nosig.test", "a4-bogus.test", "a5-unknown-key.test",
@@ -60,6 +93,38 @@ flush "$ZONE"
 `;
 }
 
+function verifyResult(zone: string, ok: boolean, remaining: string[]): VerifyResult {
+  const answer = (qname: string, qtype: string, rcode: string) => ({ qname, qtype, rcode, ad: ok, ok });
+  return {
+    zone,
+    checksOk: ok,
+    remaining: ok ? [] : remaining,
+    answers: [
+      answer(`www.${zone}`, "A", ok ? "NOERROR" : "SERVFAIL"),
+      answer(zone, "NS", ok ? "NOERROR" : "SERVFAIL"),
+      answer(`dnssecretary-1a2b3c4d.${zone}`, "A", ok ? "NXDOMAIN" : "SERVFAIL"),
+    ],
+    ok,
+  };
+}
+
+function diagnoses(r: ZoneRow): Diagnosis[] {
+  return r.issues.map((i) => ({
+    id: i.id,
+    severity: i.severity,
+    side: i.side,
+    rootCause: CATALOG.find((e) => e.id === i.id)?.cause ?? "",
+    findings: ["SOA", "NS", "A"].map((type, n) => ({
+      id: i.id,
+      severity: i.severity,
+      owner: n === 2 ? `www.${r.zone}` : r.zone,
+      type,
+      evidence: i.id === "A1" ? "RRSIG expired 2026-10-24T11:28:19Z." : `${i.title}.`,
+      facts: (i.id === "A1" ? { expiration: "2026-10-24T11:28:19Z", keyTag: "48281" } : { nameserver: "10.53.0.11" }) as Record<string, string>,
+    })),
+  }));
+}
+
 interface MockOptions {
   /** How long a mock job runs (ms). */
   jobMs?: number;
@@ -88,6 +153,7 @@ export function mockBackend(options: MockOptions = {}): Backend {
   const jobMs = options.jobMs ?? 1500;
   const rows = new Map((options.rows ?? mockRows()).map((r) => [r.zone, r]));
   const jobs = new Map<string, Job>();
+  const lastSimulated = new Map<string, string>();
   const listeners = new Set<(e: ServerEvent) => void>();
   let ids = 0;
 
@@ -103,64 +169,105 @@ export function mockBackend(options: MockOptions = {}): Backend {
     emit({ type: "zone", data: r });
   };
   const generated = (r: ZoneRow) => (r.issues.length ? script(r.zone.replace(/\.$/, ""), r.issues[0].id) : "");
+  const view = (j: Job): Job => ({ ...j, log: undefined });
 
-  /** A job that logs two lines and ends with `pass`, then calls `after`. */
-  function run(kind: Job["kind"], zone: string | undefined, text: string, pass: boolean, after?: () => void): Job {
+  /**
+   * A job: logs a few lines, ends with `pass` (and the verify result), then calls `after`.
+   * `prefix` lines come first (an execution's simulation).
+   */
+  function run(kind: Job["kind"], zone: string | undefined, text: string, pass: boolean,
+               opts: { lines?: string[]; error?: string; after?: () => void } = {}): Job {
     const prefix = kind === "SIMULATION" ? "sim" : kind === "EXECUTION" ? "exec" : "demo";
-    const job: Job = { id: `${prefix}-${++ids}`, kind, zone, state: "RUNNING", edited: false, script: text, startedAt: iso(Date.now()), log: [] };
+    const r = zone ? rows.get(zone) : undefined;
+    const job: Job = {
+      id: `${prefix}-${++ids}`, kind, zone, state: "RUNNING", script: text, startedAt: iso(Date.now()), log: [],
+      edited: kind !== "DEMO" && !!r && text !== generated(r),
+    };
     jobs.set(job.id, job);
-    emit({ type: "job", data: job });
+    emit({ type: "job", data: view(job) });
     const line = (l: string) => {
       job.log!.push(l);
       emit({ type: "log", data: { jobId: job.id, line: l } });
     };
-    setTimeout(() => line(kind === "DEMO" ? `$ ${text}` : "$ sh -eu fix.sh"), jobMs / 3);
+    const lines = opts.lines ?? (kind === "DEMO" ? [`$ ${text}`] : ["$ sh -eu fix.sh", pass ? "fix script exit: 0" : "fix script exit: 1"]);
+    lines.forEach((l, n) => setTimeout(() => line(l), ((n + 1) * jobMs) / (lines.length + 1)));
     setTimeout(() => {
-      line(pass ? "fix script exit: 0" : "fix script exit: 1");
-      Object.assign(job, { state: pass ? "PASS" : "FAIL", finishedAt: iso(Date.now()) });
-      emit({ type: "job", data: job });
-      after?.();
+      Object.assign(job, {
+        state: pass ? "PASS" : "FAIL",
+        finishedAt: iso(Date.now()),
+        verify: zone && kind !== "DEMO" ? verifyResult(zone, pass, r?.issues.map((i) => i.id) ?? []) : undefined,
+        error: opts.error,
+      });
+      emit({ type: "job", data: view(job) });
+      opts.after?.();
     }, jobMs);
-    return job;
+    return view(job);
   }
 
   return {
     zones: async () => [...rows.values()],
     zone: async (zone): Promise<ZoneDetail> => {
       const r = row(zone);
-      const zj = [...jobs.values()].filter((j) => j.zone === r.zone).reverse();
-      return { ...r, report: { zone: r.zone, diagnoses: [] }, script: { generated: generated(r), lastSimulated: null }, jobs: zj };
+      const zj = [...jobs.values()].filter((j) => j.zone === r.zone).reverse().map(view);
+      return {
+        ...r,
+        report: { zone: r.zone, collectedAt: r.lastScan, checkedAt: r.lastScan, status: r.status, diagnoses: diagnoses(r), warnings: [], failures: [] },
+        script: { generated: generated(r), lastSimulated: lastSimulated.get(r.zone) ?? null },
+        jobs: zj,
+      };
     },
-    jobs: async () => [...jobs.values()].reverse(),
+    jobs: async () => [...jobs.values()].reverse().map(view),
     job: async (id) => {
       const j = jobs.get(id);
       if (!j) throw new Error(`No job ${id}`);
-      return j;
+      return { ...j, log: [...(j.log ?? [])] };
     },
+    catalog: async () => CATALOG,
     simulate: async (zone, text) => {
       const r = row(zone);
       const s = text ?? generated(r);
       const pass = !s.includes("BAD");
-      const job = run("SIMULATION", r.zone, s, pass, () =>
-        put({ ...row(zone), verified: { state: pass ? "PASS" : "FAIL", at: iso(Date.now()), jobId: job.id } }));
+      const job = run("SIMULATION", r.zone, s, pass, {
+        after: () => {
+          lastSimulated.set(r.zone, s);
+          put({ ...row(zone), verified: { state: pass ? "PASS" : "FAIL", at: iso(Date.now()), jobId: job.id } });
+        },
+      });
       put({ ...r, verified: { state: "RUNNING", at: null, jobId: job.id } });
       return job;
     },
-    execute: async (zone, text) => {
+    execute: async (zone, text, simulateFirst = true) => {
       const r = row(zone);
-      return run("EXECUTION", r.zone, text ?? generated(r), true, () =>
-        put({ ...row(zone), status: "OK", issues: [], brokenSince: null, verified: { state: "NONE", at: null, jobId: null } }));
+      const s = text ?? generated(r);
+      const pass = !s.includes("BAD");
+      if (simulateFirst && !pass) {
+        return run("EXECUTION", r.zone, s, false, {
+          lines: ["simulating this script in the sandbox first", "[sandbox] fix script exit: 1"],
+          error: "the simulation did not pass, nothing was executed",
+        });
+      }
+      const lines = [
+        ...(simulateFirst ? ["simulating this script in the sandbox first", "[sandbox] fix script exit: 0", "simulation passed; executing on the lab"] : []),
+        "reload auth1: restarted", `flush ${r.zone.replace(/\.$/, "")}: done`, pass ? "fix script exit: 0" : "fix script exit: 1",
+      ];
+      return run("EXECUTION", r.zone, s, pass, {
+        lines,
+        after: () => pass && put({ ...row(zone), status: "OK", issues: [], brokenSince: null, verified: { state: "NONE", at: null, jobId: null } }),
+      });
     },
     scan: async () => {},
     scenarios: async (): Promise<Scenario[]> =>
       ZONES.slice(1).map((z) => ({ zone: `${z}.`, id: z.slice(0, 2).toUpperCase(), title: z })),
     demoBreak: async (zone) =>
-      run("DEMO", key(zone), `sh scripts/demo.sh break ${zone}`, true, () =>
-        put({ ...row(zone), status: "CRITICAL", issues: [ISSUES.A1], brokenSince: iso(Date.now()), verified: { state: "PASS", at: iso(Date.now()), jobId: null } })),
+      run("DEMO", key(zone), `sh scripts/demo.sh break ${zone.replace(/\.$/, "")}`, true, {
+        after: () =>
+          put({ ...row(zone), status: "CRITICAL", issues: [ISSUES.A1], brokenSince: iso(Date.now()), verified: { state: "PASS", at: iso(Date.now()), jobId: null } }),
+      }),
     demoHeal: async () =>
-      run("DEMO", undefined, "sh scripts/demo.sh heal", true, () =>
-        rows.forEach((r) => put({ ...r, status: "OK", issues: [], brokenSince: null, verified: { state: "NONE", at: null, jobId: null } }))),
-    demoReset: async () => run("DEMO", undefined, "sh scripts/demo.sh reset", true, () => mockRows().forEach(put)),
+      run("DEMO", undefined, "sh scripts/demo.sh heal", true, {
+        after: () => rows.forEach((r) => put({ ...r, status: "OK", issues: [], brokenSince: null, verified: { state: "NONE", at: null, jobId: null } })),
+      }),
+    demoReset: async () => run("DEMO", undefined, "sh scripts/demo.sh reset", true, { after: () => mockRows().forEach(put) }),
     subscribe(onEvent, onStatus: (s: ConnectionStatus) => void) {
       listeners.add(onEvent);
       setTimeout(() => onStatus("open"), 0);
