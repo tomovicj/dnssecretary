@@ -334,12 +334,10 @@ public record Diagnosis(ErrorId id, Severity severity, FixSide side, String root
 
 public sealed interface FixAction permits
         ResignZone,           // re-sign from source with the published keys (A*, B4, B5, C2, D*, E4)
-        ReplaceParentDs,      // B1, B2, B3, B7, E2
-        AddParentDs,          // B6
-        RemoveParentDs,       // B8, C2
-        RepublishKey,         // E1, E3: bring the old ZSK back until the TTL runs out
-        KeyRollover,          // C1, C3: fast in the lab, step-by-step plan for the real world
-        OperatorInstruction   // F1, F2: server config, only text
+        UpdateParentDs,       // the right DS set at the parent: add (B6), replace (B1–B3, B7, E2), remove (B8, C2)
+        RepublishKey,         // E1, E3: bring the old ZSK back until the TTL runs out (not yet)
+        KeyRollover,          // C1, C3: fast in the lab, step-by-step plan for the real world (not yet)
+        Manual                // F1, F2 and everything without an automatic fix: the catalogue's text
 {}
 
 public record FixPlan(Name zone, List<FixAction> actions) {}

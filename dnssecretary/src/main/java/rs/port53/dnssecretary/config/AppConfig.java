@@ -53,11 +53,24 @@ public record AppConfig(Dns dns, Thresholds thresholds, Collect collect, Fix fix
     public record Collect(String zoneSource, List<String> zoneFileDirs, String keyDir,
                           List<String> samples, String nodataType) {}
 
-    /** Used by fix (role 5). */
+    /**
+     * Used by fix.
+     *
+     * @param sourceDir unsigned sources, &lt;zone&gt;.zone; read only
+     * @param keyDir    BIND keys; dnssec-signzone -S uses the active ones (not the subdirectories)
+     * @param workDir   signing, backups and the reload list for scripts/dnssecretary.sh
+     * @param deliver   where the signed zone goes: zone → directory, "default" for the rest.
+     *                  The directory's name is the compose service to restart (auth1, auth3).
+     */
     public record Fix(String sourceDir, String keyDir, String workDir, Map<String, String> deliver, Parent parent) {
 
-        /** @param mode lab | instructions */
-        public record Parent(String mode, String dsDir, List<String> resignCommand) {}
+        /**
+         * @param mode          lab = write the DS to dsDir and run resignCommand; instructions = text for the registrar
+         * @param dsDir         lab: one &lt;zone&gt;.ds file per child, read by resignCommand
+         * @param resignCommand lab: re-signs the parent with the DS files
+         * @param service       lab: compose service that serves the parent (restarted after resignCommand)
+         */
+        public record Parent(String mode, String dsDir, List<String> resignCommand, String service) {}
     }
 
     public static AppConfig load(Path file) throws IOException {

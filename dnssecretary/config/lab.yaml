@@ -26,10 +26,11 @@ fix:
   sourceDir: /lab/zones                 # read only, the tool NEVER writes here
   keyDir: /lab/keys
   workDir: /lab/build/dnssecretary
-  deliver:                              # where the signed zone goes, per zone (default: auth1)
+  deliver:                              # where the signed zone goes, per zone; the dir name is the service to restart
     default: /lab/auth1
     f2-tcp-edns.test: /lab/auth3
   parent:
     mode: lab                           # lab = write the DS and run sign-tld.sh; instructions = text for the registrar
     dsDir: /lab/build/parent-ds
     resignCommand: ["sh", "/lab/scripts/sign-tld.sh"]
+    service: tld                        # restarted after resignCommand
