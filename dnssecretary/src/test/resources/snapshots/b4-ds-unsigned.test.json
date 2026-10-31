@@ -1,0 +1,520 @@
+{
+  "zone" : "b4-ds-unsigned.test.",
+  "collectedAt" : "2026-10-31T10:58:20.510312522Z",
+  "parent" : "test.",
+  "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
+  "chain" : [ {
+    "zone" : ".",
+    "servers" : [ "10.53.0.2" ],
+    "ds" : {
+      "name" : ".",
+      "type" : "DS",
+      "ttl" : 0,
+      "records" : [ ],
+      "sigs" : [ ]
+    },
+    "dnskey" : {
+      "name" : ".",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+    }
+  }, {
+    "zone" : "test.",
+    "servers" : [ "10.53.0.3" ],
+    "ds" : {
+      "name" : "test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+    },
+    "dnskey" : {
+      "name" : "test.",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+    }
+  } ],
+  "parentDs" : {
+    "qname" : "b4-ds-unsigned.test.",
+    "qtype" : "DS",
+    "server" : "10.53.0.3",
+    "transport" : "udp",
+    "rcode" : "NOERROR",
+    "aa" : true,
+    "tc" : false,
+    "ad" : false,
+    "answer" : [ {
+      "name" : "b4-ds-unsigned.test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tDS\t50645 13 2 012801C15E52350794C945A3604C9B12B14729B6F015F9183DD2FEB098605604" ],
+      "sigs" : [ "b4-ds-unsigned.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. PcnLm1FHrChaghWECxL0P8kOclD/E1Bc9mJdbnKldJ746cSb6LCFb9f0viYpo+CZ1HchF4B566dZvPwxYWMshQ==" ]
+    } ],
+    "authority" : [ ],
+    "additional" : [ ],
+    "ednsPayload" : 1232,
+    "size" : 196,
+    "ede" : [ ],
+    "error" : null
+  },
+  "delegation" : [ "ns1.b4-ds-unsigned.test." ],
+  "nameservers" : [ {
+    "host" : "ns1.b4-ds-unsigned.test.",
+    "address" : "10.53.0.11",
+    "soa" : {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test." ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 124,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 94,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 94,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 94,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 94,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.b4-ds-unsigned.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ ]
+      } ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test." ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 102,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test." ],
+        "sigs" : [ ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 82,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tMX\t10 mail.b4-ds-unsigned.test." ],
+        "sigs" : [ ]
+      } ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test." ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ ]
+      }, {
+        "name" : "ns1.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 119,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tTXT\t\"B4: DS postoji, a zona nije potpisana\"" ],
+        "sigs" : [ ]
+      } ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test." ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.b4-ds-unsigned.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 132,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-5074a846.b4-ds-unsigned.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 116,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 94,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  } ],
+  "fullZone" : [ "b4-ds-unsigned.test.\t3600\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300", "b4-ds-unsigned.test.\t3600\tIN\tNS\tns1.b4-ds-unsigned.test.", "ns1.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.11", "www.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.80", "mail.b4-ds-unsigned.test.\t3600\tIN\tA\t10.53.0.81", "b4-ds-unsigned.test.\t3600\tIN\tMX\t10 mail.b4-ds-unsigned.test.", "b4-ds-unsigned.test.\t3600\tIN\tTXT\t\"B4: DS postoji, a zona nije potpisana\"" ],
+  "localKeys" : [ {
+    "location" : "",
+    "file" : "Kb4-ds-unsigned.test.+013+19123.key",
+    "key" : "b4-ds-unsigned.test.\t3600\tIN\tDNSKEY\t256 3 13 3QQiM3+dvuILVPIyKefVM1Ib8lcO7xtQ3wwrHtJVG4GGpq4ZKnmaxqtihSgYYuXjcFWQYgdG3OWRpNeuEKcd6A=="
+  }, {
+    "location" : "",
+    "file" : "Kb4-ds-unsigned.test.+013+50645.key",
+    "key" : "b4-ds-unsigned.test.\t3600\tIN\tDNSKEY\t257 3 13 OlYfW9Y62yY37p1+0ydxfD+kN3ES4cgbow+MAD6zM3i/5m7tQ2fZy8D4Su+fPFp63U3YRwr1d5nWSDCeLgjqmw=="
+  } ],
+  "resolver" : {
+    "address" : "10.53.0.53",
+    "dnskey" : {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "b4-ds-unsigned.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "b4-ds-unsigned.test.\t300\tIN\tSOA\tns1.b4-ds-unsigned.test. admin.b4-ds-unsigned.test. 1 3600 900 604800 300" ],
+        "sigs" : [ ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 244,
+      "ede" : [ {
+        "code" : 9,
+        "text" : "validation failure <b4-ds-unsigned.test. DNSKEY IN>: No DNSKEY record from 10.53.0.11 for key b4-ds-unsigned.test. while building chain of trust"
+      } ],
+      "error" : null
+    },
+    "answers" : [ {
+      "qname" : "www.b4-ds-unsigned.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "SERVFAIL",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 209,
+      "ede" : [ {
+        "code" : 9,
+        "text" : "validation failure <www.b4-ds-unsigned.test. A IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
+      } ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "SERVFAIL",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 202,
+      "ede" : [ {
+        "code" : 9,
+        "text" : "validation failure <b4-ds-unsigned.test. NS IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
+      } ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "SERVFAIL",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 202,
+      "ede" : [ {
+        "code" : 9,
+        "text" : "validation failure <b4-ds-unsigned.test. MX IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
+      } ],
+      "error" : null
+    }, {
+      "qname" : "b4-ds-unsigned.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "SERVFAIL",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 203,
+      "ede" : [ {
+        "code" : 9,
+        "text" : "validation failure <b4-ds-unsigned.test. TXT IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
+      } ],
+      "error" : null
+    }, {
+      "qname" : "dnssecretary-5074a846.b4-ds-unsigned.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "SERVFAIL",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 245,
+      "ede" : [ {
+        "code" : 9,
+        "text" : "validation failure <dnssecretary-5074a846.b4-ds-unsigned.test. A IN>: key for validation b4-ds-unsigned.test. is marked as invalid because of a previous No DNSKEY record"
+      } ],
+      "error" : null
+    } ]
+  },
+  "warnings" : [ ]
+}

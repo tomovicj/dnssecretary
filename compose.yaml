@@ -4,10 +4,11 @@ networks:
     ipam:
       config:
         - subnet: 10.53.0.0/24
+          ip_range: 10.53.0.128/25    # dynamic addresses (app) never collide with the fixed ones
 
 services:
   root:
-    build: ./image
+    build: { context: ./image, target: lab }
     image: dnslab
     command: nsd -d -c /etc/nsd/nsd.conf
     volumes: ["./root:/etc/nsd:ro"]
@@ -60,3 +61,13 @@ services:
     network_mode: none
     volumes: ["./:/lab"]
     working_dir: /lab
+
+  app:                      # DNSSECretary (Java), run on demand: sh scripts/dnssecretary.sh
+    build: { context: ./image, target: app }
+    image: dnslab-app
+    profiles: ["app"]
+    volumes: ["./:/lab"]    # needs to write auth1/, tld/, build/ when fixing
+    working_dir: /lab       # relative paths in arguments work the same as on the host
+    entrypoint: ["java", "-jar", "/lab/dnssecretary/target/dnssecretary.jar",
+                 "--config", "/lab/dnssecretary/config/lab.yaml"]
+    networks: [dnslab]

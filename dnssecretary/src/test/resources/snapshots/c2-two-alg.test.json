@@ -1,0 +1,578 @@
+{
+  "zone" : "c2-two-alg.test.",
+  "collectedAt" : "2026-10-31T10:58:20.846865042Z",
+  "parent" : "test.",
+  "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
+  "chain" : [ {
+    "zone" : ".",
+    "servers" : [ "10.53.0.2" ],
+    "ds" : {
+      "name" : ".",
+      "type" : "DS",
+      "ttl" : 0,
+      "records" : [ ],
+      "sigs" : [ ]
+    },
+    "dnskey" : {
+      "name" : ".",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+    }
+  }, {
+    "zone" : "test.",
+    "servers" : [ "10.53.0.3" ],
+    "ds" : {
+      "name" : "test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+    },
+    "dnskey" : {
+      "name" : "test.",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+    }
+  } ],
+  "parentDs" : {
+    "qname" : "c2-two-alg.test.",
+    "qtype" : "DS",
+    "server" : "10.53.0.3",
+    "transport" : "udp",
+    "rcode" : "NOERROR",
+    "aa" : true,
+    "tc" : false,
+    "ad" : false,
+    "answer" : [ {
+      "name" : "c2-two-alg.test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "c2-two-alg.test.\t3600\tIN\tDS\t622 8 2 F28DFB7CF552CF0F355B891571285C2B28430855FAAC0F5B832C68FC46AC4A3D", "c2-two-alg.test.\t3600\tIN\tDS\t42845 13 2 3F6B372A88D0B27871F4E06A00488C39DAAA256B17AA8101D9AF9C9EC42A4B85" ],
+      "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. pI1sdHeW2eR4fiaInQ/3DuGjphV6uVKuO5Nx8ZBC2P7TpbVZlls474Sf/NYWsOwQCzzYiGVYTuxPm9VvSvJwmg==" ]
+    } ],
+    "authority" : [ ],
+    "additional" : [ ],
+    "ednsPayload" : 1232,
+    "size" : 240,
+    "ede" : [ ],
+    "error" : null
+  },
+  "delegation" : [ "ns1.c2-two-alg.test." ],
+  "nameservers" : [ {
+    "host" : "ns1.c2-two-alg.test.",
+    "address" : "10.53.0.11",
+    "soa" : {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      } ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 453,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tDNSKEY\t256 3 13 uJ3d8pvIXl2akOjpVEutZvlW6nk85zmmaqAMl+DhO2jugd5mC9kFb6jRS1G0Xuu1u+JA+EDzG2Y6XxsH43MmOw==", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAZq1GO+cuVuk9jgbx+eHv9EX7J9qkzgWVbN0d275TWzHrWaxDvd4b1lFOJHD1dydnA4USFe9FtuhA7k+z9yF87Mu6p48huQTzjWvPwBvcmDrMD/bQXn8rnxp4j50t18CSmnG4/pQZI6UogwOr4XdcBl3UluodLvZr7+Yh+9amxGliIIxPvCyT9CeUbP+/xxPLPFMqeHtw6ulLbiREJx15Nu7bRagxr7EZsdgk2eKsTapXzaJoCG8V0falY7gI1CBcR10LpvzuQSSDHgIH63d4oya4LTo6OekEMZcdFGEHCKFX2kXGBXt4sXgcpBPB6XK5vbEJ20zXbmrqjGilzHbyj8=", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 13 Ju645240DOu9RViknCES81qkV0NtgCDxmRGvz5b7zcI/saI5xS+RR9+bJMvkYgCeYXpJrce/Jo9MXGaCc56zpA==" ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. JkCuQLjRhdWVmkI8zVljDPauv4uXsFbNCUbZ0BNymsjgip//YGYwqYAQyXPYbrdYi5Fmhis3QuK3z8wvLPg/0g==", "c2-two-alg.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 42845 c2-two-alg.test. aorPxeZ6zK3VymF2oP6kMZZ2SfaqaIz1MzyCqmjqfcfN0aktrS4ZhdRbqBFTagB2bU4YobQgGsSSPlM2G5Z/Gg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 702,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      }, {
+        "name" : "c2-two-alg.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 355,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      }, {
+        "name" : "c2-two-alg.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 355,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      }, {
+        "name" : "c2-two-alg.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 355,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.c2-two-alg.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. L2+lCtZV0nBt08cpppQuPhHozUmRZs8SGsVQjYdaOlUVay0ijfkyvQQ5/Fi2gegERmMSmURHomkJ1HEmdkj3nw==" ]
+      } ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 431,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 300,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tMX\t10 mail.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. giTCaORk5EGqR2Ymbp3FvPh/ZFW1AG5e/hNbLz9xNJP0UbFIqxQsa5Wi2VABJiDMaNdmzQkX1Jqh+nW2XnqXWg==" ]
+      } ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ "mail.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. HDV8dg3m9Ng2vcOaa45X58c8JWtiGL9KTWO5RpUHOs9ufAqXUagWsEb0suPSUXF546P+RM97iySQzxAFdoKJtA==" ]
+      }, {
+        "name" : "ns1.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 559,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tTXT\t\"C2: dva algoritma, zapisi potpisani samo jednim\"" ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. qXXY7v9dgC5oDBTBo/ja3/TvPcmu2BlatAqs0b674gm8hKUXeCmpPxMufR0CcaM2VORbn9qcEx3dO87rP5HIBQ==" ]
+      } ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 471,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-0dc8a7a5.c2-two-alg.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==" ]
+      }, {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 377,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      }, {
+        "name" : "c2-two-alg.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 355,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  } ],
+  "fullZone" : [ "c2-two-alg.test.\t3600\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300", "c2-two-alg.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==", "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test.", "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==", "c2-two-alg.test.\t3600\tIN\tMX\t10 mail.c2-two-alg.test.", "c2-two-alg.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. giTCaORk5EGqR2Ymbp3FvPh/ZFW1AG5e/hNbLz9xNJP0UbFIqxQsa5Wi2VABJiDMaNdmzQkX1Jqh+nW2XnqXWg==", "c2-two-alg.test.\t3600\tIN\tTXT\t\"C2: dva algoritma, zapisi potpisani samo jednim\"", "c2-two-alg.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. qXXY7v9dgC5oDBTBo/ja3/TvPcmu2BlatAqs0b674gm8hKUXeCmpPxMufR0CcaM2VORbn9qcEx3dO87rP5HIBQ==", "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t256 3 13 uJ3d8pvIXl2akOjpVEutZvlW6nk85zmmaqAMl+DhO2jugd5mC9kFb6jRS1G0Xuu1u+JA+EDzG2Y6XxsH43MmOw==", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAZq1GO+cuVuk9jgbx+eHv9EX7J9qkzgWVbN0d275TWzHrWaxDvd4b1lFOJHD1dydnA4USFe9FtuhA7k+z9yF87Mu6p48huQTzjWvPwBvcmDrMD/bQXn8rnxp4j50t18CSmnG4/pQZI6UogwOr4XdcBl3UluodLvZr7+Yh+9amxGliIIxPvCyT9CeUbP+/xxPLPFMqeHtw6ulLbiREJx15Nu7bRagxr7EZsdgk2eKsTapXzaJoCG8V0falY7gI1CBcR10LpvzuQSSDHgIH63d4oya4LTo6OekEMZcdFGEHCKFX2kXGBXt4sXgcpBPB6XK5vbEJ20zXbmrqjGilzHbyj8=", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 13 Ju645240DOu9RViknCES81qkV0NtgCDxmRGvz5b7zcI/saI5xS+RR9+bJMvkYgCeYXpJrce/Jo9MXGaCc56zpA==", "c2-two-alg.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. JkCuQLjRhdWVmkI8zVljDPauv4uXsFbNCUbZ0BNymsjgip//YGYwqYAQyXPYbrdYi5Fmhis3QuK3z8wvLPg/0g==", "c2-two-alg.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 42845 c2-two-alg.test. aorPxeZ6zK3VymF2oP6kMZZ2SfaqaIz1MzyCqmjqfcfN0aktrS4ZhdRbqBFTagB2bU4YobQgGsSSPlM2G5Z/Gg==", "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11", "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==", "ns1.c2-two-alg.test.\t300\tIN\tNSEC\twww.c2-two-alg.test. A RRSIG NSEC", "ns1.c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 12930 c2-two-alg.test. KYg11/00D3oo9cVNoWXv73bp83FQu+P/oJZlOnOObXw8APxAaNiCyRp9XYBtp5F7fYMoQ2RwJ6EfMCJUxDXs9g==", "mail.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.81", "mail.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. HDV8dg3m9Ng2vcOaa45X58c8JWtiGL9KTWO5RpUHOs9ufAqXUagWsEb0suPSUXF546P+RM97iySQzxAFdoKJtA==", "mail.c2-two-alg.test.\t300\tIN\tNSEC\tns1.c2-two-alg.test. A RRSIG NSEC", "mail.c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 12930 c2-two-alg.test. FP2WUroFsbYh2fw5u9mJTOW6ecYh9m4ZoicM5F3juXBjy+ydMU/tuXm6ad+WoD9k1frvDcASo3xlukzu6VDXkQ==", "www.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.80", "www.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. L2+lCtZV0nBt08cpppQuPhHozUmRZs8SGsVQjYdaOlUVay0ijfkyvQQ5/Fi2gegERmMSmURHomkJ1HEmdkj3nw==", "www.c2-two-alg.test.\t300\tIN\tNSEC\tc2-two-alg.test. A RRSIG NSEC", "www.c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 12930 c2-two-alg.test. joj3yQNH7Fi0bO+1LshXaq7BcwO2uVIJzB9S6Of+8qtwUwz0P+pENOeDbmcF9eITNGHAwZ48AZ5aD93jh+Bygw==" ],
+  "localKeys" : [ {
+    "location" : "",
+    "file" : "Kc2-two-alg.test.+013+12930.key",
+    "key" : "c2-two-alg.test.\t3600\tIN\tDNSKEY\t256 3 13 uJ3d8pvIXl2akOjpVEutZvlW6nk85zmmaqAMl+DhO2jugd5mC9kFb6jRS1G0Xuu1u+JA+EDzG2Y6XxsH43MmOw=="
+  }, {
+    "location" : "",
+    "file" : "Kc2-two-alg.test.+013+42845.key",
+    "key" : "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 13 Ju645240DOu9RViknCES81qkV0NtgCDxmRGvz5b7zcI/saI5xS+RR9+bJMvkYgCeYXpJrce/Jo9MXGaCc56zpA=="
+  }, {
+    "location" : "alg8",
+    "file" : "Kc2-two-alg.test.+008+00622.key",
+    "key" : "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAZq1GO+cuVuk9jgbx+eHv9EX7J9qkzgWVbN0d275TWzHrWaxDvd4b1lFOJHD1dydnA4USFe9FtuhA7k+z9yF87Mu6p48huQTzjWvPwBvcmDrMD/bQXn8rnxp4j50t18CSmnG4/pQZI6UogwOr4XdcBl3UluodLvZr7+Yh+9amxGliIIxPvCyT9CeUbP+/xxPLPFMqeHtw6ulLbiREJx15Nu7bRagxr7EZsdgk2eKsTapXzaJoCG8V0falY7gI1CBcR10LpvzuQSSDHgIH63d4oya4LTo6OekEMZcdFGEHCKFX2kXGBXt4sXgcpBPB6XK5vbEJ20zXbmrqjGilzHbyj8="
+  } ],
+  "resolver" : {
+    "address" : "10.53.0.53",
+    "dnskey" : {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 13 Ju645240DOu9RViknCES81qkV0NtgCDxmRGvz5b7zcI/saI5xS+RR9+bJMvkYgCeYXpJrce/Jo9MXGaCc56zpA==", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t256 3 13 uJ3d8pvIXl2akOjpVEutZvlW6nk85zmmaqAMl+DhO2jugd5mC9kFb6jRS1G0Xuu1u+JA+EDzG2Y6XxsH43MmOw==", "c2-two-alg.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAZq1GO+cuVuk9jgbx+eHv9EX7J9qkzgWVbN0d275TWzHrWaxDvd4b1lFOJHD1dydnA4USFe9FtuhA7k+z9yF87Mu6p48huQTzjWvPwBvcmDrMD/bQXn8rnxp4j50t18CSmnG4/pQZI6UogwOr4XdcBl3UluodLvZr7+Yh+9amxGliIIxPvCyT9CeUbP+/xxPLPFMqeHtw6ulLbiREJx15Nu7bRagxr7EZsdgk2eKsTapXzaJoCG8V0falY7gI1CBcR10LpvzuQSSDHgIH63d4oya4LTo6OekEMZcdFGEHCKFX2kXGBXt4sXgcpBPB6XK5vbEJ20zXbmrqjGilzHbyj8=" ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. JkCuQLjRhdWVmkI8zVljDPauv4uXsFbNCUbZ0BNymsjgip//YGYwqYAQyXPYbrdYi5Fmhis3QuK3z8wvLPg/0g==", "c2-two-alg.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 42845 c2-two-alg.test. aorPxeZ6zK3VymF2oP6kMZZ2SfaqaIz1MzyCqmjqfcfN0aktrS4ZhdRbqBFTagB2bU4YobQgGsSSPlM2G5Z/Gg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 702,
+      "ede" : [ ],
+      "error" : null
+    },
+    "answers" : [ {
+      "qname" : "www.c2-two-alg.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "www.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. L2+lCtZV0nBt08cpppQuPhHozUmRZs8SGsVQjYdaOlUVay0ijfkyvQQ5/Fi2gegERmMSmURHomkJ1HEmdkj3nw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 175,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tNS\tns1.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. G+sOFxAJgykJGDcoassJVs8OWB7dE4p76JznrZckobZzHqwFrlB4i33a+PEF76x8Mx2ZqK4hZSiKACrJ1zEADA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.c2-two-alg.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.c2-two-alg.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.c2-two-alg.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 12930 c2-two-alg.test. cnqaYsUOz30YfWe/gNIAuqBomyZDWhx3Ed/bpGNytP4a+nlbIrrjHHTEkKPVdY/QTDhi5eVFyyOyNg//7T0FyA==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 300,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tMX\t10 mail.c2-two-alg.test." ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. giTCaORk5EGqR2Ymbp3FvPh/ZFW1AG5e/hNbLz9xNJP0UbFIqxQsa5Wi2VABJiDMaNdmzQkX1Jqh+nW2XnqXWg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 176,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "c2-two-alg.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "c2-two-alg.test.\t3600\tIN\tTXT\t\"C2: dva algoritma, zapisi potpisani samo jednim\"" ],
+        "sigs" : [ "c2-two-alg.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. qXXY7v9dgC5oDBTBo/ja3/TvPcmu2BlatAqs0b674gm8hKUXeCmpPxMufR0CcaM2VORbn9qcEx3dO87rP5HIBQ==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 215,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "dnssecretary-0dc8a7a5.c2-two-alg.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "c2-two-alg.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tNSEC\tmail.c2-two-alg.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 12930 c2-two-alg.test. QvtGmWYjm0WJILilA7SEmfBi1Q0/sRCY88zdWgcOGaiWHH2jXb7e/hVqvC12rxjNyA8uV9sLvOQVRr1FKTEbbA==" ]
+      }, {
+        "name" : "c2-two-alg.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "c2-two-alg.test.\t300\tIN\tSOA\tns1.c2-two-alg.test. admin.c2-two-alg.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "c2-two-alg.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 12930 c2-two-alg.test. 3TcH+mpwu3AiG2Ysi8gVjgrpOjPrFvWVXjNzyK90u3QDT/JEbxQu9vR+Y9wH43s5Rh/00Xr0Tjf7txvv93KR/g==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 377,
+      "ede" : [ ],
+      "error" : null
+    } ]
+  },
+  "warnings" : [ ]
+}

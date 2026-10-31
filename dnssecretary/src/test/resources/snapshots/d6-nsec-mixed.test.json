@@ -1,0 +1,684 @@
+{
+  "zone" : "d6-nsec-mixed.test.",
+  "collectedAt" : "2026-10-31T10:58:21.205919068Z",
+  "parent" : "test.",
+  "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
+  "chain" : [ {
+    "zone" : ".",
+    "servers" : [ "10.53.0.2" ],
+    "ds" : {
+      "name" : ".",
+      "type" : "DS",
+      "ttl" : 0,
+      "records" : [ ],
+      "sigs" : [ ]
+    },
+    "dnskey" : {
+      "name" : ".",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+    }
+  }, {
+    "zone" : "test.",
+    "servers" : [ "10.53.0.3" ],
+    "ds" : {
+      "name" : "test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+    },
+    "dnskey" : {
+      "name" : "test.",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+    }
+  } ],
+  "parentDs" : {
+    "qname" : "d6-nsec-mixed.test.",
+    "qtype" : "DS",
+    "server" : "10.53.0.3",
+    "transport" : "udp",
+    "rcode" : "NOERROR",
+    "aa" : true,
+    "tc" : false,
+    "ad" : false,
+    "answer" : [ {
+      "name" : "d6-nsec-mixed.test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tDS\t8609 13 2 D3C245D7FD1DD43671D9B1196656E7EAD727A971A566BB32D43A5B27113AFF45" ],
+      "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. r0YCegnPIdsEUsiNNXijR7zgBRXoeecBTbg4uyk5a656yaUxf1cBgCm5cjWLT5Bt85B0aR5qWCmhe3l8nV9COg==" ]
+    } ],
+    "authority" : [ ],
+    "additional" : [ ],
+    "ednsPayload" : 1232,
+    "size" : 195,
+    "ede" : [ ],
+    "error" : null
+  },
+  "delegation" : [ "ns1.d6-nsec-mixed.test." ],
+  "nameservers" : [ {
+    "host" : "ns1.d6-nsec-mixed.test.",
+    "address" : "10.53.0.11",
+    "soa" : {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 465,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t256 3 13 OukR0rvyg0eB9YD/ONNwbsqXiqKQCp6MO66jqtQm3N9il06/5rtaR+tCjX1QiY57PbeMR0FAQRiW9ncQWmDI+g==", "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t257 3 13 7Qn8yew8UwGnYhSrLlhbQ3VmZ5ov/yPDOCApxFavCXXrGiJ67nm3hBk0uwRCSdsvdqrm3uDJ7GIgcF1dTSwhFg==" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. bjXg+4LVN5a7SrK3v0JQlGQIYSarlAPrzlD5PZnR3aGGAVXOD4hNRMg1/k3oYTsxSMaLC1nwazJv/ot8U0CBBA==", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 8609 d6-nsec-mixed.test. vB8kzshM+VQkajvy6Kz1xIoHT6eoJrP77YRt7HvLfIxSl1OoOJUAQJ/V2T4oUaG1DhG4NkQnyhClSCcEZc07/Q==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 435,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 401,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 401,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NSEC3PARAM",
+        "ttl" : 0,
+        "records" : [ "d6-nsec-mixed.test.\t0\tIN\tNSEC3PARAM\t1 0 0 -" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t0\tIN\tRRSIG\tNSEC3PARAM 13 2 0 20261130105325 20261031095325 6211 d6-nsec-mixed.test. j75acTRgM4BPY9HD41D9Qk8TW9YlSOK1SLske2a8fO4gxPcDrJ9d7WejPt9yfJEHbW9Xnc5Yg2KWInSyh/pLgQ==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 440,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.d6-nsec-mixed.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jZnNWspVCJL1WFgfCjGLUazL7WZpuHWZPs1e1lpsyKRGDefDrsc2FX2lrT7wN1oo54o9nNv5vQrnlEzwPeyd9w==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 443,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 309,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tMX\t10 mail.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. K2nF6ihPBgIYNc5qBdI8vGYIz1vZZiMejbMlWBSjn8RTC7xPurUogZSMLu2R+Lv8e6YC9aPvLlZuTkJripT91A==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ "mail.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. u082oJBBYuD8T3fMIYYCntQiwBdOlFH0LlOQjVYEkSVS4oEz7D2EtFikmuEf96LKaJ42HkpjHAPoLg27Y0xH/A==" ]
+      }, {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 574,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tTXT\t\"D6: NSEC i NSEC3 pomesani\"" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. RWiqCRfYR/l7GtY629CGcFU8+JcWp253fQbX6RUAudWiWIh6HotQ/yjxEG0aYvWgcxb9t9g74asXwDUb5SakLg==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 461,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "missing.d6-nsec-mixed.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - HUH3KDOTF66N4UTRIINUJNBE2N98NCCT A RRSIG" ],
+        "sigs" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 3n1TPeQmzplC9ApcifPV42kEUcalbaBV0SA237Bvt2ydNx7KZ828M/XXOhMOXbbOGZqx6yNAgEnT8BmACrO2HA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      }, {
+        "name" : "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - PR51T30L7LFLCOB9H97LBLMIIMTFOGTS A RRSIG" ],
+        "sigs" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. LG2i6IkmLmhF96PPGiXLlvyJFHZEJJP3w3sx8uZSBaQ7xRiWh+90FI5gAmexEkCgTcjWfcJHEDiX6RK9pYq8cQ==" ]
+      }, {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 795,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-3eb59710.d6-nsec-mixed.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - HUH3KDOTF66N4UTRIINUJNBE2N98NCCT A RRSIG" ],
+        "sigs" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 3n1TPeQmzplC9ApcifPV42kEUcalbaBV0SA237Bvt2ydNx7KZ828M/XXOhMOXbbOGZqx6yNAgEnT8BmACrO2HA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      }, {
+        "name" : "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - PR51T30L7LFLCOB9H97LBLMIIMTFOGTS A RRSIG" ],
+        "sigs" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. LG2i6IkmLmhF96PPGiXLlvyJFHZEJJP3w3sx8uZSBaQ7xRiWh+90FI5gAmexEkCgTcjWfcJHEDiX6RK9pYq8cQ==" ]
+      }, {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 809,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 401,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  } ],
+  "fullZone" : [ "d6-nsec-mixed.test.\t3600\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==", "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test.", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==", "d6-nsec-mixed.test.\t3600\tIN\tMX\t10 mail.d6-nsec-mixed.test.", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. K2nF6ihPBgIYNc5qBdI8vGYIz1vZZiMejbMlWBSjn8RTC7xPurUogZSMLu2R+Lv8e6YC9aPvLlZuTkJripT91A==", "d6-nsec-mixed.test.\t3600\tIN\tTXT\t\"D6: NSEC i NSEC3 pomesani\"", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. RWiqCRfYR/l7GtY629CGcFU8+JcWp253fQbX6RUAudWiWIh6HotQ/yjxEG0aYvWgcxb9t9g74asXwDUb5SakLg==", "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t256 3 13 OukR0rvyg0eB9YD/ONNwbsqXiqKQCp6MO66jqtQm3N9il06/5rtaR+tCjX1QiY57PbeMR0FAQRiW9ncQWmDI+g==", "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t257 3 13 7Qn8yew8UwGnYhSrLlhbQ3VmZ5ov/yPDOCApxFavCXXrGiJ67nm3hBk0uwRCSdsvdqrm3uDJ7GIgcF1dTSwhFg==", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. bjXg+4LVN5a7SrK3v0JQlGQIYSarlAPrzlD5PZnR3aGGAVXOD4hNRMg1/k3oYTsxSMaLC1nwazJv/ot8U0CBBA==", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 8609 d6-nsec-mixed.test. vB8kzshM+VQkajvy6Kz1xIoHT6eoJrP77YRt7HvLfIxSl1OoOJUAQJ/V2T4oUaG1DhG4NkQnyhClSCcEZc07/Q==", "d6-nsec-mixed.test.\t0\tIN\tNSEC3PARAM\t1 0 0 -", "d6-nsec-mixed.test.\t0\tIN\tRRSIG\tNSEC3PARAM 13 2 0 20261130105325 20261031095325 6211 d6-nsec-mixed.test. j75acTRgM4BPY9HD41D9Qk8TW9YlSOK1SLske2a8fO4gxPcDrJ9d7WejPt9yfJEHbW9Xnc5Yg2KWInSyh/pLgQ==", "PR51T30L7LFLCOB9H97LBLMIIMTFOGTS.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - 44Q60NJRCJ9E52JBVLD3PICURF2SKQ6O A RRSIG", "PR51T30L7LFLCOB9H97LBLMIIMTFOGTS.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. +HIO4ne/SvHcVwHkPMEoxMSzKrD/jSKwBuscpXrOQbsiW9uCyRzk4CsCG+0VOcvDopDEVSSQ7fDY/RrBQDp38A==", "www.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.80", "www.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jZnNWspVCJL1WFgfCjGLUazL7WZpuHWZPs1e1lpsyKRGDefDrsc2FX2lrT7wN1oo54o9nNv5vQrnlEzwPeyd9w==", "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11", "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==", "HUH3KDOTF66N4UTRIINUJNBE2N98NCCT.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM", "HUH3KDOTF66N4UTRIINUJNBE2N98NCCT.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==", "mail.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.81", "mail.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. u082oJBBYuD8T3fMIYYCntQiwBdOlFH0LlOQjVYEkSVS4oEz7D2EtFikmuEf96LKaJ42HkpjHAPoLg27Y0xH/A==", "IF962QTSQO2FJMPBSUQMEEV482OE12VS.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - PR51T30L7LFLCOB9H97LBLMIIMTFOGTS A RRSIG", "IF962QTSQO2FJMPBSUQMEEV482OE12VS.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. LG2i6IkmLmhF96PPGiXLlvyJFHZEJJP3w3sx8uZSBaQ7xRiWh+90FI5gAmexEkCgTcjWfcJHEDiX6RK9pYq8cQ==", "44Q60NJRCJ9E52JBVLD3PICURF2SKQ6O.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - HUH3KDOTF66N4UTRIINUJNBE2N98NCCT A RRSIG", "44Q60NJRCJ9E52JBVLD3PICURF2SKQ6O.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 3n1TPeQmzplC9ApcifPV42kEUcalbaBV0SA237Bvt2ydNx7KZ828M/XXOhMOXbbOGZqx6yNAgEnT8BmACrO2HA==", "d6-nsec-mixed.test.\t300\tIN\tNSEC\tmail.d6-nsec-mixed.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. kWVbvCgE+0ON5aj3bkksNFBiEzynHfNsqNTyK2cI5r0ojJ5guIqJVCnc6FFyXO4vHz0FuEmd7SYW7kjaFQ0COg==", "mail.d6-nsec-mixed.test.\t300\tIN\tNSEC\tns1.d6-nsec-mixed.test. A RRSIG NSEC", "mail.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. cAQLA9J2O8cYuqHCjeRXc0wjCn/0zelEK7wOt9jcZZrvuzn5MOICz3oQiUdgPvkJNn+UBHAZicsAuTXp0DHbbQ==", "www.d6-nsec-mixed.test.\t300\tIN\tNSEC\td6-nsec-mixed.test. A RRSIG NSEC", "www.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. +25GRbe7Dvw7nNtVV43g6pqA2XAH1LgruiGx2cG0qYBf1TOvRqTn0FiCzr9nfeh6EW6pBY9Gv8pUQZkCV1j+IA==", "ns1.d6-nsec-mixed.test.\t300\tIN\tNSEC\twww.d6-nsec-mixed.test. A RRSIG NSEC", "ns1.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. aEcmjzv+PJTRW+IKxh8CQ9RE3gFNC70xhztBv/8o1EVJmj960I7z6r5QMPlD8+F1it7Dk1LwsvLAdNlwxMLaVA==" ],
+  "localKeys" : [ {
+    "location" : "",
+    "file" : "Kd6-nsec-mixed.test.+013+06211.key",
+    "key" : "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t256 3 13 OukR0rvyg0eB9YD/ONNwbsqXiqKQCp6MO66jqtQm3N9il06/5rtaR+tCjX1QiY57PbeMR0FAQRiW9ncQWmDI+g=="
+  }, {
+    "location" : "",
+    "file" : "Kd6-nsec-mixed.test.+013+08609.key",
+    "key" : "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t257 3 13 7Qn8yew8UwGnYhSrLlhbQ3VmZ5ov/yPDOCApxFavCXXrGiJ67nm3hBk0uwRCSdsvdqrm3uDJ7GIgcF1dTSwhFg=="
+  } ],
+  "resolver" : {
+    "address" : "10.53.0.53",
+    "dnskey" : {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t256 3 13 OukR0rvyg0eB9YD/ONNwbsqXiqKQCp6MO66jqtQm3N9il06/5rtaR+tCjX1QiY57PbeMR0FAQRiW9ncQWmDI+g==", "d6-nsec-mixed.test.\t3600\tIN\tDNSKEY\t257 3 13 7Qn8yew8UwGnYhSrLlhbQ3VmZ5ov/yPDOCApxFavCXXrGiJ67nm3hBk0uwRCSdsvdqrm3uDJ7GIgcF1dTSwhFg==" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. bjXg+4LVN5a7SrK3v0JQlGQIYSarlAPrzlD5PZnR3aGGAVXOD4hNRMg1/k3oYTsxSMaLC1nwazJv/ot8U0CBBA==", "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 8609 d6-nsec-mixed.test. vB8kzshM+VQkajvy6Kz1xIoHT6eoJrP77YRt7HvLfIxSl1OoOJUAQJ/V2T4oUaG1DhG4NkQnyhClSCcEZc07/Q==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 435,
+      "ede" : [ ],
+      "error" : null
+    },
+    "answers" : [ {
+      "qname" : "www.d6-nsec-mixed.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "www.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jZnNWspVCJL1WFgfCjGLUazL7WZpuHWZPs1e1lpsyKRGDefDrsc2FX2lrT7wN1oo54o9nNv5vQrnlEzwPeyd9w==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 181,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tNS\tns1.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. YQz4dn/e0dGjlAkCN/9rviAPvxjDYY6TUPk/CwplX+9L/R2h9Kz9WQujhD1g/X7BTPPArtsHqC9rn35pGrAbmA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.d6-nsec-mixed.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 9NhFc7C5hyp4pW0A06afEgWYN67w56YaX/BYDDfsjdXJtEiEHOQy4miq2wcb4osN1/xWQ596hz2zLWH+BVHPBQ==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 309,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tMX\t10 mail.d6-nsec-mixed.test." ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. K2nF6ihPBgIYNc5qBdI8vGYIz1vZZiMejbMlWBSjn8RTC7xPurUogZSMLu2R+Lv8e6YC9aPvLlZuTkJripT91A==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 182,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d6-nsec-mixed.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "d6-nsec-mixed.test.\t3600\tIN\tTXT\t\"D6: NSEC i NSEC3 pomesani\"" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. RWiqCRfYR/l7GtY629CGcFU8+JcWp253fQbX6RUAudWiWIh6HotQ/yjxEG0aYvWgcxb9t9g74asXwDUb5SakLg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 199,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "missing.d6-nsec-mixed.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - HUH3KDOTF66N4UTRIINUJNBE2N98NCCT A RRSIG" ],
+        "sigs" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 3n1TPeQmzplC9ApcifPV42kEUcalbaBV0SA237Bvt2ydNx7KZ828M/XXOhMOXbbOGZqx6yNAgEnT8BmACrO2HA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      }, {
+        "name" : "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - PR51T30L7LFLCOB9H97LBLMIIMTFOGTS A RRSIG" ],
+        "sigs" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. LG2i6IkmLmhF96PPGiXLlvyJFHZEJJP3w3sx8uZSBaQ7xRiWh+90FI5gAmexEkCgTcjWfcJHEDiX6RK9pYq8cQ==" ]
+      }, {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 795,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "dnssecretary-3eb59710.d6-nsec-mixed.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - HUH3KDOTF66N4UTRIINUJNBE2N98NCCT A RRSIG" ],
+        "sigs" : [ "44q60njrcj9e52jbvld3picurf2skq6o.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. 3n1TPeQmzplC9ApcifPV42kEUcalbaBV0SA237Bvt2ydNx7KZ828M/XXOhMOXbbOGZqx6yNAgEnT8BmACrO2HA==" ]
+      }, {
+        "name" : "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - IF962QTSQO2FJMPBSUQMEEV482OE12VS NS SOA MX TXT RRSIG DNSKEY NSEC3PARAM" ],
+        "sigs" : [ "huh3kdotf66n4utriinujnbe2n98ncct.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. jDhRzY6VuHHh9KoGV9ZFhBhNdL6U8qPS2VYlB68IKuMN1knMKypNpU4w5YkLClveyvypG3xK8rw80GIZTkH2mA==" ]
+      }, {
+        "name" : "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.",
+        "type" : "NSEC3",
+        "ttl" : 300,
+        "records" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tNSEC3\t1 0 0 - PR51T30L7LFLCOB9H97LBLMIIMTFOGTS A RRSIG" ],
+        "sigs" : [ "if962qtsqo2fjmpbsuqmeev482oe12vs.d6-nsec-mixed.test.\t300\tIN\tRRSIG\tNSEC3 13 3 300 20261130105325 20261031095325 6211 d6-nsec-mixed.test. LG2i6IkmLmhF96PPGiXLlvyJFHZEJJP3w3sx8uZSBaQ7xRiWh+90FI5gAmexEkCgTcjWfcJHEDiX6RK9pYq8cQ==" ]
+      }, {
+        "name" : "d6-nsec-mixed.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d6-nsec-mixed.test.\t300\tIN\tSOA\tns1.d6-nsec-mixed.test. admin.d6-nsec-mixed.test. 1793444005 3600 900 604800 300" ],
+        "sigs" : [ "d6-nsec-mixed.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 6211 d6-nsec-mixed.test. SSRjJ7sCh9pyKW6iVqMYO2Ew+UEAg+HF1xDW8HxONucBItANI1GYYWkJmZVoxDRjBKXqS+IJFkA6jSUJKLGmeA==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 809,
+      "ede" : [ ],
+      "error" : null
+    } ]
+  },
+  "warnings" : [ ]
+}

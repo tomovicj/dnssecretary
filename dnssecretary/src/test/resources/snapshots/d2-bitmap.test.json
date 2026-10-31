@@ -1,0 +1,621 @@
+{
+  "zone" : "d2-bitmap.test.",
+  "collectedAt" : "2026-10-31T10:58:20.996202823Z",
+  "parent" : "test.",
+  "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
+  "chain" : [ {
+    "zone" : ".",
+    "servers" : [ "10.53.0.2" ],
+    "ds" : {
+      "name" : ".",
+      "type" : "DS",
+      "ttl" : 0,
+      "records" : [ ],
+      "sigs" : [ ]
+    },
+    "dnskey" : {
+      "name" : ".",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+    }
+  }, {
+    "zone" : "test.",
+    "servers" : [ "10.53.0.3" ],
+    "ds" : {
+      "name" : "test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+    },
+    "dnskey" : {
+      "name" : "test.",
+      "type" : "DNSKEY",
+      "ttl" : 3600,
+      "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+    }
+  } ],
+  "parentDs" : {
+    "qname" : "d2-bitmap.test.",
+    "qtype" : "DS",
+    "server" : "10.53.0.3",
+    "transport" : "udp",
+    "rcode" : "NOERROR",
+    "aa" : true,
+    "tc" : false,
+    "ad" : false,
+    "answer" : [ {
+      "name" : "d2-bitmap.test.",
+      "type" : "DS",
+      "ttl" : 3600,
+      "records" : [ "d2-bitmap.test.\t\t3600\tIN\tDS\t33127 13 2 576528CDD7B1FA44559CD4508AB9B783CF1F74E3CD53BE024103E6056B538AD0" ],
+      "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. 2a3d371BO8QBBYjdOIA21aYfHFgEVA9equn9kRRBOVpeaIyAEGYRf0dfeuZHkRC+yBxTXotQwLp2VkTbMbsPxw==" ]
+    } ],
+    "authority" : [ ],
+    "additional" : [ ],
+    "ednsPayload" : 1232,
+    "size" : 191,
+    "ede" : [ ],
+    "error" : null
+  },
+  "delegation" : [ "ns1.d2-bitmap.test." ],
+  "nameservers" : [ {
+    "host" : "ns1.d2-bitmap.test.",
+    "address" : "10.53.0.11",
+    "soa" : {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "SOA",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 449,
+      "ede" : [ ],
+      "error" : null
+    },
+    "dnskey" : {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t256 3 13 n2B8pfk/wWGblywNJVFrK5A7gGWNb7owHXy3UyzRLWZF4WIkvsRhmnh8DbZzHmvAmbxkG0FyA82bZsnj4ah8aw==", "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t257 3 13 1nHo7KmhoectPaDIwvX8crIhfNSkiwTJlMATnq67G+/MDmjSB42+2HzLzsUQc5mF4fNXXEWQpWBI5KRd+nGc6A==" ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 33127 d2-bitmap.test. iDopPegmXKygBrm+ey/eBlitgchHReMf5t9lafDLvEjFjEnT/A4jIynSt9UYJ/wC+resh48QKtDMeRLbllXgXA==", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. mYGBpPve/9muiIuURVDXOcBbJABjHqVzHlz3TXxZy5p5ljtSsf280iuRR6CLIMwOf4rg0dDKCFk9OAyza+c7xA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 423,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cds" : {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "CDS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      }, {
+        "name" : "d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 351,
+      "ede" : [ ],
+      "error" : null
+    },
+    "cdnskey" : {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "CDNSKEY",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      }, {
+        "name" : "d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 351,
+      "ede" : [ ],
+      "error" : null
+    },
+    "nsec3param" : {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "NSEC3PARAM",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      }, {
+        "name" : "d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 351,
+      "ede" : [ ],
+      "error" : null
+    },
+    "samples" : [ {
+      "qname" : "www.d2-bitmap.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "www.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. YWPqvBQ74c/zkwAuKfPmbNPIN8ILG7MtvlMhfcTQFVxP4pTvfL1hyY0Jzoch0/4AyZDaAVoDWRjP4jj7OoEekg==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 427,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 297,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tMX\t10 mail.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. VVC3DZ9p5MtmagBEbXiuBFHQqq9T1dQwbopkFhmImt1teEONZC5tlREsxzZVXDQ9wxPBVcxIecCwQAJniLuAmA==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "mail.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "mail.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.81" ],
+        "sigs" : [ "mail.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. f7LIiK2BH+xNnxIfZkjf3eiusJku5cqfiQSc8mYAHFbBF2N8lg6HzLR+kKVFWM0/2dlpAKYKtTa0XDiADKIPRQ==" ]
+      }, {
+        "name" : "ns1.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 554,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tTXT\t\"D2: pogresna lista tipova u NSEC\"" ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 0JkRendLVgfK+tJrkRBkew0x5e4j/n+v2t5fm4JV8rhmcay0tLKYwJPhaMtLBF2of3hmUfcNgXx95f/LbaKbCw==" ]
+      } ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==" ]
+      } ],
+      "additional" : [ {
+        "name" : "ns1.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 452,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "www.d2-bitmap.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      }, {
+        "name" : "www.d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "www.d2-bitmap.test.\t300\tIN\tNSEC\td2-bitmap.test. A TXT RRSIG NSEC" ],
+        "sigs" : [ "www.d2-bitmap.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 60938 d2-bitmap.test. iyJLtfduvAwjPcQ8Us6jg4j/tr5rYuDVcZ2s4TnA7qX+uuSIdNcLS3eS4GmUCpUrteOTM8CBVdUOv7+ihmLf7A==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 349,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "denials" : [ {
+      "qname" : "dnssecretary-9a9ebae4.d2-bitmap.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==" ]
+      }, {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 373,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "SRV",
+      "server" : "10.53.0.11",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : true,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      }, {
+        "name" : "d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 351,
+      "ede" : [ ],
+      "error" : null
+    } ],
+    "transport" : {
+      "udp" : true,
+      "tcp" : true,
+      "tcpError" : null,
+      "ednsPayload" : 1232
+    }
+  } ],
+  "fullZone" : [ "d2-bitmap.test.\t\t3600\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==", "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test.", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==", "d2-bitmap.test.\t\t3600\tIN\tMX\t10 mail.d2-bitmap.test.", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. VVC3DZ9p5MtmagBEbXiuBFHQqq9T1dQwbopkFhmImt1teEONZC5tlREsxzZVXDQ9wxPBVcxIecCwQAJniLuAmA==", "d2-bitmap.test.\t\t3600\tIN\tTXT\t\"D2: pogresna lista tipova u NSEC\"", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 0JkRendLVgfK+tJrkRBkew0x5e4j/n+v2t5fm4JV8rhmcay0tLKYwJPhaMtLBF2of3hmUfcNgXx95f/LbaKbCw==", "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==", "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t256 3 13 n2B8pfk/wWGblywNJVFrK5A7gGWNb7owHXy3UyzRLWZF4WIkvsRhmnh8DbZzHmvAmbxkG0FyA82bZsnj4ah8aw==", "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t257 3 13 1nHo7KmhoectPaDIwvX8crIhfNSkiwTJlMATnq67G+/MDmjSB42+2HzLzsUQc5mF4fNXXEWQpWBI5KRd+nGc6A==", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 33127 d2-bitmap.test. iDopPegmXKygBrm+ey/eBlitgchHReMf5t9lafDLvEjFjEnT/A4jIynSt9UYJ/wC+resh48QKtDMeRLbllXgXA==", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. mYGBpPve/9muiIuURVDXOcBbJABjHqVzHlz3TXxZy5p5ljtSsf280iuRR6CLIMwOf4rg0dDKCFk9OAyza+c7xA==", "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11", "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==", "ns1.d2-bitmap.test.\t300\tIN\tNSEC\twww.d2-bitmap.test. A RRSIG NSEC", "ns1.d2-bitmap.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 60938 d2-bitmap.test. oySpbKgDSXGa4TV7QN/NDMEUbZrntZc/SOizQOxOdbTLXFPT8Oc3gi/R3Dh9W2+E1Y63BFb8eZAI8LSxtbLUhw==", "mail.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.81", "mail.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. f7LIiK2BH+xNnxIfZkjf3eiusJku5cqfiQSc8mYAHFbBF2N8lg6HzLR+kKVFWM0/2dlpAKYKtTa0XDiADKIPRQ==", "mail.d2-bitmap.test.\t300\tIN\tNSEC\tns1.d2-bitmap.test. A RRSIG NSEC", "mail.d2-bitmap.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 60938 d2-bitmap.test. IDpO4XJT+sA4F4Lm2B2WOnu9E9dUDJIRXWWu82F8vpdtYTgaGyfcZjwrLKC9/oEi4aW8EZiRt3qR56gqkLqh3w==", "www.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.80", "www.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. YWPqvBQ74c/zkwAuKfPmbNPIN8ILG7MtvlMhfcTQFVxP4pTvfL1hyY0Jzoch0/4AyZDaAVoDWRjP4jj7OoEekg==", "www.d2-bitmap.test.\t300\tIN\tNSEC\td2-bitmap.test. A TXT RRSIG NSEC", "www.d2-bitmap.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 60938 d2-bitmap.test. iyJLtfduvAwjPcQ8Us6jg4j/tr5rYuDVcZ2s4TnA7qX+uuSIdNcLS3eS4GmUCpUrteOTM8CBVdUOv7+ihmLf7A==" ],
+  "localKeys" : [ {
+    "location" : "",
+    "file" : "Kd2-bitmap.test.+013+33127.key",
+    "key" : "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t257 3 13 1nHo7KmhoectPaDIwvX8crIhfNSkiwTJlMATnq67G+/MDmjSB42+2HzLzsUQc5mF4fNXXEWQpWBI5KRd+nGc6A=="
+  }, {
+    "location" : "",
+    "file" : "Kd2-bitmap.test.+013+60938.key",
+    "key" : "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t256 3 13 n2B8pfk/wWGblywNJVFrK5A7gGWNb7owHXy3UyzRLWZF4WIkvsRhmnh8DbZzHmvAmbxkG0FyA82bZsnj4ah8aw=="
+  } ],
+  "resolver" : {
+    "address" : "10.53.0.53",
+    "dnskey" : {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "DNSKEY",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "DNSKEY",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t257 3 13 1nHo7KmhoectPaDIwvX8crIhfNSkiwTJlMATnq67G+/MDmjSB42+2HzLzsUQc5mF4fNXXEWQpWBI5KRd+nGc6A==", "d2-bitmap.test.\t\t3600\tIN\tDNSKEY\t256 3 13 n2B8pfk/wWGblywNJVFrK5A7gGWNb7owHXy3UyzRLWZF4WIkvsRhmnh8DbZzHmvAmbxkG0FyA82bZsnj4ah8aw==" ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 33127 d2-bitmap.test. iDopPegmXKygBrm+ey/eBlitgchHReMf5t9lafDLvEjFjEnT/A4jIynSt9UYJ/wC+resh48QKtDMeRLbllXgXA==", "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. mYGBpPve/9muiIuURVDXOcBbJABjHqVzHlz3TXxZy5p5ljtSsf280iuRR6CLIMwOf4rg0dDKCFk9OAyza+c7xA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 423,
+      "ede" : [ ],
+      "error" : null
+    },
+    "answers" : [ {
+      "qname" : "www.d2-bitmap.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "www.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "www.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.80" ],
+        "sigs" : [ "www.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. YWPqvBQ74c/zkwAuKfPmbNPIN8ILG7MtvlMhfcTQFVxP4pTvfL1hyY0Jzoch0/4AyZDaAVoDWRjP4jj7OoEekg==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 173,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "NS",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NS",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tNS\tns1.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. Yd66C8zcOba8rz3SjNg7K3aOtcwIj940SIaKlPXG9CnWV2eabuuvjZs0zjlzszUhF5QyrMDXMaODV4luSkTsFw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ {
+        "name" : "ns1.d2-bitmap.test.",
+        "type" : "A",
+        "ttl" : 3600,
+        "records" : [ "ns1.d2-bitmap.test.\t3600\tIN\tA\t10.53.0.11" ],
+        "sigs" : [ "ns1.d2-bitmap.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 9EXbjy8nhimzEnQqS8e+f+ZMFKi/FDl14d6RlLzkCrEsyb38ti6Aa94847dU5RrANlAUE8t6tPf3E++abtmCJw==" ]
+      } ],
+      "ednsPayload" : 1232,
+      "size" : 297,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "MX",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "MX",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tMX\t10 mail.d2-bitmap.test." ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. VVC3DZ9p5MtmagBEbXiuBFHQqq9T1dQwbopkFhmImt1teEONZC5tlREsxzZVXDQ9wxPBVcxIecCwQAJniLuAmA==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 174,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "d2-bitmap.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NOERROR",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "TXT",
+        "ttl" : 3600,
+        "records" : [ "d2-bitmap.test.\t\t3600\tIN\tTXT\t\"D2: pogresna lista tipova u NSEC\"" ],
+        "sigs" : [ "d2-bitmap.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. 0JkRendLVgfK+tJrkRBkew0x5e4j/n+v2t5fm4JV8rhmcay0tLKYwJPhaMtLBF2of3hmUfcNgXx95f/LbaKbCw==" ]
+      } ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 198,
+      "ede" : [ ],
+      "error" : null
+    }, {
+      "qname" : "www.d2-bitmap.test.",
+      "qtype" : "TXT",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "SERVFAIL",
+      "aa" : false,
+      "tc" : false,
+      "ad" : false,
+      "answer" : [ ],
+      "authority" : [ ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 137,
+      "ede" : [ {
+        "code" : 6,
+        "text" : "validation failure <www.d2-bitmap.test. TXT IN>: nodata proof failed from 10.53.0.11"
+      } ],
+      "error" : null
+    }, {
+      "qname" : "dnssecretary-9a9ebae4.d2-bitmap.test.",
+      "qtype" : "A",
+      "server" : "10.53.0.53",
+      "transport" : "udp",
+      "rcode" : "NXDOMAIN",
+      "aa" : false,
+      "tc" : false,
+      "ad" : true,
+      "answer" : [ ],
+      "authority" : [ {
+        "name" : "d2-bitmap.test.",
+        "type" : "NSEC",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tNSEC\tmail.d2-bitmap.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 60938 d2-bitmap.test. h5LkbREj9S/mEYObLqYWWzkO0x1Z2LFkZgXN1AZdme66or7eGff+IAJ/N0R2zb6oeipMZNXnn1YPoSgQbcCswg==" ]
+      }, {
+        "name" : "d2-bitmap.test.",
+        "type" : "SOA",
+        "ttl" : 300,
+        "records" : [ "d2-bitmap.test.\t\t300\tIN\tSOA\tns1.d2-bitmap.test. admin.d2-bitmap.test. 1793444004 3600 900 604800 300" ],
+        "sigs" : [ "d2-bitmap.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 60938 d2-bitmap.test. XE6TYo2SryfXcm9EwSyytaj/pN8sZ8HlppyXKajF5+X+cYk3zr87IbGcHR5w4iRpijskybEdCypeHp/gvHT7JQ==" ]
+      } ],
+      "additional" : [ ],
+      "ednsPayload" : 1232,
+      "size" : 373,
+      "ede" : [ ],
+      "error" : null
+    } ]
+  },
+  "warnings" : [ ]
+}
