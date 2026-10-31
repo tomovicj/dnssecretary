@@ -5,6 +5,13 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 import rs.port53.dnssecretary.catalog.ErrorId;
+import rs.port53.dnssecretary.check.algorithms.AlgorithmPolicyCheck;
+import rs.port53.dnssecretary.check.algorithms.KeyStrengthCheck;
+import rs.port53.dnssecretary.check.delegation.DelegationCheck;
+import rs.port53.dnssecretary.check.signatures.SignatureCoverageCheck;
+import rs.port53.dnssecretary.check.signatures.SignatureCryptoCheck;
+import rs.port53.dnssecretary.check.signatures.SignatureValidityCheck;
+import rs.port53.dnssecretary.check.signatures.TtlCheck;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 
@@ -29,8 +36,15 @@ public final class CheckRunner {
     public static List<Check> defaultChecks() {
         return List.of(
                 // A, C – signatures, TTL, algorithms, key strength (role 2)
+                new SignatureValidityCheck(),   // A1, A2, A6
+                new SignatureCoverageCheck(),   // A3
+                new SignatureCryptoCheck(),     // A4, A5
+                new TtlCheck(),                 // A7
+                new AlgorithmPolicyCheck(),     // C1, C2
+                new KeyStrengthCheck(),         // C3
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
+                new DelegationCheck()           // B1–B4, B6, B8
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
         );

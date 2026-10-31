@@ -10,6 +10,7 @@ import rs.port53.dnssecretary.catalog.CatalogEntry;
 import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.check.CheckContext;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
+import rs.port53.dnssecretary.diagnose.rules.KeyDirectoryRule;
 import rs.port53.dnssecretary.model.Diagnosis;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
@@ -32,12 +33,14 @@ public final class Diagnoser {
     }
 
     /** All rules of the tool. Add yours here. */
-    public static List<DiagnosisRule> defaultRules() {
-        return List.of();
+    public static List<DiagnosisRule> defaultRules(Catalog catalog) {
+        return List.of(
+                new KeyDirectoryRule(catalog)   // B1 → E2
+        );
     }
 
     public static Diagnoser withDefaultRules(Catalog catalog) {
-        return new Diagnoser(catalog, defaultRules());
+        return new Diagnoser(catalog, defaultRules(catalog));
     }
 
     public List<Diagnosis> diagnose(List<Finding> findings, ZoneSnapshot snapshot, CheckContext ctx) {
