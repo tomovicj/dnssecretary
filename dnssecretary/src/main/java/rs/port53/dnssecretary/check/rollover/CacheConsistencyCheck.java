@@ -31,10 +31,10 @@ public final class CacheConsistencyCheck implements Check {
     public List<Finding> run(ZoneSnapshot s, CheckContext ctx) {
         List<Finding> out = new ArrayList<>();
 
-        // 1. Z: Ključevi iz trenutne zone
+        // 1. The zone's current keys
         SignedRRset zoneKeysSet = s.dnskey();
         if (zoneKeysSet.isEmpty()) {
-            return out; // Zona nema ključeve
+            return out; // the zone has no keys
         }
 
         List<DNSKEYRecord> zoneKeys = zoneKeysSet.records(DNSKEYRecord.class);
@@ -42,23 +42,22 @@ public final class CacheConsistencyCheck implements Check {
                 .map(DNSKEYRecord::getFootprint)
                 .collect(Collectors.toSet());
 
-        // 2. R: Pristupamo resolveru (pošto je Optional, moramo da proverimo da li postoji)
+        // 2. The resolver view (optional)
         Optional<ResolverView> resolverOpt = s.resolver();
         if (resolverOpt.isEmpty()) {
-            return out; // Nema resolvera, nema šta da proveravamo
+            return out; // no resolver, nothing to compare
         }
         ResolverView resolver = resolverOpt.get();
 
-        // 3. Predmemorija (keš) resolvera
+        // 3. The DNSKEY set in the resolver's cache
         Response cachedKeysResponse = resolver.dnskey();
-        SignedRRset cachedKeysSet = cachedKeysResponse.rrset(); // Sada znamo da rrset() vraća SignedRRset
+        SignedRRset cachedKeysSet = cachedKeysResponse.rrset();
 
         Set<Integer> cachedKeyTags = cachedKeysSet.records(DNSKEYRecord.class).stream()
                 .map(DNSKEYRecord::getFootprint)
                 .collect(Collectors.toSet());
 
-        // ---------- E1 LOGIKA ----------
-        // E1: resolver vraća SERVFAIL; key tag novog ZSK-a nije u kešu resolvera[cite: 1]
+        // E1: the resolver returns SERVFAIL and a key of the zone is not in its cache
         boolean hasServfail = resolver.answers().stream()
                 .anyMatch(r -> r.rcode() == Rcode.SERVFAIL);
 
@@ -73,11 +72,10 @@ public final class CacheConsistencyCheck implements Check {
             }
         }
 
-        // ---------- E3 LOGIKA ----------
-        // E3: RRSIG u odgovoru resolvera ima key tag koga nema u snapshot.dnskey()[cite: 1]
+        // E3: an RRSIG in the resolver's answers uses a key tag the zone no longer has
         for (Response resp : resolver.answers()) {
-            for (SignedRRset rrset : resp.answer()) { // resp.answer() vraća List<SignedRRset>
-                for (RRSIGRecord sig : rrset.sigs()) { // rrset.sigs() vraća List<RRSIGRecord>
+            for (SignedRRset rrset : resp.answer()) {
+                for (RRSIGRecord sig : rrset.sigs()) {
                     if (!zoneKeyTags.contains(sig.getFootprint())) {
                         out.add(new Finding(
                                 ErrorId.E3, Severity.CRITICAL, sig.getName(), sig.getTypeCovered(),

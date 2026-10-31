@@ -18,8 +18,7 @@ import rs.port53.dnssecretary.dns.Dnssec;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
-// Checks B5, B7: DS policy and signature validation over DNSKEY set.
-
+/** B5, B7: a DNSKEY set not signed by the KSK the DS points to; a DS with SHA-1. */
 public final class DsPolicyCheck implements Check {
 
     @Override

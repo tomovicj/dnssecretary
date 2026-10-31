@@ -19,6 +19,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
+/** D4, D5: NSEC3 parameters against RFC 9276, and NSEC3 records that don't match NSEC3PARAM. */
 public class Nsec3PolicyCheck implements Check {
 
     @Override
@@ -47,11 +48,11 @@ public class Nsec3PolicyCheck implements Check {
         if (param.getIterations() > 0 || hasSalt) {
             findings.add(new Finding(
                 ErrorId.D4, Severity.RISK, param.getName(), Type.NSEC3PARAM,
-                "NSEC3 parametri krše RFC 9276 (iterations=" + param.getIterations() + 
-                ", salt=" + (hasSalt ? "prisutan" : "-") + ").",
+                "NSEC3 parameters break RFC 9276 (iterations=" + param.getIterations() +
+                ", salt=" + (hasSalt ? "present" : "-") + ").",
                 Map.of(
                     "iterations", String.valueOf(param.getIterations()),
-                    "salt", hasSalt ? "prisutan" : "-"
+                    "salt", hasSalt ? "present" : "-"
                 )
             ));
         }
@@ -66,7 +67,7 @@ public class Nsec3PolicyCheck implements Check {
                         
                         findings.add(new Finding(
                             ErrorId.D5, Severity.CRITICAL, nsec3.getName(), Type.NSEC3,
-                            "NSEC3 parametri (iteracije/salt) ne odgovaraju NSEC3PARAM zapisu.",
+                            "NSEC3 parameters (iterations/salt) don't match the NSEC3PARAM record.",
                             Map.of(
                                 "nsec3_iter", String.valueOf(nsec3.getIterations()),
                                 "param_iter", String.valueOf(param.getIterations())

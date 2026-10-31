@@ -27,7 +27,7 @@ public final class NameserverConsistencyCheck implements Check {
     public List<Finding> run(ZoneSnapshot s, CheckContext ctx) {
         List<Finding> out = new ArrayList<>();
 
-        // Nađi najveći serial (to je verovatno primarni/ispravan server)
+        // The highest serial: most likely the primary (correct) server
         long maxSerial = -1;
         for (NameserverView ns : s.nameservers()) {
             List<SOARecord> soa = ns.soa().rrset().records(SOARecord.class);
@@ -36,9 +36,9 @@ public final class NameserverConsistencyCheck implements Check {
             }
         }
 
-        if (maxSerial == -1) return out; // Nema SOA, ne možemo da proverimo
+        if (maxSerial == -1) return out; // no SOA, nothing to compare
 
-        // Proveri da li neki server ima manji serial
+        // Any server with a lower serial is stale
         for (NameserverView ns : s.nameservers()) {
             List<SOARecord> soa = ns.soa().rrset().records(SOARecord.class);
             if (!soa.isEmpty()) {

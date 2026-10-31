@@ -36,11 +36,11 @@ public final class CdsCheck implements Check {
 
         List<DNSKEYRecord> zoneKeys = zoneKeysSet.records(DNSKEYRecord.class);
 
-        // Proveravamo svaki name server posebno
+        // Every name server separately
         for (NameserverView ns : s.nameservers()) {
             Response cdsResponse = ns.cds();
 
-            // cdsResponse nikada nije null (Response je record u NameserverView), ali može biti bez odgovora
+            // never null, but there may be no answer
             if (!cdsResponse.ok()) {
                 continue;
             }
@@ -53,7 +53,7 @@ public final class CdsCheck implements Check {
             List<CDSRecord> cdsRecords = cdsRrset.records(CDSRecord.class);
 
             for (CDSRecord cds : cdsRecords) {
-                // CDSRecord nasleđuje DSRecord, pa Dnssec.dsMatches radi bez problema[cite: 1]
+                // CDSRecord extends DSRecord, so Dnssec.dsMatches works as is
                 boolean matches = zoneKeys.stream().anyMatch(k -> Dnssec.dsMatches(cds, k));
                 if (!matches) {
                     out.add(new Finding(

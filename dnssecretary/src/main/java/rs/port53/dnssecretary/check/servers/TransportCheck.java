@@ -28,7 +28,7 @@ public final class TransportCheck implements Check {
         List<Finding> out = new ArrayList<>();
 
         for (NameserverView ns : s.nameservers()) {
-            // 1. Provera da li TCP uopšte radi
+            // 1. Does TCP work at all?
             if (ns.transport() != null && !ns.transport().tcp()) {
                 out.add(new Finding(
                         ErrorId.F2,
@@ -40,9 +40,9 @@ public final class TransportCheck implements Check {
                 ));
             }
 
-            // 2. Provera da li je veliki odgovor (big TXT) pukao ili bio skraćen (TC flag)
+            // 2. A large answer (big TXT) was truncated and the TCP retry failed.
+            // A truncated answer that then worked over TCP is fine (tc() is set for it too).
             for (Response r : ns.samples()) {
-                // Pretpostavka: tražimo probe koji ima grešku ili je truncated
                 if (r.error() != null && r.error().contains("TCP")) {
                     out.add(new Finding(
                             ErrorId.F2,
@@ -51,15 +51,6 @@ public final class TransportCheck implements Check {
                             Type.TXT,
                             "Large response failed: " + r.error(),
                             Map.of("nameserver", ns.address().getHostAddress(), "error", r.error())
-                    ));
-                } else if (r.tc()) {
-                    out.add(new Finding(
-                            ErrorId.F2,
-                            Severity.CRITICAL,
-                            s.zone(),
-                            Type.TXT,
-                            "Response was truncated (TC=1)",
-                            Map.of("nameserver", ns.address().getHostAddress(), "issue", "Truncated")
                     ));
                 }
             }

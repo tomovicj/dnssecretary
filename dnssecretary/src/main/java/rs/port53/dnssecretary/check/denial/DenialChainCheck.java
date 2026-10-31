@@ -22,6 +22,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
+/** D1, D2, D3, D6: the NSEC chain, NSEC type bitmaps, signed denial proofs, NSEC and NSEC3 mixed. */
 public class DenialChainCheck implements Check {
 
     @Override
@@ -33,21 +34,20 @@ public class DenialChainCheck implements Check {
     public List<Finding> run(ZoneSnapshot snapshot, CheckContext ctx) {
         List<Finding> findings = new ArrayList<>();
 
-        // --- D6: NSEC i NSEC3 pomešani u istoj zoni ---
+        // D6: NSEC and NSEC3 mixed in one zone
         boolean hasNsec = snapshot.zoneRRsets().stream().anyMatch(sr -> sr.type() == Type.NSEC);
         boolean hasNsec3 = snapshot.zoneRRsets().stream().anyMatch(sr -> sr.type() == Type.NSEC3);
 
         if (hasNsec && hasNsec3) {
-            Name zoneName = snapshot.zoneRRsets().isEmpty() ? Name.root : snapshot.zoneRRsets().get(0).name();
             findings.add(new Finding(
-                    ErrorId.D6, Severity.RISK, zoneName, Type.NSEC,
-                    "Zona sadrži i NSEC i NSEC3 zapise (promešano).",
+                    ErrorId.D6, Severity.RISK, snapshot.zone(), Type.NSEC,
+                    "The zone has both NSEC and NSEC3 records.",
                     Map.of()
             ));
             return findings;
         }
 
-        // --- D3: Negativan odgovor bez NSEC/NSEC3 ili bez potpisa ---
+        // D3: a negative answer without an NSEC/NSEC3 proof, or with an unsigned one
         for (NameserverView ns : snapshot.nameservers()) {
             for (Response denial : ns.denials()) {
                 List<SignedRRset> nsecProofs = denial.authority(Type.NSEC);
@@ -58,9 +58,9 @@ public class DenialChainCheck implements Check {
 
                 if (!hasNsecProof && !hasNsec3Proof) {
                     findings.add(new Finding(
-                            ErrorId.D3, Severity.CRITICAL, Name.root, Type.NSEC,
-                            "Negativan odgovor sa servera " + ns.address() + " nema NSEC/NSEC3 dokaz.",
-                            Map.of("nameserver", ns.address().toString())
+                            ErrorId.D3, Severity.CRITICAL, denial.qname(), denial.qtype(),
+                            "Negative answer from " + ns.address().getHostAddress() + " has no NSEC/NSEC3 proof.",
+                            Map.of("nameserver", ns.address().getHostAddress())
                     ));
                     continue;
                 }
@@ -79,9 +79,9 @@ public class DenialChainCheck implements Check {
 
                 if (missingSig) {
                     findings.add(new Finding(
-                            ErrorId.D3, Severity.CRITICAL, Name.root, Type.NSEC,
-                            "Negativan odgovor sa servera " + ns.address() + " ima NSEC/NSEC3 dokaz, ali bez potpisa.",
-                            Map.of("nameserver", ns.address().toString())
+                            ErrorId.D3, Severity.CRITICAL, denial.qname(), denial.qtype(),
+                            "Negative answer from " + ns.address().getHostAddress() + " has an unsigned NSEC/NSEC3 proof.",
+                            Map.of("nameserver", ns.address().getHostAddress())
                     ));
                 }
             }
@@ -91,27 +91,27 @@ public class DenialChainCheck implements Check {
             return findings;
         }
 
-        // Skup svih imena koja imaju NSEC zapis (za proveru pokidanog lanca)
+        // All owners of NSEC records (to find a broken chain)
         Set<Name> nsecOwners = snapshot.zoneRRsets().stream()
                 .filter(sr -> sr.type() == Type.NSEC)
                 .map(SignedRRset::name)
                 .collect(Collectors.toSet());
 
-        // --- D1 i D2: Provera NSEC lanaca i bitmapa ---
+        // D1 and D2: the NSEC chain and type bitmaps
         for (SignedRRset sr : snapshot.zoneRRsets()) {
             if (sr.type() == Type.NSEC) {
                 for (NSECRecord nsec : sr.records(NSECRecord.class)) {
 
-                    // D1: Pokidan lanac (next ne pokazuje na sledeći NSEC zapis)
+                    // D1: broken chain (next points to a name without an NSEC)
                     if (!nsecOwners.contains(nsec.getNext())) {
                         findings.add(new Finding(
                                 ErrorId.D1, Severity.CRITICAL, nsec.getName(), Type.NSEC,
-                                "NSEC pokazuje na ime koje nema NSEC zapis (pokidan lanac): " + nsec.getNext(),
+                                "NSEC points to a name without an NSEC record (broken chain): " + nsec.getNext(),
                                 Map.of("next", nsec.getNext().toString())
                         ));
                     }
 
-                    // D2: Pogrešna lista tipova
+                    // D2: wrong type list
                     Set<Integer> actualTypes = new HashSet<>();
                     for (SignedRRset other : snapshot.zoneRRsets()) {
                         if (other.name().equals(nsec.getName())) {
@@ -127,7 +127,7 @@ public class DenialChainCheck implements Check {
                     if (!bitmap.equals(actualTypes)) {
                         findings.add(new Finding(
                                 ErrorId.D2, Severity.CRITICAL, nsec.getName(), Type.NSEC,
-                                "NSEC bitmapa ne odgovara stvarnim zapisima.",
+                                "NSEC type bitmap does not match the records at this name.",
                                 Map.of("expected", actualTypes.toString(), "actual", bitmap.toString())
                         ));
                     }
