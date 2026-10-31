@@ -54,15 +54,32 @@ public record AppConfig(Dns dns, Thresholds thresholds, Collect collect, Fix fix
                           List<String> samples, String nodataType) {}
 
     /**
-     * Used by fix.
+     * Used by fix. A fix is a shell script that runs with {@code labDir} as its working
+     * directory; paths under it are written relative, so the same script works in a sandbox copy.
      *
+     * @param labDir    the lab's root (the script's working directory)
      * @param sourceDir unsigned sources, &lt;zone&gt;.zone; read only
      * @param keyDir    BIND keys; dnssec-signzone -S uses the active ones (not the subdirectories)
-     * @param workDir   signing, backups and the reload list for scripts/dnssecretary.sh
+     * @param workDir   signing output of the scripts, and the reload list for scripts/dnssecretary.sh
      * @param deliver   where the signed zone goes: zone → directory, "default" for the rest.
      *                  The directory's name is the compose service to restart (auth1, auth3).
+     * @param servers   name server address → its server (F1, F2)
+     * @param helpers   sourced before the script; defines reload and flush (scripts/fixenv/)
      */
-    public record Fix(String sourceDir, String keyDir, String workDir, Map<String, String> deliver, Parent parent) {
+    public record Fix(String labDir, String sourceDir, String keyDir, String workDir, Map<String, String> deliver,
+                      Parent parent, Map<String, Server> servers, String helpers) {
+
+        public Fix {
+            labDir = labDir == null ? "/" : labDir;
+            deliver = deliver == null ? Map.of() : Map.copyOf(deliver);
+            servers = servers == null ? Map.of() : Map.copyOf(servers);
+        }
+
+        /**
+         * @param dir      the server's directory (zone files, config); its name is the compose service
+         * @param software nsd | unbound
+         */
+        public record Server(String dir, String software) {}
 
         /**
          * @param mode          lab = write the DS to dsDir and run resignCommand; instructions = text for the registrar

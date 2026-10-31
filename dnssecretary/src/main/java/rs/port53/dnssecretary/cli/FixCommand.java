@@ -3,6 +3,7 @@ package rs.port53.dnssecretary.cli;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.time.Clock;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -19,23 +20,24 @@ import rs.port53.dnssecretary.collect.LocalKey;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.config.AppConfig;
 import rs.port53.dnssecretary.diagnose.Analysis;
-import rs.port53.dnssecretary.fix.BindZoneSigner;
-import rs.port53.dnssecretary.fix.FixAction;
-import rs.port53.dnssecretary.fix.FixException;
-import rs.port53.dnssecretary.fix.FixExecutor;
 import rs.port53.dnssecretary.fix.FixPlan;
 import rs.port53.dnssecretary.fix.FixPlanner;
+import rs.port53.dnssecretary.fix.ScriptGenerator;
+import rs.port53.dnssecretary.fix.ScriptRunner;
 import rs.port53.dnssecretary.model.Diagnosis;
 import rs.port53.dnssecretary.report.Messages;
 import rs.port53.dnssecretary.report.Report;
 
-/** fix: collect → check → diagnose → plan → (--apply) sign, offline verify, deliver (docs/java-proposal.md 3.7). */
+/** fix: collect → check → diagnose → plan → script; --apply runs the script (docs/java-proposal.md 3.7). */
 @Command(name = "fix", mixinStandardHelpOptions = true,
-        description = "Fix a zone. By default only prints the plan (dry run).",
+        description = "Fix a zone. By default only prints the plan and the fix script (dry run).",
         exitCodeListHeading = "%nExit codes:%n",
         exitCodeList = {"0:nothing to fix, or fixed", "1:fixed, manual steps remain (or dry run: only risks)",
-                "2:blocked by the offline check (or dry run: critical errors)", "3:tool error"})
+                "2:the fix script failed (or dry run: critical errors)", "3:tool error"})
 final class FixCommand implements Callable<Integer> {
+
+    /** The longest a fix script may run. */
+    private static final Duration TIMEOUT = Duration.ofMinutes(2);
 
     @ParentCommand
     Main main;
@@ -46,11 +48,11 @@ final class FixCommand implements Callable<Integer> {
     @Parameters(paramLabel = "<zone>")
     String zone;
 
-    @Option(names = "--apply", description = "Really apply the plan (sign, deliver, write the reload list).")
+    @Option(names = "--apply", description = "Run the fix script (sign, deliver, write the reload list).")
     boolean apply;
 
-    @Option(names = "--lab-copy-secondary", description = "F1 in the lab: copy the correct zone to auth2.")
-    boolean labCopySecondary;
+    @Option(names = "--script", description = "Print only the fix script, nothing else.")
+    boolean scriptOnly;
 
     @Override
     public Integer call() throws Exception {
@@ -61,16 +63,11 @@ final class FixCommand implements Callable<Integer> {
             err.println(Messages.get("cli.noFixConfig"));
             return Main.EXIT_TOOL_ERROR;
         }
-        if (labCopySecondary) {
-            err.println(Messages.get("cli.notImplemented", "--lab-copy-secondary"));
-            return Main.EXIT_TOOL_ERROR;
-        }
 
         Name name = Main.zoneName(zone);
         ZoneSnapshot snapshot = main.collect(name, null);
         CheckContext ctx = new CheckContext(Clock.systemUTC(), main.config().thresholds());
         Report before = Analysis.run(snapshot, ctx, main.catalog());
-        summary(before, out);
         if (!before.failures().isEmpty()) {
             before.failures().forEach(f -> err.println("  - " + f));
             return Main.EXIT_TOOL_ERROR;
@@ -79,34 +76,50 @@ final class FixCommand implements Callable<Integer> {
         List<String> warnings = new ArrayList<>();
         List<LocalKey> keys = fc.keyDir() == null ? List.of() : KeyDirectory.load(Path.of(fc.keyDir()), name, warnings);
         warnings.forEach(w -> err.println("  ! " + w));
-        FixPlan plan = new FixPlanner(main.catalog()).plan(snapshot, before.diagnoses(), keys);
+        FixPlan plan = new FixPlanner(main.catalog(), fc).plan(snapshot, before.diagnoses(), keys);
+        String script = new ScriptGenerator(fc, main.catalog()).generate(plan);
+
+        if (scriptOnly) {
+            out.print(script);
+            out.flush();
+            return 0;
+        }
+        summary(before, out);
         if (plan.isEmpty()) {
             out.println(Messages.get("fix.nothing"));
             return 0;
         }
-
         out.println(Messages.get("fix.plan"));
         for (int i = 0; i < plan.actions().size(); i++) {
             out.printf("  %d. %s%n", i + 1, plan.actions().get(i).describe());
         }
         out.println();
-        boolean automatic = plan.actions().stream().anyMatch(a -> !(a instanceof FixAction.Manual));
-        if (!apply || !automatic) {
-            out.println(Messages.get(automatic ? "fix.dryRun" : "fix.manualOnly"));
+        if (!plan.automatic()) {
+            out.println(Messages.get("fix.manualOnly"));
+            return before.status().exitCode();
+        }
+        if (!apply) {
+            out.println(Messages.get("fix.script"));
+            script.lines().forEach(l -> out.println("  " + l));
+            out.println();
+            out.println(Messages.get("fix.dryRun"));
             return before.status().exitCode();
         }
 
-        FixExecutor.Result r;
-        try {
-            r = new FixExecutor(fc, main.catalog(), new BindZoneSigner(Path.of(fc.keyDir())), out)
-                    .apply(plan, snapshot, before.diagnoses(), ctx);
-        } catch (FixException e) {
-            err.println(Messages.get("fix.failed", e.getMessage()));
+        if (fc.helpers() == null) {
+            err.println(Messages.get("cli.noFixHelpers"));
             return Main.EXIT_TOOL_ERROR;
         }
+        Path file = Path.of(fc.workDir()).resolve(name.toString(true)).resolve("fix.sh");
+        out.println(Messages.get("fix.running", file));
+        int rc = new ScriptRunner(Path.of(fc.labDir()), Path.of(fc.helpers()), TIMEOUT)
+                .run(name, script, file, line -> {
+                    out.println("  | " + line);
+                    out.flush();
+                });
         out.println();
-        if (r.outcome() == FixExecutor.Outcome.BLOCKED) {
-            out.println(Messages.get("fix.blocked"));
+        if (rc != 0) {
+            out.println(Messages.get(rc == ScriptRunner.TIMEOUT ? "fix.timeout" : "fix.failed", rc));
             return 2;
         }
         if (plan.manual().isEmpty()) {

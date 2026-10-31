@@ -277,8 +277,7 @@ rs.port53.dnssecretary
 │   └── servers/      NameserverConsistencyCheck, TransportCheck
 ├── model/        Finding, Severity, Diagnosis, FixSide
 ├── diagnose/     Diagnoser + rules (merging, telling B1 from E2, F1 …)
-├── fix/          FixPlanner, FixPlan, FixAction (sealed), FixExecutor
-│   ├── sign/     ZoneSigner (interface), BindZoneSigner (dnssec-signzone)
+├── fix/          FixPlanner, FixPlan, FixAction (sealed), ScriptGenerator (sh script), ScriptRunner
 │   ├── parent/   ParentPublisher: LabParentPublisher | RegistrarInstructions
 │   └── deliver/  ZoneDeliverer: FileDeliverer (+ writes the reload list)
 ├── verify/       Verifier (offline: the new file; live: after the reload)
@@ -416,7 +415,7 @@ Checks return raw findings. `Diagnoser` turns them into diagnoses with a cause. 
 
 ### 3.7 Fix
 
-`FixPlanner` turns every diagnosis into actions (`FixAction`), and `FixExecutor` runs them. Every action has a readable description, so the dry run is the same code without the last step.
+`FixPlanner` turns every diagnosis into actions (`FixAction`), and `ScriptGenerator` turns the plan into a shell script that the admin can read, edit and run (contract and actions: `dnssecretary/README.md`, "Fix and verify"). The text below is the original design; the commands now live in the script.
 
 - **`ResignZone`**: `BindZoneSigner` runs `dnssec-signzone -S -K <keyDir> -s now-3600 -e now+30d -N unixtime` on `fix.sourceDir` and `fix.keyDir`, with the options the diagnosis needs (`-3 - -H 0` for D4/D5, the TTL from the corrected copy for A7). Then `dnssec-verify`, and `FileDeliverer` copies the result to the `deliver` directory and writes `restart auth1` / `flush <zone>` to the reload list.
   - This also fixes A5, B5 and C2 on the zone side: `-S` only picks up keys from `keys/`, and the helper keys (`k2/`, `alg8/`) are deliberately in subdirectories.
