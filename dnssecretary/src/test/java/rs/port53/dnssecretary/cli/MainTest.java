@@ -27,7 +27,7 @@ class MainTest {
     }
 
     @Test
-    void fixIsNotThereYet() {
+    void fixWithoutConfigIsAToolError() {
         assertThat(Main.run("fix", "a1-expired.test")).isEqualTo(Main.EXIT_TOOL_ERROR);
     }
 }

@@ -4,9 +4,31 @@ The tool that checks a zone, explains every DNSSEC error in plain language and f
 Design: [`docs/java-proposal.md`](../docs/java-proposal.md). Error catalogue: [`catalog/catalog.yaml`](../catalog/catalog.yaml).
 
 Pipeline: `collect → check → diagnose → plan → apply → verify`.
-Done so far: `collect` (DNS, delegation walk, chain of trust, snapshots), the catalogue, the CLI and
-the report, and checks for all 30 catalogue errors (E2 via the `KeyDirectoryRule` diagnosis rule).
-`fix` and `verify` are stubs.
+Done so far: `collect` (DNS, delegation walk, chain of trust, snapshots), the catalogue, the CLI,
+the report, checks for all 30 catalogue errors (E2 via the `KeyDirectoryRule` diagnosis rule), and
+`fix`/`verify` for re-signing and the parent DS.
+
+## Fix and verify
+
+```sh
+sh scripts/dnssecretary.sh fix a1-expired.test           # dry run: prints the plan, changes nothing
+sh scripts/dnssecretary.sh fix --apply a1-expired.test   # sign → offline check → deliver → reload → verify
+sh scripts/dnssecretary.sh verify a1-expired.test        # live: no critical error + the resolver answers with AD
+```
+
+`FixPlanner` maps diagnoses to actions (`fix/FixAction`):
+- **`ResignZone`**: A1–A7, B4, B5, C2 and D1–D6. It signs `zones/<zone>.zone` with the active keys
+  in `keys/` (`dnssec-signzone -S`, like `sign.sh`), and caps TTLs to 1 day for A7.
+- **`UpdateParentDs`**: B1–B3, B6–B8, C2 and E2. It builds the DS (SHA-256) of the active KSKs. In the
+  lab it writes `build/parent-ds/<zone>.ds` and runs `sign-tld.sh`; with `parent.mode: instructions`
+  it only prints the DS set for the registrar.
+- **`Manual`**: everything else, using the catalogue's fix text.
+
+Before anything is delivered, `FixExecutor` runs the same checks over the new zone and DS
+(`OfflineView`). If an error the plan should fix is still there, or a new critical one appears,
+nothing reaches a server. The tool writes only under `build/dnssecretary/` (work files, backups, the
+reload list) and to the deliver directory (`auth1/`). `zones/` is never changed. After a demo, run
+`sign.sh` and restart the servers to get the broken lab back.
 
 ## Build and run
 
@@ -49,14 +71,16 @@ If the lab containers were started before the `app` service existed, recreate th
 
 ```
 rs.port53.dnssecretary
-├── cli/       picocli commands: check, fix (stub), verify (stub), catalog, snapshot
+├── cli/       picocli commands: check, fix, verify, catalog, snapshot
 ├── config/    AppConfig (config/lab.yaml), Thresholds
 ├── catalog/   Catalog, CatalogEntry, ErrorId (A1..F2)
 ├── dns/       DnsClient, DelegationWalker, ChainValidator, TrustAnchor, Dnssec (DS match, verify), Records
 ├── collect/   Collector → ZoneSnapshot (NameserverView, ResolverView, Response, SignedRRset, ChainLink, LocalKey),
 │              ZoneSource (FileZoneSource, AxfrZoneSource), KeyDirectory, SnapshotIO
 ├── check/     Check, CheckContext, CheckRunner   ← checks go here, in subpackages per group
-├── diagnose/  Diagnoser, DiagnosisRule            ← rules (F1 instead of A1, B1 vs E2, …) go here
+├── diagnose/  Diagnoser, DiagnosisRule, Analysis  ← rules (F1 instead of A1, B1 vs E2, …) go here
+├── fix/       FixPlanner → FixPlan (FixAction), FixExecutor, OfflineView, ZoneSigner (BindZoneSigner)
+├── verify/    Verifier (live: checks + the resolver's AD bit)
 ├── model/     Finding, Diagnosis, Severity, FixSide
 ├── report/    Report, TextReport, JsonReport, Messages
 └── json/      Jackson setup for dnsjava types
