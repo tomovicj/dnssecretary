@@ -1,27 +1,72 @@
 package rs.port53.dnssecretary.fix;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.xbill.DNS.DSRecord;
 import org.xbill.DNS.Name;
 import rs.port53.dnssecretary.catalog.ErrorId;
+import rs.port53.dnssecretary.collect.LocalKey;
+import rs.port53.dnssecretary.config.AppConfig;
 import rs.port53.dnssecretary.report.Messages;
 
 /**
- * One step of a fix plan. Every action describes itself, so the dry run prints exactly
- * what --apply would do. Later: RepublishKey (E1, E3) and KeyRollover (C1, C3).
+ * One step of a fix plan. {@link ScriptGenerator} turns each into a block of the fix script;
+ * {@link #describe()} is its one line in the plan. The order of the plan is the order of the script.
  */
 public sealed interface FixAction {
 
-    /** The errors this action removes; offline verify must not find them again. */
+    /** The errors this action removes. */
     Set<ErrorId> fixes();
 
     /** One line for the plan. */
     String describe();
 
+    /** False for a step the operator has to do by hand. */
+    default boolean automatic() {
+        return true;
+    }
+
     /**
-     * Re-sign the zone from its source (fix.sourceDir) with the active keys (fix.keyDir).
+     * E1, E3: put retired keys back into the key directory, so the zone is signed with the old
+     * and the new key until every cache has the new DNSKEY set (double signature).
+     */
+    record RepublishKey(Name zone, List<LocalKey> keys, Set<ErrorId> fixes) implements FixAction {
+
+        public RepublishKey {
+            keys = List.copyOf(keys);
+            fixes = Set.copyOf(fixes);
+        }
+
+        @Override
+        public String describe() {
+            return Messages.get("fix.action.republish", zone, ids(fixes), tags(keys));
+        }
+    }
+
+    /**
+     * C1, C3: retire the zone's keys and make new ones (fast, for the lab: the zone is re-signed and
+     * the DS replaced right away; in production an algorithm rollover with waits, RFC 6781 §4.1.4).
+     *
+     * @param old       the active keys that are moved to the "old" subdirectory
+     * @param algorithm dnssec-keygen's name, e.g. ECDSAP256SHA256
+     */
+    record KeyRollover(Name zone, List<LocalKey> old, String algorithm, Set<ErrorId> fixes) implements FixAction {
+
+        public KeyRollover {
+            old = List.copyOf(old);
+            fixes = Set.copyOf(fixes);
+        }
+
+        @Override
+        public String describe() {
+            return Messages.get("fix.action.rollover", zone, ids(fixes), tags(old), algorithm);
+        }
+    }
+
+    /**
+     * Re-sign the zone from its source (fix.sourceDir) with the active keys (fix.keyDir) and deliver it.
      *
      * @param maxTtl A7: TTLs are capped to this in a corrected copy of the source; null = source as is
      * @param nsec3  the zone uses NSEC3: keep it, with the RFC 9276 parameters (no salt, 0 iterations)
@@ -69,12 +114,58 @@ public sealed interface FixAction {
         }
     }
 
-    /** No automatic fix (yet): the catalogue's instructions for the operator. */
+    /** After a key rollover: the DS of the new KSK (from the signing run) replaces the zone's DS at the parent. */
+    record PublishNewDs(Name zone, Set<ErrorId> fixes) implements FixAction {
+
+        public PublishNewDs {
+            fixes = Set.copyOf(fixes);
+        }
+
+        @Override
+        public String describe() {
+            return Messages.get("fix.action.newDs", zone, ids(fixes));
+        }
+    }
+
+    /** F1: copy the current signed zone to the servers that serve a stale copy. */
+    record CopyToSecondary(Name zone, List<AppConfig.Fix.Server> to, Set<ErrorId> fixes) implements FixAction {
+
+        public CopyToSecondary {
+            to = List.copyOf(to);
+            fixes = Set.copyOf(fixes);
+        }
+
+        @Override
+        public String describe() {
+            return Messages.get("fix.action.copy", zone, ids(fixes),
+                    to.stream().map(sv -> service(sv.dir())).collect(Collectors.joining(", ")));
+        }
+    }
+
+    /** F2: allow TCP and EDNS answers up to 1232 bytes in an Unbound server's configuration. */
+    record ServerConfig(Name zone, AppConfig.Fix.Server server, Set<ErrorId> fixes) implements FixAction {
+
+        public ServerConfig {
+            fixes = Set.copyOf(fixes);
+        }
+
+        @Override
+        public String describe() {
+            return Messages.get("fix.action.serverConfig", zone, ids(fixes), service(server.dir()));
+        }
+    }
+
+    /** No automatic fix: the catalogue's instructions for the operator. */
     record Manual(ErrorId id, String text) implements FixAction {
 
         @Override
         public Set<ErrorId> fixes() {
             return Set.of();
+        }
+
+        @Override
+        public boolean automatic() {
+            return false;
         }
 
         @Override
@@ -89,5 +180,14 @@ public sealed interface FixAction {
 
     private static String ids(Set<ErrorId> ids) {
         return ids.stream().sorted().map(Enum::name).collect(Collectors.joining(", "));
+    }
+
+    /** A server directory's name, which is also its compose service (auth2, auth3, …). */
+    private static String service(String dir) {
+        return Path.of(dir).getFileName().toString();
+    }
+
+    private static String tags(List<LocalKey> keys) {
+        return keys.stream().map(k -> String.valueOf(k.key().getFootprint())).collect(Collectors.joining(", "));
     }
 }

@@ -10,26 +10,44 @@ the report, checks for all 30 catalogue errors (E2 via the `KeyDirectoryRule` di
 
 ## Fix and verify
 
+A fix is a shell script: the tool writes it, the admin may read and edit it, and it runs on the lab
+or in a sandbox copy of it.
+
 ```sh
-sh scripts/dnssecretary.sh fix a1-expired.test           # dry run: prints the plan, changes nothing
-sh scripts/dnssecretary.sh fix --apply a1-expired.test   # sign → offline check → deliver → reload → verify
-sh scripts/dnssecretary.sh verify a1-expired.test        # live: no critical error + the resolver answers with AD
+sh scripts/dnssecretary.sh fix a1-expired.test            # dry run: the plan and the script, changes nothing
+sh scripts/dnssecretary.sh fix a1-expired.test --script   # only the script
+sh scripts/dnssecretary.sh fix --apply a1-expired.test    # run the script → reload → verify
+sh scripts/dnssecretary.sh verify a1-expired.test         # live: no critical error + the resolver answers with AD
 ```
 
-`FixPlanner` maps diagnoses to actions (`fix/FixAction`):
-- **`ResignZone`**: A1–A7, B4, B5, C2, D1–D6 and E4. It signs `zones/<zone>.zone` with the active keys
-  in `keys/` (`dnssec-signzone -S`, like `sign.sh`), and caps TTLs to 1 day for A7. A zone that uses
-  NSEC3 stays NSEC3, with no salt and 0 extra iterations (RFC 9276).
-- **`UpdateParentDs`**: B1–B3, B6–B8, C2 and E2. It builds the DS (SHA-256) of the active KSKs. In the
-  lab it writes `build/parent-ds/<zone>.ds` and runs `sign-tld.sh`; with `parent.mode: instructions`
-  it only prints the DS set for the registrar.
-- **`Manual`**: everything else (for now C1, C3, E1, E3, F1, F2), using the catalogue's fix text.
+`FixPlanner` maps diagnoses to actions (`fix/FixAction`), in the order of the script:
 
-Before anything is delivered, `FixExecutor` runs the same checks over the new zone and DS
-(`OfflineView`: apex sets from the new zone; samples and negative answers are left to `verify`). If an error the plan should fix is still there, or a new critical one appears,
-nothing reaches a server. The tool writes only under `build/dnssecretary/` (work files, backups, the
-reload list) and to the deliver directory (`auth1/`). `zones/` is never changed. After a demo, run
-`sign.sh` and restart the servers to get the broken lab back.
+| Action | Errors | The script |
+| --- | --- | --- |
+| `RepublishKey` | E1, E3 | moves the retired key back from `keys/retired/`, so both keys sign until caches expire |
+| `KeyRollover` | C1, C3 | moves the keys to `keys/old/`, makes new algorithm-13 keys (fast, for the lab) |
+| `ResignZone` | A1–A7, B4, B5, C2, D1–D6, E4 (+ the two above) | `dnssec-signzone -S` from `zones/` like `sign.sh`, `dnssec-verify`, copy to `auth1/`; NSEC3 stays NSEC3 (RFC 9276); A7: a TTL-capped copy of the source inside the script |
+| `UpdateParentDs` | B1–B3, B6–B8, C2, E2 | writes the DS of the active KSKs to `build/parent-ds/<zone>.ds`, runs `sign-tld.sh` |
+| `PublishNewDs` | after `KeyRollover` | the new KSK's DS from the signing run, then `sign-tld.sh` |
+| `CopyToSecondary` | F1 | copies the current zone to the stale server (`auth2/`) |
+| `ServerConfig` | F2 | `do-tcp: yes`, `max-udp-size: 1232` in `auth3/unbound.conf` |
+| `Manual` | anything else | the catalogue's fix text, as a comment |
+
+With `parent.mode: instructions` the DS is only shown for the registrar, not written.
+
+The script contract (`ScriptGenerator`, `ScriptRunner`): it runs with `sh -eu` in `fix.labDir` (`/lab`),
+with `ZONE` set, after a helpers file from `scripts/fixenv/` that defines `reload <service>` and
+`flush <zone>`. Paths under the lab are relative, so the same script works in a copy of it.
+- `fixenv/reload-list.sh`: for `fix --apply` in the `app` container (no Docker). It queues the work in
+  `build/dnssecretary/reload`; `scripts/dnssecretary.sh` restarts, flushes and runs `verify`.
+- `fixenv/prod.sh`: for a container with the Docker CLI and socket (the web app): `docker restart`
+  and `unbound-control` on the lab's containers, found by their compose labels.
+- `fixenv/sandbox.sh`: for the sandbox (web app, role 2).
+
+`dnssec-verify` in the script stops it (`-e`) before a broken zone is copied to a server. `zones/` is
+never changed, but `KeyRollover`, `RepublishKey` and `ServerConfig` change `keys/` and
+`auth3/unbound.conf`. To get the broken lab back after a demo: restore `keys/` (`sign.sh` alone
+doesn't), `git checkout auth3/unbound.conf`, run `sign.sh` and restart the servers.
 
 ## Build and run
 
@@ -80,7 +98,7 @@ rs.port53.dnssecretary
 │              ZoneSource (FileZoneSource, AxfrZoneSource), KeyDirectory, SnapshotIO
 ├── check/     Check, CheckContext, CheckRunner   ← checks go here, in subpackages per group
 ├── diagnose/  Diagnoser, DiagnosisRule, Analysis  ← rules (F1 instead of A1, B1 vs E2, …) go here
-├── fix/       FixPlanner → FixPlan (FixAction), FixExecutor, OfflineView, ZoneSigner (BindZoneSigner)
+├── fix/       FixPlanner → FixPlan (FixAction) → ScriptGenerator (sh script), ScriptRunner
 ├── verify/    Verifier (live: checks + the resolver's AD bit)
 ├── model/     Finding, Diagnosis, Severity, FixSide
 ├── report/    Report, TextReport, JsonReport, Messages

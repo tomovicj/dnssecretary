@@ -18,6 +18,11 @@ public record FixPlan(Name zone, List<FixAction> actions) {
         return actions.isEmpty();
     }
 
+    /** At least one action the script does (not only manual steps). */
+    public boolean automatic() {
+        return actions.stream().anyMatch(FixAction::automatic);
+    }
+
     /** All errors the automatic actions remove. */
     public Set<ErrorId> fixes() {
         Set<ErrorId> out = EnumSet.noneOf(ErrorId.class);

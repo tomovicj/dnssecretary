@@ -23,6 +23,8 @@ collect:
   nodataType: SRV                       # NODATA probe: "@ SRV"
 
 fix:
+  labDir: /lab                          # fix scripts run here; paths below it are written relative
+  helpers: /lab/scripts/fixenv/reload-list.sh   # reload/flush for "fix --apply" in the app container
   sourceDir: /lab/zones                 # read only, the tool NEVER writes here
   keyDir: /lab/keys
   workDir: /lab/build/dnssecretary
@@ -34,3 +36,7 @@ fix:
     dsDir: /lab/build/parent-ds
     resignCommand: ["sh", "/lab/scripts/sign-tld.sh"]
     service: tld                        # restarted after resignCommand
+  servers:                              # name server address -> its directory (F1, F2); dir name = service
+    10.53.0.11: {dir: /lab/auth1, software: nsd}
+    10.53.0.12: {dir: /lab/auth2, software: nsd}
+    10.53.0.13: {dir: /lab/auth3, software: unbound}
