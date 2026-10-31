@@ -67,9 +67,57 @@ export interface Job {
   error?: string;
 }
 
+/** One raw fact a check found, e.g. an expired RRSIG at "a1-expired.test. SOA". */
+export interface Finding {
+  id: string;
+  severity: Severity;
+  owner: string;
+  type: string;
+  evidence: string | null;
+  facts: Record<string, string>;
+}
+
+/** One catalogue error found in the zone, with the findings that prove it. */
+export interface Diagnosis {
+  id: string;
+  severity: Severity;
+  side: Side;
+  rootCause: string;
+  findings: Finding[];
+}
+
+/** What "dnssecretary check --json" prints. */
+export interface Report {
+  zone: string;
+  collectedAt: string;
+  checkedAt: string;
+  status: Status | "TOOL_ERROR";
+  diagnoses: Diagnosis[];
+  warnings: string[];
+  failures: string[];
+}
+
+/** One error of catalog/catalog.yaml (GET /api/catalog). */
+export interface CatalogEntry {
+  id: string;
+  title: string;
+  group: string;
+  mvp: boolean;
+  severity: Severity;
+  side: Side;
+  symptom: string;
+  ede: string;
+  cause: string;
+  detection: string;
+  fix: string;
+  recipe: string;
+  rfc: string[];
+  lab: { zone: string; probe: string; setup: string | null };
+}
+
 /** The zone screen: the row, the report as "check --json" prints it, the script and the jobs. */
 export interface ZoneDetail extends ZoneRow {
-  report: unknown; // role 5 types what it shows (diagnoses, findings, …)
+  report: Report;
   script: Script;
   jobs: Job[];
 }

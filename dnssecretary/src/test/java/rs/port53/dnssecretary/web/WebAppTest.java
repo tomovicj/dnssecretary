@@ -154,6 +154,16 @@ class WebAppTest {
     }
 
     @Test
+    void catalogueHasTheTextsTheZoneScreenShows() throws Exception {
+        JsonNode catalog = get("/api/catalog");
+        assertThat(catalog).hasSize(30);
+        JsonNode a1 = catalog.get(0);
+        assertThat(a1.path("id").asText()).isEqualTo("A1");
+        assertThat(a1.path("fix").asText()).isEqualTo("Re-sign the zone with new dates.");
+        assertThat(a1.path("rfc").get(0).asText()).startsWith("RFC 4035");
+    }
+
+    @Test
     void errorsAreJson() throws Exception {
         assertThat(send(HttpRequest.newBuilder(URI.create(base + "/api/zones/nope.test")).GET(), 404)
                 .path("error").asText()).contains("Unknown zone");

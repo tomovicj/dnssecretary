@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import type { ConnectionStatus } from "../api/client";
 import { elapsed } from "../pages/dashboard";
 
@@ -13,6 +13,9 @@ interface Props {
 /** The bar on every screen: product, navigation, whether the live stream is up, the demo panel. */
 export function Header({ connection, lastScan, zoneCount, now, onDemo }: Props) {
   const live = connection === "open";
+  // NavLink never marks "/" active on other routes; the zone screen belongs to Incidents too
+  const { pathname } = useLocation();
+  const incidents = pathname === "/" || pathname.startsWith("/zones/");
   return (
     <header className="header">
       <div className="header-inner">
@@ -24,9 +27,9 @@ export function Header({ connection, lastScan, zoneCount, now, onDemo }: Props) 
           DNSSECretary
         </NavLink>
         <nav className="nav" aria-label="Main">
-          <NavLink to="/" end>
+          <Link to="/" className={incidents ? "active" : undefined} aria-current={incidents ? "page" : undefined}>
             Incidents
-          </NavLink>
+          </Link>
         </nav>
         <div className="spacer" />
         <div className="live" role="status">

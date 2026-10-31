@@ -77,6 +77,7 @@ only. Package `web/`:
 | POST | `/api/zones/{zone}/simulations` | `{"script": "…"}` (default: the generated one) → `Job`, 202 |
 | POST | `/api/zones/{zone}/executions` | `{"script": "…", "simulateFirst": true}` → `Job`, 202 |
 | GET | `/api/jobs`, `/api/jobs/{id}` | jobs, newest first; one job with its log |
+| GET | `/api/catalog` | the 30 catalogue entries (title, cause, fix, symptom, EDE, RFCs, …) for the zone screen |
 | POST | `/api/scan` | scan every zone now |
 | GET | `/api/events` | SSE (`Accept: text/event-stream`): `zone`, `job`, `log` |
 | GET | `/api/demo/scenarios` | catalogue zones that `break` accepts |
