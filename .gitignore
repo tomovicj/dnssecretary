@@ -35,3 +35,7 @@ xfrd.state
 # --- Local settings ---
 .env
 compose.override.yaml
+
+# Web app (webapp/): dependencies and build output (served by dnssecretary serve)
+webapp/node_modules/
+webapp/dist/
