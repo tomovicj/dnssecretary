@@ -80,7 +80,7 @@ public final class FixExecutor {
                 say("fix.step.ttl", input, a.maxTtl());
             }
             signed = dir.resolve(file);
-            signer.sign(zone, input, signed);
+            signer.sign(zone, input, signed, a.nsec3());
             say("fix.step.signed", signed);
             newZone = Optional.of(Records.readZoneFile(signed, zone));
         }

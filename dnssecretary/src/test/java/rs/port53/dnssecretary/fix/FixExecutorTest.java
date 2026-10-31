@@ -121,7 +121,7 @@ class FixExecutorTest {
         final List<List<String>> commands = new ArrayList<>();
 
         @Override
-        public void sign(Name zone, Path input, Path output) {
+        public void sign(Name zone, Path input, Path output, boolean nsec3) {
             throw new AssertionError("no signing expected");
         }
 

@@ -17,15 +17,16 @@ sh scripts/dnssecretary.sh verify a1-expired.test        # live: no critical err
 ```
 
 `FixPlanner` maps diagnoses to actions (`fix/FixAction`):
-- **`ResignZone`**: A1–A7, B4, B5, C2 and D1–D6. It signs `zones/<zone>.zone` with the active keys
-  in `keys/` (`dnssec-signzone -S`, like `sign.sh`), and caps TTLs to 1 day for A7.
+- **`ResignZone`**: A1–A7, B4, B5, C2, D1–D6 and E4. It signs `zones/<zone>.zone` with the active keys
+  in `keys/` (`dnssec-signzone -S`, like `sign.sh`), and caps TTLs to 1 day for A7. A zone that uses
+  NSEC3 stays NSEC3, with no salt and 0 extra iterations (RFC 9276).
 - **`UpdateParentDs`**: B1–B3, B6–B8, C2 and E2. It builds the DS (SHA-256) of the active KSKs. In the
   lab it writes `build/parent-ds/<zone>.ds` and runs `sign-tld.sh`; with `parent.mode: instructions`
   it only prints the DS set for the registrar.
-- **`Manual`**: everything else, using the catalogue's fix text.
+- **`Manual`**: everything else (for now C1, C3, E1, E3, F1, F2), using the catalogue's fix text.
 
 Before anything is delivered, `FixExecutor` runs the same checks over the new zone and DS
-(`OfflineView`). If an error the plan should fix is still there, or a new critical one appears,
+(`OfflineView`: apex sets from the new zone; samples and negative answers are left to `verify`). If an error the plan should fix is still there, or a new critical one appears,
 nothing reaches a server. The tool writes only under `build/dnssecretary/` (work files, backups, the
 reload list) and to the deliver directory (`auth1/`). `zones/` is never changed. After a demo, run
 `sign.sh` and restart the servers to get the broken lab back.

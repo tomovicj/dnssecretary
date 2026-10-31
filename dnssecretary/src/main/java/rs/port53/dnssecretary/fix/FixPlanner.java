@@ -8,6 +8,7 @@ import org.xbill.DNS.DClass;
 import org.xbill.DNS.DNSKEYRecord;
 import org.xbill.DNS.DNSSEC;
 import org.xbill.DNS.DSRecord;
+import org.xbill.DNS.Type;
 import rs.port53.dnssecretary.catalog.Catalog;
 import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.collect.LocalKey;
@@ -25,7 +26,8 @@ public final class FixPlanner {
     static final Set<ErrorId> RESIGN = EnumSet.of(
             ErrorId.A1, ErrorId.A2, ErrorId.A3, ErrorId.A4, ErrorId.A5, ErrorId.A6, ErrorId.A7,
             ErrorId.B4, ErrorId.B5, ErrorId.C2,
-            ErrorId.D1, ErrorId.D2, ErrorId.D3, ErrorId.D4, ErrorId.D5, ErrorId.D6);
+            ErrorId.D1, ErrorId.D2, ErrorId.D3, ErrorId.D4, ErrorId.D5, ErrorId.D6,
+            ErrorId.E4);   // the source has no (wrong) CDS
 
     /** Errors fixed by publishing the right DS set at the parent. */
     static final Set<ErrorId> PARENT_DS = EnumSet.of(
@@ -56,7 +58,8 @@ public final class FixPlanner {
         resign.addAll(ids);
         resign.retainAll(RESIGN);
         if (!resign.isEmpty()) {
-            actions.add(new FixAction.ResignZone(s.zone(), ids.contains(ErrorId.A7) ? MAX_TTL : null, resign));
+            actions.add(new FixAction.ResignZone(s.zone(), ids.contains(ErrorId.A7) ? MAX_TTL : null,
+                    usesNsec3(s), resign));
         }
 
         Set<ErrorId> parent = EnumSet.noneOf(ErrorId.class);
@@ -97,6 +100,12 @@ public final class FixPlanner {
                 .toList();
         List<DNSKEYRecord> source = active.isEmpty() ? s.dnskey().records(DNSKEYRecord.class) : active;
         return source.stream().filter(FixPlanner::isKsk).toList();
+    }
+
+    /** NSEC3 records in the zone, or an NSEC3PARAM at any name server (D6: NSEC3 is where it was going). */
+    static boolean usesNsec3(ZoneSnapshot s) {
+        return s.zoneRRsets().stream().anyMatch(r -> r.type() == Type.NSEC3 || r.type() == Type.NSEC3PARAM)
+                || s.nameservers().stream().anyMatch(ns -> !ns.nsec3param().rrset().isEmpty());
     }
 
     static boolean isKsk(DNSKEYRecord k) {

@@ -36,6 +36,7 @@ class FixPlannerTest {
         assertThat(p.resign()).hasValueSatisfying(a -> {
             assertThat(a.fixes()).containsExactly(ErrorId.A1);
             assertThat(a.maxTtl()).isNull();
+            assertThat(a.nsec3()).isFalse();
         });
     }
 
@@ -43,6 +44,21 @@ class FixPlannerTest {
     void longTtlIsCappedWhenResigning() {
         assertThat(plan("a7-ttl-long.test").resign())
                 .hasValueSatisfying(a -> assertThat(a.maxTtl()).isEqualTo(FixPlanner.MAX_TTL));
+    }
+
+    @Test
+    void nsec3ZonesStayNsec3() {
+        for (String zone : List.of("d4-nsec3-iter.test", "d5-nsec3param.test", "d6-nsec-mixed.test")) {
+            assertThat(plan(zone).resign()).as(zone).hasValueSatisfying(a -> assertThat(a.nsec3()).isTrue());
+        }
+        assertThat(plan("d1-nsec-broken.test").resign())
+                .hasValueSatisfying(a -> assertThat(a.nsec3()).isFalse());
+    }
+
+    @Test
+    void wrongCdsIsRemovedByResigning() {
+        assertThat(plan("e4-cds.test").resign())
+                .hasValueSatisfying(a -> assertThat(a.fixes()).containsExactly(ErrorId.E4));
     }
 
     @Test

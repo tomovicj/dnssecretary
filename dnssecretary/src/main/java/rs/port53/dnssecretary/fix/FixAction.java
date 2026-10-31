@@ -24,8 +24,9 @@ public sealed interface FixAction {
      * Re-sign the zone from its source (fix.sourceDir) with the active keys (fix.keyDir).
      *
      * @param maxTtl A7: TTLs are capped to this in a corrected copy of the source; null = source as is
+     * @param nsec3  the zone uses NSEC3: keep it, with the RFC 9276 parameters (no salt, 0 iterations)
      */
-    record ResignZone(Name zone, Long maxTtl, Set<ErrorId> fixes) implements FixAction {
+    record ResignZone(Name zone, Long maxTtl, boolean nsec3, Set<ErrorId> fixes) implements FixAction {
 
         public ResignZone {
             fixes = Set.copyOf(fixes);
@@ -34,7 +35,7 @@ public sealed interface FixAction {
         @Override
         public String describe() {
             return Messages.get(maxTtl == null ? "fix.action.resign" : "fix.action.resignTtl",
-                    zone, ids(fixes), maxTtl);
+                    zone, ids(fixes), maxTtl) + (nsec3 ? Messages.get("fix.action.nsec3") : "");
         }
     }
 

@@ -24,12 +24,16 @@ public final class BindZoneSigner implements ZoneSigner {
     }
 
     @Override
-    public void sign(Name zone, Path input, Path output) throws FixException {
+    public void sign(Name zone, Path input, Path output, boolean nsec3) throws FixException {
         String origin = zone.toString(true);
         // -d: the dsset-<zone>. file goes next to the output, never into build/ of sign.sh
-        run(List.of("dnssec-signzone", "-S", "-K", keyDir.toString(), "-d", output.getParent().toString(),
-                "-s", "now-3600", "-e", "now+2592000", "-N", "unixtime",
-                "-o", origin, "-f", output.toString(), input.toString()));
+        List<String> cmd = new ArrayList<>(List.of("dnssec-signzone", "-S", "-K", keyDir.toString(),
+                "-d", output.getParent().toString(), "-s", "now-3600", "-e", "now+2592000", "-N", "unixtime"));
+        if (nsec3) {
+            cmd.addAll(List.of("-3", "-", "-H", "0"));
+        }
+        cmd.addAll(List.of("-o", origin, "-f", output.toString(), input.toString()));
+        run(cmd);
         run(List.of("dnssec-verify", "-q", "-o", origin, output.toString()));
     }
 
