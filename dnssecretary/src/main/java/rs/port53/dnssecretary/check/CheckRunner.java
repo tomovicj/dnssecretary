@@ -8,6 +8,8 @@ import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.check.algorithms.AlgorithmPolicyCheck;
 import rs.port53.dnssecretary.check.algorithms.KeyStrengthCheck;
 import rs.port53.dnssecretary.check.delegation.DelegationCheck;
+import rs.port53.dnssecretary.check.rollover.CacheConsistencyCheck;
+import rs.port53.dnssecretary.check.rollover.CdsCheck;
 import rs.port53.dnssecretary.check.signatures.SignatureCoverageCheck;
 import rs.port53.dnssecretary.check.signatures.SignatureCryptoCheck;
 import rs.port53.dnssecretary.check.signatures.SignatureValidityCheck;
@@ -44,7 +46,9 @@ public final class CheckRunner {
                 new KeyStrengthCheck(),         // C3
 
                 // B, E – delegation, DS, CDS, cache and rollover (role 3)
-                new DelegationCheck()           // B1–B4, B6, B8
+                new DelegationCheck(),      // B1–B4, B6, B8
+                new CacheConsistencyCheck(),
+                new CdsCheck()
 
                 // D, F – NSEC/NSEC3, name server consistency, transport (role 4)
         );
