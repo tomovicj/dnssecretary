@@ -21,8 +21,8 @@ public final class KeyDirectoryRule implements DiagnosisRule {
             // If the diagnosis is B1, we are checking the keys
             if (d.id() == ErrorId.B1 && pointsToNextKey(s)) {
                 // If it points to 'next' key, change ID to E2
-                // Ostali podaci (severity, side, rootCause, findings) se prenose ili prilagođavaju iz kataloga (kao što kaže dokumentacija)
-                out.add(new Diagnosis(ErrorId.E2, d.severity(), d.side(), "KSK promenjen, a DS zamenjen prerano", d.findings()));
+                // Other data (severity, side, rootCause, findings) are transferred or adjusted from the catalogue
+                out.add(new Diagnosis(ErrorId.E2, d.severity(), d.side(), "KSK changed and DS is transferred too early.", d.findings()));
             } else {
                 out.add(d);
             }
@@ -31,23 +31,21 @@ public final class KeyDirectoryRule implements DiagnosisRule {
     }
 
     private static boolean pointsToNextKey(ZoneSnapshot s) {
-        // Ako nema parent DS zapisa, ne možemo proveriti
+        // We can't point if there is no parent DS
         if (s.parentDs().rrset().isEmpty()) {
             return false;
         }
 
         List<DSRecord> dsRecords = s.parentDs().rrset().records(DSRecord.class);
 
-        // localKeys() vraća sve ključeve sa lokalnog diska (K - ključevi iz tabele "Izvori podataka u snimku")
+        // localKeys() returns all keys from local (K - keys )
         List<LocalKey> localKeys = s.localKeys();
 
-        // Prolazimo kroz sve DS zapise i sve lokalne ključeve
+        // Going through all records
         for (DSRecord ds : dsRecords) {
             for (LocalKey localKey : localKeys) {
-                // Proveravamo da li je lokacija ključa tačno "next" (ili u folderu "next")
-                // I da li se taj lokalni ključ (kada se prebaci u DNSKEY) poklapa sa DS zapisom
                 if ("next".equals(localKey.location()) && Dnssec.dsMatches(ds, localKey.key())) {
-                    return true; // Našli smo poklapanje sa 'next' ključem!
+                    return true;
                 }
             }
         }
