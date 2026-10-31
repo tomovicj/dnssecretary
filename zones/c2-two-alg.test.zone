@@ -7,4 +7,4 @@ ns1.c2-two-alg.test.    IN A    10.53.0.11
 www.c2-two-alg.test.    IN A    10.53.0.80
 mail.c2-two-alg.test.   IN A    10.53.0.81
 c2-two-alg.test.        IN MX   10 mail.c2-two-alg.test.
-c2-two-alg.test.        IN TXT  "C2: dva algoritma, zapisi potpisani samo jednim"
+c2-two-alg.test.        IN TXT  "C2: two algorithms, records signed with only one"

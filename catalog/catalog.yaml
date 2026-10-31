@@ -1,0 +1,487 @@
+# DNSSECretary – error catalogue, machine-readable.
+# Source: the team's error catalogue sheet (MVP tab, later tab, actions tab), translated to English.
+# Shared by the Java tool (loaded as a classpath resource) and the lab scripts.
+#
+#   mvp:      true = MVP tab (the first 10 errors in the lab and the demo), false = later tab
+#   severity: CRITICAL (validation fails, SERVFAIL) | RISK (works, but unsafe or bad practice)
+#   side:     ZONE (we fix it in the zone) | PARENT (DS at the parent/registrar) | OPERATOR (server, text only)
+#   recipe:   action numbers from "actions" below, in order
+#   lab:      zone  – the lab zone that reproduces the error
+#             probe – the query that shows the error ("@" = zone apex)
+#             setup – a script that must run first (the error only appears live)
+#
+# The tool is stricter than Unbound: what the tool must report comes from here, not from check.sh.
+
+actions:
+  - { id: 1, name: Re-sign,       description: "Re-sign the zone", where: Our zone }
+  - { id: 2, name: Settings,      description: "Change the signing settings: signature lifetime, early refresh, jitter, TTL, NSEC/NSEC3 parameters", where: "Our zone (always followed by 1)" }
+  - { id: 3, name: New key,       description: "Generate a new key (KSK, ZSK or CSK; algorithm 13)", where: Our zone }
+  - { id: 4, name: DNSKEY set,    description: "Add a key to or remove a key from the DNSKEY set", where: "Our zone (always followed by 1)" }
+  - { id: 5, name: DS at registrar, description: "Generate the DS (or CDS/CDNSKEY) and instructions for the registrar: add or replace the DS", where: Parent / registrar }
+  - { id: 6, name: Remove DS,     description: "Remove the DS at the registrar", where: Parent / registrar }
+  - { id: 7, name: Wait for TTL,  description: "Wait for the TTL to expire (resolver caches)", where: Time }
+  - { id: 8, name: Server,        description: "Fix the server: zone transfer, TCP 53, EDNS", where: Infrastructure }
+
+errors:
+
+  # ---------- A: signatures (RRSIG) ----------
+
+  - id: A1
+    title: Expired signature
+    group: Signatures (RRSIG)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "7 (Signature Expired)"
+    cause: Re-signing stopped (cron job, server down, forgotten).
+    detection: The RRSIG expiration date is in the past.
+    fix: Re-sign the zone with new dates.
+    recipe: "1 Re-sign → Verify"
+    rfc: ["RFC 4035 §5.3.1"]
+    lab: { zone: a1-expired.test, probe: "www A" }
+
+  - id: A2
+    title: Signature not yet valid
+    group: Signatures (RRSIG)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "8 (Signature Not Yet Valid)"
+    cause: Wrong clock on the signing server.
+    detection: The RRSIG inception date is in the future.
+    fix: Re-sign, and warn that the NTP setup should be checked.
+    recipe: "1 Re-sign → Verify + warning: check NTP"
+    rfc: ["RFC 4035 §5.3.1"]
+    lab: { zone: a2-notyet.test, probe: "www A" }
+
+  - id: A3
+    title: Record without a signature (RRset has no RRSIG)
+    group: Signatures (RRSIG)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "10 (RRSIGs Missing)"
+    cause: A record was added by hand to a signed zone, and the zone was not re-signed.
+    detection: Check that every RRset has an RRSIG.
+    fix: Re-sign the zone.
+    recipe: "1 Re-sign → Verify"
+    rfc: ["RFC 4035 §2.2"]
+    lab: { zone: a3-nosig.test, probe: "www A" }
+
+  - id: A4
+    title: Invalid signature
+    group: Signatures (RRSIG)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6 (DNSSEC Bogus)"
+    cause: Data changed after signing (e.g. an IP address edited by hand).
+    detection: The cryptographic signature check fails.
+    fix: Re-sign the zone.
+    recipe: "1 Re-sign → Verify"
+    rfc: ["RFC 4035 §5.3"]
+    lab: { zone: a4-bogus.test, probe: "www A" }
+
+  - id: A5
+    title: Signature made by a key that is not in the DNSKEY set
+    group: Signatures (RRSIG)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "9 or 6"
+    cause: A key was removed from the zone, but its old signatures stayed.
+    detection: The key tag in the RRSIG does not exist in the DNSKEY set.
+    fix: Re-sign with an existing key.
+    recipe: "1 Re-sign (with an existing key) → Verify"
+    rfc: ["RFC 4035 §5.3.1"]
+    lab: { zone: a5-unknown-key.test, probe: "www A" }
+
+  - id: A6
+    title: Signature expires soon (too little time to fix it)
+    group: Signatures (RRSIG)
+    mvp: true
+    severity: RISK
+    side: ZONE
+    symptom: works, but at risk
+    ede: none (the domain works)
+    cause: "Bad policy: signatures are short-lived or refreshed too late."
+    detection: Remaining validity < threshold (e.g. < 7 days).
+    fix: Re-sign and suggest better timing (early refresh, jitter).
+    recipe: "2 Settings (early refresh, jitter) → 1 Re-sign → Verify"
+    rfc: ["RFC 6781 §4.4.2"]
+    lab: { zone: a6-expiring.test, probe: "www A" }
+
+  - id: A7
+    title: TTL longer than the remaining signature validity
+    group: Signatures (RRSIG)
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: works, but at risk
+    ede: none
+    cause: The TTL was set without regard to the signature lifetime.
+    detection: Compare the record TTL with (expiration − now). Compare the TTL of the record, not of the RRSIG (dnssec-signzone caps the RRSIG TTL).
+    fix: Lower the TTL or extend the signature validity.
+    recipe: "2 Settings (lower TTL) → 1 Re-sign → Verify"
+    rfc: ["RFC 4035 §5.3.3", "RFC 6781 §4.4.2"]
+    lab: { zone: a7-ttl-long.test, probe: "www A" }
+
+  # ---------- B: keys and chain of trust ----------
+
+  - id: B1
+    title: DS points to a key that does not exist
+    group: Keys and chain of trust
+    mvp: true
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 (DNSKEY Missing) or 6 (Unbound 1.20: 6)"
+    cause: The key or the DNS provider changed, but the DS at the registrar did not.
+    detection: The key tag / hash in the DS matches no DNSKEY in the zone.
+    fix: Generate the correct DS for the current KSK + steps for the registrar.
+    recipe: "5 DS at registrar → Verify"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b1-ds-stale.test, probe: "www A" }
+
+  - id: B2
+    title: DS has a wrong hash (digest)
+    group: Keys and chain of trust
+    mvp: true
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "6 or 9"
+    cause: A mistake when copying the DS to the registrar.
+    detection: Compute the hash of the DNSKEY and compare it with the digest in the DS.
+    fix: Generate the correct DS + steps for the registrar.
+    recipe: "5 DS at registrar → Verify"
+    rfc: ["RFC 4034 §5.1.4", "RFC 4035 §5.2"]
+    lab: { zone: b2-ds-digest.test, probe: "www A" }
+
+  - id: B3
+    title: DS and DNSKEY have different algorithms
+    group: Keys and chain of trust
+    mvp: false
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 or 6"
+    cause: The algorithm changed, but the DS was not updated.
+    detection: Compare the algorithm field in the DS and the DNSKEY.
+    fix: Generate the correct DS + steps for the registrar.
+    recipe: "5 DS at registrar → Verify"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b3-ds-alg.test, probe: "www A" }
+
+  - id: B4
+    title: DS exists, but the zone is not signed
+    group: Keys and chain of trust
+    mvp: true
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 or 10"
+    cause: The owner "turned off" DNSSEC but did not remove the DS at the registrar. A common mistake in .rs.
+    detection: The parent has a DS, but the zone has no DNSKEY/RRSIG.
+    fix: "Two options: remove the DS at the registrar OR sign the zone again."
+    recipe: "Option A: 6 Remove DS → Verify; Option B: 3 New key → 1 Re-sign → 5 DS at registrar → Verify"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b4-ds-unsigned.test, probe: "www A" }
+
+  - id: B5
+    title: DNSKEY set not signed by the KSK (the key the DS points to)
+    group: Keys and chain of trust
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6 or 10"
+    cause: A misconfigured signing tool.
+    detection: Check that the RRSIG over the DNSKEY set uses the key from the DS.
+    fix: Re-sign the DNSKEY set with the KSK.
+    recipe: "1 Re-sign (DNSKEY set with the KSK) → Verify"
+    rfc: ["RFC 4035 §5.2"]
+    lab: { zone: b5-dnskey-zsk.test, probe: "www A" }
+
+  - id: B6
+    title: Zone is signed, but there is no DS in the parent zone ("island")
+    group: Keys and chain of trust
+    mvp: false
+    severity: RISK
+    side: PARENT
+    symptom: works, without protection
+    ede: none (answer without the AD flag)
+    cause: The DS was never sent to the registrar.
+    detection: The zone has a DNSKEY, the parent has no DS.
+    fix: Generate the DS + steps for the registrar.
+    recipe: "5 DS at registrar → Verify"
+    rfc: ["RFC 4033 §2", "RFC 4035 §4.3"]
+    lab: { zone: b6-island.test, probe: "www A" }
+
+  - id: B7
+    title: DS uses SHA-1 (digest type 1)
+    group: Keys and chain of trust
+    mvp: false
+    severity: RISK
+    side: PARENT
+    symptom: works, but at risk
+    ede: "2 (Unsupported DS Digest Type) if the resolver doesn't support it"
+    cause: An old tool or old settings.
+    detection: The digest type field is 1.
+    fix: Generate a DS with SHA-256 (type 2).
+    recipe: "5 DS at registrar (SHA-256) → Verify"
+    rfc: ["RFC 8624 §3.3"]
+    lab: { zone: b7-ds-sha1.test, probe: "www A" }
+
+  - id: B8
+    title: Leftover old DS records
+    group: Keys and chain of trust
+    mvp: false
+    severity: RISK
+    side: PARENT
+    symptom: works, but at risk
+    ede: none
+    cause: The old DS was not removed after a key change.
+    detection: A DS that matches no DNSKEY, next to at least one correct DS.
+    fix: A list of DS records to remove at the registrar.
+    recipe: "6 Remove DS (old DS) → Verify"
+    rfc: ["RFC 6781 §4.1.2", "RFC 7583 §3.3"]
+    lab: { zone: b8-ds-extra.test, probe: "www A" }
+
+  # ---------- C: algorithms ----------
+
+  - id: C1
+    title: Deprecated algorithm (1, 3, 5, 6, 7, 12)
+    group: Algorithms
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: works, but at risk / works, without protection
+    ede: "1 (Unsupported DNSKEY Algorithm) if the resolver doesn't support the algorithm (Unbound 1.20 supports 5 → AD)"
+    cause: An old zone that was never migrated.
+    detection: The algorithm in the DNSKEY/DS is on the deprecated list.
+    fix: A plan to move to algorithm 13.
+    recipe: "3 New key (new algorithm) → 4 DNSKEY set (add) → 1 Re-sign (both algorithms) → 7 Wait for TTL → 5 DS at registrar → 7 Wait for TTL → 4 DNSKEY set (remove the old ones) → 1 Re-sign → Verify"
+    rfc: ["RFC 8624 §3.1"]
+    lab: { zone: c1-rsasha1.test, probe: "www A" }
+
+  - id: C2
+    title: Keys of two algorithms, but records are not signed with both
+    group: Algorithms
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: "SERVFAIL on some resolvers (Unbound: works, AD)"
+    ede: "6"
+    cause: Wrong order of steps during an algorithm change.
+    detection: For every algorithm in the DNSKEY set, check that every RRset has an RRSIG.
+    fix: Sign all records with all algorithms.
+    recipe: "1 Re-sign (with all algorithms) → Verify"
+    rfc: ["RFC 4035 §2.2", "RFC 6840 §5.11"]
+    lab: { zone: c2-two-alg.test, probe: "www A" }
+
+  - id: C3
+    title: Weak RSA key (< 2048 bits)
+    group: Algorithms
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: works, but at risk
+    ede: none
+    cause: Old settings.
+    detection: Compute the RSA key length from the DNSKEY.
+    fix: A new key of 2048+ bits, or a move to algorithm 13.
+    recipe: "ZSK: 3 New key → 4 DNSKEY set (add the new one) → 1 Re-sign → 7 Wait for TTL → 1 Re-sign (sign with the new one) → 7 Wait for TTL → 4 DNSKEY set (remove the old one) → 1 Re-sign → Verify; KSK: 3 New key → 4 DNSKEY set (add the new one) → 1 Re-sign → 7 Wait for TTL → 5 DS at registrar (new DS) → 7 Wait for TTL → 4 DNSKEY set (remove the old one) → 1 Re-sign → Verify"
+    rfc: ["RFC 6781 §3.4.2", "RFC 8624"]
+    lab: { zone: c3-rsa1024.test, probe: "www A" }
+
+  # ---------- D: authenticated denial of existence (NSEC/NSEC3) ----------
+
+  - id: D1
+    title: Broken NSEC/NSEC3 chain
+    group: Denial of existence (NSEC/NSEC3)
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL for names that don't exist
+    ede: "12 (NSEC Missing) or 6"
+    cause: A signed zone edited by hand, or a bug in the tool.
+    detection: "Walk the whole chain: every record points to the next one, the last one points back to the start."
+    fix: Re-sign the zone (a new chain).
+    recipe: "1 Re-sign → Verify"
+    rfc: ["RFC 4034 §4", "RFC 4035 §3.1.3"]
+    lab: { zone: d1-nsec-broken.test, probe: "missing A" }
+
+  - id: D2
+    title: Wrong type list (bitmap)
+    group: Denial of existence (NSEC/NSEC3)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6"
+    cause: A manual edit or a bug in the tool.
+    detection: Compare the type list in the NSEC with the records that really exist.
+    fix: Re-sign the zone.
+    recipe: "1 Re-sign → Verify"
+    rfc: ["RFC 4034 §4.1.2"]
+    lab: { zone: d2-bitmap.test, probe: "www TXT" }
+
+  - id: D3
+    title: Negative answer without NSEC/NSEC3 or without signatures
+    group: Denial of existence (NSEC/NSEC3)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "12 (NSEC Missing)"
+    cause: A server or zone error.
+    detection: Query a name that doesn't exist and check what the answer contains.
+    fix: Re-sign the zone.
+    recipe: "1 Re-sign → Verify; if the server is the problem: 8 Server → Verify"
+    rfc: ["RFC 4035 §3.1.3"]
+    lab: { zone: d3-nsec-nosig.test, probe: "missing A" }
+
+  - id: D4
+    title: NSEC3 settings against RFC 9276
+    group: Denial of existence (NSEC/NSEC3)
+    mvp: true
+    severity: RISK
+    side: ZONE
+    symptom: NXDOMAIN without AD (Unbound) / SERVFAIL (other resolvers)
+    ede: "27 if the resolver sends it (Unbound 1.20 doesn't; > 150 iterations → answer without AD)"
+    cause: "Old settings: iterations > 0, a non-empty salt, unnecessary opt-out."
+    detection: "Read NSEC3PARAM: iterations, salt, opt-out flag."
+    fix: Re-sign with iterations=0, no salt, no opt-out.
+    recipe: "2 Settings (iterations=0, no salt, no opt-out) → 1 Re-sign → Verify"
+    rfc: ["RFC 9276"]
+    lab: { zone: d4-nsec3-iter.test, probe: "missing A" }
+
+  - id: D5
+    title: NSEC3PARAM does not match the NSEC3 records
+    group: Denial of existence (NSEC/NSEC3)
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL
+    ede: "6 or 12 (Unbound 1.20: 12 – NSD can't find the NSEC3 chain from the NSEC3PARAM)"
+    cause: The parameters changed without re-signing.
+    detection: Compare the salt/iterations in NSEC3PARAM and NSEC3.
+    fix: Re-sign with a single set of parameters.
+    recipe: "2 Settings (one set of parameters) → 1 Re-sign → Verify"
+    rfc: ["RFC 5155 §4"]
+    lab: { zone: d5-nsec3param.test, probe: "missing A" }
+
+  - id: D6
+    title: NSEC and NSEC3 mixed in the same zone
+    group: Denial of existence (NSEC/NSEC3)
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: "works, but at risk (NSD sends only NSEC3; Unbound: AD)"
+    ede: none
+    cause: The NSEC → NSEC3 migration was never finished.
+    detection: The zone contains both record types.
+    fix: Re-sign with only one type.
+    recipe: "2 Settings (only NSEC or only NSEC3) → 1 Re-sign → Verify"
+    rfc: ["RFC 5155"]
+    lab: { zone: d6-nsec-mixed.test, probe: "missing A" }
+
+  # ---------- E: key rollover ----------
+
+  - id: E1
+    title: ZSK replaced too quickly (the new key was not pre-published)
+    group: Key rollover
+    mvp: true
+    severity: CRITICAL
+    side: ZONE
+    symptom: SERVFAIL for some users
+    ede: "9 or 6"
+    cause: The new key was used at once; resolvers still have the old DNSKEY set in their cache.
+    detection: Track the DNSKEY set over time; compare with the TTL of the DNSKEY records.
+    fix: Put the old key back into the DNSKEY set until the TTL expires; then follow the correct order.
+    recipe: "4 DNSKEY set (put the old key back) → 1 Re-sign → 7 Wait for TTL → Verify; then correctly: 3 New key → 4 DNSKEY set (add the new one) → 1 Re-sign → 7 Wait for TTL → 1 Re-sign (sign with the new one) → 7 Wait for TTL → 4 DNSKEY set (remove the old one) → 1 Re-sign → Verify"
+    rfc: ["RFC 6781 §4.1.1.1", "RFC 7583 §3.2"]
+    lab: { zone: e1-rollover.test, probe: "www A", setup: scripts/e1-rollover.sh }
+
+  - id: E2
+    title: KSK replaced, and the DS changed too early or too late
+    group: Key rollover
+    mvp: false
+    severity: CRITICAL
+    side: PARENT
+    symptom: SERVFAIL
+    ede: "9 or 6"
+    cause: Wrong order of steps in a KSK rollover.
+    detection: Track the DS and the DNSKEY over time; compare with the TTL of the DS. Without access to the keys it looks the same as B1.
+    fix: A step-by-step plan with exact timing.
+    recipe: "4 DNSKEY set (both KSKs in the set) → 1 Re-sign → 5 DS at registrar (correct DS) → 7 Wait for TTL → Verify; then correctly: 3 New key → 4 DNSKEY set (add the new one) → 1 Re-sign → 7 Wait for TTL → 5 DS at registrar (new DS) → 7 Wait for TTL → 4 DNSKEY set (remove the old one) → 1 Re-sign → Verify"
+    rfc: ["RFC 6781 §4.1.2", "RFC 7583 §3.3"]
+    lab: { zone: e2-ksk-ds-early.test, probe: "www A" }
+
+  - id: E3
+    title: Old key removed before its TTL expired
+    group: Key rollover
+    mvp: false
+    severity: CRITICAL
+    side: ZONE
+    symptom: "SERVFAIL for some users (a validator behind a cache, e.g. delv or a forwarder; Unbound itself answers AD from its cache)"
+    ede: "9 or 6"
+    cause: The old key was removed right after the change; cached signatures still need it.
+    detection: Track the DNSKEY set over time; compare with the TTL.
+    fix: Put the old key back until the TTLs expire.
+    recipe: "4 DNSKEY set (put the old key back) → 1 Re-sign → 7 Wait for TTL → 4 DNSKEY set (remove it) → 1 Re-sign → Verify"
+    rfc: ["RFC 6781 §4.1.1.1", "RFC 7583 §3.2"]
+    lab: { zone: e3-rollover.test, probe: "www A", setup: scripts/e3-rollover.sh }
+
+  - id: E4
+    title: CDS/CDNSKEY do not match the keys
+    group: Key rollover
+    mvp: false
+    severity: RISK
+    side: ZONE
+    symptom: works, but at risk
+    ede: none
+    cause: Wrongly generated CDS/CDNSKEY records.
+    detection: Compare the CDS/CDNSKEY with the DNSKEY set.
+    fix: Generate correct CDS/CDNSKEY records.
+    recipe: "5 DS at registrar (correct CDS/CDNSKEY) → 1 Re-sign → Verify"
+    rfc: ["RFC 7344", "RFC 8078"]
+    lab: { zone: e4-cds.test, probe: "@ CDS" }
+
+  # ---------- F: differences between name servers ----------
+
+  - id: F1
+    title: Secondary server has a stale zone with expired signatures
+    group: Differences between name servers
+    mvp: false
+    severity: CRITICAL
+    side: OPERATOR
+    symptom: "SERVFAIL now and then (Unbound: works – retries on another server)"
+    ede: "7 (only when querying the secondary directly)"
+    cause: Zone transfer (AXFR/IXFR) doesn't work.
+    detection: Query every name server separately; compare SOA serials and signatures.
+    fix: "Instructions: fix the zone transfer."
+    recipe: "8 Server (zone transfer) → Verify"
+    rfc: ["RFC 1996", "RFC 5936"]
+    lab: { zone: f1-stale-secondary.test, probe: "www A" }
+
+  - id: F2
+    title: Server doesn't return DNSSEC records or fails on large answers
+    group: Differences between name servers
+    mvp: false
+    severity: CRITICAL
+    side: OPERATOR
+    symptom: SERVFAIL for large answers (small answers work)
+    ede: "22 or 23 (Unbound 1.20: SERVFAIL without EDE)"
+    cause: Blocked TCP 53, a small EDNS buffer, a bad firewall.
+    detection: Query every server with the DO bit, over UDP and TCP.
+    fix: "Instructions: open TCP 53, configure EDNS."
+    recipe: "8 Server (TCP 53, EDNS) → Verify"
+    rfc: ["RFC 7766", "RFC 6891"]
+    lab: { zone: f2-tcp-edns.test, probe: "big TXT" }

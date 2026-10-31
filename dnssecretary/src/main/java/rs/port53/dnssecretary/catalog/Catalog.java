@@ -12,12 +12,12 @@ import java.util.Map;
 import java.util.Optional;
 import org.xbill.DNS.Name;
 
-/** The error catalogue, loaded from the classpath resource katalog.yaml (copied from ../catalog by Maven). */
+/** The error catalogue, loaded from the classpath resource catalog.yaml (copied from ../catalog by Maven). */
 public final class Catalog {
 
-    public static final String RESOURCE = "/katalog.yaml";
+    public static final String RESOURCE = "/catalog.yaml";
 
-    /** One step that a recipe refers to by number (sheet tab "Akcije"). */
+    /** One step that a recipe refers to by number (the actions tab of the sheet). */
     public record Action(int id, String name, String description, String where) {}
 
     private record File(List<Action> actions, List<CatalogEntry> errors) {}

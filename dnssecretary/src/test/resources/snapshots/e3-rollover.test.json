@@ -1,6 +1,6 @@
 {
   "zone" : "e3-rollover.test.",
-  "collectedAt" : "2026-10-31T10:58:34.642356678Z",
+  "collectedAt" : "2026-10-31T11:28:58.816385377Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "e3-rollover.test.\t3600\tIN\tDS\t35009 13 2 0FE26E913B2FE0C9EF61F81A2DE042DE16C852D84CDC8EE11CB9AB25603ECB5A" ],
-      "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. Oxt+wgVCy51iPxPyvmND2DzZ67CLj/gVRAS+iPgLYUwCwYo2KLFmAMjCbyqpKY8n2Z4oLNhJmCjysRtwSWf2yg==" ]
+      "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. x2X8D2k76P3S6AhsKMv5HZX2gHjwFxbX47JWbn4YdJAwn6IhtsIg7RgZ5Rk6pnT/MpYPNUH2/oQTl5HumNu93w==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "e3-rollover.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "e3-rollover.test.\t3600\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "records" : [ "e3-rollover.test.\t3600\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       } ],
       "authority" : [ {
         "name" : "e3-rollover.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.e3-rollover.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==" ]
+        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 457,
@@ -113,8 +113,8 @@
         "name" : "e3-rollover.test.",
         "type" : "DNSKEY",
         "ttl" : 3600,
-        "records" : [ "e3-rollover.test.\t3600\tIN\tDNSKEY\t256 3 13 rON6CQxkbtcqQdd3nAP9iEWVMm+s9CJsWKaQ9VkDECUYJFsVuLsStXy1HQ82P3ecwockA9rNf66VgJdaEmqpxw==", "e3-rollover.test.\t3600\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA==" ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105829 20261031095829 35009 e3-rollover.test. lAtyDTyZFVAwGBmNwxT6G3/2Du3iWungcVllmcGoZJkF9UoYEizR6wDXGE4hdMOG2Jvha7qhW1evjW9FDupC5w==", "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. 3ezOo5+h8ou27vNmS9rM243mehDzDEbN9W9F5pBnDlJ0eOItFItRXtXqOuj0+x0N2ZBgOXZHGurDFNiYD6gmog==" ]
+        "records" : [ "e3-rollover.test.\t3600\tIN\tDNSKEY\t256 3 13 hKH7Xn5F22BYeGCj6sts6lA1zp6HV4Fgadu+oHccHYHrv9lGIZJc0fm2pdp1ozKiWOIHTZfNYmdDYyd5cvijuA==", "e3-rollover.test.\t3600\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA==" ],
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. n3mrzTHTVRZbKqkY5oXIIM4O2upTtDi1javtuTTh7H519WPPe0EhbE5fKLvc6XfsT2vOphXw/Te5PytlyY4pUw==", "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112853 20261031102853 35009 e3-rollover.test. pORwwrU2bIze49MGIA3L95ppgL4hnu/LPhePGhiyQBQRjkIq8l1xfrWSMgypCF2Ut6s/u41laStRv8voGoJmLw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "e3-rollover.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       }, {
         "name" : "e3-rollover.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==" ]
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "e3-rollover.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       }, {
         "name" : "e3-rollover.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==" ]
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "e3-rollover.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       }, {
         "name" : "e3-rollover.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==" ]
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -224,21 +224,21 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.e3-rollover.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. wzZfH6edJgTXAVpgN9OTrcROB2geRAEuKefJF4PtC/uHcjBEHj62bNSB6gDanTPE+dzaHz+JYnvswSBKNUEOpw==" ]
+        "sigs" : [ "www.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. BDz41ov9YmSiWq5HNGo+1PEWDqMVre33vP6HqCcDx5lfDK1CRRJGGf43oDMtYFJnAWXNrBB3jBZJ8iC6GBLLfg==" ]
       } ],
       "authority" : [ {
         "name" : "e3-rollover.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.e3-rollover.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==" ]
+        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 435,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==" ]
+        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 303,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tMX\t10 mail.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. X5+/x7bfApJPrcz76kZUf0r8qYHUHU8DtjA5jLJPGiQzdbUPXMqbVElenT7WPcQutqKSZy36KoepSW8vUrrTWw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 4Cd80nygYfwF4uTHBpnz3D1z91gdft56gaDpom8M5q6al5SbmO477cM0N/ntml5A71858qvT8iRGOOe0GvnMRA==" ]
       } ],
       "authority" : [ {
         "name" : "e3-rollover.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==" ]
       } ],
       "additional" : [ {
         "name" : "mail.e3-rollover.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.e3-rollover.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. bofDIljEUJnTYcbpUMBoYN5AI28/7MyHXthdqV4diFhs28onTt5xQyeRdXAcmIJnfqcVlPxtfpaM1fC+scl0kw==" ]
+        "sigs" : [ "mail.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. yD1vRhIx0h6gGrKVbthUcoA6yPEy/dlO2pxokuydW5r8YdodQSVvMxT6vs65+KIUtKZ185pCr/p8ZwxCdmoffQ==" ]
       }, {
         "name" : "ns1.e3-rollover.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==" ]
+        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 564,
@@ -325,30 +325,30 @@
         "name" : "e3-rollover.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "e3-rollover.test.\t3600\tIN\tTXT\t\"E3: stari ZSK obrisan pre isteka TTL-a\"" ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. 69R3oiAooOaHcOtZyZWx/MR5sPuMPgx5LRE0WhymNXs0idtCIGrbB4wRU+AWGa3rr3ELD9YWovv7/LUoNoElUw==" ]
+        "records" : [ "e3-rollover.test.\t3600\tIN\tTXT\t\"E3: old ZSK removed before its TTL expired\"" ],
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. FTAVZJ7hCFfv7W/FH7Bht3ANubC10P7DcyCWzjCkO2r+6TndtK7rGoQqlO2WIEW+FxleBlaahse6mTgSayqizQ==" ]
       } ],
       "authority" : [ {
         "name" : "e3-rollover.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.e3-rollover.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==" ]
+        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 466,
+      "size" : 470,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-de40b2ec.e3-rollover.test.",
+      "qname" : "dnssecretary-065714f3.e3-rollover.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==" ]
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==" ]
       }, {
         "name" : "e3-rollover.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "e3-rollover.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "records" : [ "e3-rollover.test.\t300\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       }, {
         "name" : "e3-rollover.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==" ]
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,13 +411,17 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "e3-rollover.test.\t3600\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300", "e3-rollover.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==", "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test.", "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==", "e3-rollover.test.\t3600\tIN\tMX\t10 mail.e3-rollover.test.", "e3-rollover.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. X5+/x7bfApJPrcz76kZUf0r8qYHUHU8DtjA5jLJPGiQzdbUPXMqbVElenT7WPcQutqKSZy36KoepSW8vUrrTWw==", "e3-rollover.test.\t3600\tIN\tTXT\t\"E3: stari ZSK obrisan pre isteka TTL-a\"", "e3-rollover.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. 69R3oiAooOaHcOtZyZWx/MR5sPuMPgx5LRE0WhymNXs0idtCIGrbB4wRU+AWGa3rr3ELD9YWovv7/LUoNoElUw==", "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==", "e3-rollover.test.\t3600\tIN\tDNSKEY\t256 3 13 rON6CQxkbtcqQdd3nAP9iEWVMm+s9CJsWKaQ9VkDECUYJFsVuLsStXy1HQ82P3ecwockA9rNf66VgJdaEmqpxw==", "e3-rollover.test.\t3600\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA==", "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105829 20261031095829 35009 e3-rollover.test. lAtyDTyZFVAwGBmNwxT6G3/2Du3iWungcVllmcGoZJkF9UoYEizR6wDXGE4hdMOG2Jvha7qhW1evjW9FDupC5w==", "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. 3ezOo5+h8ou27vNmS9rM243mehDzDEbN9W9F5pBnDlJ0eOItFItRXtXqOuj0+x0N2ZBgOXZHGurDFNiYD6gmog==", "mail.e3-rollover.test.\t3600\tIN\tA\t10.53.0.81", "mail.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. bofDIljEUJnTYcbpUMBoYN5AI28/7MyHXthdqV4diFhs28onTt5xQyeRdXAcmIJnfqcVlPxtfpaM1fC+scl0kw==", "mail.e3-rollover.test.\t300\tIN\tNSEC\tns1.e3-rollover.test. A RRSIG NSEC", "mail.e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105829 20261031095829 35843 e3-rollover.test. S42VGuLOzd62UQe2228AfMcuX1fthqWAJZxbOQI+AIy+MQuPRgOptBy3yVpYdvdlDNCG1nYFMWAfoe9M4Q9Pxw==", "www.e3-rollover.test.\t3600\tIN\tA\t10.53.0.80", "www.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. wzZfH6edJgTXAVpgN9OTrcROB2geRAEuKefJF4PtC/uHcjBEHj62bNSB6gDanTPE+dzaHz+JYnvswSBKNUEOpw==", "www.e3-rollover.test.\t300\tIN\tNSEC\te3-rollover.test. A RRSIG NSEC", "www.e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105829 20261031095829 35843 e3-rollover.test. 05mI74r70BMgF7KTnvThPlxgOEoKSCex+pytW85cWNC7LdNK7/Zr3A5U4Y5VtO8ivERMoDaFAQ3Dc+46XWNq6g==", "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11", "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==", "ns1.e3-rollover.test.\t300\tIN\tNSEC\twww.e3-rollover.test. A RRSIG NSEC", "ns1.e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105829 20261031095829 35843 e3-rollover.test. DqYvHsBTOiW/pYVj9jmHHTMsE3JvREx0HF06KLb7z1XqGcgnwm2XpZS3+gSIRbKXzrLknCZkrgwZhOSbIwOyOA==" ],
+  "fullZone" : [ "e3-rollover.test.\t3600\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300", "e3-rollover.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==", "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test.", "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==", "e3-rollover.test.\t3600\tIN\tMX\t10 mail.e3-rollover.test.", "e3-rollover.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 4Cd80nygYfwF4uTHBpnz3D1z91gdft56gaDpom8M5q6al5SbmO477cM0N/ntml5A71858qvT8iRGOOe0GvnMRA==", "e3-rollover.test.\t3600\tIN\tTXT\t\"E3: old ZSK removed before its TTL expired\"", "e3-rollover.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. FTAVZJ7hCFfv7W/FH7Bht3ANubC10P7DcyCWzjCkO2r+6TndtK7rGoQqlO2WIEW+FxleBlaahse6mTgSayqizQ==", "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==", "e3-rollover.test.\t3600\tIN\tDNSKEY\t256 3 13 hKH7Xn5F22BYeGCj6sts6lA1zp6HV4Fgadu+oHccHYHrv9lGIZJc0fm2pdp1ozKiWOIHTZfNYmdDYyd5cvijuA==", "e3-rollover.test.\t3600\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA==", "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. n3mrzTHTVRZbKqkY5oXIIM4O2upTtDi1javtuTTh7H519WPPe0EhbE5fKLvc6XfsT2vOphXw/Te5PytlyY4pUw==", "e3-rollover.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112853 20261031102853 35009 e3-rollover.test. pORwwrU2bIze49MGIA3L95ppgL4hnu/LPhePGhiyQBQRjkIq8l1xfrWSMgypCF2Ut6s/u41laStRv8voGoJmLw==", "mail.e3-rollover.test.\t3600\tIN\tA\t10.53.0.81", "mail.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. yD1vRhIx0h6gGrKVbthUcoA6yPEy/dlO2pxokuydW5r8YdodQSVvMxT6vs65+KIUtKZ185pCr/p8ZwxCdmoffQ==", "mail.e3-rollover.test.\t300\tIN\tNSEC\tns1.e3-rollover.test. A RRSIG NSEC", "mail.e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112853 20261031102853 14943 e3-rollover.test. fGWjZbs1RUQbcmZlxNGC520MuD4wlO6rOcY+Ila6HQYIpckDdU4xQYeCiOC9JHh5P6G4HrfnEqfUNmz3dEiKeQ==", "www.e3-rollover.test.\t3600\tIN\tA\t10.53.0.80", "www.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. BDz41ov9YmSiWq5HNGo+1PEWDqMVre33vP6HqCcDx5lfDK1CRRJGGf43oDMtYFJnAWXNrBB3jBZJ8iC6GBLLfg==", "www.e3-rollover.test.\t300\tIN\tNSEC\te3-rollover.test. A RRSIG NSEC", "www.e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112853 20261031102853 14943 e3-rollover.test. u3UhhU1xELeDQPIGBCvpSfaXZe/O4BazHagYdVL42+39OMX79PGoRXMUHcO24Gwt21uS4J6Xh6+x3UIwEKDeqw==", "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11", "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==", "ns1.e3-rollover.test.\t300\tIN\tNSEC\twww.e3-rollover.test. A RRSIG NSEC", "ns1.e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112853 20261031102853 14943 e3-rollover.test. AhqrUA6v0S0YxyQhau0A8kuR9W/hCbY5rszoWuF38zokMfYVNcAcl9xViKFEjnzDDCLtsr5WjNfjffbdKtUvZQ==" ],
   "localKeys" : [ {
+    "location" : "",
+    "file" : "Ke3-rollover.test.+013+14943.key",
+    "key" : "e3-rollover.test.\t3600\tIN\tDNSKEY\t256 3 13 hKH7Xn5F22BYeGCj6sts6lA1zp6HV4Fgadu+oHccHYHrv9lGIZJc0fm2pdp1ozKiWOIHTZfNYmdDYyd5cvijuA=="
+  }, {
     "location" : "",
     "file" : "Ke3-rollover.test.+013+35009.key",
     "key" : "e3-rollover.test.\t3600\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA=="
   }, {
-    "location" : "",
+    "location" : "retired",
     "file" : "Ke3-rollover.test.+013+35843.key",
     "key" : "e3-rollover.test.\t3600\tIN\tDNSKEY\t256 3 13 rON6CQxkbtcqQdd3nAP9iEWVMm+s9CJsWKaQ9VkDECUYJFsVuLsStXy1HQ82P3ecwockA9rNf66VgJdaEmqpxw=="
   }, {
@@ -447,9 +451,9 @@
       "answer" : [ {
         "name" : "e3-rollover.test.",
         "type" : "DNSKEY",
-        "ttl" : 3597,
-        "records" : [ "e3-rollover.test.\t3597\tIN\tDNSKEY\t256 3 13 rON6CQxkbtcqQdd3nAP9iEWVMm+s9CJsWKaQ9VkDECUYJFsVuLsStXy1HQ82P3ecwockA9rNf66VgJdaEmqpxw==", "e3-rollover.test.\t3597\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA==" ],
-        "sigs" : [ "e3-rollover.test.\t3597\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105829 20261031095829 35009 e3-rollover.test. lAtyDTyZFVAwGBmNwxT6G3/2Du3iWungcVllmcGoZJkF9UoYEizR6wDXGE4hdMOG2Jvha7qhW1evjW9FDupC5w==", "e3-rollover.test.\t3597\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. 3ezOo5+h8ou27vNmS9rM243mehDzDEbN9W9F5pBnDlJ0eOItFItRXtXqOuj0+x0N2ZBgOXZHGurDFNiYD6gmog==" ]
+        "ttl" : 3598,
+        "records" : [ "e3-rollover.test.\t3598\tIN\tDNSKEY\t257 3 13 t+R6X1CON30FeHyqRZkvEUPso7vLjpSvLPWXPYuhT8N4l3UF/BFFVy0tK+t1wMDlusEhxmNX+FnjbIpCoyLkSA==", "e3-rollover.test.\t3598\tIN\tDNSKEY\t256 3 13 hKH7Xn5F22BYeGCj6sts6lA1zp6HV4Fgadu+oHccHYHrv9lGIZJc0fm2pdp1ozKiWOIHTZfNYmdDYyd5cvijuA==" ],
+        "sigs" : [ "e3-rollover.test.\t3598\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. n3mrzTHTVRZbKqkY5oXIIM4O2upTtDi1javtuTTh7H519WPPe0EhbE5fKLvc6XfsT2vOphXw/Te5PytlyY4pUw==", "e3-rollover.test.\t3598\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112853 20261031102853 35009 e3-rollover.test. pORwwrU2bIze49MGIA3L95ppgL4hnu/LPhePGhiyQBQRjkIq8l1xfrWSMgypCF2Ut6s/u41laStRv8voGoJmLw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -472,7 +476,7 @@
         "type" : "A",
         "ttl" : 3593,
         "records" : [ "www.e3-rollover.test.\t3593\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.e3-rollover.test.\t3593\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 51079 e3-rollover.test. pTI0RcO4HlFLrxSAEE0PlXU/BF537W5bKY+uT/wXUibnMfl8R8pUYHe3HA8h1asQN/VieBiuxy86S9lFlKLebw==" ]
+        "sigs" : [ "www.e3-rollover.test.\t3593\tIN\tRRSIG\tA 13 3 3600 20261130112822 20261031102822 35843 e3-rollover.test. 1GXmkgPV2plBgygnlQs+zKoWL3GTuYb0/u14SsXefJRGV8CNt2fbuN/hOKEAONtG7l0xF7Iarzeu0FdY1U0MtA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -494,7 +498,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tNS\tns1.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. E8boMtgtyCmCdtIis6tLW2XsWdIJmsbjrlweCasU5spN0AgeGTbuim9hqWMHn0JuK3I0LQN+ycj9Fe8Mwh7wjw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 2MRl1EZbDBeBgav9KWxZp261b79klvd2WYoMw7RhDVQueyE2Iz80YIcIC1HNqxIPdVMWUm3OFCFWnTfZ8ABUxA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -502,7 +506,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e3-rollover.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105829 20261031095829 35843 e3-rollover.test. J8EbTIekYwcAyUlw+4jTSqo4qKOAdsEAZul4BXKOFql9z4JXnz20pPYNHXjeMgVCf3e3Qx44t9xdAMbo4DBtNQ==" ]
+        "sigs" : [ "ns1.e3-rollover.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112853 20261031102853 14943 e3-rollover.test. h86U0OT5e5KvQ3G/X7dpIeETzqaZ2hWRNl5ykfUpXqqxqwKbwnCRIc2Vd+zk5rT6rNYPFqoeRjHK6fkiZS86CQ==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 303,
@@ -522,7 +526,7 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "e3-rollover.test.\t3600\tIN\tMX\t10 mail.e3-rollover.test." ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. X5+/x7bfApJPrcz76kZUf0r8qYHUHU8DtjA5jLJPGiQzdbUPXMqbVElenT7WPcQutqKSZy36KoepSW8vUrrTWw==" ]
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. 4Cd80nygYfwF4uTHBpnz3D1z91gdft56gaDpom8M5q6al5SbmO477cM0N/ntml5A71858qvT8iRGOOe0GvnMRA==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -543,17 +547,17 @@
         "name" : "e3-rollover.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "e3-rollover.test.\t3600\tIN\tTXT\t\"E3: stari ZSK obrisan pre isteka TTL-a\"" ],
-        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. 69R3oiAooOaHcOtZyZWx/MR5sPuMPgx5LRE0WhymNXs0idtCIGrbB4wRU+AWGa3rr3ELD9YWovv7/LUoNoElUw==" ]
+        "records" : [ "e3-rollover.test.\t3600\tIN\tTXT\t\"E3: old ZSK removed before its TTL expired\"" ],
+        "sigs" : [ "e3-rollover.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. FTAVZJ7hCFfv7W/FH7Bht3ANubC10P7DcyCWzjCkO2r+6TndtK7rGoQqlO2WIEW+FxleBlaahse6mTgSayqizQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
       "ednsPayload" : 1232,
-      "size" : 208,
+      "size" : 212,
       "ede" : [ ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-de40b2ec.e3-rollover.test.",
+      "qname" : "dnssecretary-065714f3.e3-rollover.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -567,13 +571,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e3-rollover.test.\t300\tIN\tNSEC\tmail.e3-rollover.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105829 20261031095829 35843 e3-rollover.test. ZY2P/v+Zp3zZOZuuWp/5FN9uTFQelKf0uAfZrDPX1Hz3kqZ96X9aJx22XU4LW+oDlKw8FJEV2KWakkoIb+8pHA==" ]
+        "sigs" : [ "e3-rollover.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112853 20261031102853 14943 e3-rollover.test. 44vntR5a3EJHOcB8ttHB6gnHAmtzgJcAUyTzoqlumslLvJ0UbV7fIkm2ZpMsQdZ5t0IIkJjU6jtUzP/v0X1aww==" ]
       }, {
         "name" : "e3-rollover.test.",
         "type" : "SOA",
-        "ttl" : 297,
-        "records" : [ "e3-rollover.test.\t297\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793444309 3600 900 604800 300" ],
-        "sigs" : [ "e3-rollover.test.\t297\tIN\tRRSIG\tSOA 13 2 3600 20261130105829 20261031095829 35843 e3-rollover.test. A+R0HLRH8MiKDEZ9xrZeJtO7Kf5KtCSKE8aGpakN5qZJ9RkXkYf4TGY3wYyakw39kvFNr+qiJwKzOoLhmPJWSg==" ]
+        "ttl" : 298,
+        "records" : [ "e3-rollover.test.\t298\tIN\tSOA\tns1.e3-rollover.test. admin.e3-rollover.test. 1793446133 3600 900 604800 300" ],
+        "sigs" : [ "e3-rollover.test.\t298\tIN\tRRSIG\tSOA 13 2 3600 20261130112853 20261031102853 14943 e3-rollover.test. PoQg631DR8SqJ9vgvxwpEWuhdbZT9G5pK74hDjqqARW0UWR9+JGqsN2441Y/swDt8Ug5wNM2m0Ei9kUp3jf+Dg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,

@@ -1,6 +1,6 @@
 package rs.port53.dnssecretary.catalog;
 
-/** The error IDs from the catalogue (catalog/katalog.yaml). Same IDs as the lab zones. */
+/** The error IDs from the catalogue (catalog/catalog.yaml). Same IDs as the lab zones. */
 public enum ErrorId {
     A1, A2, A3, A4, A5, A6, A7,
     B1, B2, B3, B4, B5, B6, B7, B8,

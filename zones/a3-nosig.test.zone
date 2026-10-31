@@ -7,4 +7,4 @@ ns1.a3-nosig.test.    IN A    10.53.0.11
 www.a3-nosig.test.    IN A    10.53.0.80
 mail.a3-nosig.test.   IN A    10.53.0.81
 a3-nosig.test.        IN MX   10 mail.a3-nosig.test.
-a3-nosig.test.        IN TXT  "A3: zapis bez potpisa"
+a3-nosig.test.        IN TXT  "A3: record without a signature"

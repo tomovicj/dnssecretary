@@ -7,4 +7,4 @@ ns1.d5-nsec3param.test.    IN A    10.53.0.11
 www.d5-nsec3param.test.    IN A    10.53.0.80
 mail.d5-nsec3param.test.   IN A    10.53.0.81
 d5-nsec3param.test.        IN MX   10 mail.d5-nsec3param.test.
-d5-nsec3param.test.        IN TXT  "D5: NSEC3PARAM se ne slaze sa NSEC3"
+d5-nsec3param.test.        IN TXT  "D5: NSEC3PARAM does not match NSEC3"

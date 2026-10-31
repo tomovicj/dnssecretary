@@ -7,7 +7,7 @@ ns1.f2-tcp-edns.test.    IN A    10.53.0.13   ; auth3 – no TCP, UDP answers up
 www.f2-tcp-edns.test.    IN A    10.53.0.80
 mail.f2-tcp-edns.test.   IN A    10.53.0.81
 f2-tcp-edns.test.        IN MX   10 mail.f2-tcp-edns.test.
-f2-tcp-edns.test.        IN TXT  "F2: server ne radi sa velikim odgovorima"
+f2-tcp-edns.test.        IN TXT  "F2: server fails on large answers"
 
 ; ~450 bytes: fits in 512 bytes without DNSSEC, but not with the RRSIG
 big.f2-tcp-edns.test.    IN TXT  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

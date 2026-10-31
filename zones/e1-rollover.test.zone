@@ -7,4 +7,4 @@ ns1.e1-rollover.test.    IN A    10.53.0.11
 www.e1-rollover.test.    IN A    10.53.0.80
 mail.e1-rollover.test.   IN A    10.53.0.81
 e1-rollover.test.        IN MX   10 mail.e1-rollover.test.
-e1-rollover.test.        IN TXT  "E1: ZSK promenjen prebrzo"
+e1-rollover.test.        IN TXT  "E1: ZSK replaced too quickly"

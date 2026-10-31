@@ -36,11 +36,11 @@ public final class FileZoneSource implements ZoneSource {
             try {
                 return Optional.of(Records.readZoneFile(f, zone));
             } catch (IOException e) {
-                warnings.add("Ne mogu da pročitam " + f + ": " + e.getMessage());
+                warnings.add("Can't read " + f + ": " + e.getMessage());
                 return Optional.empty();
             }
         }
-        warnings.add("Nema fajla " + fileName(zone) + " u " + dirs + " – provere rade samo nad uzorcima.");
+        warnings.add("No file " + fileName(zone) + " in " + dirs + " – checks only see the sampled names.");
         return Optional.empty();
     }
 }

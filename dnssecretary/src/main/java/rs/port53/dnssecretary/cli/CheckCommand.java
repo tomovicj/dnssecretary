@@ -26,7 +26,7 @@ import rs.port53.dnssecretary.report.TextReport;
 
 /** check: collect → check → diagnose → report. Only reads. */
 @Command(name = "check", mixinStandardHelpOptions = true,
-        description = "Proveri zonu i objasni greške (samo čita).")
+        description = "Check a zone and explain its errors (read only).")
 final class CheckCommand implements Callable<Integer> {
 
     @ParentCommand
@@ -35,28 +35,28 @@ final class CheckCommand implements Callable<Integer> {
     @Spec
     CommandSpec spec;
 
-    @Parameters(arity = "0..1", paramLabel = "<zona>", description = "npr. a1-expired.test")
+    @Parameters(arity = "0..1", paramLabel = "<zone>", description = "e.g. a1-expired.test")
     String zone;
 
-    @Option(names = "--json", description = "Izveštaj u JSON-u.")
+    @Option(names = "--json", description = "Report as JSON.")
     boolean json;
 
-    @Option(names = "--now", paramLabel = "<vreme>",
-            description = "Proveri kao da je sada ovo vreme (ISO-8601, npr. 2026-11-01T12:00:00Z).")
+    @Option(names = "--now", paramLabel = "<time>",
+            description = "Check as if it were this time now (ISO-8601, e.g. 2026-11-01T12:00:00Z).")
     Instant now;
 
     @Option(names = "--key-dir", paramLabel = "<dir>",
-            description = "Direktorijum ključeva (izvor K), umesto collect.keyDir iz konfiguracije.")
+            description = "Key directory (source K), instead of collect.keyDir from the configuration.")
     Path keyDir;
 
-    @Option(names = "--from", paramLabel = "<snimak.json>",
-            description = "Ne pitaj mrežu: proveri sačuvan snimak. Bez --now vreme je trenutak snimanja.")
+    @Option(names = "--from", paramLabel = "<snapshot.json>",
+            description = "Don't ask the network: check a saved snapshot. Without --now the time is the moment of recording.")
     Path from;
 
     @Override
     public Integer call() throws Exception {
         if ((zone == null) == (from == null)) {
-            spec.commandLine().getErr().println("Navedi tačno jedno: <zona> ili --from <snimak.json>.");
+            spec.commandLine().getErr().println("Give exactly one of: <zone> or --from <snapshot.json>.");
             return Main.EXIT_TOOL_ERROR;
         }
         ZoneSnapshot snapshot = from != null ? SnapshotIO.read(from) : main.collect(Main.zoneName(zone), keyDir);

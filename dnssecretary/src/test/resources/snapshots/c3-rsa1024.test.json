@@ -1,6 +1,6 @@
 {
   "zone" : "c3-rsa1024.test.",
-  "collectedAt" : "2026-10-31T10:58:20.895776173Z",
+  "collectedAt" : "2026-10-31T11:28:45.359151070Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "c3-rsa1024.test.\t3600\tIN\tDS\t11021 8 2 F1A445751FD7799C92B9EC62539CC0BDB0842AA00CD48298DB35A417F417669A" ],
-      "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. BX/pERebjSxdCtYvABjx8XlC9iduEy9QHVt0Oy7/ZYzBHj8aUAy13qo+Ty5cIRrm/4chGa8vhStGkkO5Zp3RYA==" ]
+      "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. sLeYJBBAOIYi9IdjA5l0xrvyewP5VEbEenBt8q3T1WfTus5Dm7ccfLttI4vHGK0yo/x8Pvr4G5pHhRozuEcVMg==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "c3-rsa1024.test.\t3600\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t3600\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       } ],
       "authority" : [ {
         "name" : "c3-rsa1024.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=" ]
       } ],
       "additional" : [ {
         "name" : "ns1.c3-rsa1024.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=" ]
+        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 645,
@@ -114,7 +114,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t256 3 8 AwEAAdG++Uk6uExbymjZnJgwdtu5hxS9K0oDTKQn5fT3CMcgj1zagdlixSDM2mK5TWYw6hviX0KbD5kuGdzHKk5QdRh32jWWdVOsMpLrXAYpn7RzPW5QndgD2+LP6867hRheqROaxfUvz3GHuuTlJSElqs0dCD9aZO/r9zuUrgN7abKp", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAak5nN8r/WI1Ad1KMDGMH7HjLwVT9Yl2yInML2A9kVWL94LrAtUarYv7G57W2Nc65bDITZUi8wI/x3eOzpDLcSXo4mW0gqnU5LPdWvtXvoyXm1dBK3/MDbzncFOrlxqzuyAYjzU78gecqTLlgPDUara2B6oZ3HJAHDysAcwt1DM/" ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130105324 20261031095324 11021 c3-rsa1024.test. OrK8Ul4bgutp7wK0PzsoRXOegBOI0sNVAFQ4W8DKuQ/bLuoTbtEnnrt9691d1nsB9H2KpzA74Xkg7lQMwuyRXyn21bTaY+IZ+2BDvYeen2rko+mErVzeEl6FaFLHcpjqKpe0HDGKSS56IIO7cMKpxF7nRKxEXQU1blXzykIMn9U=", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Yp41Te5eBuVQq9O4iTq3uMgP1Eq2MFekPpD0GtENHNO4wfklkI8MBpTvJ0ucPN+nRH9MRF29q7ZBdxzsl1JaVumn3YteHJ4b0DaWOZH1kUQoLUyEVzNXUVFcANcSL0jN9HdATOm1DB14QepI/tHaarGbqUA9yhn/2i+8GyLUTqA=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130112821 20261031102821 11021 c3-rsa1024.test. hRIgi5SPgYzSPVzV28kP6chdKm+iGdpKwcXGW66L4jC7PSW3ToXaJRgiSGrpkYj4HgcyAfgCoRkMGY0DkBJKt/EXEumKji37A0oYiak5jerGQ6/GExDl1FkXN0VZNuMoTF/lOKT9ruTWe5u4QzSrVbY2Rrq4MxXMKI2lSapljAg=", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. qaleYoTEDt+UxMrbkjmqwmn50arxtfqBMdt6rHyuooVUWE2xt272a3XWjaGpxBYaRrG8pwhgPzwPob7Ykq6ZwAveX/myqwrrBmhe7OkhSwB4kwN0lm8BNhK+ytyirxDuL4GLgRFVThwboZgLLd5HJiRvEcGvzGYlSgwWiu/r834=" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       }, {
         "name" : "c3-rsa1024.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=" ]
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       }, {
         "name" : "c3-rsa1024.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=" ]
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       }, {
         "name" : "c3-rsa1024.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=" ]
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -224,21 +224,21 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. TAsHXW25iHfCLjKcDbOG3k++lEpd3BaMH/41Jnkf5cWiyCQcnyU5LsCRajgKsQ5Culq1aAy2mtd9ZbGHUSAhDBN8pocOYkMteBDX+DDnHcir1TV9uO6nl5FyYo2EDkk4JYJZtfFNs4htMTpHdEjjfzqe9L4NMTNQZxaVsalBrt4=" ]
+        "sigs" : [ "www.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. WRyTmo0iCts3xIPIl11dGd0v7DWQn/KjqjP7QZUrzPqhgxHlXz7gzZTIX6cwveSwnH2BJidRfktQeSUmJf1ypBIsqZo4uSMer/b0k6a8b7kVpF31KteFv1xQM7TF5HzNot0zhu4EjHUwlHj6AczqeJvlGAmkynV+nSJSlBtKTfw=" ]
       } ],
       "authority" : [ {
         "name" : "c3-rsa1024.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=" ]
       } ],
       "additional" : [ {
         "name" : "ns1.c3-rsa1024.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=" ]
+        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 623,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=" ]
+        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 428,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tMX\t10 mail.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tMX 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. wj9ccOEIhl4EyUuUzp0g7k990CGKBCioAILOt6iwFpQ5Z2IAqV6kYo+IQ7fihtENWGTuwSo3AIFRg5lRkWEd68RYFXgaKZTVRt1covRfKSn0uFGNx2MtqZ9hniH4FgC1V9LgtKgouh4TKS5N+X19j8jVPkj6hDyMWz6jFp6uFZ4=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tMX 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. GuAxXWSNxfXdQntH8RrEA6yVUGksRgOHZAU5pXDM5gxnySwIU8tpABwxyVzgSsadauDLksw2NN5ZEE+c9dO08yK8eauxFMPC2MVgc30HWcmWu5kwDf6PA/nL9Z9E+ViGJELWd2YgwJRch7JGpEIWrsh99ec1Y8hdx3Ar5JO8pf0=" ]
       } ],
       "authority" : [ {
         "name" : "c3-rsa1024.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=" ]
       } ],
       "additional" : [ {
         "name" : "mail.c3-rsa1024.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. uYGaAV60NFFukUFMHFFfYH646c2wblMQCXqewacChSYA6h9ySUunG2Yq4SfJ9fxfIDEmfnZvm9oX1xUxXka2r5vY47r9CpR5WQq6/qoioQuzhV7KTyVqtPSaD15T05ACkUsEoCKr4DrMhCFrjEKuhJbQMCRD/XnjTY7EOzMG/ac=" ]
+        "sigs" : [ "mail.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. KpTHRgl4qWVXuB8lyY4/XMf48aK5g5EAixK5kqw/CCGJfnRpN6XgLtl9WGcBZ9Qub8SdNWOXxMf39qnSh/6ywAYz+QOrQlu3IrjfqtQV/sqJFiEwFhlaYNqlGZaeXFPxsamyn5J/5Md6CTWWqPOAYoHHZeLe3V3VtxGJecBymB8=" ]
       }, {
         "name" : "ns1.c3-rsa1024.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=" ]
+        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 815,
@@ -325,30 +325,30 @@
         "name" : "c3-rsa1024.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "c3-rsa1024.test.\t3600\tIN\tTXT\t\"C3: slab RSA kljuc (1024 bita)\"" ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tTXT 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. tPfC+Z9gVpmOlleF0lnj+Aug5i8m2ZG5hJ1yngoDPghuaCUnyBUXwmZ1cPQzZFka3JJlE/MARYMiRtdeIkTX7wXqr5thlekEUI7mepwpwCqGP4LBXuBIC/nddRMNXyh+wN6BROQTpiyHnh2R2cQ9/8RZJdYS1ZrTquHMNZwgGmo=" ]
+        "records" : [ "c3-rsa1024.test.\t3600\tIN\tTXT\t\"C3: weak RSA key (1024 bits)\"" ],
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tTXT 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iyMLNfHNebxHspN2qkjxxrNc4qwzaPTGoaRgjBNG26/zr598QMupyY5xQZcXLeuQvQhrq7/FAJTIvOgSvnTbujhrsnZo4CXVsVShPHV5Ka4IrKqPN5B+vqCSkyifSXbFhXMU9VBPnyftx6XAmk/6M1p3BNTlmmD9CvguIiN3RK4=" ]
       } ],
       "authority" : [ {
         "name" : "c3-rsa1024.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=" ]
       } ],
       "additional" : [ {
         "name" : "ns1.c3-rsa1024.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=" ]
+        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 646,
+      "size" : 644,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-5e884dd0.c3-rsa1024.test.",
+      "qname" : "dnssecretary-b22cea37.c3-rsa1024.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=" ]
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=" ]
       }, {
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       }, {
         "name" : "c3-rsa1024.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=" ]
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,7 +411,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "c3-rsa1024.test.\t3600\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=", "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test.", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=", "c3-rsa1024.test.\t3600\tIN\tMX\t10 mail.c3-rsa1024.test.", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tMX 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. wj9ccOEIhl4EyUuUzp0g7k990CGKBCioAILOt6iwFpQ5Z2IAqV6kYo+IQ7fihtENWGTuwSo3AIFRg5lRkWEd68RYFXgaKZTVRt1covRfKSn0uFGNx2MtqZ9hniH4FgC1V9LgtKgouh4TKS5N+X19j8jVPkj6hDyMWz6jFp6uFZ4=", "c3-rsa1024.test.\t3600\tIN\tTXT\t\"C3: slab RSA kljuc (1024 bita)\"", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tTXT 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. tPfC+Z9gVpmOlleF0lnj+Aug5i8m2ZG5hJ1yngoDPghuaCUnyBUXwmZ1cPQzZFka3JJlE/MARYMiRtdeIkTX7wXqr5thlekEUI7mepwpwCqGP4LBXuBIC/nddRMNXyh+wN6BROQTpiyHnh2R2cQ9/8RZJdYS1ZrTquHMNZwgGmo=", "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t256 3 8 AwEAAdG++Uk6uExbymjZnJgwdtu5hxS9K0oDTKQn5fT3CMcgj1zagdlixSDM2mK5TWYw6hviX0KbD5kuGdzHKk5QdRh32jWWdVOsMpLrXAYpn7RzPW5QndgD2+LP6867hRheqROaxfUvz3GHuuTlJSElqs0dCD9aZO/r9zuUrgN7abKp", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAak5nN8r/WI1Ad1KMDGMH7HjLwVT9Yl2yInML2A9kVWL94LrAtUarYv7G57W2Nc65bDITZUi8wI/x3eOzpDLcSXo4mW0gqnU5LPdWvtXvoyXm1dBK3/MDbzncFOrlxqzuyAYjzU78gecqTLlgPDUara2B6oZ3HJAHDysAcwt1DM/", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130105324 20261031095324 11021 c3-rsa1024.test. OrK8Ul4bgutp7wK0PzsoRXOegBOI0sNVAFQ4W8DKuQ/bLuoTbtEnnrt9691d1nsB9H2KpzA74Xkg7lQMwuyRXyn21bTaY+IZ+2BDvYeen2rko+mErVzeEl6FaFLHcpjqKpe0HDGKSS56IIO7cMKpxF7nRKxEXQU1blXzykIMn9U=", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Yp41Te5eBuVQq9O4iTq3uMgP1Eq2MFekPpD0GtENHNO4wfklkI8MBpTvJ0ucPN+nRH9MRF29q7ZBdxzsl1JaVumn3YteHJ4b0DaWOZH1kUQoLUyEVzNXUVFcANcSL0jN9HdATOm1DB14QepI/tHaarGbqUA9yhn/2i+8GyLUTqA=", "mail.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.81", "mail.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. uYGaAV60NFFukUFMHFFfYH646c2wblMQCXqewacChSYA6h9ySUunG2Yq4SfJ9fxfIDEmfnZvm9oX1xUxXka2r5vY47r9CpR5WQq6/qoioQuzhV7KTyVqtPSaD15T05ACkUsEoCKr4DrMhCFrjEKuhJbQMCRD/XnjTY7EOzMG/ac=", "mail.c3-rsa1024.test.\t300\tIN\tNSEC\tns1.c3-rsa1024.test. A RRSIG NSEC", "mail.c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 3 300 20261130105324 20261031095324 26530 c3-rsa1024.test. Day0nUZxHTosn+Az9MlIG7NpSEBvR43/tpvvpZXdPufcAhuuzVwta803vmsynuL9p8L9H2XKy4VjvvrlehH5kSAiqMRXbUhTMwco+8y0ZKGc6dG6QugEZA50v3uhNoAm4f5cwFZKNpi7ep5qUjqGLcP7G70o3rEmFHAlSV6AZ48=", "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11", "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=", "ns1.c3-rsa1024.test.\t300\tIN\tNSEC\twww.c3-rsa1024.test. A RRSIG NSEC", "ns1.c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 3 300 20261130105324 20261031095324 26530 c3-rsa1024.test. N5kh34OzW0LkDjKwX8/CcdT/WisplVGVyXp1hPO9UMAIzdfKC7b3naZuh02HvK95Mwiubs5djmXE1lggcNFSNobOBBZprgakSHylqpYHjoKhYY/oZNZLSJpG+zZVQK5cb2wyzendUPsVEk0oNGJQB+WweDwiF2m8prVsQD8cAxY=", "www.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.80", "www.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. TAsHXW25iHfCLjKcDbOG3k++lEpd3BaMH/41Jnkf5cWiyCQcnyU5LsCRajgKsQ5Culq1aAy2mtd9ZbGHUSAhDBN8pocOYkMteBDX+DDnHcir1TV9uO6nl5FyYo2EDkk4JYJZtfFNs4htMTpHdEjjfzqe9L4NMTNQZxaVsalBrt4=", "www.c3-rsa1024.test.\t300\tIN\tNSEC\tc3-rsa1024.test. A RRSIG NSEC", "www.c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 3 300 20261130105324 20261031095324 26530 c3-rsa1024.test. O9h8s7Ne9OIcgugu01HVg7/5gywVCWthAjbKis0g1yGhm4oMYVxmFAL9UowX8dUpvf76N2oKVdFxhqe29vf35nnvj+c8/yESu5X9BnUJKimrRDq2Sp1SdBafynVDmBOHRbmsUFOkXSjXtCUOzQCTP/i9F3vyWD3kwsWvyw0CrM0=" ],
+  "fullZone" : [ "c3-rsa1024.test.\t3600\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=", "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test.", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=", "c3-rsa1024.test.\t3600\tIN\tMX\t10 mail.c3-rsa1024.test.", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tMX 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. GuAxXWSNxfXdQntH8RrEA6yVUGksRgOHZAU5pXDM5gxnySwIU8tpABwxyVzgSsadauDLksw2NN5ZEE+c9dO08yK8eauxFMPC2MVgc30HWcmWu5kwDf6PA/nL9Z9E+ViGJELWd2YgwJRch7JGpEIWrsh99ec1Y8hdx3Ar5JO8pf0=", "c3-rsa1024.test.\t3600\tIN\tTXT\t\"C3: weak RSA key (1024 bits)\"", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tTXT 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iyMLNfHNebxHspN2qkjxxrNc4qwzaPTGoaRgjBNG26/zr598QMupyY5xQZcXLeuQvQhrq7/FAJTIvOgSvnTbujhrsnZo4CXVsVShPHV5Ka4IrKqPN5B+vqCSkyifSXbFhXMU9VBPnyftx6XAmk/6M1p3BNTlmmD9CvguIiN3RK4=", "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t256 3 8 AwEAAdG++Uk6uExbymjZnJgwdtu5hxS9K0oDTKQn5fT3CMcgj1zagdlixSDM2mK5TWYw6hviX0KbD5kuGdzHKk5QdRh32jWWdVOsMpLrXAYpn7RzPW5QndgD2+LP6867hRheqROaxfUvz3GHuuTlJSElqs0dCD9aZO/r9zuUrgN7abKp", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAak5nN8r/WI1Ad1KMDGMH7HjLwVT9Yl2yInML2A9kVWL94LrAtUarYv7G57W2Nc65bDITZUi8wI/x3eOzpDLcSXo4mW0gqnU5LPdWvtXvoyXm1dBK3/MDbzncFOrlxqzuyAYjzU78gecqTLlgPDUara2B6oZ3HJAHDysAcwt1DM/", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130112821 20261031102821 11021 c3-rsa1024.test. hRIgi5SPgYzSPVzV28kP6chdKm+iGdpKwcXGW66L4jC7PSW3ToXaJRgiSGrpkYj4HgcyAfgCoRkMGY0DkBJKt/EXEumKji37A0oYiak5jerGQ6/GExDl1FkXN0VZNuMoTF/lOKT9ruTWe5u4QzSrVbY2Rrq4MxXMKI2lSapljAg=", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. qaleYoTEDt+UxMrbkjmqwmn50arxtfqBMdt6rHyuooVUWE2xt272a3XWjaGpxBYaRrG8pwhgPzwPob7Ykq6ZwAveX/myqwrrBmhe7OkhSwB4kwN0lm8BNhK+ytyirxDuL4GLgRFVThwboZgLLd5HJiRvEcGvzGYlSgwWiu/r834=", "mail.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.81", "mail.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. KpTHRgl4qWVXuB8lyY4/XMf48aK5g5EAixK5kqw/CCGJfnRpN6XgLtl9WGcBZ9Qub8SdNWOXxMf39qnSh/6ywAYz+QOrQlu3IrjfqtQV/sqJFiEwFhlaYNqlGZaeXFPxsamyn5J/5Md6CTWWqPOAYoHHZeLe3V3VtxGJecBymB8=", "mail.c3-rsa1024.test.\t300\tIN\tNSEC\tns1.c3-rsa1024.test. A RRSIG NSEC", "mail.c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 3 300 20261130112821 20261031102821 26530 c3-rsa1024.test. p2YEU8kPlqAZh2NAvLXzjPkXQR485DKHwAS3SMrMegrOVR3tkf0B5RFcTR5qYnp2Kca35uvN5U3eRdSx2ldjg+HRci/8Cvt5WeK6w0xmmhyv/MjZPO7mNlEaJhU8LkB7/KtXX5AqY9GzF6EvyB4Wm1NTvGnRLc2c4z1HCgNRQ3c=", "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11", "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=", "ns1.c3-rsa1024.test.\t300\tIN\tNSEC\twww.c3-rsa1024.test. A RRSIG NSEC", "ns1.c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 3 300 20261130112821 20261031102821 26530 c3-rsa1024.test. LdqoVk2iDmK8wzZu7+1wHR/+BZoarf/XkLa0QA26yS9URpJd5kd0tySToCs2UBA6a4hocyKlIoNceqZiaalKbmiAKP28TVQ0DpH+No4cOcx4VFHpB3p8eSV3XTltKjhDDItraOHZAXN5iD9Q0zGMLE/dySng29VJTF1SqN/sPlc=", "www.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.80", "www.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. WRyTmo0iCts3xIPIl11dGd0v7DWQn/KjqjP7QZUrzPqhgxHlXz7gzZTIX6cwveSwnH2BJidRfktQeSUmJf1ypBIsqZo4uSMer/b0k6a8b7kVpF31KteFv1xQM7TF5HzNot0zhu4EjHUwlHj6AczqeJvlGAmkynV+nSJSlBtKTfw=", "www.c3-rsa1024.test.\t300\tIN\tNSEC\tc3-rsa1024.test. A RRSIG NSEC", "www.c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 3 300 20261130112821 20261031102821 26530 c3-rsa1024.test. iaDP3MMi9Lhv9H6VfYMEIXeaAaVp8Y70UN/atvkYlL66hudXIexo+6/KEPjVXSB2hs0gBKCD/qY1X3L39wjwoaQ9CWmwMPT2cMadq97AnoqLqDVTjvHRtPiIU3uJ/zWq7p3DXRnrcn8Ai1SxER0e+yFsSZcJIF4Ng9S/RwZZOHQ=" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Kc3-rsa1024.test.+008+11021.key",
@@ -436,8 +436,8 @@
         "name" : "c3-rsa1024.test.",
         "type" : "DNSKEY",
         "ttl" : 3600,
-        "records" : [ "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t256 3 8 AwEAAdG++Uk6uExbymjZnJgwdtu5hxS9K0oDTKQn5fT3CMcgj1zagdlixSDM2mK5TWYw6hviX0KbD5kuGdzHKk5QdRh32jWWdVOsMpLrXAYpn7RzPW5QndgD2+LP6867hRheqROaxfUvz3GHuuTlJSElqs0dCD9aZO/r9zuUrgN7abKp", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAak5nN8r/WI1Ad1KMDGMH7HjLwVT9Yl2yInML2A9kVWL94LrAtUarYv7G57W2Nc65bDITZUi8wI/x3eOzpDLcSXo4mW0gqnU5LPdWvtXvoyXm1dBK3/MDbzncFOrlxqzuyAYjzU78gecqTLlgPDUara2B6oZ3HJAHDysAcwt1DM/" ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130105324 20261031095324 11021 c3-rsa1024.test. OrK8Ul4bgutp7wK0PzsoRXOegBOI0sNVAFQ4W8DKuQ/bLuoTbtEnnrt9691d1nsB9H2KpzA74Xkg7lQMwuyRXyn21bTaY+IZ+2BDvYeen2rko+mErVzeEl6FaFLHcpjqKpe0HDGKSS56IIO7cMKpxF7nRKxEXQU1blXzykIMn9U=", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Yp41Te5eBuVQq9O4iTq3uMgP1Eq2MFekPpD0GtENHNO4wfklkI8MBpTvJ0ucPN+nRH9MRF29q7ZBdxzsl1JaVumn3YteHJ4b0DaWOZH1kUQoLUyEVzNXUVFcANcSL0jN9HdATOm1DB14QepI/tHaarGbqUA9yhn/2i+8GyLUTqA=" ]
+        "records" : [ "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t257 3 8 AwEAAak5nN8r/WI1Ad1KMDGMH7HjLwVT9Yl2yInML2A9kVWL94LrAtUarYv7G57W2Nc65bDITZUi8wI/x3eOzpDLcSXo4mW0gqnU5LPdWvtXvoyXm1dBK3/MDbzncFOrlxqzuyAYjzU78gecqTLlgPDUara2B6oZ3HJAHDysAcwt1DM/", "c3-rsa1024.test.\t3600\tIN\tDNSKEY\t256 3 8 AwEAAdG++Uk6uExbymjZnJgwdtu5hxS9K0oDTKQn5fT3CMcgj1zagdlixSDM2mK5TWYw6hviX0KbD5kuGdzHKk5QdRh32jWWdVOsMpLrXAYpn7RzPW5QndgD2+LP6867hRheqROaxfUvz3GHuuTlJSElqs0dCD9aZO/r9zuUrgN7abKp" ],
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130112821 20261031102821 11021 c3-rsa1024.test. hRIgi5SPgYzSPVzV28kP6chdKm+iGdpKwcXGW66L4jC7PSW3ToXaJRgiSGrpkYj4HgcyAfgCoRkMGY0DkBJKt/EXEumKji37A0oYiak5jerGQ6/GExDl1FkXN0VZNuMoTF/lOKT9ruTWe5u4QzSrVbY2Rrq4MxXMKI2lSapljAg=", "c3-rsa1024.test.\t3600\tIN\tRRSIG\tDNSKEY 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. qaleYoTEDt+UxMrbkjmqwmn50arxtfqBMdt6rHyuooVUWE2xt272a3XWjaGpxBYaRrG8pwhgPzwPob7Ykq6ZwAveX/myqwrrBmhe7OkhSwB4kwN0lm8BNhK+ytyirxDuL4GLgRFVThwboZgLLd5HJiRvEcGvzGYlSgwWiu/r834=" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -460,7 +460,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. TAsHXW25iHfCLjKcDbOG3k++lEpd3BaMH/41Jnkf5cWiyCQcnyU5LsCRajgKsQ5Culq1aAy2mtd9ZbGHUSAhDBN8pocOYkMteBDX+DDnHcir1TV9uO6nl5FyYo2EDkk4JYJZtfFNs4htMTpHdEjjfzqe9L4NMTNQZxaVsalBrt4=" ]
+        "sigs" : [ "www.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. WRyTmo0iCts3xIPIl11dGd0v7DWQn/KjqjP7QZUrzPqhgxHlXz7gzZTIX6cwveSwnH2BJidRfktQeSUmJf1ypBIsqZo4uSMer/b0k6a8b7kVpF31KteFv1xQM7TF5HzNot0zhu4EjHUwlHj6AczqeJvlGAmkynV+nSJSlBtKTfw=" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -482,7 +482,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tNS\tns1.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. RbSBnOMyBeKXO5VAID1i7G1jzOru9LZZJmqCK0Dz660fn+F+PTgQJB6gYSRaUE4mkxADV55URLL6NceuIFuBbUb2mE+ZluVYLoz7gDbkqJ6JjSe1vUw5rfUZsxexL4q8yn4WwQ1hS3f6dMkn/9wVMymjUZO/7X9tZXEFHV8NBEQ=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tNS 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iBsSwVNAIujarbV2NA8cy6ioXknxhYHtkbuWhLNwGFCqZ/u8fHcOcV9ek3gm5SClVtNgAZ7gNZRPP/GA2YfPn3FlDEdJQnNKVdVnKnr9uHA53UD7OOgiy9Ik0cX5hav+v57lPQHAl+SPsdh+DtTf3gWCEERsbCn12jUwKoygvzA=" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -490,7 +490,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. iNPbgst+PkzyHeviLo/iLDbBVsO9RENDGj/YVO7+NfKXrOzsGTSW2jBXa9azl9db3VzbID0s3b+az95EYsWAj4qUlQrUAXrYV8AamRSvKOC/3oFPdR3QQKhMsKtexvLWHVjTC5oarl/LaG6E/o9RCuSuKxSjLdVjmjV8rNe9LYg=" ]
+        "sigs" : [ "ns1.c3-rsa1024.test.\t3600\tIN\tRRSIG\tA 8 3 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. oShnOnYa+BXaSW1F5YuD9ChCCJooB1D/P1pk09lfnVj+IFOe7fK+XQFkW+ZjgMgKwdi/+MhHsY1hXWE4J1sdWLUXabj8xyOtlTzMECWl7bSJQg9bSq1nXlbtPq63aA+gx2v0HrtAba+W6hBR9qBuTkKIeDd9czDOl1HQuwwmlxA=" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 428,
@@ -510,7 +510,7 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "c3-rsa1024.test.\t3600\tIN\tMX\t10 mail.c3-rsa1024.test." ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tMX 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. wj9ccOEIhl4EyUuUzp0g7k990CGKBCioAILOt6iwFpQ5Z2IAqV6kYo+IQ7fihtENWGTuwSo3AIFRg5lRkWEd68RYFXgaKZTVRt1covRfKSn0uFGNx2MtqZ9hniH4FgC1V9LgtKgouh4TKS5N+X19j8jVPkj6hDyMWz6jFp6uFZ4=" ]
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tMX 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. GuAxXWSNxfXdQntH8RrEA6yVUGksRgOHZAU5pXDM5gxnySwIU8tpABwxyVzgSsadauDLksw2NN5ZEE+c9dO08yK8eauxFMPC2MVgc30HWcmWu5kwDf6PA/nL9Z9E+ViGJELWd2YgwJRch7JGpEIWrsh99ec1Y8hdx3Ar5JO8pf0=" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -531,17 +531,17 @@
         "name" : "c3-rsa1024.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "c3-rsa1024.test.\t3600\tIN\tTXT\t\"C3: slab RSA kljuc (1024 bita)\"" ],
-        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tTXT 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. tPfC+Z9gVpmOlleF0lnj+Aug5i8m2ZG5hJ1yngoDPghuaCUnyBUXwmZ1cPQzZFka3JJlE/MARYMiRtdeIkTX7wXqr5thlekEUI7mepwpwCqGP4LBXuBIC/nddRMNXyh+wN6BROQTpiyHnh2R2cQ9/8RZJdYS1ZrTquHMNZwgGmo=" ]
+        "records" : [ "c3-rsa1024.test.\t3600\tIN\tTXT\t\"C3: weak RSA key (1024 bits)\"" ],
+        "sigs" : [ "c3-rsa1024.test.\t3600\tIN\tRRSIG\tTXT 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. iyMLNfHNebxHspN2qkjxxrNc4qwzaPTGoaRgjBNG26/zr598QMupyY5xQZcXLeuQvQhrq7/FAJTIvOgSvnTbujhrsnZo4CXVsVShPHV5Ka4IrKqPN5B+vqCSkyifSXbFhXMU9VBPnyftx6XAmk/6M1p3BNTlmmD9CvguIiN3RK4=" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
       "ednsPayload" : 1232,
-      "size" : 262,
+      "size" : 260,
       "ede" : [ ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-5e884dd0.c3-rsa1024.test.",
+      "qname" : "dnssecretary-b22cea37.c3-rsa1024.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -555,13 +555,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "c3-rsa1024.test.\t300\tIN\tNSEC\tmail.c3-rsa1024.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130105324 20261031095324 26530 c3-rsa1024.test. ToYUb6Rs88jzr3ZuIB8BXyuGy1O7ozrdh0ZDdX1wcFLiBlav1K0cBe+iDkH5ko1KychZ/2LdNvwY5ZSFUI0ulthaDu2d5iZl+hkhNGzmh0TiYWps7uNfk/CKuJC7emPwC45PwmdzClnouE+7uFaXxfjVpCoxW7RAj0K8Nmhx1Yc=" ]
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tNSEC 8 2 300 20261130112821 20261031102821 26530 c3-rsa1024.test. tqa97pCte12q73wS12sVfsrl63hs+ZCa/dXJLXceMbOYuE0h8htIgLH87aqRvcMAduP7WoN1JCpuuIobCPq4kNFD6FDNWYnbgQJGfQZkE0/NVvfDO7mhgZ6kliiD+Ntsb8NbrcRztEi0AQZN1sex/+HFAO7rHKwnaQ/Q3XMnCbw=" ]
       }, {
         "name" : "c3-rsa1024.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130105324 20261031095324 26530 c3-rsa1024.test. Gva9u4557t6ZGrr3WAFVZFM3e7WUS+QKPGXSxb2J2/WIlnr8/dxCvOeRf8D9hfdNpPwZIQDwWfLyN++27esomm0Dxc1v4Zxu/clQHP8yToTDp0lxtpt5fIUPpFquzGkUSRfSL9bUupMJQwRvXYRkWh8kNlqGXmUU9Y73afrNjD0=" ]
+        "records" : [ "c3-rsa1024.test.\t300\tIN\tSOA\tns1.c3-rsa1024.test. admin.c3-rsa1024.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "c3-rsa1024.test.\t300\tIN\tRRSIG\tSOA 8 2 3600 20261130112821 20261031102821 26530 c3-rsa1024.test. uTIKGJfEQXPGpwOYkFdqlTK61wFRtlIoWi2Q6YVvYaYzeMiCELkHzRuW6a10txaeKoaoWQ3LxrGZZhyZdqhKP7b9N4xlsfuPui7LErLSl0SeXdQAmA0b6HyL29NJpAih8sAZa2m9MITEF+0mtCchV5VLAObemLGaruJBOlXRZF8=" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,

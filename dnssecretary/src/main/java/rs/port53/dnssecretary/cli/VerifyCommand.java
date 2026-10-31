@@ -7,15 +7,15 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 import rs.port53.dnssecretary.report.Messages;
 
-/** verify: live check after a fix (role 5, docs/predlog-java.md 3.8). Only the interface for now. */
+/** verify: live check after a fix (role 5, docs/java-proposal.md 3.8). Only the interface for now. */
 @Command(name = "verify", mixinStandardHelpOptions = true,
-        description = "Posle popravke: ponovo proveri zonu uživo i da resolver vraća NOERROR AD.")
+        description = "After a fix: check the zone live again, and that the resolver returns NOERROR AD.")
 final class VerifyCommand implements Callable<Integer> {
 
     @Spec
     CommandSpec spec;
 
-    @Parameters(paramLabel = "<zona>")
+    @Parameters(paramLabel = "<zone>")
     String zone;
 
     @Override

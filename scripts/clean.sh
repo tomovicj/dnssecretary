@@ -15,9 +15,9 @@ set -eu
 cd "$(dirname "$0")/.."
 
 # Safety: if we're not in the lab root, delete nothing.
-[ -f compose.yaml ] || { echo "Nema compose.yaml – ovo nije koren laba. Prekidam."; exit 1; }
+[ -f compose.yaml ] || { echo "No compose.yaml – this is not the lab root. Stopping."; exit 1; }
 
-usage() { echo "Upotreba: sh scripts/clean.sh [-n] [-k] [-y]"; }
+usage() { echo "Usage: sh scripts/clean.sh [-n] [-k] [-y]"; }
 
 DRY=0; KEEP_KEYS=0; YES=0
 while getopts nky opt; do
@@ -51,21 +51,21 @@ add client/delv-anchor.conf  # trust anchor for delv
 # missing, Docker creates it as root, and then sign.sh can't write to it.
 
 if [ -z "$TARGETS" ]; then
-    echo "Već je čisto, nema šta da se briše."
+    echo "Already clean, nothing to delete."
     exit 0
 fi
 
-echo "Biće obrisano:"
+echo "Will be deleted:"
 for t in $TARGETS; do echo "  $t"; done
 
-[ "$DRY" -eq 1 ] && { echo "(dry run – ništa nije obrisano)"; exit 0; }
+[ "$DRY" -eq 1 ] && { echo "(dry run – nothing was deleted)"; exit 0; }
 
 if [ "$YES" -ne 1 ]; then
-    printf "Nastavi? [y/N] "
+    printf "Continue? [y/N] "
     read -r ans
     case $ans in
-        y|Y|da|DA) ;;
-        *) echo "Prekinuto."; exit 0 ;;
+        y|Y|yes|YES) ;;
+        *) echo "Cancelled."; exit 0 ;;
     esac
 fi
 
@@ -73,14 +73,14 @@ fi
 # shellcheck disable=SC2086
 if ! rm -rf -- $TARGETS; then
     echo
-    echo "Neki fajlovi nisu obrisani – verovatno pripadaju root-u"
-    echo "(nastali kad je signer pokrenut bez --user). Probaj:"
+    echo "Some files were not deleted – they probably belong to root"
+    echo "(created when signer ran without --user). Try:"
     echo "  sudo sh scripts/clean.sh"
     exit 1
 fi
 
 echo
-echo "Očišćeno. Da lab ponovo proradi:"
+echo "Cleaned. To get the lab working again:"
 [ "$KEEP_KEYS" -eq 1 ] || \
 echo "  docker compose run --rm --user \$(id -u):\$(id -g) signer sh scripts/keygen.sh"
 echo "  docker compose run --rm --user \$(id -u):\$(id -g) signer sh scripts/sign.sh"

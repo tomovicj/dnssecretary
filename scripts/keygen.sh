@@ -14,11 +14,11 @@ ALG=ECDSAP256SHA256          # algorithm 13
 ZONES=". test. good.test."   # names WITH the trailing dot, same as in the file names
 
 # Broken zones from the error catalogue (see scripts/break.sh)
-# Tab "Prvo (MVP)":
+# MVP tab:
 ZONES="$ZONES a1-expired.test. a3-nosig.test. a4-bogus.test. a6-expiring.test."
 ZONES="$ZONES b1-ds-stale.test. b2-ds-digest.test. b4-ds-unsigned.test."
 ZONES="$ZONES d1-nsec-broken.test. d4-nsec3-iter.test. e1-rollover.test."
-# Tab "Kasnije" (later):
+# Later tab:
 ZONES="$ZONES a2-notyet.test. a5-unknown-key.test. a7-ttl-long.test."
 ZONES="$ZONES b3-ds-alg.test. b5-dnskey-zsk.test. b6-island.test. b7-ds-sha1.test. b8-ds-extra.test."
 ZONES="$ZONES c1-rsasha1.test. c2-two-alg.test. c3-rsa1024.test."
@@ -46,12 +46,12 @@ has_keys() {
 
 for zone in $ZONES; do
     if has_keys "$zone"; then
-        echo ">> $zone: ključevi već postoje, preskačem"
+        echo ">> $zone: keys already exist, skipping"
         continue
     fi
 
     alg=$(alg_for "$zone")
-    echo ">> $zone: pravim KSK i ZSK ($alg)"
+    echo ">> $zone: making KSK and ZSK ($alg)"
     # $alg unquoted on purpose: it can also contain "-b 1024".
     # shellcheck disable=SC2086
     # -f KSK  -> flags 257 (SEP bit). The DS in the parent points to this key.
@@ -71,9 +71,9 @@ extra_key() {
     dir=$KEYDIR/$1; zone=$2; shift 2
     mkdir -p "$dir"
     if has_keys "$zone" "$dir"; then
-        echo ">> $zone: dodatni ključ u $dir/ već postoji, preskačem"
+        echo ">> $zone: extra key in $dir/ already exists, skipping"
     else
-        echo ">> $zone: pravim dodatni ključ u $dir/"
+        echo ">> $zone: making an extra key in $dir/"
         dnssec-keygen -q -K "$dir" "$@" "$zone" >/dev/null
     fi
 }
@@ -89,4 +89,4 @@ extra_key k2   a5-unknown-key.test.  -a "$ALG"
 extra_key alg8 c2-two-alg.test.      -a RSASHA256 -b 2048 -f KSK
 
 echo
-echo "Gotovo. Ključevi su u $KEYDIR/ (.key = javni deo, .private = TAJNI deo)."
+echo "Done. The keys are in $KEYDIR/ (.key = public part, .private = SECRET part)."

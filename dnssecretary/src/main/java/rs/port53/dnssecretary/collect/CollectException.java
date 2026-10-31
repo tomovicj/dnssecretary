@@ -1,6 +1,6 @@
 package rs.port53.dnssecretary.collect;
 
-/** Collecting failed so badly that there is nothing to check (exit code 3). Message in Serbian. */
+/** Collecting failed so badly that there is nothing to check (exit code 3). The message is shown to the user. */
 public class CollectException extends Exception {
 
     public CollectException(String message) {

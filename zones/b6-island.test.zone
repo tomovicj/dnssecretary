@@ -7,4 +7,4 @@ ns1.b6-island.test.    IN A    10.53.0.11
 www.b6-island.test.    IN A    10.53.0.80
 mail.b6-island.test.   IN A    10.53.0.81
 b6-island.test.        IN MX   10 mail.b6-island.test.
-b6-island.test.        IN TXT  "B6: nema DS u parent zoni (ostrvo)"
+b6-island.test.        IN TXT  "B6: no DS in the parent zone (island)"

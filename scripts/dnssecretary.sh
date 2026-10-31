@@ -16,7 +16,7 @@ set -eu
 cd "$(dirname "$0")/.."
 
 JAR=dnssecretary/target/dnssecretary.jar
-[ -f "$JAR" ] || { echo "Nema $JAR – pokreni: mvn -f dnssecretary/pom.xml package"; exit 3; }
+[ -f "$JAR" ] || { echo "Missing $JAR – run: mvn -f dnssecretary/pom.xml package"; exit 3; }
 
 run() { docker compose run --rm -T --user "$(id -u):$(id -g)" app "$@"; }
 

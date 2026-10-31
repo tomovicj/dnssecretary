@@ -7,4 +7,4 @@ ns1.b1-ds-stale.test.    IN A    10.53.0.11
 www.b1-ds-stale.test.    IN A    10.53.0.80
 mail.b1-ds-stale.test.   IN A    10.53.0.81
 b1-ds-stale.test.        IN MX   10 mail.b1-ds-stale.test.
-b1-ds-stale.test.        IN TXT  "B1: DS pokazuje na kljuc koji ne postoji"
+b1-ds-stale.test.        IN TXT  "B1: DS points to a key that does not exist"

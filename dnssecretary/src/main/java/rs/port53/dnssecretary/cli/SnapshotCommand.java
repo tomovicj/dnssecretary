@@ -22,7 +22,7 @@ import rs.port53.dnssecretary.report.Messages;
 
 /** snapshot: collect only, save the ZoneSnapshot as JSON (for unit tests and debugging). */
 @Command(name = "snapshot", mixinStandardHelpOptions = true,
-        description = "Snimi ZoneSnapshot u JSON (za testove).")
+        description = "Record a ZoneSnapshot as JSON (for tests).")
 final class SnapshotCommand implements Callable<Integer> {
 
     /** Always recorded with --catalog: the correct zone, every check must stay silent on it. */
@@ -34,19 +34,19 @@ final class SnapshotCommand implements Callable<Integer> {
     @Spec
     CommandSpec spec;
 
-    @Parameters(arity = "0..*", paramLabel = "<zona>")
+    @Parameters(arity = "0..*", paramLabel = "<zone>")
     List<String> zones = new ArrayList<>();
 
     @Option(names = "--catalog",
-            description = "good.test i sve zone iz kataloga, osim onih koje traže setup skriptu (E1, E3).")
+            description = "good.test and every catalogue zone, except those that need a setup script (E1, E3).")
     boolean catalog;
 
-    @Option(names = {"-o", "--output"}, paramLabel = "<fajl.json>",
-            description = "Jedna zona: u ovaj fajl (\"-\" = stdout).")
+    @Option(names = {"-o", "--output"}, paramLabel = "<file.json>",
+            description = "One zone: into this file (\"-\" = stdout).")
     Path output;
 
     @Option(names = {"-d", "--dir"}, paramLabel = "<dir>",
-            description = "Svaka zona u <dir>/<zona>.json")
+            description = "Every zone into <dir>/<zone>.json")
     Path dir;
 
     @Override
@@ -62,11 +62,11 @@ final class SnapshotCommand implements Callable<Integer> {
         }
         zones.forEach(z -> names.add(Main.zoneName(z)));
         if (names.isEmpty() || (output != null && (names.size() != 1 || dir != null))) {
-            spec.commandLine().getErr().println("Navedi zone (ili --catalog); -o samo za jednu zonu, -d za više.");
+            spec.commandLine().getErr().println("Give zones (or --catalog); -o only for one zone, -d for more.");
             return Main.EXIT_TOOL_ERROR;
         }
         if (output == null && dir == null && names.size() > 1) {
-            spec.commandLine().getErr().println("Za više zona navedi -d <dir>.");
+            spec.commandLine().getErr().println("For more than one zone, give -d <dir>.");
             return Main.EXIT_TOOL_ERROR;
         }
 

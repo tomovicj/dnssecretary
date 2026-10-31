@@ -7,7 +7,7 @@
 # 4. A validator behind the cache (here delv in the client container) gets the old signature
 #    for www from the cache and the NEW DNSKEY set without the old key -> can't verify it.
 #    Unbound itself still answers with AD (it verified www earlier), so the error hits
-#    only some users – hence "SERVFAIL za deo korisnika" in the catalogue.
+#    only some users – hence "SERVFAIL for some users" in the catalogue.
 #
 # Run from the host (the lab must be running: docker compose up -d):
 #   sh scripts/e3-rollover.sh
@@ -34,17 +34,17 @@ delv_www() {
         www.$Z A 2>&1 | grep -E '^; (fully validated|unsigned)|resolution failed|validating' | head -n 2
 }
 
-echo ">> 1. čistim keš za $Z i keširam www (potpis starim ZSK-om)"
+echo ">> 1. flushing the cache for $Z and caching www (signed with the old ZSK)"
 docker compose exec -T resolver unbound-control flush_zone $Z >/dev/null
 echo "   resolver: www.$Z A: $(q www.$Z A)"
 echo "   delv:     $(delv_www)"
 
-echo ">> 2. menjam ZSK i odmah brišem stari"
+echo ">> 2. replacing the ZSK and removing the old one at once"
 docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/break.sh rollover $Z 2>/dev/null
 docker compose restart auth1 >/dev/null 2>&1
 sleep 2
 
-echo ">> 3. iz keša resolvera brišem samo DNSKEY (www ostaje)"
+echo ">> 3. removing only the DNSKEY from the resolver cache (www stays)"
 docker compose exec -T resolver unbound-control flush_type $Z DNSKEY >/dev/null
 
 got=$(q www.$Z A)
@@ -52,15 +52,15 @@ dv=$(delv_www)
 echo "   resolver: www.$Z A: $got"
 echo "   delv:     $dv"
 echo
-echo "Očekivano: resolver i dalje NOERROR AD (iz keša), a delv ne može da proveri potpis."
-echo "Popravka: vrati stari ZSK u DNSKEY skup dok ne istekne TTL (vidi katalog, E3)."
+echo "Expected: the resolver still answers NOERROR AD (from cache), while delv can't verify the signature."
+echo "Fix: put the old ZSK back into the DNSKEY set until the TTL expires (see the catalogue, E3)."
 
 # Exit for CI: 0 only if the resolver still works and delv fails.
 case $got in
     "NOERROR AD"*) ;;
-    *) echo "E3: GREŠKA – resolver je trebalo da vrati NOERROR AD iz keša"; exit 1 ;;
+    *) echo "E3: ERROR – the resolver should have answered NOERROR AD from cache"; exit 1 ;;
 esac
 case $dv in
     *"resolution failed"*) echo "E3: ok" ;;
-    *) echo "E3: GREŠKA – delv je trebalo da padne"; exit 1 ;;
+    *) echo "E3: ERROR – delv should have failed"; exit 1 ;;
 esac

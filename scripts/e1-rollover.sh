@@ -25,26 +25,26 @@ q() {
          END { print s, ad e }'
 }
 
-echo ">> 1. čistim keš za $Z i punim ga DNSKEY skupom (stari ZSK)"
+echo ">> 1. flushing the cache for $Z and filling it with the DNSKEY set (old ZSK)"
 # Only DNSKEY, not www: otherwise the resolver would also cache a valid answer for www.
 docker compose exec -T resolver unbound-control flush_zone $Z >/dev/null
 echo "   DNSKEY $Z: $(q $Z DNSKEY)"
 
-echo ">> 2. menjam ZSK bez prethodnog objavljivanja"
+echo ">> 2. replacing the ZSK without pre-publishing it"
 docker compose run --rm --user "$(id -u):$(id -g)" signer sh scripts/break.sh rollover $Z 2>/dev/null
 
-echo ">> 3. auth1 učitava novu zonu (resolver NE restartujemo – keš ostaje)"
+echo ">> 3. auth1 loads the new zone (the resolver is NOT restarted – the cache stays)"
 docker compose restart auth1 >/dev/null 2>&1
 sleep 2
 
 got=$(q www.$Z A)
 echo "   www.$Z A: $got"
 echo
-echo "Očekivano: SERVFAIL, EDE 9 ili 6. Resolver vidi potpis ključem kog nema u kešu."
-echo "Popravka: vrati stari ZSK u DNSKEY skup i sačekaj TTL (vidi katalog, E1)."
+echo "Expected: SERVFAIL, EDE 9 or 6. The resolver sees a signature by a key that is not in its cache."
+echo "Fix: put the old ZSK back into the DNSKEY set and wait for the TTL (see the catalogue, E1)."
 
 # Exit for CI: 0 only if the error really appeared.
 case $got in
     SERVFAIL*) echo "E1: ok" ;;
-    *)         echo "E1: GREŠKA – očekivan SERVFAIL"; exit 1 ;;
+    *)         echo "E1: ERROR – expected SERVFAIL"; exit 1 ;;
 esac

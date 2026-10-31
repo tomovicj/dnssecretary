@@ -29,7 +29,7 @@ mkdir -p "$BUILD" client
 #   $3 = output (signed) file
 sign_zone() {
     origin=$1; input=$2; output=$3
-    echo ">> potpisujem: $origin"
+    echo ">> signing: $origin"
 
     # -S          finds the keys in $KEYDIR itself and adds the DNSKEY records to the zone
     # -d $BUILD   where to write dsset-<zone>. (the DS record for the parent)
@@ -58,14 +58,14 @@ ksk_file() {
 # ---------- checks before starting ----------
 
 for f in root.zone test.zone good.test.zone; do
-    [ -f "$SRC/$f" ] || { echo "Nema $SRC/$f"; exit 1; }
+    [ -f "$SRC/$f" ] || { echo "Missing $SRC/$f"; exit 1; }
 done
 
 # This script inserts the DS records. If $INCLUDE or hand-written DS records are left
 # in the source, you get duplicate or stale DS records.
 if grep -qiE '^\$INCLUDE|[[:space:]]DS[[:space:]]' "$SRC/test.zone" "$SRC/root.zone"; then
-    echo "UPOZORENJE: zones/test.zone ili zones/root.zone već sadrže \$INCLUDE ili DS."
-    echo "            Obriši ih – sign.sh sam dodaje DS iz build/dsset-*."
+    echo "WARNING: zones/test.zone or zones/root.zone already contain \$INCLUDE or DS."
+    echo "         Delete them – sign.sh adds the DS records from build/dsset-* itself."
     exit 1
 fi
 
@@ -92,7 +92,7 @@ sign_zone . "$BUILD/root.zone.in" "$BUILD/root.zone.signed"
 # The resolver can't ask "what is the root key?" – it has to know it in advance.
 # We build a DS (SHA-256 hash) from the root KSK.
 root_ksk=$(ksk_file .)
-[ -n "$root_ksk" ] || { echo "Nema root KSK – pokreni prvo keygen.sh"; exit 1; }
+[ -n "$root_ksk" ] || { echo "No root KSK – run keygen.sh first"; exit 1; }
 
 dnssec-dsfromkey -2 "$root_ksk" > resolver/root.key      # format for Unbound
 echo ">> trust anchor: $(cat resolver/root.key)"
@@ -111,5 +111,5 @@ cp "$BUILD"/broken/auth2/*.signed  auth2/   # F1: stale zone on the "secondary"
 cp "$BUILD"/broken/auth3/*.signed  auth3/   # F2: server without TCP
 
 echo
-echo "Gotovo. Sad pokreni na hostu:"
+echo "Done. Now run on the host:"
 echo "  docker compose restart root tld auth1 auth2 auth3 resolver"

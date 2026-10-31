@@ -1,6 +1,6 @@
 {
   "zone" : "b6-island.test.",
-  "collectedAt" : "2026-10-31T10:58:20.622162993Z",
+  "collectedAt" : "2026-10-31T11:28:45.084259855Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,14 +52,14 @@
       "name" : "test.",
       "type" : "SOA",
       "ttl" : 300,
-      "records" : [ "test.\t\t\t300\tIN\tSOA\tns1.nic.test. admin.nic.test. 1793444005 3600 900 604800 300" ],
-      "sigs" : [ "test.\t\t\t300\tIN\tRRSIG\tSOA 13 1 3600 20261130105325 20261031095325 17926 test. LLx05md5BdPDfpBaZoBXgzG8avfI0/AaEnQ5ba+aebUaL0D3CgwkuQ/tQVQUF96fBO8YAvD24tR1r04qTfQc5w==" ]
+      "records" : [ "test.\t\t\t300\tIN\tSOA\tns1.nic.test. admin.nic.test. 1793446102 3600 900 604800 300" ],
+      "sigs" : [ "test.\t\t\t300\tIN\tRRSIG\tSOA 13 1 3600 20261130112822 20261031102822 17926 test. 3cisDsWRqKP+UMylM3/3HMmDwkeN9wuNsObmZX9QVIvr291wms0ERlqGkeGRinsV84LMAldJZVMkshqTOQwKRA==" ]
     }, {
       "name" : "b6-island.test.",
       "type" : "NSEC",
       "ttl" : 300,
       "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tb7-ds-sha1.test. NS RRSIG NSEC" ],
-      "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 17926 test. YC0UEAy1BCM2mPbdhY2EFuyZWgPhP/lsvlpabgeDsq66S77j0vCgypPvQ+KmDVEHnEY5YUprKrO3EOXLUPQqhA==" ]
+      "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112822 20261031102822 17926 test. +y+MXqYLPRoem6Cyy98to/zBAQzj+RyyPXOsIzBmT0Jfyfxy9UoestDCXkts2dYIuVf3FBV3I1ZLrtk6qvzwEA==" ]
     } ],
     "additional" : [ ],
     "ednsPayload" : 1232,
@@ -84,22 +84,22 @@
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "b6-island.test.\t\t3600\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t3600\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       } ],
       "authority" : [ {
         "name" : "b6-island.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.b6-island.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==" ]
+        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 449,
@@ -120,7 +120,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tDNSKEY\t256 3 13 qeCMhEmT39uTEH3E4HwNna3g1ZNI/Kh+cL/4dV9yiGdl3yQIkDtEM/RC1P7SRNab8c4UWN3Zx57wqlcwrHgtHQ==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t257 3 13 uvkzFa8cPZiLr6aAVoH8qgkdU67vpL3OtrbHldkBuZFJVLBWLrOju7d+47bk+rpWIhiNke8mZSuXb9zZAhDESQ==" ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 50317 b6-island.test. wW45r8R74mCLlwY4wV819iDGulYXWmZfPFGNEU3Moy5U2DStgrhKh/05BoC9jHzbz52isQlFGZ1gO9Zc6Boj2w==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 5sOFO0Zo+taqYvIeemhrhfyLjmDhY/6/+z0+M7CoridruvQj2MD96zkKy5eBJ3PDTk0gLAAI6YF4g9SMWUgp3A==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 50317 b6-island.test. WGD27ockSmbeYFSxyi5PjEsazSrtTyW903INxThnt4VxoziAavT2XWd9f7gOeFWVuD9ba7i3rovDPoE0T5s+NA==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. ofbps1KvIng2snBdSiVQRxFTKqAgL3SOnKm40v7SKuGRQFrRLzrFYBQBNUOZIM0PQSHnRLasCSFGIx9aOW1lGw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -143,14 +143,14 @@
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       }, {
         "name" : "b6-island.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==" ]
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -172,14 +172,14 @@
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       }, {
         "name" : "b6-island.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==" ]
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -201,14 +201,14 @@
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       }, {
         "name" : "b6-island.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==" ]
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -230,21 +230,21 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.b6-island.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. xiljbGKHlEG6YX7AD7O3rsuI9aHZSycRrchCylD80v9ogXKLC8mjZ9f+4H0UlvsCUs6TYERLpzTQCn9Y1nuo7Q==" ]
+        "sigs" : [ "www.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. rxYM/AttW1xImrBsQHdTWFPiGb51k62mFYqwoFBOV7sqMyVhoabstJucjTI0opVoDMIIrLHwNCr8E+VXqNVcVg==" ]
       } ],
       "authority" : [ {
         "name" : "b6-island.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.b6-island.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==" ]
+        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 427,
@@ -264,7 +264,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -272,7 +272,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==" ]
+        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 297,
@@ -292,27 +292,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tMX\t10 mail.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. +ptsW3j1IaWXlmZ8ASZS94Rk0Sv0+jIB3pkKa72IgXa10jOC3Ybt8u2hH83Bq+LdcMEK1owmQhZCvZGGgf0piA==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. GbMATMzJo1tUiwjM52qgWtfT1GrFY1HuWHDCSKCyzLn9+i18p5kwQ6TBpwos1yNf/VttywP8LQyNukr2uJuYWg==" ]
       } ],
       "authority" : [ {
         "name" : "b6-island.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==" ]
       } ],
       "additional" : [ {
         "name" : "mail.b6-island.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.b6-island.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. +0Nhd1hazpw1E8+XtHXyv0os+t8EVdBiwYW7rv5nC05DHJg2llTm4bc7FHv+tnoyemLnzwCXldKKJ4T1LIbVCg==" ]
+        "sigs" : [ "mail.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 6wy77/bg0C8MNirzG/tz2woCmlGqw4lb+xLCPz/qqfLZELc75eMjbcuFRuj3SctSkvWon7Y6Nw3mTKwwOuY04g==" ]
       }, {
         "name" : "ns1.b6-island.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==" ]
+        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 554,
@@ -331,30 +331,30 @@
         "name" : "b6-island.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "b6-island.test.\t\t3600\tIN\tTXT\t\"B6: nema DS u parent zoni (ostrvo)\"" ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. bdblGV2UqgQ/4j98nGyYF0QLm7CAUguX7uXqPPwm21gAnB3TLePLt7FOFs0QL9CYMgdcQxCfNlQg7qesGli/0g==" ]
+        "records" : [ "b6-island.test.\t\t3600\tIN\tTXT\t\"B6: no DS in the parent zone (island)\"" ],
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. 1JXNkbwP2pQuThQJ6T9LEvknCM2Bw5j2CVtuBrnH8APx7GplR+MbQQZgKKMmQq4eokyx+vic79HoJ3S36HwC2Q==" ]
       } ],
       "authority" : [ {
         "name" : "b6-island.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.b6-island.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==" ]
+        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 454,
+      "size" : 457,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-7df95064.b6-island.test.",
+      "qname" : "dnssecretary-eec96e0b.b6-island.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -368,13 +368,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==" ]
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==" ]
       }, {
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -395,14 +395,14 @@
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       }, {
         "name" : "b6-island.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==" ]
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -417,7 +417,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "b6-island.test.\t\t3600\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300", "b6-island.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==", "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test.", "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==", "b6-island.test.\t\t3600\tIN\tMX\t10 mail.b6-island.test.", "b6-island.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. +ptsW3j1IaWXlmZ8ASZS94Rk0Sv0+jIB3pkKa72IgXa10jOC3Ybt8u2hH83Bq+LdcMEK1owmQhZCvZGGgf0piA==", "b6-island.test.\t\t3600\tIN\tTXT\t\"B6: nema DS u parent zoni (ostrvo)\"", "b6-island.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. bdblGV2UqgQ/4j98nGyYF0QLm7CAUguX7uXqPPwm21gAnB3TLePLt7FOFs0QL9CYMgdcQxCfNlQg7qesGli/0g==", "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t256 3 13 qeCMhEmT39uTEH3E4HwNna3g1ZNI/Kh+cL/4dV9yiGdl3yQIkDtEM/RC1P7SRNab8c4UWN3Zx57wqlcwrHgtHQ==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t257 3 13 uvkzFa8cPZiLr6aAVoH8qgkdU67vpL3OtrbHldkBuZFJVLBWLrOju7d+47bk+rpWIhiNke8mZSuXb9zZAhDESQ==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 50317 b6-island.test. wW45r8R74mCLlwY4wV819iDGulYXWmZfPFGNEU3Moy5U2DStgrhKh/05BoC9jHzbz52isQlFGZ1gO9Zc6Boj2w==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 5sOFO0Zo+taqYvIeemhrhfyLjmDhY/6/+z0+M7CoridruvQj2MD96zkKy5eBJ3PDTk0gLAAI6YF4g9SMWUgp3A==", "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11", "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==", "ns1.b6-island.test.\t300\tIN\tNSEC\twww.b6-island.test. A RRSIG NSEC", "ns1.b6-island.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 50776 b6-island.test. TwB/FfTdt/TMBiLscX2pyoWPZzLsX8DEXWK4ZAkWoKW6eDAJh8mEKAdOpVjDAnYEFRWwnr97san/ajYlYYbemg==", "mail.b6-island.test.\t3600\tIN\tA\t10.53.0.81", "mail.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. +0Nhd1hazpw1E8+XtHXyv0os+t8EVdBiwYW7rv5nC05DHJg2llTm4bc7FHv+tnoyemLnzwCXldKKJ4T1LIbVCg==", "mail.b6-island.test.\t300\tIN\tNSEC\tns1.b6-island.test. A RRSIG NSEC", "mail.b6-island.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 50776 b6-island.test. auF+QXhabCuH3SOXKaxOvXBRq/NaDMTe5Ck9aQIXa26rZFHTfqOP70RyOAG7YjBKs6kPlroOVRHBvlghdixD1A==", "www.b6-island.test.\t3600\tIN\tA\t10.53.0.80", "www.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. xiljbGKHlEG6YX7AD7O3rsuI9aHZSycRrchCylD80v9ogXKLC8mjZ9f+4H0UlvsCUs6TYERLpzTQCn9Y1nuo7Q==", "www.b6-island.test.\t300\tIN\tNSEC\tb6-island.test. A RRSIG NSEC", "www.b6-island.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105324 20261031095324 50776 b6-island.test. a6i91Tq4e5zpcu1NuyJw9OXUMk16mtfY03EWT4eLqUTRZVHpSlZfle97xbjljJagsPJ8W8ChjUQ+8HjGT+xyWw==" ],
+  "fullZone" : [ "b6-island.test.\t\t3600\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300", "b6-island.test.\t\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==", "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test.", "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==", "b6-island.test.\t\t3600\tIN\tMX\t10 mail.b6-island.test.", "b6-island.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. GbMATMzJo1tUiwjM52qgWtfT1GrFY1HuWHDCSKCyzLn9+i18p5kwQ6TBpwos1yNf/VttywP8LQyNukr2uJuYWg==", "b6-island.test.\t\t3600\tIN\tTXT\t\"B6: no DS in the parent zone (island)\"", "b6-island.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. 1JXNkbwP2pQuThQJ6T9LEvknCM2Bw5j2CVtuBrnH8APx7GplR+MbQQZgKKMmQq4eokyx+vic79HoJ3S36HwC2Q==", "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t256 3 13 qeCMhEmT39uTEH3E4HwNna3g1ZNI/Kh+cL/4dV9yiGdl3yQIkDtEM/RC1P7SRNab8c4UWN3Zx57wqlcwrHgtHQ==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t257 3 13 uvkzFa8cPZiLr6aAVoH8qgkdU67vpL3OtrbHldkBuZFJVLBWLrOju7d+47bk+rpWIhiNke8mZSuXb9zZAhDESQ==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 50317 b6-island.test. WGD27ockSmbeYFSxyi5PjEsazSrtTyW903INxThnt4VxoziAavT2XWd9f7gOeFWVuD9ba7i3rovDPoE0T5s+NA==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. ofbps1KvIng2snBdSiVQRxFTKqAgL3SOnKm40v7SKuGRQFrRLzrFYBQBNUOZIM0PQSHnRLasCSFGIx9aOW1lGw==", "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11", "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==", "ns1.b6-island.test.\t300\tIN\tNSEC\twww.b6-island.test. A RRSIG NSEC", "ns1.b6-island.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112820 20261031102820 50776 b6-island.test. uW6LJv9E7eweGfq2rFhtwOzYPrSGktCn7uJEcqB9mC+Kt5uEwDQwnQubIrgv5aJ7rU4hpu1Og7TjyS1G2lxYpg==", "www.b6-island.test.\t3600\tIN\tA\t10.53.0.80", "www.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. rxYM/AttW1xImrBsQHdTWFPiGb51k62mFYqwoFBOV7sqMyVhoabstJucjTI0opVoDMIIrLHwNCr8E+VXqNVcVg==", "www.b6-island.test.\t300\tIN\tNSEC\tb6-island.test. A RRSIG NSEC", "www.b6-island.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112820 20261031102820 50776 b6-island.test. j9QqJhXiS3tuHJ0eWN2VaB2CeNDc0OelBF6WmJrwqiTO/ArPQpMcNn10KMm8fEh+XYp4w1KEOSd+C4dJNHM8eA==", "mail.b6-island.test.\t3600\tIN\tA\t10.53.0.81", "mail.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 6wy77/bg0C8MNirzG/tz2woCmlGqw4lb+xLCPz/qqfLZELc75eMjbcuFRuj3SctSkvWon7Y6Nw3mTKwwOuY04g==", "mail.b6-island.test.\t300\tIN\tNSEC\tns1.b6-island.test. A RRSIG NSEC", "mail.b6-island.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112820 20261031102820 50776 b6-island.test. tlKAWRyLmsoUXpSkc73uBsXYaHNbYTHt8JiuTBqO7cDkikfrutauWpx0D/J4WsIVtSAl7wNIwlmKGyPn09IVqg==" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Kb6-island.test.+013+50317.key",
@@ -442,8 +442,8 @@
         "name" : "b6-island.test.",
         "type" : "DNSKEY",
         "ttl" : 3600,
-        "records" : [ "b6-island.test.\t\t3600\tIN\tDNSKEY\t257 3 13 uvkzFa8cPZiLr6aAVoH8qgkdU67vpL3OtrbHldkBuZFJVLBWLrOju7d+47bk+rpWIhiNke8mZSuXb9zZAhDESQ==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t256 3 13 qeCMhEmT39uTEH3E4HwNna3g1ZNI/Kh+cL/4dV9yiGdl3yQIkDtEM/RC1P7SRNab8c4UWN3Zx57wqlcwrHgtHQ==" ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 50317 b6-island.test. wW45r8R74mCLlwY4wV819iDGulYXWmZfPFGNEU3Moy5U2DStgrhKh/05BoC9jHzbz52isQlFGZ1gO9Zc6Boj2w==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 5sOFO0Zo+taqYvIeemhrhfyLjmDhY/6/+z0+M7CoridruvQj2MD96zkKy5eBJ3PDTk0gLAAI6YF4g9SMWUgp3A==" ]
+        "records" : [ "b6-island.test.\t\t3600\tIN\tDNSKEY\t256 3 13 qeCMhEmT39uTEH3E4HwNna3g1ZNI/Kh+cL/4dV9yiGdl3yQIkDtEM/RC1P7SRNab8c4UWN3Zx57wqlcwrHgtHQ==", "b6-island.test.\t\t3600\tIN\tDNSKEY\t257 3 13 uvkzFa8cPZiLr6aAVoH8qgkdU67vpL3OtrbHldkBuZFJVLBWLrOju7d+47bk+rpWIhiNke8mZSuXb9zZAhDESQ==" ],
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 50317 b6-island.test. WGD27ockSmbeYFSxyi5PjEsazSrtTyW903INxThnt4VxoziAavT2XWd9f7gOeFWVuD9ba7i3rovDPoE0T5s+NA==", "b6-island.test.\t\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. ofbps1KvIng2snBdSiVQRxFTKqAgL3SOnKm40v7SKuGRQFrRLzrFYBQBNUOZIM0PQSHnRLasCSFGIx9aOW1lGw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -466,7 +466,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.b6-island.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. xiljbGKHlEG6YX7AD7O3rsuI9aHZSycRrchCylD80v9ogXKLC8mjZ9f+4H0UlvsCUs6TYERLpzTQCn9Y1nuo7Q==" ]
+        "sigs" : [ "www.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. rxYM/AttW1xImrBsQHdTWFPiGb51k62mFYqwoFBOV7sqMyVhoabstJucjTI0opVoDMIIrLHwNCr8E+VXqNVcVg==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -488,7 +488,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tNS\tns1.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. yQIZxaXM6IcYycAMVQQC58TYYYCX1ZuWrVR0bZVP6fhYMNL5QM+9DPqKyxAuylcc4dqABt7O1vV9dmP1Io/LIg==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. Ykj1mvEmzVsOF008q6l8R0ZpW9VpXiFlWGL9sVqt7gRCa425h6Q/LLsvsyyiCYNnyeXSZeB+JQU+TZQLAFqfbw==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -496,7 +496,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.b6-island.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105324 20261031095324 50776 b6-island.test. vV5TNyB9RohXru9ZLp/IB9YauNVky7Wcx+5QPPAIGQijbYvhcLjxNJr4bFrSbumutp+izyfcgJ+h0i2GjlKtoQ==" ]
+        "sigs" : [ "ns1.b6-island.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112820 20261031102820 50776 b6-island.test. 0KlrSEsih/GNX0ruCLxbbvBPK+XfnxkUk040pu3iwyTt4Zvqm9WCW2ZTwz+8ZZS/9buALObnF+w3B1ADimBYQg==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 297,
@@ -516,7 +516,7 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "b6-island.test.\t\t3600\tIN\tMX\t10 mail.b6-island.test." ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. +ptsW3j1IaWXlmZ8ASZS94Rk0Sv0+jIB3pkKa72IgXa10jOC3Ybt8u2hH83Bq+LdcMEK1owmQhZCvZGGgf0piA==" ]
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. GbMATMzJo1tUiwjM52qgWtfT1GrFY1HuWHDCSKCyzLn9+i18p5kwQ6TBpwos1yNf/VttywP8LQyNukr2uJuYWg==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -537,17 +537,17 @@
         "name" : "b6-island.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "b6-island.test.\t\t3600\tIN\tTXT\t\"B6: nema DS u parent zoni (ostrvo)\"" ],
-        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. bdblGV2UqgQ/4j98nGyYF0QLm7CAUguX7uXqPPwm21gAnB3TLePLt7FOFs0QL9CYMgdcQxCfNlQg7qesGli/0g==" ]
+        "records" : [ "b6-island.test.\t\t3600\tIN\tTXT\t\"B6: no DS in the parent zone (island)\"" ],
+        "sigs" : [ "b6-island.test.\t\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. 1JXNkbwP2pQuThQJ6T9LEvknCM2Bw5j2CVtuBrnH8APx7GplR+MbQQZgKKMmQq4eokyx+vic79HoJ3S36HwC2Q==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
       "ednsPayload" : 1232,
-      "size" : 200,
+      "size" : 203,
       "ede" : [ ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-7df95064.b6-island.test.",
+      "qname" : "dnssecretary-eec96e0b.b6-island.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -561,13 +561,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "b6-island.test.\t\t300\tIN\tNSEC\tmail.b6-island.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105324 20261031095324 50776 b6-island.test. FeqG7zo9HKEtfTCozzykSYU98+GJO2DTf0Y0widpiRcEaOBx+b6L+ZwP+c0/P87Pu7EIddwyJnQ8+bjjsRAVlg==" ]
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112820 20261031102820 50776 b6-island.test. Ey2t3lRBLR+fqJPDw96dGrqzRAZxck4Ni0LgXUjyr8iJNCq/LJ3HFe+2EsCfB0EjbE23qbYLWVFEfHzTgPUe7A==" ]
       }, {
         "name" : "b6-island.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793444004 3600 900 604800 300" ],
-        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105324 20261031095324 50776 b6-island.test. 4fPincK4EHqK6xN+CAKOSnRMPKXP8YCat9gZOwSHTk0gPAld/atdxYisxOxjcXGxJkCqDM9d/j7odaYRV2lUyQ==" ]
+        "records" : [ "b6-island.test.\t\t300\tIN\tSOA\tns1.b6-island.test. admin.b6-island.test. 1793446100 3600 900 604800 300" ],
+        "sigs" : [ "b6-island.test.\t\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112820 20261031102820 50776 b6-island.test. uU/6dNOTQ6Aa4l8fZ+sWwAf/fSgRs/bJZyYcoAD5wwfVgKCaeTm9vHd59KZ4Fxzl4970CdbCnAZaeT3G94lvzA==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,

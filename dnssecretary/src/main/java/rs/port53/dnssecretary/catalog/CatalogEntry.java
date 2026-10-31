@@ -4,7 +4,7 @@ import java.util.List;
 import rs.port53.dnssecretary.model.FixSide;
 import rs.port53.dnssecretary.model.Severity;
 
-/** One error from catalog/katalog.yaml. Texts are in Serbian, see the comment at the top of that file. */
+/** One error from catalog/catalog.yaml. See the comment at the top of that file for the fields. */
 public record CatalogEntry(
         ErrorId id,
         String title,

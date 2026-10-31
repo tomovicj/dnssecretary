@@ -14,7 +14,7 @@ import rs.port53.dnssecretary.report.Messages;
 
 /** catalog [ID]: the error catalogue, all or one entry. */
 @Command(name = "catalog", mixinStandardHelpOptions = true,
-        description = "Ispiši katalog grešaka, ceo ili jednu (npr. \"catalog B6\").")
+        description = "Print the error catalogue, all of it or one entry (e.g. \"catalog B6\").")
 final class CatalogCommand implements Callable<Integer> {
 
     @ParentCommand
@@ -45,19 +45,19 @@ final class CatalogCommand implements Callable<Integer> {
         }
         CatalogEntry e = main.catalog().get(eid);
         out.printf("[%s] %s%n", e.id(), e.title());
-        row(out, "Grupa", e.group());
-        row(out, "Ozbiljnost", Messages.get("severity." + e.severity()));
-        row(out, "Simptom", e.symptom());
+        row(out, "Group", e.group());
+        row(out, "Severity", Messages.get("severity." + e.severity()));
+        row(out, "Symptom", e.symptom());
         row(out, "EDE", e.ede());
-        row(out, "Uzrok", e.cause());
-        row(out, "Prepoznaje", e.detection());
-        row(out, "Popravka", e.fix());
-        row(out, "Ko popravlja", Messages.get("side." + e.side()));
-        row(out, "Recept", e.recipe());
-        row(out, "Reference", String.join(", ", e.rfc()));
+        row(out, "Cause", e.cause());
+        row(out, "Detection", e.detection());
+        row(out, "Fix", e.fix());
+        row(out, "Who fixes", Messages.get("side." + e.side()));
+        row(out, "Recipe", e.recipe());
+        row(out, "References", String.join(", ", e.rfc()));
         if (e.lab() != null) {
-            row(out, "Lab", e.lab().zone() + ", upit: " + e.lab().probe()
-                    + (e.lab().setup() == null ? "" : ", posle: " + e.lab().setup()));
+            row(out, "Lab", e.lab().zone() + ", probe: " + e.lab().probe()
+                    + (e.lab().setup() == null ? "" : ", after: " + e.lab().setup()));
         }
         return 0;
     }

@@ -1,6 +1,6 @@
 {
   "zone" : "e2-ksk-ds-early.test.",
-  "collectedAt" : "2026-10-31T10:58:21.258545833Z",
+  "collectedAt" : "2026-10-31T11:28:45.725179401Z",
   "parent" : "test.",
   "trustAnchor" : [ ".\t\t\t3600\tIN\tDS\t15026 13 2 116899FDA06D0698C808362B6C4843D7EB1B12881B1ABA6553A5E148B1C64718" ],
   "chain" : [ {
@@ -18,7 +18,7 @@
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ ".\t\t\t3600\tIN\tDNSKEY\t256 3 13 652BgrnU1rSfM3hEHhdoVMMXn/ywI0BVPZeUqnleWFZdEJ+a4+AvtBCVIATZmfhfQMyCP63gorfEYcP0HhnlRA==", ".\t\t\t3600\tIN\tDNSKEY\t257 3 13 zzQgdFsZHEGcjrH77bWkhQkF0hqS631LL30XI0m1UDQCR/QQBwaV96Q2T8ruUIPe1GDxnOamhmUTfcWyvBRhJQ==" ],
-      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 15026 . swr4Vkp4dOQk0tDAyeLe5lxUXwpoALYtWijYrZFimGQtBP7kZl7yJI1WhM6dhVnX4SOnxm+0hbG/GgWV8c7V2g==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130105325 20261031095325 18762 . OJziHVAPncyDBmguaVRMGgIaMpN1QEB/2pYmXxg8LMqxmSK8Nzd48xKcHLGmTBE90gmB9XL1w2Xzd3kv6r/69A==" ]
+      "sigs" : [ ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 15026 . ZXExj4wskL7fA143/fOkquZsJPTcNHHNlPdq0Nx34LSUqYc2Tx1vXD5wm4eIxP7a35l/RpvfFANE8K4Nvttz0Q==", ".\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 0 3600 20261130112822 20261031102822 18762 . QHqU9mQ5lLsNH5Rsn/8WgVTi33o3pnvDBqVRYQdK3eK9VdmkkNT37W+TiyVvkzR0T/FeNgxae7Ema8Jxjsub7A==" ]
     }
   }, {
     "zone" : "test.",
@@ -28,14 +28,14 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDS\t53627 13 2 014E7FE204561C1230162D979163FD9AB55F7F0A710C05E4EA3CD3F46C5339D2" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130105325 20261031095325 18762 . q5ZjBjwcMcrfRKHWkWgKHKnOcTruM77OWeNoQ483yhPJJkAKjMA3ZG61obcyXnhQ4EYq6iapMX1/S2wuehYfyQ==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDS 13 1 3600 20261130112822 20261031102822 18762 . QdvtHJgRW62abndXeJ4WLjd8UwgLYsh+kf9r9S3XQ+KNX+gSsJwkEqTjPxUlvJjcaM6Zq15yPtNw73unf5yaSg==" ]
     },
     "dnskey" : {
       "name" : "test.",
       "type" : "DNSKEY",
       "ttl" : 3600,
       "records" : [ "test.\t\t\t3600\tIN\tDNSKEY\t256 3 13 NUgZOqmRCdjGWumeKO+3Abib5JzezZjraZFuifGFm0JYMmTWWEauQfBpcQApMh5lzrYfvnuBmoEtxFf11axp3A==", "test.\t\t\t3600\tIN\tDNSKEY\t257 3 13 d14HTiA5/Za/UfBOga5CMwAAwma0id/12OUjqBE9rhFwXmAjiBpKMEJmHXHrhnSBb6ISFjVguP5oEIppwwoiYw==" ],
-      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 17926 test. mIkzQBQAbE+T3Es2/chVip0zRzMZjf4+cJYjgXCl4YFQgqPkwryDYn9oNqoK67/c0FxLIzQW4otKYvg0QYNPtw==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130105325 20261031095325 53627 test. zXcTxQ2ViJo7v6ZD904kpZC8xxM/vzeZ9SEUPc6nHqkMxLrAXQzgsv380eI8EQ5jpa4wIFhZCUtqz8MJyEKGRw==" ]
+      "sigs" : [ "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 17926 test. g5YVUAmEHzcOsG0RTd2+kI85OrLKWsWNdfme9eui/xxB0hikGYnmKbORrtGEekLd4GFRSloZt9HUYCLrmxdQZg==", "test.\t\t\t3600\tIN\tRRSIG\tDNSKEY 13 1 3600 20261130112822 20261031102822 53627 test. d4OpwAwADMBv4AzicFxg2q+qGGZTV25prHu6A9899fdQFJ9xIjeKkxSqOAv1C0deftsSKkQeGSwFCl7VMhQMHQ==" ]
     }
   } ],
   "parentDs" : {
@@ -52,7 +52,7 @@
       "type" : "DS",
       "ttl" : 3600,
       "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tDS\t38199 13 2 417A63B48EB2E433B6B7DBEEAEF734B4F3FD7D309E24487BB545398ACD967E5A" ],
-      "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130105325 20261031095325 17926 test. P+lFbzaLeFxVqjwvKWKmt2dl/eJ1hjeLdHVF4sQAr1Mt88DIEmGrkUnnwfcZ7+AWinof65hH0zodETk/DR2gCA==" ]
+      "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDS 13 2 3600 20261130112822 20261031102822 17926 test. TeHpEj9hGoc3RZUCU+tiUy4UVWoLwTYDd03h/K1s01828WyHQzXW0h5TsfGP2yf8RoMpZ3JMCTblpUc/UNhQiA==" ]
     } ],
     "authority" : [ ],
     "additional" : [ ],
@@ -78,22 +78,22 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "SOA",
         "ttl" : 3600,
-        "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==" ]
       } ],
       "authority" : [ {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test." ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. xQJpD3gV5GDynGNjlTq6ZN1ipYOtrP6j6/Jyf584iGLpbCjntp4r5p71YTXs75U2JtJbD5B4TCH1XbPlHC4tMg==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. BwxNE7593rpXCKMmjYcO+zAwB7qUx6lHMwTcXjOUiaS5h0IRd9Mfc935oKbh7fkbl8ISW4iHKK1i02yDBZn9mQ==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.e2-ksk-ds-early.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. ntLuPyTw7jhfyIQGylXNK7CaEemzqQv0GUU5b3En1GpddLMntg4UtPWSmuixWxtcrtHZpqmjN/rALbCYQlTR7A==" ]
+        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. jayEntGI64CIA3Ag4eiq/gPCf87CHztYn4mIgB8HikyPKfOaV8F7epJ67kRcHYnb3x+kogarO3DtgtPIrtPUIw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 473,
@@ -114,7 +114,7 @@
         "type" : "DNSKEY",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t256 3 13 1SRJXH5aOivIYy+5Vm3wp2kAAlikTtgipK2UI6ZGqghZApKR+Nb0Cck6CWUdUUecfMFRlFyVC5mN1WiZKBR+oQ==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t257 3 13 fsPfq4DQwtPIMkkq6kxvMBu604y9Qs/QlHSKibeb+16BKjjuS6jkRcrviJSg0cOZvrsgdrUOV0+8lpCPs8zHtQ==" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. w5X5j/Z6dHIMdibdLD6CBGzQDQxOlJTiurxdSPCTHBR/0ZUJ8gX6+yN7/3pMZUUK3/BKye2SgS0vtDzpjeivEw==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 46462 e2-ksk-ds-early.test. qAY7T7TMxt8gjJhl+XA6FFm7Vovd/S8hilJHhQ49vU4Sj3El9Rb1zG1XAuUBwfOLbxjqWLHH2y28rju1gm/DKw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. 4oVK5eQqtJ0TN1jDKrzN122EsQ9jEDD80flpSZtIM4jVEs8GjaoaykVkvpKRoyB8JFujkdDL8P9BYkkvy34fwA==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112821 20261031102821 46462 e2-ksk-ds-early.test. 0sMfwILLkROeX4UY0GO0qS6vCm46Q7OYa9AXo18I98jBcU5rX412N8Qbjmx03roLXhyWKQk0QniqkYm49Nm0RQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -137,14 +137,14 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==" ]
       }, {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. CN97nXeRv9DzKt5j4E7lwlDCd+nHAT6Vgst0ha1rbWU845FTf4P+iMyg7YsbQHd9Arb3fLnAxaKsnnrvI1vNOw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. klIP3IGcXvv/R3T0wkW1ShbG/te2n0rNspomxThikwqJNKQ+xnCZYPQ8fz9JLlDTctb6D/N4vQYAVgJH44rw7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -166,14 +166,14 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==" ]
       }, {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. CN97nXeRv9DzKt5j4E7lwlDCd+nHAT6Vgst0ha1rbWU845FTf4P+iMyg7YsbQHd9Arb3fLnAxaKsnnrvI1vNOw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. klIP3IGcXvv/R3T0wkW1ShbG/te2n0rNspomxThikwqJNKQ+xnCZYPQ8fz9JLlDTctb6D/N4vQYAVgJH44rw7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -195,14 +195,14 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==" ]
       }, {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. CN97nXeRv9DzKt5j4E7lwlDCd+nHAT6Vgst0ha1rbWU845FTf4P+iMyg7YsbQHd9Arb3fLnAxaKsnnrvI1vNOw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. klIP3IGcXvv/R3T0wkW1ShbG/te2n0rNspomxThikwqJNKQ+xnCZYPQ8fz9JLlDTctb6D/N4vQYAVgJH44rw7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -224,21 +224,21 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "www.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.80" ],
-        "sigs" : [ "www.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. uPpLM3ZItmcWIxzza1qHKOW957eXk2UJszCP+ETEHMZwzI3FeSFIFDpC5y2auM8vIvvVX/rBzAjx/hwYAnQMyQ==" ]
+        "sigs" : [ "www.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. q62ZVxfuMDyOYs2HEU24jK+kZ4v37Sc+Ew7v69XmbPK3FxOKCvJcmk8+MFNP6ljPD/mLX76IVEmSl7+WKMaEIQ==" ]
       } ],
       "authority" : [ {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test." ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. xQJpD3gV5GDynGNjlTq6ZN1ipYOtrP6j6/Jyf584iGLpbCjntp4r5p71YTXs75U2JtJbD5B4TCH1XbPlHC4tMg==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. BwxNE7593rpXCKMmjYcO+zAwB7qUx6lHMwTcXjOUiaS5h0IRd9Mfc935oKbh7fkbl8ISW4iHKK1i02yDBZn9mQ==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.e2-ksk-ds-early.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. ntLuPyTw7jhfyIQGylXNK7CaEemzqQv0GUU5b3En1GpddLMntg4UtPWSmuixWxtcrtHZpqmjN/rALbCYQlTR7A==" ]
+        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. jayEntGI64CIA3Ag4eiq/gPCf87CHztYn4mIgB8HikyPKfOaV8F7epJ67kRcHYnb3x+kogarO3DtgtPIrtPUIw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 451,
@@ -258,7 +258,7 @@
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test." ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. xQJpD3gV5GDynGNjlTq6ZN1ipYOtrP6j6/Jyf584iGLpbCjntp4r5p71YTXs75U2JtJbD5B4TCH1XbPlHC4tMg==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. BwxNE7593rpXCKMmjYcO+zAwB7qUx6lHMwTcXjOUiaS5h0IRd9Mfc935oKbh7fkbl8ISW4iHKK1i02yDBZn9mQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ {
@@ -266,7 +266,7 @@
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. ntLuPyTw7jhfyIQGylXNK7CaEemzqQv0GUU5b3En1GpddLMntg4UtPWSmuixWxtcrtHZpqmjN/rALbCYQlTR7A==" ]
+        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. jayEntGI64CIA3Ag4eiq/gPCf87CHztYn4mIgB8HikyPKfOaV8F7epJ67kRcHYnb3x+kogarO3DtgtPIrtPUIw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 315,
@@ -286,27 +286,27 @@
         "type" : "MX",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tMX\t10 mail.e2-ksk-ds-early.test." ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. c19lMyHquZs5y4mcXY7n9d/n+y1kEMlxzVBnqWl/1efs0xWMf+GasIVKW5CDtYWhIXHaJACM75VvwNJPdY34aw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. lc3XudkiBgqn9jLXuHEJCw6Pt127JQj0FsCC59jbwEgMtzj4EqoeWoO8If/T2CUonXNtVxBezwZwPFL/YNsp0Q==" ]
       } ],
       "authority" : [ {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test." ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. xQJpD3gV5GDynGNjlTq6ZN1ipYOtrP6j6/Jyf584iGLpbCjntp4r5p71YTXs75U2JtJbD5B4TCH1XbPlHC4tMg==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. BwxNE7593rpXCKMmjYcO+zAwB7qUx6lHMwTcXjOUiaS5h0IRd9Mfc935oKbh7fkbl8ISW4iHKK1i02yDBZn9mQ==" ]
       } ],
       "additional" : [ {
         "name" : "mail.e2-ksk-ds-early.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "mail.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.81" ],
-        "sigs" : [ "mail.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. TVSW+QXiEqvgQh45AxtQG4TtFjggA//ItkjK2sdsB2PV4znadI8m1WgCjAacJ0F0extnEu4qRW7AzDpJt19rdQ==" ]
+        "sigs" : [ "mail.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. qu5bpEURwzEtXutTpByk1Mg4vy9RZzwa94tiChnWm+kNhTUDG1YFENmzSz3URPkWUKIGepvM4ifvu/glEIPSpg==" ]
       }, {
         "name" : "ns1.e2-ksk-ds-early.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. ntLuPyTw7jhfyIQGylXNK7CaEemzqQv0GUU5b3En1GpddLMntg4UtPWSmuixWxtcrtHZpqmjN/rALbCYQlTR7A==" ]
+        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. jayEntGI64CIA3Ag4eiq/gPCf87CHztYn4mIgB8HikyPKfOaV8F7epJ67kRcHYnb3x+kogarO3DtgtPIrtPUIw==" ]
       } ],
       "ednsPayload" : 1232,
       "size" : 584,
@@ -325,30 +325,30 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "TXT",
         "ttl" : 3600,
-        "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tTXT\t\"E2: DS zamenjen pre objave novog KSK\"" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. 52440XL0A/euOasGcDqHQ7MZrjE7ZgFDfZIxr/8WyiqbnUZtmfsf1FAujFLPwKnc5637nfEwqEY+75CU2TiLzg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tTXT\t\"E2: DS replaced before the new KSK was published\"" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. ejdfQuUATlQ5zxGqJqCX9AvI6r0gXvfriu2HJHTwSNX45a+cUniK9Les1qpKDy7e/sZeqxr2CdP489b63j0pOw==" ]
       } ],
       "authority" : [ {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NS",
         "ttl" : 3600,
         "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test." ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. xQJpD3gV5GDynGNjlTq6ZN1ipYOtrP6j6/Jyf584iGLpbCjntp4r5p71YTXs75U2JtJbD5B4TCH1XbPlHC4tMg==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. BwxNE7593rpXCKMmjYcO+zAwB7qUx6lHMwTcXjOUiaS5h0IRd9Mfc935oKbh7fkbl8ISW4iHKK1i02yDBZn9mQ==" ]
       } ],
       "additional" : [ {
         "name" : "ns1.e2-ksk-ds-early.test.",
         "type" : "A",
         "ttl" : 3600,
         "records" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11" ],
-        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. ntLuPyTw7jhfyIQGylXNK7CaEemzqQv0GUU5b3En1GpddLMntg4UtPWSmuixWxtcrtHZpqmjN/rALbCYQlTR7A==" ]
+        "sigs" : [ "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. jayEntGI64CIA3Ag4eiq/gPCf87CHztYn4mIgB8HikyPKfOaV8F7epJ67kRcHYnb3x+kogarO3DtgtPIrtPUIw==" ]
       } ],
       "ednsPayload" : 1232,
-      "size" : 480,
+      "size" : 492,
       "ede" : [ ],
       "error" : null
     } ],
     "denials" : [ {
-      "qname" : "dnssecretary-f7a6cca6.e2-ksk-ds-early.test.",
+      "qname" : "dnssecretary-4ef6d439.e2-ksk-ds-early.test.",
       "qtype" : "A",
       "server" : "10.53.0.11",
       "transport" : "udp",
@@ -362,13 +362,13 @@
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. CN97nXeRv9DzKt5j4E7lwlDCd+nHAT6Vgst0ha1rbWU845FTf4P+iMyg7YsbQHd9Arb3fLnAxaKsnnrvI1vNOw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. klIP3IGcXvv/R3T0wkW1ShbG/te2n0rNspomxThikwqJNKQ+xnCZYPQ8fz9JLlDTctb6D/N4vQYAVgJH44rw7A==" ]
       }, {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -389,14 +389,14 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "SOA",
         "ttl" : 300,
-        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==" ]
       }, {
         "name" : "e2-ksk-ds-early.test.",
         "type" : "NSEC",
         "ttl" : 300,
         "records" : [ "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. CN97nXeRv9DzKt5j4E7lwlDCd+nHAT6Vgst0ha1rbWU845FTf4P+iMyg7YsbQHd9Arb3fLnAxaKsnnrvI1vNOw==" ]
+        "sigs" : [ "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. klIP3IGcXvv/R3T0wkW1ShbG/te2n0rNspomxThikwqJNKQ+xnCZYPQ8fz9JLlDTctb6D/N4vQYAVgJH44rw7A==" ]
       } ],
       "additional" : [ ],
       "ednsPayload" : 1232,
@@ -411,7 +411,7 @@
       "ednsPayload" : 1232
     }
   } ],
-  "fullZone" : [ "e2-ksk-ds-early.test.\t3600\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793444005 3600 900 604800 300", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. EgMXYEzCaHDpLPj7qrSjj13LSwtdOsmiX8NBzfh0lTEc8gXIHOJWhQtQ/XMR5akEP23uY6Tw+Td1BZs8Fop0pg==", "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test.", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. xQJpD3gV5GDynGNjlTq6ZN1ipYOtrP6j6/Jyf584iGLpbCjntp4r5p71YTXs75U2JtJbD5B4TCH1XbPlHC4tMg==", "e2-ksk-ds-early.test.\t3600\tIN\tMX\t10 mail.e2-ksk-ds-early.test.", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. c19lMyHquZs5y4mcXY7n9d/n+y1kEMlxzVBnqWl/1efs0xWMf+GasIVKW5CDtYWhIXHaJACM75VvwNJPdY34aw==", "e2-ksk-ds-early.test.\t3600\tIN\tTXT\t\"E2: DS zamenjen pre objave novog KSK\"", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. 52440XL0A/euOasGcDqHQ7MZrjE7ZgFDfZIxr/8WyiqbnUZtmfsf1FAujFLPwKnc5637nfEwqEY+75CU2TiLzg==", "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. CN97nXeRv9DzKt5j4E7lwlDCd+nHAT6Vgst0ha1rbWU845FTf4P+iMyg7YsbQHd9Arb3fLnAxaKsnnrvI1vNOw==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t256 3 13 1SRJXH5aOivIYy+5Vm3wp2kAAlikTtgipK2UI6ZGqghZApKR+Nb0Cck6CWUdUUecfMFRlFyVC5mN1WiZKBR+oQ==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t257 3 13 fsPfq4DQwtPIMkkq6kxvMBu604y9Qs/QlHSKibeb+16BKjjuS6jkRcrviJSg0cOZvrsgdrUOV0+8lpCPs8zHtQ==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. w5X5j/Z6dHIMdibdLD6CBGzQDQxOlJTiurxdSPCTHBR/0ZUJ8gX6+yN7/3pMZUUK3/BKye2SgS0vtDzpjeivEw==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 46462 e2-ksk-ds-early.test. qAY7T7TMxt8gjJhl+XA6FFm7Vovd/S8hilJHhQ49vU4Sj3El9Rb1zG1XAuUBwfOLbxjqWLHH2y28rju1gm/DKw==", "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11", "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. ntLuPyTw7jhfyIQGylXNK7CaEemzqQv0GUU5b3En1GpddLMntg4UtPWSmuixWxtcrtHZpqmjN/rALbCYQlTR7A==", "ns1.e2-ksk-ds-early.test.\t300\tIN\tNSEC\twww.e2-ksk-ds-early.test. A RRSIG NSEC", "ns1.e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. nP73/neDcakyuPC/Q8b+RcdvfszBqMYXARbteqqJqwkrY9Ujv8GX55t+APR6VDo+OtSVEToNMwwO2QeE20JdcA==", "www.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.80", "www.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. uPpLM3ZItmcWIxzza1qHKOW957eXk2UJszCP+ETEHMZwzI3FeSFIFDpC5y2auM8vIvvVX/rBzAjx/hwYAnQMyQ==", "www.e2-ksk-ds-early.test.\t300\tIN\tNSEC\te2-ksk-ds-early.test. A RRSIG NSEC", "www.e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. 1vQvIjCgRBy+tHfra1jKe7A+ymLq1TVcUSimDMrK8U5dqLL8dPKokRVgyNt2tUbPjL42mKqTFYsdWg5fppmZBQ==", "mail.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.81", "mail.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. TVSW+QXiEqvgQh45AxtQG4TtFjggA//ItkjK2sdsB2PV4znadI8m1WgCjAacJ0F0extnEu4qRW7AzDpJt19rdQ==", "mail.e2-ksk-ds-early.test.\t300\tIN\tNSEC\tns1.e2-ksk-ds-early.test. A RRSIG NSEC", "mail.e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. Ukh3sunlcTW6tMKWIFnaG9uhUeR/KQlOoIcXcGBHqWyVa0u3KLCnyEiiFP35FjfWCLCiDLyCx2G0BAn45MLDFQ==" ],
+  "fullZone" : [ "e2-ksk-ds-early.test.\t3600\tIN\tSOA\tns1.e2-ksk-ds-early.test. admin.e2-ksk-ds-early.test. 1793446101 3600 900 604800 300", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tSOA 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. iV3ZKVpmnWU5NzQCH9F86sJR50FcwpgimYVc+hdD1Tvz5v59WYRnbnh/8T9FPBJNjmk1epcew7tNdYovle6Xxg==", "e2-ksk-ds-early.test.\t3600\tIN\tNS\tns1.e2-ksk-ds-early.test.", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tNS 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. BwxNE7593rpXCKMmjYcO+zAwB7qUx6lHMwTcXjOUiaS5h0IRd9Mfc935oKbh7fkbl8ISW4iHKK1i02yDBZn9mQ==", "e2-ksk-ds-early.test.\t3600\tIN\tMX\t10 mail.e2-ksk-ds-early.test.", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tMX 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. lc3XudkiBgqn9jLXuHEJCw6Pt127JQj0FsCC59jbwEgMtzj4EqoeWoO8If/T2CUonXNtVxBezwZwPFL/YNsp0Q==", "e2-ksk-ds-early.test.\t3600\tIN\tTXT\t\"E2: DS replaced before the new KSK was published\"", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tTXT 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. ejdfQuUATlQ5zxGqJqCX9AvI6r0gXvfriu2HJHTwSNX45a+cUniK9Les1qpKDy7e/sZeqxr2CdP489b63j0pOw==", "e2-ksk-ds-early.test.\t300\tIN\tNSEC\tmail.e2-ksk-ds-early.test. NS SOA MX TXT RRSIG NSEC DNSKEY", "e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 2 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. klIP3IGcXvv/R3T0wkW1ShbG/te2n0rNspomxThikwqJNKQ+xnCZYPQ8fz9JLlDTctb6D/N4vQYAVgJH44rw7A==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t256 3 13 1SRJXH5aOivIYy+5Vm3wp2kAAlikTtgipK2UI6ZGqghZApKR+Nb0Cck6CWUdUUecfMFRlFyVC5mN1WiZKBR+oQ==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t257 3 13 fsPfq4DQwtPIMkkq6kxvMBu604y9Qs/QlHSKibeb+16BKjjuS6jkRcrviJSg0cOZvrsgdrUOV0+8lpCPs8zHtQ==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. 4oVK5eQqtJ0TN1jDKrzN122EsQ9jEDD80flpSZtIM4jVEs8GjaoaykVkvpKRoyB8JFujkdDL8P9BYkkvy34fwA==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112821 20261031102821 46462 e2-ksk-ds-early.test. 0sMfwILLkROeX4UY0GO0qS6vCm46Q7OYa9AXo18I98jBcU5rX412N8Qbjmx03roLXhyWKQk0QniqkYm49Nm0RQ==", "www.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.80", "www.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. q62ZVxfuMDyOYs2HEU24jK+kZ4v37Sc+Ew7v69XmbPK3FxOKCvJcmk8+MFNP6ljPD/mLX76IVEmSl7+WKMaEIQ==", "www.e2-ksk-ds-early.test.\t300\tIN\tNSEC\te2-ksk-ds-early.test. A RRSIG NSEC", "www.e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. nKgEV/9B7fWcayVF5s4M7J5MI3vfW3x7ShrWFWVU3S37VoJL7Z3od7ggGel+DSiY9lO3tj0SnsRuosDxJiFydQ==", "ns1.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.11", "ns1.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. jayEntGI64CIA3Ag4eiq/gPCf87CHztYn4mIgB8HikyPKfOaV8F7epJ67kRcHYnb3x+kogarO3DtgtPIrtPUIw==", "ns1.e2-ksk-ds-early.test.\t300\tIN\tNSEC\twww.e2-ksk-ds-early.test. A RRSIG NSEC", "ns1.e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. PiPhOo35EQbPM+ytAYzDPIlwsAwbQXgHx37gEe5BiMI3YmEi2FpDi9bFjR5ytU+CzSAlIte7QKM5FQj9DGycag==", "mail.e2-ksk-ds-early.test.\t3600\tIN\tA\t10.53.0.81", "mail.e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tA 13 3 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. qu5bpEURwzEtXutTpByk1Mg4vy9RZzwa94tiChnWm+kNhTUDG1YFENmzSz3URPkWUKIGepvM4ifvu/glEIPSpg==", "mail.e2-ksk-ds-early.test.\t300\tIN\tNSEC\tns1.e2-ksk-ds-early.test. A RRSIG NSEC", "mail.e2-ksk-ds-early.test.\t300\tIN\tRRSIG\tNSEC 13 3 300 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. Dp3+rXKbiCLpl/l1Kzk4NuAk7eu+NV1tByQ2hBDfYEgiwRP5TdCc4HVucnPvjfcp0xQgFwmgpSmTIGl8GL8uIA==" ],
   "localKeys" : [ {
     "location" : "",
     "file" : "Ke2-ksk-ds-early.test.+013+28379.key",
@@ -440,8 +440,8 @@
         "name" : "e2-ksk-ds-early.test.",
         "type" : "DNSKEY",
         "ttl" : 3600,
-        "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t256 3 13 1SRJXH5aOivIYy+5Vm3wp2kAAlikTtgipK2UI6ZGqghZApKR+Nb0Cck6CWUdUUecfMFRlFyVC5mN1WiZKBR+oQ==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t257 3 13 fsPfq4DQwtPIMkkq6kxvMBu604y9Qs/QlHSKibeb+16BKjjuS6jkRcrviJSg0cOZvrsgdrUOV0+8lpCPs8zHtQ==" ],
-        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 28379 e2-ksk-ds-early.test. w5X5j/Z6dHIMdibdLD6CBGzQDQxOlJTiurxdSPCTHBR/0ZUJ8gX6+yN7/3pMZUUK3/BKye2SgS0vtDzpjeivEw==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130105325 20261031095325 46462 e2-ksk-ds-early.test. qAY7T7TMxt8gjJhl+XA6FFm7Vovd/S8hilJHhQ49vU4Sj3El9Rb1zG1XAuUBwfOLbxjqWLHH2y28rju1gm/DKw==" ]
+        "records" : [ "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t257 3 13 fsPfq4DQwtPIMkkq6kxvMBu604y9Qs/QlHSKibeb+16BKjjuS6jkRcrviJSg0cOZvrsgdrUOV0+8lpCPs8zHtQ==", "e2-ksk-ds-early.test.\t3600\tIN\tDNSKEY\t256 3 13 1SRJXH5aOivIYy+5Vm3wp2kAAlikTtgipK2UI6ZGqghZApKR+Nb0Cck6CWUdUUecfMFRlFyVC5mN1WiZKBR+oQ==" ],
+        "sigs" : [ "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112821 20261031102821 28379 e2-ksk-ds-early.test. 4oVK5eQqtJ0TN1jDKrzN122EsQ9jEDD80flpSZtIM4jVEs8GjaoaykVkvpKRoyB8JFujkdDL8P9BYkkvy34fwA==", "e2-ksk-ds-early.test.\t3600\tIN\tRRSIG\tDNSKEY 13 2 3600 20261130112821 20261031102821 46462 e2-ksk-ds-early.test. 0sMfwILLkROeX4UY0GO0qS6vCm46Q7OYa9AXo18I98jBcU5rX412N8Qbjmx03roLXhyWKQk0QniqkYm49Nm0RQ==" ]
       } ],
       "authority" : [ ],
       "additional" : [ ],
@@ -530,7 +530,7 @@
       } ],
       "error" : null
     }, {
-      "qname" : "dnssecretary-f7a6cca6.e2-ksk-ds-early.test.",
+      "qname" : "dnssecretary-4ef6d439.e2-ksk-ds-early.test.",
       "qtype" : "A",
       "server" : "10.53.0.53",
       "transport" : "udp",
@@ -545,7 +545,7 @@
       "size" : 280,
       "ede" : [ {
         "code" : 6,
-        "text" : "validation failure <dnssecretary-f7a6cca6.e2-ksk-ds-early.test. A IN>: key for validation e2-ksk-ds-early.test. is marked as invalid because of a previous no keys have a DS with algorithm ECDSAP256SHA256"
+        "text" : "validation failure <dnssecretary-4ef6d439.e2-ksk-ds-early.test. A IN>: key for validation e2-ksk-ds-early.test. is marked as invalid because of a previous no keys have a DS with algorithm ECDSAP256SHA256"
       } ],
       "error" : null
     } ]

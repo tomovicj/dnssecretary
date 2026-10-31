@@ -7,4 +7,4 @@ ns1.a6-expiring.test.    IN A    10.53.0.11
 www.a6-expiring.test.    IN A    10.53.0.80
 mail.a6-expiring.test.   IN A    10.53.0.81
 a6-expiring.test.        IN MX   10 mail.a6-expiring.test.
-a6-expiring.test.        IN TXT  "A6: potpis uskoro istice"
+a6-expiring.test.        IN TXT  "A6: signature expires soon"

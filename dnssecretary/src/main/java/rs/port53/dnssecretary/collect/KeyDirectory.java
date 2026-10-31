@@ -38,7 +38,7 @@ public final class KeyDirectory {
                 }
             }
         } catch (IOException e) {
-            warnings.add("Ne mogu da pročitam direktorijum ključeva " + dir + ": " + e.getMessage());
+            warnings.add("Can't read the key directory " + dir + ": " + e.getMessage());
         }
         return out;
     }

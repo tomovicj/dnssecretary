@@ -7,4 +7,4 @@ ns1.e3-rollover.test.    IN A    10.53.0.11
 www.e3-rollover.test.    IN A    10.53.0.80
 mail.e3-rollover.test.   IN A    10.53.0.81
 e3-rollover.test.        IN MX   10 mail.e3-rollover.test.
-e3-rollover.test.        IN TXT  "E3: stari ZSK obrisan pre isteka TTL-a"
+e3-rollover.test.        IN TXT  "E3: old ZSK removed before its TTL expired"
