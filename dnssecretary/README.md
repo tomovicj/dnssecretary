@@ -5,7 +5,8 @@ Design: [`docs/java-proposal.md`](../docs/java-proposal.md). Error catalogue: [`
 
 Pipeline: `collect → check → diagnose → plan → apply → verify`.
 Done so far: `collect` (DNS, delegation walk, chain of trust, snapshots), the catalogue, the CLI and
-the report. `check` has the plumbing but no checks yet; `fix` and `verify` are stubs.
+the report, and checks for all 30 catalogue errors (E2 via the `KeyDirectoryRule` diagnosis rule).
+`fix` and `verify` are stubs.
 
 ## Build and run
 
