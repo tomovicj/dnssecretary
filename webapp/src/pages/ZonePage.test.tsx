@@ -29,7 +29,7 @@ function open(zone: string) {
 }
 
 const editor = () => screen.getByLabelText("Fix script") as HTMLTextAreaElement;
-const run = () => screen.getByRole("heading", { name: /Last run/ }).closest(".run") as HTMLElement;
+const run = () => screen.getByRole("heading", { name: "Result of the last run" }).closest(".run") as HTMLElement;
 
 describe("ZonePage", () => {
   afterEach(cleanup);
@@ -42,7 +42,10 @@ describe("ZonePage", () => {
     expect(within(card).getByText("2026-10-24T11:28:19Z")).toBeTruthy();
     expect(within(card).getByText("SERVFAIL · EDE 7 (Signature Expired)")).toBeTruthy();
     expect(within(card).getByText("Re-sign the zone with new dates.")).toBeTruthy();
-    expect(within(card).getByText(/References: RFC 4035/)).toBeTruthy();
+    expect(within(card).getByRole("link", { name: "RFC 4035 §5.3.1" }).getAttribute("href")).toBe(
+      "https://www.rfc-editor.org/rfc/rfc4035#section-5.3.1",
+    );
+    expect(screen.getByText(/fixed by the zone \(automatic\)/)).toBeTruthy();
     expect(editor().value).toContain("dnssec-signzone");
     expect(screen.getByText("Generated · unchanged")).toBeTruthy();
   });
@@ -58,7 +61,7 @@ describe("ZonePage", () => {
     fireEvent.click(screen.getByRole("tab", { name: "Script" }));
 
     fireEvent.click(screen.getByRole("button", { name: "Simulate" }));
-    await waitFor(() => expect(within(run()).getByText(/^Failed/)).toBeTruthy());
+    await waitFor(() => expect(within(run()).getByText(/sim-\d+ failed/)).toBeTruthy());
     expect(within(run()).getByText(/fix script exit: 1/)).toBeTruthy();
 
     fireEvent.click(within(run()).getByRole("tab", { name: "Verify result" }));
@@ -74,7 +77,7 @@ describe("ZonePage", () => {
     await screen.findByRole("heading", { name: "DS points to a key that does not exist" });
     fireEvent.click(screen.getByRole("button", { name: "Execute on hosting" }));
 
-    await waitFor(() => expect(within(run()).getByText(/^Passed/)).toBeTruthy());
+    await waitFor(() => expect(within(run()).getByText(/exec-\d+ passed/)).toBeTruthy());
     expect(within(run()).getByText(/simulation passed; executing on the lab/)).toBeTruthy();
     expect(await screen.findByRole("heading", { name: "No problem found" })).toBeTruthy();
     const history = screen.getByRole("heading", { name: "History" }).closest("article")!;
@@ -99,7 +102,7 @@ describe("ZonePage", () => {
     fireEvent.click(screen.getByRole("button", { name: "Execute on hosting" }));
 
     expect(confirm).toHaveBeenCalledOnce();
-    expect(screen.queryByRole("heading", { name: /Last run/ })).toBeNull();
+    expect(within(run()).getByText("No simulation or execution yet.")).toBeTruthy();
     confirm.mockRestore();
   });
 });

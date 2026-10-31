@@ -44,7 +44,6 @@ export function Dashboard({ live, now }: { live: LiveZones; now: number }) {
     <main className="page">
       <div className="page-head">
         <h1>Incidents</h1>
-        <p>Zones that are broken or about to break. Every fix was tried in a sandbox copy of the hosting first.</p>
       </div>
 
       {live.error && (
