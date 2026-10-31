@@ -89,6 +89,7 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
 | `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
 | `scripts/demo.sh` | host / web | Web app demo: `heal` (every zone correct), `break <zone>` (one zone broken again, E1/E3 live), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
+| `scripts/web.sh` | host | Starts the web app (compose service `web`) on http://localhost:8080; `logs`, `stop`. |
 | `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue zone correctly. C1/C3 stay "at risk" (weak keys by design). |
 | `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
 

@@ -31,7 +31,7 @@ import rs.port53.dnssecretary.report.Messages;
         version = "dnssecretary 1.0-SNAPSHOT",
         description = "Finds, explains and fixes DNSSEC errors in a zone.",
         subcommands = {CheckCommand.class, FixCommand.class, VerifyCommand.class,
-                CatalogCommand.class, SnapshotCommand.class},
+                CatalogCommand.class, SnapshotCommand.class, ServeCommand.class},
         exitCodeListHeading = "%nExit codes:%n",
         exitCodeList = {"0:ok", "1:only risks", "2:at least one critical error", "3:tool error"})
 public final class Main implements Callable<Integer> {
