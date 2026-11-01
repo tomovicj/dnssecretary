@@ -97,7 +97,7 @@ sequenceDiagram
     B->>B: start root, tld, auth1–3 (NSD/Unbound) and the resolver as processes
     B->>B: sh -eu fix.sh (helpers: fixenv/sandbox.sh)
     B->>B: dnssecretary verify --json against its own servers
-    B-->>S: SANDBOX-RESULT {"scriptExit": 0, "verify": {"ok": true, …}}
+    B-->>S: last line SANDBOX-RESULT, script exit and verify result
     S-->>W: exit 0 = verified
     S->>S: delete the copy
 ```

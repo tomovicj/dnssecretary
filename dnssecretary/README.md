@@ -1,6 +1,7 @@
 # DNSSECretary (Java)
 
-The tool that checks a zone, explains every DNSSEC error in plain language and fixes it.
+The tool that checks a zone, explains every DNSSEC error in plain language and fixes it. This is the
+developer guide to the Java code; how the whole project works is in [`docs/`](../docs/README.md).
 Error catalogue: [`catalog/catalog.yaml`](../catalog/catalog.yaml).
 
 Pipeline: `collect → check → diagnose → plan → script → run (sandbox or hosting) → verify`.
@@ -69,21 +70,8 @@ with `--zone`. Package `web/`:
   change the lab one at a time, under a write lock; scans and simulations hold the read lock.
 - `WebApp`: the routes (Javalin), and `webapp/dist` with a SPA fallback when it is built.
 
-| Method | Path | |
-| --- | --- | --- |
-| GET | `/api/zones` | `ZoneRow` for every zone, broken first |
-| GET | `/api/zones/{zone}` | `ZoneDetail`: the row + the report (as `check --json`) + the script + the zone's jobs |
-| POST | `/api/zones/{zone}/simulations` | `{"script": "…"}` (default: the generated one) → `Job`, 202 |
-| POST | `/api/zones/{zone}/executions` | `{"script": "…", "simulateFirst": true}` → `Job`, 202 |
-| GET | `/api/jobs`, `/api/jobs/{id}` | jobs, newest first; one job with its log |
-| GET | `/api/catalog` | the 30 catalogue entries (title, cause, fix, symptom, EDE, RFCs, …) for the zone screen |
-| POST | `/api/scan` | scan every zone now |
-| GET | `/api/events` | SSE (`Accept: text/event-stream`): `zone`, `job`, `log` |
-| GET | `/api/demo/scenarios` | the errors `break` can put on a hosting zone (`{id, title}`; `hosting: true` in the catalogue) |
-| POST | `/api/demo/break`, `/api/demo/reset` | break: `{"zone": "…", "error": "A1"}` for a hosting zone → `Job` (kind `DEMO`), 202 |
-
-The JSON shapes are the records in `web/Api.java` (the contract in the pivot plan). Errors are
-`{"error": "…"}` with 400 or 404.
+The REST + SSE API is documented in [docs/web-app.md](../docs/web-app.md#rest-api); the JSON shapes are
+the records in `web/Api.java`. Errors are `{"error": "…"}` with 400 or 404.
 
 **Demo:** `sh scripts/demo.sh break <zone> <error>` (a hosting zone broken live: `break.sh zone`, or a
 live rollover for `e1`), `reset` (the lab as after `sign.sh`: the hosting at its start,
