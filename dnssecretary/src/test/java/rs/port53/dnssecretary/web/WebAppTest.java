@@ -19,6 +19,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.xbill.DNS.Name;
 import rs.port53.dnssecretary.catalog.Catalog;
 import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.config.AppConfig;
@@ -58,7 +59,7 @@ class WebAppTest {
             log.accept("executed");
             return RunResult.of(0, OK);
         };
-        app = new WebApp(CATALOG, WebApp.labZones(CATALOG),
+        app = new WebApp(CATALOG, labZones(),
                 z -> Snapshots.load(z.toString(true)),
                 s -> WebApp.analyze(s, config, CATALOG, clock, ZoneSnapshot::localKeys),
                 sandbox, lab, (args, log) -> {
@@ -67,6 +68,12 @@ class WebAppTest {
                 }, clock, null, 4);
         app.scanNow();
         base = "http://localhost:" + app.start(0);
+    }
+
+    /** The recorded snapshots: good.test and the lab zone of every catalogue entry. */
+    private static List<Name> labZones() {
+        return Stream.concat(Stream.of(WebApp.name("good.test")), CATALOG.entries().stream().map(Catalog::labZone))
+                .toList();
     }
 
     @AfterEach
@@ -144,15 +151,13 @@ class WebAppTest {
     }
 
     @Test
-    void demoBreaksACatalogueZoneAsItIsOrAHostingZoneWithAnError() throws Exception {
-        String id = post("/api/demo/break", "{\"zone\":\"a1-expired.test\"}", 202).path("id").asText();
-        await(() -> state(id).equals("PASS"));
+    void demoBreaksAHostingZoneWithAnError() throws Exception {
         // good.test stands in for a hosting zone: watched, not a catalogue zone
-        String id2 = post("/api/demo/break", "{\"zone\":\"good.test\",\"error\":\"e1\"}", 202).path("id").asText();
-        await(() -> state(id2).equals("PASS"));
-        assertThat(demos).containsExactly(List.of("break", "a1-expired.test"), List.of("break", "good.test", "E1"));
+        String id = post("/api/demo/break", "{\"zone\":\"good.test\",\"error\":\"e1\"}", 202).path("id").asText();
+        await(() -> state(id).equals("PASS"));
+        assertThat(demos).containsExactly(List.of("break", "good.test", "E1"));
 
-        post("/api/demo/break", "{\"zone\":\"good.test\"}", 400);                         // no error: catalogue only
+        post("/api/demo/break", "{\"zone\":\"good.test\"}", 400);                         // no error
         post("/api/demo/break", "{\"zone\":\"a1-expired.test\",\"error\":\"A1\"}", 400);  // a catalogue zone
         post("/api/demo/break", "{\"zone\":\"good.test\",\"error\":\"F2\"}", 400);       // not on a hosting zone
         post("/api/demo/break", "{\"zone\":\"other.test\",\"error\":\"A1\"}", 400);      // not watched

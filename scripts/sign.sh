@@ -78,8 +78,6 @@ sign_zone good.test "$SRC/good.test.zone" "$BUILD/good.test.zone.signed"
 rm -rf "$BUILD/broken" "$BUILD/parent-ds" "$BUILD/tmp-break"
 sh scripts/break.sh
 #   -> produces $BUILD/broken/{,auth2/,auth3/}*.zone.signed and $BUILD/parent-ds/*.ds
-# Keep the broken DS set: scripts/demo.sh break puts a zone back into its broken state.
-cp -a "$BUILD/parent-ds" "$BUILD/broken/parent-ds"
 
 # ---------- 1c. the demo hosting's customer zones (zones/hosting.list) ----------
 sh scripts/hosting.sh

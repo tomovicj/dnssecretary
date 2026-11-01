@@ -6,8 +6,8 @@ import { JOB_STATE } from "../pages/zone";
 
 /**
  * The drawer that changes the lab hosting for the demo (scripts/demo.sh on the server):
- * break a hosting zone with one catalogue error (E1: a live key rollover), heal every zone,
- * or reset the hosting to its start. Not part of the admin's story; the header's "Demo panel" opens it.
+ * break a hosting zone with one catalogue error (E1: a live key rollover), or reset the hosting
+ * to its start. Not part of the admin's story; the header's "Demo panel" opens it.
  */
 export function DemoPanel({ onClose }: { onClose: () => void }) {
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
@@ -108,22 +108,17 @@ export function DemoPanel({ onClose }: { onClose: () => void }) {
 
         <section>
           <h3>Start state</h3>
-          <div className="two">
-            <button type="button" className="button big" disabled={running} onClick={() => run(api.demoHeal())}>
-              Heal all zones
-            </button>
-            <button
-              type="button"
-              className="button big danger"
-              disabled={running}
-              onClick={() => window.confirm("Reset the hosting? Every zone goes back to its start.") && run(api.demoReset())}
-            >
-              Reset hosting
-            </button>
-          </div>
+          <button
+            type="button"
+            className="button big danger"
+            disabled={running}
+            onClick={() => window.confirm("Reset the hosting? Every zone goes back to its start.") && run(api.demoReset())}
+          >
+            Reset hosting
+          </button>
           <p className="muted small">
-            Heal: every zone signed correctly. Reset: <code>sign.sh</code> and a restart, the hosting as the demo starts
-            it (three zones at risk), keys and server settings as they were.
+            <code>sign.sh</code> and a restart: the hosting as the demo starts it (three zones at risk), keys and server
+            settings as they were.
           </p>
         </section>
       </div>

@@ -1,20 +1,18 @@
 #!/bin/sh
 # demo.sh – puts the lab into a state for the web app demo (the demo panel calls it).
 #
-#   sh scripts/demo.sh heal                   every zone correct (C1, C3 stay "at risk")
 #   sh scripts/demo.sh break <zone> <error>   a hosting zone (zones/hosting.list) broken as <error>:
 #                                             a1 … e4 as break.sh "zone" mode lists them, e1 = live rollover
-#   sh scripts/demo.sh break <zone>           a catalogue zone as the catalogue breaks it; E1/E3: live rollover
 #   sh scripts/demo.sh reset                  the lab as after sign.sh: the hosting at its start
 #                                             (3 zones at risk), all 30 catalogue zones broken
-#   sh scripts/demo.sh save [-f]              remember keys/ and auth3/unbound.conf (heal and break do it once)
+#   sh scripts/demo.sh save [-f]              remember keys/ and auth3/unbound.conf (break does it once)
 #
 # Needs only the Docker CLI: signing runs in a throw-away lab container (like the signer
 # service), restarts go through scripts/fixenv/prod.sh. Run from the host or from a container
 # with the Docker CLI and socket (the web app); inside a container set HOST_LAB_DIR.
 #
-# Why save: fixes for C1/C3, E1/E3 and F2 change keys/ and auth3/unbound.conf, and sign.sh
-# doesn't put them back. reset restores them from build/demo/ before it runs sign.sh.
+# Why save: fixes change keys/ (E1's old ZSK comes back from keys/retired/; on the catalogue
+# zones also C1/C3, E3) and auth3/unbound.conf (F2), and sign.sh doesn't put them back. reset restores them from build/demo/ before it runs sign.sh.
 
 set -eu
 cd "$(dirname "$0")/.."
@@ -22,12 +20,11 @@ cd "$(dirname "$0")/.."
 HOST_LAB_DIR=${HOST_LAB_DIR:-$PWD}
 IMAGE=${LAB_IMAGE:-dnslab}
 SAVED=build/demo
-BROKEN=build/broken
 
 # shellcheck source=scripts/fixenv/prod.sh
 . scripts/fixenv/prod.sh
 
-usage() { sed -n '2,10p' "$0"; exit 2; }
+usage() { sed -n '2,8p' "$0"; exit 2; }
 
 # A lab script with the BIND tools, as the owner of the lab (the files stay theirs).
 lab_sh() {
@@ -63,60 +60,6 @@ reset() {
     reload_all
 }
 
-heal() {
-    save
-    lab_sh scripts/heal.sh
-    reload_all
-}
-
-break_zone() {
-    z=${1%.}
-    save
-    case $z in
-        e1-rollover.test)
-            # the resolver caches the DNSKEY set with the old ZSK, then the ZSK is replaced at once
-            flush "$z"
-            ask "$z" DNSKEY
-            lab_sh scripts/break.sh rollover "$z"
-            reload auth1 ;;
-        e3-rollover.test)
-            # the resolver caches www (signed with the old ZSK); the old key is removed at once
-            flush "$z"
-            ask "www.$z" A
-            lab_sh scripts/break.sh rollover "$z"
-            reload auth1
-            docker exec "$(lab_container resolver)" unbound-control flush_type "$z" DNSKEY >/dev/null ;;
-        *)
-            found=0
-            for dir in auth1 auth2 auth3; do
-                case $dir in auth1) src=$BROKEN/$z.zone.signed ;; *) src=$BROKEN/$dir/$z.zone.signed ;; esac
-                if [ -f "$src" ]; then
-                    cp "$src" "$dir/"
-                    reload "$dir"
-                    found=1
-                fi
-            done
-            [ "$found" = 1 ] || { echo "No broken version of $z in $BROKEN/ – is it a catalogue zone? Run sign.sh."; exit 1; }
-            if [ "$z" = f2-tcp-edns.test ]; then
-                cp "$SAVED/unbound.conf" auth3/unbound.conf
-                reload auth3
-            fi
-            # the parent's DS as the catalogue has it (none for B6)
-            ds=build/parent-ds/$z.ds
-            if [ -f "$BROKEN/parent-ds/$z.ds" ]; then
-                cmp -s "$BROKEN/parent-ds/$z.ds" "$ds" || { cp "$BROKEN/parent-ds/$z.ds" "$ds"; changed=1; }
-            elif [ -f "$ds" ]; then
-                rm "$ds"; changed=1
-            fi
-            if [ "${changed:-0}" = 1 ]; then
-                lab_sh scripts/sign-tld.sh >/dev/null
-                reload tld
-            fi
-            flush "$z" ;;
-    esac
-    echo "broke $z"
-}
-
 # A hosting zone broken live as one catalogue error ($2, e.g. a1 or A1).
 break_hosting() {
     z=${1%.}; e=$(echo "$2" | tr '[:upper:]' '[:lower:]')
@@ -143,13 +86,8 @@ break_hosting() {
 }
 
 case ${1:-} in
-    heal)  heal ;;
     reset) reset ;;
     save)  save "${2:-}" ;;
-    break) case $# in
-               2) break_zone "$2" ;;
-               3) break_hosting "$2" "$3" ;;
-               *) usage ;;
-           esac ;;
+    break) [ $# -eq 3 ] || usage; break_hosting "$2" "$3" ;;
     *)     usage ;;
 esac

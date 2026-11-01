@@ -264,10 +264,6 @@ export function mockBackend(options: MockOptions = {}): Backend {
           put({ ...row(zone), status: issue.severity, issues: [issue], brokenSince: iso(Date.now()), verified: { state: "PASS", at: iso(Date.now()), jobId: null } });
         },
       }),
-    demoHeal: async () =>
-      run("DEMO", undefined, "sh scripts/demo.sh heal", true, {
-        after: () => rows.forEach((r) => put({ ...r, status: "OK", issues: [], brokenSince: null, verified: { state: "NONE", at: null, jobId: null } })),
-      }),
     demoReset: async () => run("DEMO", undefined, "sh scripts/demo.sh reset", true, { after: () => mockRows().forEach(put) }),
     subscribe(onEvent, onStatus: (s: ConnectionStatus) => void) {
       listeners.add(onEvent);

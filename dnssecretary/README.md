@@ -59,8 +59,8 @@ validates, not that caches holding the old key are served (in the lab they are: 
 
 `sh scripts/web.sh` starts it in the compose service `web` on http://localhost:8080 (the jar must be
 built and the lab running; `sh scripts/web.sh logs`, `stop`). It has the Docker socket, so it is a demo
-only. It watches the demo hosting's 40 customer zones (`zones/hosting.list`); `serve --watch catalogue`
-watches good.test and the 30 catalogue zones instead, `--zone` any list. Package `web/`:
+only. It watches the demo hosting's 40 customer zones (`zones/hosting.list`), or the zones given
+with `--zone`. Package `web/`:
 
 - `Scanner`: every 20 s (and right after an execution or a demo action) collect → check → diagnose →
   plan → script for every zone, 4 at a time, into `ZoneStore` (memory only).
@@ -80,14 +80,13 @@ watches good.test and the 30 catalogue zones instead, `--zone` any list. Package
 | POST | `/api/scan` | scan every zone now |
 | GET | `/api/events` | SSE (`Accept: text/event-stream`): `zone`, `job`, `log` |
 | GET | `/api/demo/scenarios` | the errors `break` can put on a hosting zone (`{id, title}`; `WebApp.HOSTING_ERRORS`) |
-| POST | `/api/demo/break`, `/api/demo/heal`, `/api/demo/reset` | break: `{"zone": "…", "error": "A1"}` for a hosting zone, `{"zone": "…"}` alone for a catalogue zone → `Job` (kind `DEMO`), 202 |
+| POST | `/api/demo/break`, `/api/demo/reset` | break: `{"zone": "…", "error": "A1"}` for a hosting zone → `Job` (kind `DEMO`), 202 |
 
 The JSON shapes are the records in `web/Api.java` (the contract in the pivot plan). Errors are
 `{"error": "…"}` with 400 or 404.
 
 **Demo:** `sh scripts/demo.sh break <zone> <error>` (a hosting zone broken live: `break.sh zone`, or a
-live rollover for `e1`), `break <zone>` (a catalogue zone broken again; E1/E3 by a live rollover), `heal`
-(every zone correct; C1/C3 stay at risk), `reset` (the lab as after `sign.sh`: the hosting at its start,
+live rollover for `e1`), `reset` (the lab as after `sign.sh`: the hosting at its start,
 30 broken catalogue zones, `keys/` and `auth3/unbound.conf` restored from `build/demo/`). It needs only
 the Docker CLI. `sh scripts/video.sh` records the demo video (see the main README).
 

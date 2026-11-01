@@ -89,10 +89,9 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/clean.sh` | host | Removes everything generated. `-n` dry run, `-k` keep keys, `-y` don't ask. |
 | `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
 | `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
-| `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `break <zone>` (a catalogue zone broken again), `heal` (every zone correct), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
+| `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
 | `scripts/video.sh` | host | Records the demo as a video (`demo/out/dnssecretary-demo.webm`): a browser in the `tour` container (Playwright, `demo/tour.mjs`) goes through one incident in under a minute. The web app must be running. |
 | `scripts/web.sh` | host | Starts the web app (compose service `web`) on http://localhost:8080; `logs`, `stop`. Build the front end first (`webapp/`, `npm run build`), see [`webapp/README.md`](webapp/README.md). |
-| `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue and hosting zone correctly. C1/C3 stay "at risk" (weak keys by design). |
 | `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
 
 After running a rollover script, run `sign.sh` and restart the servers to get a clean lab again.
