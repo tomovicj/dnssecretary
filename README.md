@@ -90,7 +90,7 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
 | `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
 | `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `break <zone>` (a catalogue zone broken again), `heal` (every zone correct), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
-| `scripts/video.sh` | host | Records the demo as a video (`demo/out/dnssecretary-demo.webm`): a browser in the `tour` container (Playwright, `demo/tour.mjs`) goes through three incidents with captions. The web app must be running. |
+| `scripts/video.sh` | host | Records the demo as a video (`demo/out/dnssecretary-demo.webm`): a browser in the `tour` container (Playwright, `demo/tour.mjs`) goes through one incident in under a minute. The web app must be running. |
 | `scripts/web.sh` | host | Starts the web app (compose service `web`) on http://localhost:8080; `logs`, `stop`. Build the front end first (`webapp/`, `npm run build`), see [`webapp/README.md`](webapp/README.md). |
 | `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue and hosting zone correctly. C1/C3 stay "at risk" (weak keys by design). |
 | `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
@@ -103,9 +103,8 @@ Besides the catalogue zones, the lab hosts 40 customer zones of a made-up DNS ho
 (`northwind-coffee.test`, `lindqvist-law.test`, …), listed in [`zones/hosting.list`](zones/hosting.list).
 They are what the web app shows: all signed correctly, except three that start "at risk" (A6, B7, D4).
 `sh scripts/demo.sh break <zone> <error>` breaks any of them live as one of 18 catalogue errors, and so
-does the web app's demo panel. `sh scripts/video.sh` records a demo video without anyone clicking: three
-zones break one after another (A1, B2, E1), and each is detected, verified in the sandbox, explained and
-fixed. `sh scripts/demo.sh reset` brings the hosting back to its start.
+does the web app's demo panel. `sh scripts/video.sh` records a demo video of under a minute without anyone
+clicking: a zone breaks (A1), is detected, its fix is verified in the sandbox, and it is fixed. `sh scripts/demo.sh reset` brings the hosting back to its start.
 
 ## Broken zones
 

@@ -1,12 +1,12 @@
 #!/bin/sh
 # video.sh – records the web app demo as a video, without anyone clicking: demo/out/dnssecretary-demo.webm
 #
-#   sh scripts/video.sh            about 4 minutes; the lab and the web app must be running (sh scripts/web.sh)
+#   sh scripts/video.sh            under a minute; the lab and the web app must be running (sh scripts/web.sh)
 #   PACE=0.3 sh scripts/video.sh   shorter pauses, for a dry run
 #
-# It restarts the web app and resets the hosting (demo.sh reset), then a browser in the "tour" container (Playwright,
-# demo/tour.mjs) goes through the web app while three customer zones break, one by one, with a
-# caption for every step: detected, verified in the sandbox, explained, fixed on the hosting.
+# It restarts the web app, resets the hosting (demo.sh reset), then a browser in the "tour" container (Playwright,
+# demo/tour.mjs) goes through the web app while one customer zone breaks (A1): detected, its fix
+# verified in the sandbox, the zone screen, executed on the hosting, healthy again.
 # The hosting is left healthy (the three start zones still at risk). The browser is 1440x900;
 # convert with e.g. ffmpeg -i demo/out/dnssecretary-demo.webm demo.mp4 if you need an MP4.
 
