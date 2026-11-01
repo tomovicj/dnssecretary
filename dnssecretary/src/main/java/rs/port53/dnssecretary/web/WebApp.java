@@ -26,6 +26,7 @@ import org.xbill.DNS.Name;
 import org.xbill.DNS.RRSIGRecord;
 import org.xbill.DNS.TextParseException;
 import rs.port53.dnssecretary.catalog.Catalog;
+import rs.port53.dnssecretary.catalog.CatalogEntry;
 import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.check.CheckContext;
 import rs.port53.dnssecretary.collect.Collector;
@@ -86,12 +87,10 @@ public final class WebApp {
                 labDir.resolve("webapp/dist"), 4);
     }
 
-    /**
-     * The errors scripts/demo.sh can put on any hosting zone (break.sh "zone" mode, E1 by a live
-     * rollover): what the demo panel offers.
-     */
-    static final List<ErrorId> HOSTING_ERRORS = Stream.of("A1", "A2", "A3", "A4", "A6", "B2", "B3", "B4", "B5",
-            "B6", "B7", "D1", "D3", "D4", "D5", "D6", "E1", "E4").map(ErrorId::valueOf).toList();
+    /** The errors scripts/demo.sh can put on any hosting zone ("hosting: true" in the catalogue): the demo panel's list. */
+    static List<ErrorId> hostingErrors(Catalog catalog) {
+        return catalog.entries().stream().filter(e -> e.lab() != null && e.lab().hosting()).map(CatalogEntry::id).toList();
+    }
 
     /** The demo hosting's customer zones: zones/hosting.list in the lab ("&lt;zone&gt; [&lt;start error&gt;]" lines). */
     public static List<Name> hostingZones(Path labDir) throws IOException {
@@ -160,7 +159,7 @@ public final class WebApp {
         });
         app.sse("/api/events", events::add);
 
-        app.get("/api/demo/scenarios", ctx -> ctx.json(HOSTING_ERRORS.stream()
+        app.get("/api/demo/scenarios", ctx -> ctx.json(hostingErrors(catalog).stream()
                 .map(id -> Map.of("id", id.name(), "title", catalog.get(id).title()))
                 .toList()));
         // A watched zone that is not a catalogue zone (demo.sh checks it is in the hosting list).
@@ -168,7 +167,7 @@ public final class WebApp {
             Api.BreakRequest req = body(ctx, Api.BreakRequest.class);
             Name z = name(req == null || req.zone() == null ? "" : req.zone());
             String wanted = req.error() == null ? "" : req.error();
-            ErrorId error = HOSTING_ERRORS.stream().filter(id -> id.name().equalsIgnoreCase(wanted))
+            ErrorId error = hostingErrors(catalog).stream().filter(id -> id.name().equalsIgnoreCase(wanted))
                     .findFirst().orElseThrow(() -> new IllegalArgumentException("Not a demo error: " + wanted));
             if (catalog.forLabZone(z).isPresent() || !store.zones().contains(z)) {
                 throw new IllegalArgumentException("Not a hosting zone: " + z);

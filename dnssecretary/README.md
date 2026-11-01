@@ -79,7 +79,7 @@ with `--zone`. Package `web/`:
 | GET | `/api/catalog` | the 30 catalogue entries (title, cause, fix, symptom, EDE, RFCs, …) for the zone screen |
 | POST | `/api/scan` | scan every zone now |
 | GET | `/api/events` | SSE (`Accept: text/event-stream`): `zone`, `job`, `log` |
-| GET | `/api/demo/scenarios` | the errors `break` can put on a hosting zone (`{id, title}`; `WebApp.HOSTING_ERRORS`) |
+| GET | `/api/demo/scenarios` | the errors `break` can put on a hosting zone (`{id, title}`; `hosting: true` in the catalogue) |
 | POST | `/api/demo/break`, `/api/demo/reset` | break: `{"zone": "…", "error": "A1"}` for a hosting zone → `Job` (kind `DEMO`), 202 |
 
 The JSON shapes are the records in `web/Api.java` (the contract in the pivot plan). Errors are

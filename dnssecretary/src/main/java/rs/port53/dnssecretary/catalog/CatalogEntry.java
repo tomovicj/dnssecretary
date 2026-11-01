@@ -24,9 +24,10 @@ public record CatalogEntry(
     /**
      * Where the lab reproduces the error.
      *
-     * @param zone  the lab zone, e.g. a1-expired.test
-     * @param probe the query that shows the error, "<name relative to zone or @> <type>", e.g. "www A"
-     * @param setup a script that must run first (E1, E3), or null
+     * @param zone    the lab zone, e.g. a1-expired.test
+     * @param probe   the query that shows the error, "<name relative to zone or @> <type>", e.g. "www A"
+     * @param setup   a script that must run first (E1, E3), or null
+     * @param hosting the demo can put it on any hosting zone (scripts/break.sh "zone" mode, E1: "rollover")
      */
-    public record Lab(String zone, String probe, String setup) {}
+    public record Lab(String zone, String probe, String setup, boolean hosting) {}
 }
