@@ -95,7 +95,7 @@ final class JobService {
         return job;
     }
 
-    /** scripts/demo.sh heal | reset | break &lt;zone&gt;, then a scan of every zone. */
+    /** scripts/demo.sh reset | break &lt;zone&gt; &lt;error&gt;, then a scan of every zone. */
     Job demo(List<String> args, Name zone) {
         Job job = newJob("demo", Job.Kind.DEMO, zone, "sh scripts/demo.sh " + String.join(" ", args));
         changes.submit(() -> {

@@ -17,7 +17,7 @@ import rs.port53.dnssecretary.model.Severity;
 
 /**
  * Drops findings that are only a consequence of another error in the same zone, so one
- * problem is reported once (docs/java-proposal.md 3.5, "Priority"). A diagnosis that loses
+ * problem is reported once. A diagnosis that loses
  * all its findings is dropped. Fixing the cause also removes the consequence.
  */
 public final class ConsequenceRule implements DiagnosisRule {

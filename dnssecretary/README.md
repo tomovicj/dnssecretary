@@ -1,9 +1,9 @@
 # DNSSECretary (Java)
 
 The tool that checks a zone, explains every DNSSEC error in plain language and fixes it.
-Design: [`docs/java-proposal.md`](../docs/java-proposal.md). Error catalogue: [`catalog/catalog.yaml`](../catalog/catalog.yaml).
+Error catalogue: [`catalog/catalog.yaml`](../catalog/catalog.yaml).
 
-Pipeline: `collect → check → diagnose → plan → apply → verify`.
+Pipeline: `collect → check → diagnose → plan → script → run (sandbox or hosting) → verify`.
 Done so far: `collect` (DNS, delegation walk, chain of trust, snapshots), the catalogue, the CLI,
 the report, checks for all 30 catalogue errors (E2 via the `KeyDirectoryRule` diagnosis rule), and
 `fix`/`verify` for re-signing and the parent DS.
@@ -14,9 +14,9 @@ A fix is a shell script: the tool writes it, the admin may read and edit it, and
 or in a sandbox copy of it.
 
 ```sh
-sh scripts/dnssecretary.sh fix a1-expired.test            # dry run: the plan and the script, changes nothing
+sh scripts/dnssecretary.sh fix a1-expired.test            # the plan and the script, changes nothing
 sh scripts/dnssecretary.sh fix a1-expired.test --script   # only the script
-sh scripts/dnssecretary.sh fix --apply a1-expired.test    # run the script → reload → verify
+sh scripts/simulate.sh a1-expired.test fix.sh             # run a script in a sandbox copy of the lab, then verify
 sh scripts/dnssecretary.sh verify a1-expired.test         # live: no critical error + the resolver answers with AD
 ```
 
@@ -38,8 +38,6 @@ With `parent.mode: instructions` the DS is only shown for the registrar, not wri
 The script contract (`ScriptGenerator`, `ScriptRunner`): it runs with `sh -eu` in `fix.labDir` (`/lab`),
 with `ZONE` set, after a helpers file from `scripts/fixenv/` that defines `reload <service>` and
 `flush <zone>`. Paths under the lab are relative, so the same script works in a copy of it.
-- `fixenv/reload-list.sh`: for `fix --apply` in the `app` container (no Docker). It queues the work in
-  `build/dnssecretary/reload`; `scripts/dnssecretary.sh` restarts, flushes and runs `verify`.
 - `fixenv/prod.sh`: for a container with the Docker CLI and socket (the web app): `docker restart`
   and `unbound-control` on the lab's containers, found by their compose labels.
 - `fixenv/sandbox.sh`: for the sandbox: restarts the server's process, `unbound-control` on the sandbox resolver.
@@ -61,8 +59,8 @@ validates, not that caches holding the old key are served (in the lab they are: 
 
 `sh scripts/web.sh` starts it in the compose service `web` on http://localhost:8080 (the jar must be
 built and the lab running; `sh scripts/web.sh logs`, `stop`). It has the Docker socket, so it is a demo
-only. It watches the demo hosting's 40 customer zones (`zones/hosting.list`); `serve --watch catalogue`
-watches good.test and the 30 catalogue zones instead, `--zone` any list. Package `web/`:
+only. It watches the demo hosting's 40 customer zones (`zones/hosting.list`), or the zones given
+with `--zone`. Package `web/`:
 
 - `Scanner`: every 20 s (and right after an execution or a demo action) collect → check → diagnose →
   plan → script for every zone, 4 at a time, into `ZoneStore` (memory only).
@@ -82,14 +80,13 @@ watches good.test and the 30 catalogue zones instead, `--zone` any list. Package
 | POST | `/api/scan` | scan every zone now |
 | GET | `/api/events` | SSE (`Accept: text/event-stream`): `zone`, `job`, `log` |
 | GET | `/api/demo/scenarios` | the errors `break` can put on a hosting zone (`{id, title}`; `WebApp.HOSTING_ERRORS`) |
-| POST | `/api/demo/break`, `/api/demo/heal`, `/api/demo/reset` | break: `{"zone": "…", "error": "A1"}` for a hosting zone, `{"zone": "…"}` alone for a catalogue zone → `Job` (kind `DEMO`), 202 |
+| POST | `/api/demo/break`, `/api/demo/reset` | break: `{"zone": "…", "error": "A1"}` for a hosting zone → `Job` (kind `DEMO`), 202 |
 
 The JSON shapes are the records in `web/Api.java` (the contract in the pivot plan). Errors are
 `{"error": "…"}` with 400 or 404.
 
 **Demo:** `sh scripts/demo.sh break <zone> <error>` (a hosting zone broken live: `break.sh zone`, or a
-live rollover for `e1`), `break <zone>` (a catalogue zone broken again; E1/E3 by a live rollover), `heal`
-(every zone correct; C1/C3 stay at risk), `reset` (the lab as after `sign.sh`: the hosting at its start,
+live rollover for `e1`), `reset` (the lab as after `sign.sh`: the hosting at its start,
 30 broken catalogue zones, `keys/` and `auth3/unbound.conf` restored from `build/demo/`). It needs only
 the Docker CLI. `sh scripts/video.sh` records the demo video (see the main README).
 
@@ -176,6 +173,33 @@ Everything about one zone at one moment. Checks never do I/O; time comes from `c
 Useful helpers: `SignedRRset.records(DNSKEYRecord.class)`, `SignedRRset.toRRset()` for
 `DNSSEC.verify(rrset, sig, key, ctx.now())`, `Dnssec.dsMatches(ds, key)`, `Dnssec.ds(key, digest)`,
 `Dnssec.isSignedBy(set, keys, now)`, `Response.isNxdomain()` / `isNodata()`.
+
+## How each error is detected
+
+Sources: **P** the parent, **L** every authoritative server (live), **Z** the whole zone file,
+**R** the resolver's cache, **K** the key directory.
+
+| Check | Errors | Rule | Source |
+| --- | --- | --- | --- |
+| `SignatureValidityCheck` | A1, A2, A6 | expiration < now; inception > now; expiration − now < `signatureExpiryWarnDays` | L, Z |
+| `SignatureCoverageCheck` | A3 | every authoritative RRset has an RRSIG | Z (L: samples) |
+| `SignatureCryptoCheck` | A4, A5 | `DNSSEC.verify` fails; the RRSIG's key tag is not in the DNSKEY set | L, Z |
+| `TtlCheck` | A7 | original TTL > expiration − inception | L, Z |
+| `DelegationCheck` | B1–B4, B6, B8 | no DS matches a DNSKEY; tag+alg match, digest doesn't; alg differs; DS without DNSKEY; DNSKEY without DS (the parent's denial proof); some DS match, some don't | P, L |
+| `DsPolicyCheck` | B5, B7 | the DNSKEY set isn't signed by a key a DS points to; DS digest type 1 (RFC 8624) | P, L |
+| `AlgorithmPolicyCheck` | C1, C2 | algorithm 5/7 (RFC 8624); an RRset lacks an RRSIG for an algorithm in the DNSKEY set (RFC 4035 §2.2) | L, Z |
+| `KeyStrengthCheck` | C3 | RSA modulus < `minRsaBits` | L |
+| `DenialChainCheck` | D1–D3, D6 | the NSEC chain is closed and in canonical order; bitmaps match the RRsets at that name; negative answers carry signed NSEC/NSEC3; not both NSEC and NSEC3 | Z, L |
+| `Nsec3PolicyCheck` | D4, D5 | iterations ≠ 0 or a salt (RFC 9276); NSEC3PARAM ≠ the chain's parameters | Z, L |
+| `CacheConsistencyCheck` | E1, E3 | the zone validates directly, but the resolver fails: the RRSIG's key tag is missing from the DNSKEY set in its cache (E1), or the cache holds RRSIGs by a key gone from the zone (E3) | R, L |
+| `CdsCheck` | E4 | every CDS/CDNSKEY matches a DNSKEY (RFC 7344) | L |
+| `NameserverConsistencyCheck` | F1 | SOA serial and signature validity differ per NS | L |
+| `TransportCheck` | F2 | TCP doesn't work, EDNS < 1232, TC without a working TCP retry | L |
+
+Diagnosis rules (`diagnose/rules/`) turn findings into the report: `KeyDirectoryRule` tells B1 from
+E2 by the key directory (a DS that matches a key in `keys/next/` is E2), and `ConsequenceRule` hides
+what follows from another error (B4 hides A3 and D3; D3 hides A3 on NSEC/NSEC3 records; D5 hides D3, and D4 when the chain
+follows RFC 9276), so every problem is reported once.
 
 ## Adding a check
 

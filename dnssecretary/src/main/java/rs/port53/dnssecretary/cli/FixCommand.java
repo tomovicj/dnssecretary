@@ -3,7 +3,6 @@ package rs.port53.dnssecretary.cli;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.time.Clock;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -23,21 +22,19 @@ import rs.port53.dnssecretary.diagnose.Analysis;
 import rs.port53.dnssecretary.fix.FixPlan;
 import rs.port53.dnssecretary.fix.FixPlanner;
 import rs.port53.dnssecretary.fix.ScriptGenerator;
-import rs.port53.dnssecretary.fix.ScriptRunner;
 import rs.port53.dnssecretary.model.Diagnosis;
 import rs.port53.dnssecretary.report.Messages;
 import rs.port53.dnssecretary.report.Report;
 
-/** fix: collect → check → diagnose → plan → script; --apply runs the script (docs/java-proposal.md 3.7). */
+/**
+ * fix: collect → check → diagnose → plan → script. Prints the plan and the script, changes nothing:
+ * scripts run from the web app (on the hosting) or scripts/simulate.sh (in a sandbox).
+ */
 @Command(name = "fix", mixinStandardHelpOptions = true,
-        description = "Fix a zone. By default only prints the plan and the fix script (dry run).",
+        description = "Print the plan and the fix script for a zone. Changes nothing.",
         exitCodeListHeading = "%nExit codes:%n",
-        exitCodeList = {"0:nothing to fix, or fixed", "1:fixed, manual steps remain (or dry run: only risks)",
-                "2:the fix script failed (or dry run: critical errors)", "3:tool error"})
+        exitCodeList = {"0:nothing to fix", "1:only risks", "2:critical errors", "3:tool error"})
 final class FixCommand implements Callable<Integer> {
-
-    /** The longest a fix script may run. */
-    private static final Duration TIMEOUT = Duration.ofMinutes(2);
 
     @ParentCommand
     Main main;
@@ -47,9 +44,6 @@ final class FixCommand implements Callable<Integer> {
 
     @Parameters(paramLabel = "<zone>")
     String zone;
-
-    @Option(names = "--apply", description = "Run the fix script (sign, deliver, write the reload list).")
-    boolean apply;
 
     @Option(names = "--script", description = "Print only the fix script, nothing else.")
     boolean scriptOnly;
@@ -98,36 +92,11 @@ final class FixCommand implements Callable<Integer> {
             out.println(Messages.get("fix.manualOnly"));
             return before.status().exitCode();
         }
-        if (!apply) {
-            out.println(Messages.get("fix.script"));
-            script.lines().forEach(l -> out.println("  " + l));
-            out.println();
-            out.println(Messages.get("fix.dryRun"));
-            return before.status().exitCode();
-        }
-
-        if (fc.helpers() == null) {
-            err.println(Messages.get("cli.noFixHelpers"));
-            return Main.EXIT_TOOL_ERROR;
-        }
-        Path file = Path.of(fc.workDir()).resolve(name.toString(true)).resolve("fix.sh");
-        out.println(Messages.get("fix.running", file));
-        int rc = new ScriptRunner(Path.of(fc.labDir()), Path.of(fc.helpers()), TIMEOUT)
-                .run(name, script, file, line -> {
-                    out.println("  | " + line);
-                    out.flush();
-                });
+        out.println(Messages.get("fix.script"));
+        script.lines().forEach(l -> out.println("  " + l));
         out.println();
-        if (rc != 0) {
-            out.println(Messages.get(rc == ScriptRunner.TIMEOUT ? "fix.timeout" : "fix.failed", rc));
-            return 2;
-        }
-        if (plan.manual().isEmpty()) {
-            out.println(Messages.get("fix.applied"));
-            return 0;
-        }
-        out.println(Messages.get("fix.appliedManualLeft", plan.manual().size()));
-        return 1;
+        out.println(Messages.get("fix.dryRun"));
+        return before.status().exitCode();
     }
 
     private void summary(Report r, PrintWriter out) {

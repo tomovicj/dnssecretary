@@ -24,7 +24,7 @@ import rs.port53.dnssecretary.model.Diagnosis;
 import rs.port53.dnssecretary.model.Finding;
 
 /**
- * Diagnoses → plan (docs/java-proposal.md 3.7). Pure: no files, no processes.
+ * Diagnoses → plan. Pure: no files, no processes.
  * The order of the actions is the order of the fix script: keys first, then signing,
  * then the parent, then the other servers. An error without an automatic fix becomes a
  * {@link FixAction.Manual} step with the catalogue's text.

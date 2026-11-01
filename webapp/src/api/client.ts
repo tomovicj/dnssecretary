@@ -18,7 +18,6 @@ export interface Backend {
   scenarios(): Promise<Scenario[]>;
   /** A hosting zone broken as one catalogue error (A1 …; E1 is a live key rollover). */
   demoBreak(zone: string, error: string): Promise<Job>;
-  demoHeal(): Promise<Job>;
   demoReset(): Promise<Job>;
   /** Live events; returns the function that stops them. All subscribers share one connection. */
   subscribe(onEvent: (e: ServerEvent) => void, onStatus: (s: ConnectionStatus) => void): () => void;
@@ -68,7 +67,6 @@ export function httpBackend(): Backend {
     scan: () => call("POST", "/api/scan"),
     scenarios: () => call("GET", "/api/demo/scenarios"),
     demoBreak: (zone, error) => call("POST", "/api/demo/break", { zone, error }),
-    demoHeal: () => call("POST", "/api/demo/heal"),
     demoReset: () => call("POST", "/api/demo/reset"),
     subscribe: eventHub(),
   };

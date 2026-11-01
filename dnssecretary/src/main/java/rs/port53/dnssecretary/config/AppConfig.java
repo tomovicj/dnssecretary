@@ -64,10 +64,9 @@ public record AppConfig(Dns dns, Thresholds thresholds, Collect collect, Fix fix
      * @param deliver   where the signed zone goes: zone → directory, "default" for the rest.
      *                  The directory's name is the compose service to restart (auth1, auth3).
      * @param servers   name server address → its server (F1, F2)
-     * @param helpers   sourced before the script; defines reload and flush (scripts/fixenv/)
      */
     public record Fix(String labDir, String sourceDir, String keyDir, String workDir, Map<String, String> deliver,
-                      Parent parent, Map<String, Server> servers, String helpers) {
+                      Parent parent, Map<String, Server> servers) {
 
         public Fix {
             labDir = labDir == null ? "/" : labDir;

@@ -2,10 +2,10 @@
 # dnssecretary.sh – runs DNSSECretary (Java) inside the lab network (compose service "app").
 #   sh scripts/dnssecretary.sh check a1-expired.test
 #   sh scripts/dnssecretary.sh snapshot a1-expired.test -o build/a1.json
-#   sh scripts/dnssecretary.sh fix --apply a1-expired.test
+#   sh scripts/dnssecretary.sh fix a1-expired.test        (prints the plan and the fix script)
+#   sh scripts/dnssecretary.sh verify a1-expired.test
 #
-# The tool has no access to Docker. After "fix --apply" it writes a reload list,
-# and this script restarts the servers, flushes the resolver cache and runs "verify".
+# The tool has no access to Docker here; fix scripts run from the web app (sh scripts/web.sh).
 #
 # Build the jar first (host, needs Java 21 + Maven):
 #   mvn -f dnssecretary/pom.xml package
@@ -18,24 +18,4 @@ cd "$(dirname "$0")/.."
 JAR=dnssecretary/target/dnssecretary.jar
 [ -f "$JAR" ] || { echo "Missing $JAR – run: mvn -f dnssecretary/pom.xml package"; exit 3; }
 
-run() { docker compose run --rm -T --user "$(id -u):$(id -g)" app "$@"; }
-
-RELOAD=build/dnssecretary/reload     # written by "fix --apply": "restart <service>" / "flush <zone>"
-rm -f "$RELOAD"
-rc=0; run "$@" || rc=$?
-
-if [ -f "$RELOAD" ]; then
-    while read -r what arg; do
-        case $what in
-            restart) docker compose restart "$arg" >/dev/null ;;
-            flush)   docker compose exec -T resolver unbound-control flush_zone "$arg" >/dev/null
-                     docker compose exec -T resolver unbound-control flush_bogus >/dev/null ;;
-        esac
-    done < "$RELOAD"
-    sleep 2
-    zone=$(awk '$1 == "flush" { print $2; exit }' "$RELOAD")
-    if [ -n "$zone" ]; then
-        run verify "$zone" || rc=$?
-    fi
-fi
-exit "$rc"
+exec docker compose run --rm -T --user "$(id -u):$(id -g)" app "$@"

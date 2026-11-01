@@ -17,7 +17,7 @@ import rs.port53.dnssecretary.dns.Records;
 import rs.port53.dnssecretary.report.Messages;
 
 /**
- * FixPlan → POSIX sh script, the fix the admin sees, may edit and runs (docs/java-proposal.md 3.7).
+ * FixPlan → POSIX sh script, the fix the admin sees, may edit and runs.
  *
  * <p>The contract: the script runs with {@code sh -eu} in fix.labDir, after a helpers file
  * (scripts/fixenv/) that defines {@code reload <service>} and {@code flush <zone>}. Paths under

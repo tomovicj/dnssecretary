@@ -89,10 +89,9 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/clean.sh` | host | Removes everything generated. `-n` dry run, `-k` keep keys, `-y` don't ask. |
 | `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
 | `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
-| `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `break <zone>` (a catalogue zone broken again), `heal` (every zone correct), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
+| `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
 | `scripts/video.sh` | host | Records the demo as a video (`demo/out/dnssecretary-demo.webm`): a browser in the `tour` container (Playwright, `demo/tour.mjs`) goes through one incident in under a minute. The web app must be running. |
 | `scripts/web.sh` | host | Starts the web app (compose service `web`) on http://localhost:8080; `logs`, `stop`. Build the front end first (`webapp/`, `npm run build`), see [`webapp/README.md`](webapp/README.md). |
-| `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue and hosting zone correctly. C1/C3 stay "at risk" (weak keys by design). |
 | `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
 
 After running a rollover script, run `sign.sh` and restart the servers to get a clean lab again.
@@ -159,20 +158,21 @@ Some results differ from what other resolvers would return. For example, BIND ma
 ## Repository layout
 
 ```
-zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them)
-scripts/          keygen, sign, break, check, rollover and clean scripts + DNSSECretary wrappers
+zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them) + hosting.list
+scripts/          keygen, sign, break, hosting, check, rollover, clean, demo and video scripts + DNSSECretary wrappers
 catalog/          the error catalogue (catalog.yaml), shared by DNSSECretary and the lab
 dnssecretary/     DNSSECretary, the Java tool (Maven project, see its README)
-docs/             design documents
+webapp/           the web app's front end (React + TypeScript, see its README)
+demo/             the demo video's browser script (Playwright, run by scripts/video.sh)
 root/ tld/        NSD configs for the root and test. servers
 auth1/ auth2/     NSD configs for the authoritative servers
 auth3/            Unbound auth-zone config (error F2)
 resolver/         Unbound resolver config and root hints
-image/Dockerfile  the shared image (pinned versions); stage "app" adds a Java runtime
+image/Dockerfile  the shared image (pinned versions); stage "app" adds a Java runtime, "web" the Docker CLI
 compose.yaml      network and services
 ```
 
-Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `resolver/root.key`, `client/delv-anchor.conf`, `dnssecretary/target/`. Every team member generates their own keys, so trust anchors differ between machines.
+Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `auth1/hosting.conf`, `resolver/root.key`, `client/delv-anchor.conf`, `dnssecretary/target/`, `webapp/dist/`, `demo/out/`. Every team member generates their own keys, so trust anchors differ between machines.
 
 ## CI
 

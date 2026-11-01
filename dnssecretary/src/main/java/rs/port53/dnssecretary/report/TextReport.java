@@ -10,7 +10,7 @@ import rs.port53.dnssecretary.model.Diagnosis;
 import rs.port53.dnssecretary.model.Finding;
 import rs.port53.dnssecretary.model.Severity;
 
-/** Human-readable report (docs/java-proposal.md 3.9). */
+/** Human-readable report. */
 public final class TextReport {
 
     private static final DateTimeFormatter TIME =

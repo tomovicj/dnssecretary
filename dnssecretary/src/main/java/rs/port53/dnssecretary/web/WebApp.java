@@ -101,14 +101,6 @@ public final class WebApp {
         }
     }
 
-    /** good.test and the lab zone of every catalogue entry. */
-    public static List<Name> labZones(Catalog catalog) {
-        List<Name> out = new ArrayList<>();
-        out.add(name("good.test"));
-        catalog.entries().forEach(e -> out.add(Catalog.labZone(e)));
-        return out;
-    }
-
     /** Starts the HTTP server; returns its port (0 = any free port). */
     public int start(int port) {
         server = Javalin.create(cfg -> {
@@ -171,26 +163,18 @@ public final class WebApp {
         app.get("/api/demo/scenarios", ctx -> ctx.json(HOSTING_ERRORS.stream()
                 .map(id -> Map.of("id", id.name(), "title", catalog.get(id).title()))
                 .toList()));
-        // With an error: a watched zone that is not a catalogue zone (demo.sh checks it is in the
-        // hosting list). Without one: a catalogue zone, broken as the catalogue breaks it.
+        // A watched zone that is not a catalogue zone (demo.sh checks it is in the hosting list).
         app.post("/api/demo/break", ctx -> {
             Api.BreakRequest req = body(ctx, Api.BreakRequest.class);
             Name z = name(req == null || req.zone() == null ? "" : req.zone());
-            if (req.error() == null) {
-                if (catalog.forLabZone(z).isEmpty()) {
-                    throw new IllegalArgumentException("Not a catalogue zone: " + z);
-                }
-                ctx.status(202).json(jobs.demo(List.of("break", z.toString(true)), z).view(false));
-                return;
-            }
-            ErrorId error = HOSTING_ERRORS.stream().filter(id -> id.name().equalsIgnoreCase(req.error()))
-                    .findFirst().orElseThrow(() -> new IllegalArgumentException("Not a demo error: " + req.error()));
+            String wanted = req.error() == null ? "" : req.error();
+            ErrorId error = HOSTING_ERRORS.stream().filter(id -> id.name().equalsIgnoreCase(wanted))
+                    .findFirst().orElseThrow(() -> new IllegalArgumentException("Not a demo error: " + wanted));
             if (catalog.forLabZone(z).isPresent() || !store.zones().contains(z)) {
                 throw new IllegalArgumentException("Not a hosting zone: " + z);
             }
             ctx.status(202).json(jobs.demo(List.of("break", z.toString(true), error.name()), z).view(false));
         });
-        app.post("/api/demo/heal", ctx -> ctx.status(202).json(jobs.demo(List.of("heal"), null).view(false)));
         app.post("/api/demo/reset", ctx -> ctx.status(202).json(jobs.demo(List.of("reset"), null).view(false)));
 
         app.exception(NoSuchElementException.class, (e, ctx) -> ctx.status(404).json(new Api.Error(e.getMessage())));

@@ -33,7 +33,7 @@ public final class LabConfig {
         return new AppConfig.Fix(at(f.labDir()), at(f.sourceDir()), at(f.keyDir()), at(f.workDir()), deliver,
                 new AppConfig.Fix.Parent(parentMode, at(p.dsDir()), p.resignCommand().stream().map(LabConfig::at).toList(),
                         p.service()),
-                servers, at(f.helpers()));
+                servers);
     }
 
     private static AppConfig load() {
