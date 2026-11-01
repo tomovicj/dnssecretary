@@ -35,7 +35,7 @@ export class ApiError extends Error {
   }
 }
 
-/** Zone names in URLs go without the trailing dot: /api/zones/a1-expired.test */
+/** Zone names in URLs go without the trailing dot: /api/zones/northwind-coffee.test */
 export function zonePath(zone: string): string {
   return encodeURIComponent(zone.replace(/\.$/, ""));
 }

@@ -35,7 +35,7 @@ describe("ZonePage", () => {
   afterEach(cleanup);
 
   it("explains the error with the catalogue's texts and shows the generated script", async () => {
-    open("a1-expired.test");
+    open("northwind-coffee.test");
     expect(await screen.findByRole("heading", { name: "Expired signature" })).toBeTruthy();
     const card = screen.getByRole("heading", { name: "Expired signature" }).closest("article")!;
     expect(within(card).getByText(/3 findings\. Example:/)).toBeTruthy();
@@ -51,7 +51,7 @@ describe("ZonePage", () => {
   });
 
   it("simulates an edited script and shows its log and verify result", async () => {
-    open("a1-expired.test");
+    open("northwind-coffee.test");
     await screen.findByRole("heading", { name: "Expired signature" });
     fireEvent.change(editor(), { target: { value: "echo BAD" } });
     expect(screen.getByText("Edited · not simulated yet")).toBeTruthy();
@@ -73,8 +73,8 @@ describe("ZonePage", () => {
   });
 
   it("executes after a passing simulation, and the zone becomes healthy", async () => {
-    open("b1-ds-stale.test");
-    await screen.findByRole("heading", { name: "DS points to a key that does not exist" });
+    open("lindqvist-law.test");
+    await screen.findByRole("heading", { name: "DS has a wrong hash (digest)" });
     fireEvent.click(screen.getByRole("button", { name: "Execute on hosting" }));
 
     await waitFor(() => expect(within(run()).getByText(/exec-\d+ passed/)).toBeTruthy());
@@ -85,18 +85,18 @@ describe("ZonePage", () => {
   });
 
   it("does not execute a script whose simulation fails", async () => {
-    open("f1-stale-secondary.test");
-    await screen.findByRole("heading", { name: /Secondary server/ });
+    open("pixelforge-games.test");
+    await screen.findByRole("heading", { name: "Broken NSEC/NSEC3 chain" });
     fireEvent.change(editor(), { target: { value: "echo BAD" } });
     fireEvent.click(screen.getByRole("button", { name: "Execute on hosting" }));
 
     expect(await screen.findByText("the simulation did not pass, nothing was executed")).toBeTruthy();
-    expect(screen.getByRole("heading", { name: /Secondary server/ })).toBeTruthy(); // still broken
+    expect(screen.getByRole("heading", { name: "Broken NSEC/NSEC3 chain" })).toBeTruthy(); // still broken
   });
 
   it("asks before executing without a simulation", async () => {
     const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
-    open("a6-expiring.test");
+    open("westgate-pharmacy.test");
     await screen.findByRole("heading", { name: /Signature expires soon/ });
     fireEvent.click(screen.getByLabelText("Skip the simulation (asks to confirm)"));
     fireEvent.click(screen.getByRole("button", { name: "Execute on hosting" }));

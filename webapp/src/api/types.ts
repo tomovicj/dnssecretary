@@ -67,7 +67,7 @@ export interface Job {
   error?: string;
 }
 
-/** One raw fact a check found, e.g. an expired RRSIG at "a1-expired.test. SOA". */
+/** One raw fact a check found, e.g. an expired RRSIG at "northwind-coffee.test. SOA". */
 export interface Finding {
   id: string;
   severity: Severity;

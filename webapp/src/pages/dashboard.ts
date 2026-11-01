@@ -79,7 +79,7 @@ export function visibleRows(rows: ZoneRow[], filter: Filter, query: string, show
   });
 }
 
-/** "a1-expired.test." → "a1-expired.test" */
+/** "northwind-coffee.test." → "northwind-coffee.test" */
 export function shortZone(zone: string): string {
   return zone.replace(/\.$/, "");
 }

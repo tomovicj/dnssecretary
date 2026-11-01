@@ -21,7 +21,7 @@ src/
 ├── api/
 │   ├── types.ts      the API's JSON shapes (same as web/Api.java in the backend)
 │   ├── client.ts     Backend interface; httpBackend (fetch + ONE shared EventSource on /api/events); api = real or mock
-│   ├── mock.ts       a backend without a server: the lab's 31 zones, jobs that finish after a moment
+│   ├── mock.ts       a backend without a server: the demo hosting's 40 zones, jobs that finish after a moment
 │   └── useZones.ts   the zone list, kept live by the "zone" SSE events, reloaded after a lost connection
 ├── pages/
 │   ├── Dashboard.tsx the incident list
