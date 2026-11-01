@@ -14,8 +14,8 @@ import org.xbill.DNS.Name;
 /**
  * Runs a fix script the way the contract says (see {@link ScriptGenerator}): {@code sh -eu}
  * in the lab directory, ZONE set, after sourcing a helpers file that defines reload and flush.
- * Which helpers decides where the changes land: scripts/fixenv/reload-list.sh (CLI),
- * prod.sh (web, via Docker), sandbox.sh (simulation).
+ * Which helpers decides where the changes land: scripts/fixenv/prod.sh (the web app, via Docker)
+ * or sandbox.sh (simulation).
  */
 public final class ScriptRunner {
 

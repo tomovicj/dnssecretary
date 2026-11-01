@@ -3,7 +3,7 @@
 The tool that checks a zone, explains every DNSSEC error in plain language and fixes it.
 Design: [`docs/java-proposal.md`](../docs/java-proposal.md). Error catalogue: [`catalog/catalog.yaml`](../catalog/catalog.yaml).
 
-Pipeline: `collect → check → diagnose → plan → apply → verify`.
+Pipeline: `collect → check → diagnose → plan → script → run (sandbox or hosting) → verify`.
 Done so far: `collect` (DNS, delegation walk, chain of trust, snapshots), the catalogue, the CLI,
 the report, checks for all 30 catalogue errors (E2 via the `KeyDirectoryRule` diagnosis rule), and
 `fix`/`verify` for re-signing and the parent DS.
@@ -14,9 +14,9 @@ A fix is a shell script: the tool writes it, the admin may read and edit it, and
 or in a sandbox copy of it.
 
 ```sh
-sh scripts/dnssecretary.sh fix a1-expired.test            # dry run: the plan and the script, changes nothing
+sh scripts/dnssecretary.sh fix a1-expired.test            # the plan and the script, changes nothing
 sh scripts/dnssecretary.sh fix a1-expired.test --script   # only the script
-sh scripts/dnssecretary.sh fix --apply a1-expired.test    # run the script → reload → verify
+sh scripts/simulate.sh a1-expired.test fix.sh             # run a script in a sandbox copy of the lab, then verify
 sh scripts/dnssecretary.sh verify a1-expired.test         # live: no critical error + the resolver answers with AD
 ```
 
@@ -38,8 +38,6 @@ With `parent.mode: instructions` the DS is only shown for the registrar, not wri
 The script contract (`ScriptGenerator`, `ScriptRunner`): it runs with `sh -eu` in `fix.labDir` (`/lab`),
 with `ZONE` set, after a helpers file from `scripts/fixenv/` that defines `reload <service>` and
 `flush <zone>`. Paths under the lab are relative, so the same script works in a copy of it.
-- `fixenv/reload-list.sh`: for `fix --apply` in the `app` container (no Docker). It queues the work in
-  `build/dnssecretary/reload`; `scripts/dnssecretary.sh` restarts, flushes and runs `verify`.
 - `fixenv/prod.sh`: for a container with the Docker CLI and socket (the web app): `docker restart`
   and `unbound-control` on the lab's containers, found by their compose labels.
 - `fixenv/sandbox.sh`: for the sandbox: restarts the server's process, `unbound-control` on the sandbox resolver.

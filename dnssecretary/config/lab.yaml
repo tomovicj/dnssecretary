@@ -24,7 +24,6 @@ collect:
 
 fix:
   labDir: /lab                          # fix scripts run here; paths below it are written relative
-  helpers: /lab/scripts/fixenv/reload-list.sh   # reload/flush for "fix --apply" in the app container
   sourceDir: /lab/zones                 # read only, the tool NEVER writes here
   keyDir: /lab/keys
   workDir: /lab/build/dnssecretary
