@@ -8,12 +8,12 @@
 #   flush <zone>       drop the resolver's cached answers for the zone
 
 # The lab's compose project: given, else the project of the container this runs in (the web app),
-# else dnssec-lab (the name of the repo's directory).
+# else dnssecretary (the "name" in compose.yaml).
 if [ -z "${LAB_PROJECT:-}" ]; then
     LAB_PROJECT=$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}' \
         "$(cat /etc/hostname 2>/dev/null)" 2>/dev/null || true)   # a container's hostname is its ID
 fi
-LAB_PROJECT=${LAB_PROJECT:-dnssec-lab}
+LAB_PROJECT=${LAB_PROJECT:-dnssecretary}
 
 lab_container() {
     id=$(docker ps -q --filter "label=com.docker.compose.project=$LAB_PROJECT" \
