@@ -10,10 +10,10 @@ describe("dashboard logic", () => {
   it("puts broken zones first, the newest problem first, healthy last", () => {
     const sorted = sortRows(rows);
     expect(sorted.slice(0, 4).map((r) => r.zone)).toEqual([
-      "e1-rollover.test.",
-      "a1-expired.test.",
-      "b1-ds-stale.test.",
-      "f1-stale-secondary.test.",
+      "bluefin-sushi.test.",
+      "northwind-coffee.test.",
+      "lindqvist-law.test.",
+      "pixelforge-games.test.",
     ]);
     expect(sorted[4].status).toBe("RISK");
     expect(sorted.at(-1)!.status).toBe("OK");
@@ -21,18 +21,18 @@ describe("dashboard logic", () => {
 
   it("counts states and the sandbox verdicts of zones with a problem", () => {
     expect(counts(rows)).toEqual({
-      all: 31, broken: 4, risk: 3, healthy: 24, withProblem: 7, verified: 4, running: 1, failed: 1, noScript: 1,
+      all: 40, broken: 4, risk: 3, healthy: 33, withProblem: 7, verified: 4, running: 1, failed: 1, noScript: 1,
     });
   });
 
   it("folds healthy zones away unless asked, and filters and searches", () => {
     expect(visibleRows(rows, "all", "", false)).toHaveLength(7);
-    expect(visibleRows(rows, "all", "", true)).toHaveLength(31);
+    expect(visibleRows(rows, "all", "", true)).toHaveLength(40);
     expect(visibleRows(rows, "risk", "", false).map((r) => r.zone)).toEqual([
-      "a6-expiring.test.", "b7-ds-sha1.test.", "c3-rsa1024.test.",
+      "westgate-pharmacy.test.", "granite-legal.test.", "oakmont-school.test.",
     ]);
-    expect(visibleRows(rows, "healthy", "", false)).toHaveLength(24);
-    expect(visibleRows(rows, "all", " A1-EXP ", false).map((r) => r.zone)).toEqual(["a1-expired.test."]);
+    expect(visibleRows(rows, "healthy", "", false)).toHaveLength(33);
+    expect(visibleRows(rows, "all", " NORTHWIND ", false).map((r) => r.zone)).toEqual(["northwind-coffee.test."]);
   });
 
   it("words times like the design", () => {
@@ -53,6 +53,6 @@ describe("dashboard logic", () => {
 
   it("finds the newest scan, and writes zones in URLs without the dot", () => {
     expect(lastScan(rows)).toBe(new Date(NOW - 12_000).toISOString());
-    expect(zonePath("a1-expired.test.")).toBe("a1-expired.test");
+    expect(zonePath("northwind-coffee.test.")).toBe("northwind-coffee.test");
   });
 });

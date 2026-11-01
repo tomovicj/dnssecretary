@@ -19,7 +19,7 @@ export function findingsCount(d: Diagnosis): string {
   return `${d.findings.length} ${d.findings.length === 1 ? "finding" : "findings"}`;
 }
 
-/** The example finding's place: "a1-expired.test. SOA" */
+/** The example finding's place: "northwind-coffee.test. SOA" */
 export function where(f: Finding): string {
   return `${f.owner} ${f.type}`;
 }

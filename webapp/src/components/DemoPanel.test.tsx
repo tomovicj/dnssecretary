@@ -15,13 +15,13 @@ describe("DemoPanel", () => {
     render(<DemoPanel onClose={() => {}} />);
     const zone = (await screen.findByLabelText("Zone")) as HTMLSelectElement;
     const error = screen.getByLabelText("Error") as HTMLSelectElement;
-    await waitFor(() => expect(zone.options.length).toBe(31));
+    await waitFor(() => expect(zone.options.length).toBe(40));
     await waitFor(() => expect(error.options.length).toBeGreaterThan(1));
-    fireEvent.change(zone, { target: { value: "good.test." } });
+    fireEvent.change(zone, { target: { value: "bluefin-sushi.test." } });
     fireEvent.change(error, { target: { value: "E1" } });
     fireEvent.click(screen.getByRole("button", { name: "Break this zone" }));
 
-    expect(await screen.findByText("break good.test E1")).toBeTruthy();
+    expect(await screen.findByText("break bluefin-sushi.test E1")).toBeTruthy();
     await waitFor(() => expect(screen.getByRole("status").textContent).toContain("Passed"));
   });
 

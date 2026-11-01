@@ -9,6 +9,8 @@
 #   lab:      zone  – the lab zone that reproduces the error
 #             probe – the query that shows the error ("@" = zone apex)
 #             setup – a script that must run first (the error only appears live)
+#             hosting – true: scripts/demo.sh (and the web app's demo panel) can put it on any hosting
+#                       zone; it needs nothing but the zone's own keys (break.sh "zone" mode; E1: "rollover")
 #
 # The tool is stricter than Unbound: what the tool must report comes from here, not from check.sh.
 
@@ -39,7 +41,7 @@ errors:
     fix: Re-sign the zone with new dates.
     recipe: "1 Re-sign → Verify"
     rfc: ["RFC 4035 §5.3.1"]
-    lab: { zone: a1-expired.test, probe: "www A" }
+    lab: { zone: a1-expired.test, probe: "www A", hosting: true }
 
   - id: A2
     title: Signature not yet valid
@@ -54,7 +56,7 @@ errors:
     fix: Re-sign, and warn that the NTP setup should be checked.
     recipe: "1 Re-sign → Verify + warning: check NTP"
     rfc: ["RFC 4035 §5.3.1"]
-    lab: { zone: a2-notyet.test, probe: "www A" }
+    lab: { zone: a2-notyet.test, probe: "www A", hosting: true }
 
   - id: A3
     title: Record without a signature (RRset has no RRSIG)
@@ -69,7 +71,7 @@ errors:
     fix: Re-sign the zone.
     recipe: "1 Re-sign → Verify"
     rfc: ["RFC 4035 §2.2"]
-    lab: { zone: a3-nosig.test, probe: "www A" }
+    lab: { zone: a3-nosig.test, probe: "www A", hosting: true }
 
   - id: A4
     title: Invalid signature
@@ -84,7 +86,7 @@ errors:
     fix: Re-sign the zone.
     recipe: "1 Re-sign → Verify"
     rfc: ["RFC 4035 §5.3"]
-    lab: { zone: a4-bogus.test, probe: "www A" }
+    lab: { zone: a4-bogus.test, probe: "www A", hosting: true }
 
   - id: A5
     title: Signature made by a key that is not in the DNSKEY set
@@ -114,7 +116,7 @@ errors:
     fix: Re-sign and suggest better timing (early refresh, jitter).
     recipe: "2 Settings (early refresh, jitter) → 1 Re-sign → Verify"
     rfc: ["RFC 6781 §4.4.2"]
-    lab: { zone: a6-expiring.test, probe: "www A" }
+    lab: { zone: a6-expiring.test, probe: "www A", hosting: true }
 
   - id: A7
     title: TTL longer than the remaining signature validity
@@ -161,7 +163,7 @@ errors:
     fix: Generate the correct DS + steps for the registrar.
     recipe: "5 DS at registrar → Verify"
     rfc: ["RFC 4034 §5.1.4", "RFC 4035 §5.2"]
-    lab: { zone: b2-ds-digest.test, probe: "www A" }
+    lab: { zone: b2-ds-digest.test, probe: "www A", hosting: true }
 
   - id: B3
     title: DS and DNSKEY have different algorithms
@@ -176,7 +178,7 @@ errors:
     fix: Generate the correct DS + steps for the registrar.
     recipe: "5 DS at registrar → Verify"
     rfc: ["RFC 4035 §5.2"]
-    lab: { zone: b3-ds-alg.test, probe: "www A" }
+    lab: { zone: b3-ds-alg.test, probe: "www A", hosting: true }
 
   - id: B4
     title: DS exists, but the zone is not signed
@@ -191,7 +193,7 @@ errors:
     fix: "Two options: remove the DS at the registrar OR sign the zone again."
     recipe: "Option A: 6 Remove DS → Verify; Option B: 3 New key → 1 Re-sign → 5 DS at registrar → Verify"
     rfc: ["RFC 4035 §5.2"]
-    lab: { zone: b4-ds-unsigned.test, probe: "www A" }
+    lab: { zone: b4-ds-unsigned.test, probe: "www A", hosting: true }
 
   - id: B5
     title: DNSKEY set not signed by the KSK (the key the DS points to)
@@ -206,7 +208,7 @@ errors:
     fix: Re-sign the DNSKEY set with the KSK.
     recipe: "1 Re-sign (DNSKEY set with the KSK) → Verify"
     rfc: ["RFC 4035 §5.2"]
-    lab: { zone: b5-dnskey-zsk.test, probe: "www A" }
+    lab: { zone: b5-dnskey-zsk.test, probe: "www A", hosting: true }
 
   - id: B6
     title: Zone is signed, but there is no DS in the parent zone ("island")
@@ -221,7 +223,7 @@ errors:
     fix: Generate the DS + steps for the registrar.
     recipe: "5 DS at registrar → Verify"
     rfc: ["RFC 4033 §2", "RFC 4035 §4.3"]
-    lab: { zone: b6-island.test, probe: "www A" }
+    lab: { zone: b6-island.test, probe: "www A", hosting: true }
 
   - id: B7
     title: DS uses SHA-1 (digest type 1)
@@ -236,7 +238,7 @@ errors:
     fix: Generate a DS with SHA-256 (type 2).
     recipe: "5 DS at registrar (SHA-256) → Verify"
     rfc: ["RFC 8624 §3.3"]
-    lab: { zone: b7-ds-sha1.test, probe: "www A" }
+    lab: { zone: b7-ds-sha1.test, probe: "www A", hosting: true }
 
   - id: B8
     title: Leftover old DS records
@@ -315,7 +317,7 @@ errors:
     fix: Re-sign the zone (a new chain).
     recipe: "1 Re-sign → Verify"
     rfc: ["RFC 4034 §4", "RFC 4035 §3.1.3"]
-    lab: { zone: d1-nsec-broken.test, probe: "missing A" }
+    lab: { zone: d1-nsec-broken.test, probe: "missing A", hosting: true }
 
   - id: D2
     title: Wrong type list (bitmap)
@@ -345,7 +347,7 @@ errors:
     fix: Re-sign the zone.
     recipe: "1 Re-sign → Verify; if the server is the problem: 8 Server → Verify"
     rfc: ["RFC 4035 §3.1.3"]
-    lab: { zone: d3-nsec-nosig.test, probe: "missing A" }
+    lab: { zone: d3-nsec-nosig.test, probe: "missing A", hosting: true }
 
   - id: D4
     title: NSEC3 settings against RFC 9276
@@ -360,7 +362,7 @@ errors:
     fix: Re-sign with iterations=0, no salt, no opt-out.
     recipe: "2 Settings (iterations=0, no salt, no opt-out) → 1 Re-sign → Verify"
     rfc: ["RFC 9276"]
-    lab: { zone: d4-nsec3-iter.test, probe: "missing A" }
+    lab: { zone: d4-nsec3-iter.test, probe: "missing A", hosting: true }
 
   - id: D5
     title: NSEC3PARAM does not match the NSEC3 records
@@ -375,7 +377,7 @@ errors:
     fix: Re-sign with a single set of parameters.
     recipe: "2 Settings (one set of parameters) → 1 Re-sign → Verify"
     rfc: ["RFC 5155 §4"]
-    lab: { zone: d5-nsec3param.test, probe: "missing A" }
+    lab: { zone: d5-nsec3param.test, probe: "missing A", hosting: true }
 
   - id: D6
     title: NSEC and NSEC3 mixed in the same zone
@@ -390,7 +392,7 @@ errors:
     fix: Re-sign with only one type.
     recipe: "2 Settings (only NSEC or only NSEC3) → 1 Re-sign → Verify"
     rfc: ["RFC 5155"]
-    lab: { zone: d6-nsec-mixed.test, probe: "missing A" }
+    lab: { zone: d6-nsec-mixed.test, probe: "missing A", hosting: true }
 
   # ---------- E: key rollover ----------
 
@@ -407,7 +409,7 @@ errors:
     fix: Put the old key back into the DNSKEY set until the TTL expires; then follow the correct order.
     recipe: "4 DNSKEY set (put the old key back) → 1 Re-sign → 7 Wait for TTL → Verify; then correctly: 3 New key → 4 DNSKEY set (add the new one) → 1 Re-sign → 7 Wait for TTL → 1 Re-sign (sign with the new one) → 7 Wait for TTL → 4 DNSKEY set (remove the old one) → 1 Re-sign → Verify"
     rfc: ["RFC 6781 §4.1.1.1", "RFC 7583 §3.2"]
-    lab: { zone: e1-rollover.test, probe: "www A", setup: scripts/e1-rollover.sh }
+    lab: { zone: e1-rollover.test, probe: "www A", setup: scripts/e1-rollover.sh, hosting: true }
 
   - id: E2
     title: KSK replaced, and the DS changed too early or too late
@@ -452,7 +454,7 @@ errors:
     fix: Generate correct CDS/CDNSKEY records.
     recipe: "5 DS at registrar (correct CDS/CDNSKEY) → 1 Re-sign → Verify"
     rfc: ["RFC 7344", "RFC 8078"]
-    lab: { zone: e4-cds.test, probe: "@ CDS" }
+    lab: { zone: e4-cds.test, probe: "@ CDS", hosting: true }
 
   # ---------- F: differences between name servers ----------
 

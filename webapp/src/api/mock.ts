@@ -13,7 +13,7 @@ import type {
   ZoneRow,
 } from "./types";
 
-// A backend without a server, for "npm run mock" and the tests: the lab's 31 zones,
+// A backend without a server, for "npm run mock" and the tests: the demo hosting's 40 zones,
 // a few of them broken, and jobs that finish after a moment. Same shapes as the real API.
 // A script that contains "BAD" fails in the mock sandbox; everything else passes.
 
@@ -24,11 +24,11 @@ const DAY = 24 * 60 * MIN;
 const CATALOG: CatalogEntry[] = [
   ["A1", "Expired signature", "ZONE", "CRITICAL", "SERVFAIL", "7 (Signature Expired)", "Re-signing stopped (cron job, server down, forgotten).", "Re-sign the zone with new dates.", ["RFC 4035 §5.3.1"]],
   ["A6", "Signature expires soon (too little time to fix it)", "ZONE", "RISK", "works, for now", "none", "Bad policy: signatures are short-lived or refreshed too late.", "Re-sign now and refresh signatures well before they expire.", ["RFC 6781 §4.4.2"]],
-  ["B1", "DS points to a key that does not exist", "PARENT", "CRITICAL", "SERVFAIL", "9 (DNSKEY Missing)", "The KSK was replaced, but the DS at the parent was not.", "Publish the DS of the current KSK at the parent.", ["RFC 4035 §5.2"]],
+  ["B2", "DS has a wrong hash (digest)", "PARENT", "CRITICAL", "SERVFAIL", "6 or 9", "A mistake when copying the DS to the registrar.", "Generate the correct DS + steps for the registrar.", ["RFC 4034 §5.1.4", "RFC 4035 §5.2"]],
   ["B7", "DS uses SHA-1 (digest type 1)", "PARENT", "RISK", "works", "none", "Old registrar defaults.", "Publish a SHA-256 DS and remove the SHA-1 one.", ["RFC 8624 §3.3"]],
-  ["C3", "Weak RSA key (< 2048 bits)", "ZONE", "RISK", "works", "none", "Old settings.", "A new key of 2048+ bits, or a move to algorithm 13.", ["RFC 6781 §3.4.2", "RFC 8624"]],
+  ["D1", "Broken NSEC/NSEC3 chain", "ZONE", "CRITICAL", "SERVFAIL for names that don't exist", "12 (NSEC Missing) or 6", "A signed zone edited by hand, or a bug in the tool.", "Re-sign the zone (a new chain).", ["RFC 4034 §4", "RFC 4035 §3.1.3"]],
+  ["D4", "NSEC3 settings against RFC 9276", "ZONE", "RISK", "NXDOMAIN without AD (Unbound)", "none", "Old settings: iterations > 0, a non-empty salt, unnecessary opt-out.", "Re-sign with iterations=0, no salt, no opt-out.", ["RFC 9276"]],
   ["E1", "ZSK replaced too quickly (the new key was not pre-published)", "ZONE", "CRITICAL", "SERVFAIL", "9 or 6", "The new ZSK signed before resolvers had it in their cache.", "Put the old key back into the DNSKEY set until the TTL expires; then follow the correct order.", ["RFC 6781 §4.1.1"]],
-  ["F1", "Secondary server has a stale zone with expired signatures", "OPERATOR", "CRITICAL", "SERVFAIL (sometimes)", "7 (Signature Expired)", "Zone transfers to the secondary stopped.", "Fix the transfer and refresh the secondary.", ["RFC 1996"]],
 ].map(([id, title, side, severity, symptom, ede, cause, fix, rfc]) => ({
   id: id as string,
   title: title as string,
@@ -50,24 +50,29 @@ const ISSUES: Record<string, Issue> = Object.fromEntries(
   CATALOG.map((e) => [e.id, { id: e.id, title: e.title, severity: e.severity, side: e.side }]),
 );
 
+// The same names as zones/hosting.list.
 const ZONES = [
-  "good.test", "a1-expired.test", "a2-notyet.test", "a3-nosig.test", "a4-bogus.test", "a5-unknown-key.test",
-  "a6-expiring.test", "a7-ttl-long.test", "b1-ds-stale.test", "b2-ds-digest.test", "b3-ds-alg.test",
-  "b4-ds-unsigned.test", "b5-dnskey-zsk.test", "b6-island.test", "b7-ds-sha1.test", "b8-ds-extra.test",
-  "c1-rsasha1.test", "c2-two-alg.test", "c3-rsa1024.test", "d1-nsec-broken.test", "d2-bitmap.test",
-  "d3-nsec-nosig.test", "d4-nsec3-iter.test", "d5-nsec3param.test", "d6-nsec-mixed.test", "e1-rollover.test",
-  "e2-ksk-ds-early.test", "e3-rollover.test", "e4-cds.test", "f1-stale-secondary.test", "f2-tcp-edns.test",
+  "northwind-coffee.test", "lindqvist-law.test", "bluefin-sushi.test", "atlas-dental.test", "harbor-books.test",
+  "copperleaf-studio.test", "greenline-bikes.test", "maple-veterinary.test", "summit-climbing.test",
+  "orchard-bakery.test", "riverside-clinic.test", "pixelforge-games.test", "silverbirch-hotel.test",
+  "tidewater-marina.test", "ironbridge-garage.test", "lumen-optics.test", "foxglove-florist.test",
+  "quarry-architects.test", "saltmarsh-brewery.test", "kestrel-accounting.test", "nordic-knitwear.test",
+  "oakmont-school.test", "papercrane-print.test", "redwood-roofing.test", "stonepath-yoga.test",
+  "sunflower-daycare.test", "velvet-records.test", "westgate-pharmacy.test", "wildberry-market.test",
+  "zephyr-travel.test", "amber-jewellery.test", "bramble-cafe.test", "cobalt-it.test", "driftwood-surf.test",
+  "ember-pizza.test", "falcon-logistics.test", "granite-legal.test", "hazel-photography.test", "indigo-salon.test",
+  "juniper-gardens.test",
 ];
 
-/** zone → [issue, broken since (min ago), next expiry (days from now), verified] */
+/** zone → [issue, broken since (min ago), next expiry (days from now), verified]. The last three zones are the hosting's start state (zones/hosting.list). */
 const BROKEN: Record<string, [string, number, number, Verified["state"]]> = {
-  "e1-rollover.test": ["E1", 0, 30, "RUNNING"],
-  "a1-expired.test": ["A1", 2, -7, "PASS"],
-  "b1-ds-stale.test": ["B1", 6, 29, "PASS"],
-  "f1-stale-secondary.test": ["F1", 14, 29, "FAIL"],
-  "a6-expiring.test": ["A6", 18, 2, "PASS"],
-  "b7-ds-sha1.test": ["B7", 60, 29, "PASS"],
-  "c3-rsa1024.test": ["C3", 61, 29, "NONE"],
+  "bluefin-sushi.test": ["E1", 0, 30, "RUNNING"],
+  "northwind-coffee.test": ["A1", 2, -7, "PASS"],
+  "lindqvist-law.test": ["B2", 6, 29, "PASS"],
+  "pixelforge-games.test": ["D1", 14, 29, "FAIL"],
+  "westgate-pharmacy.test": ["A6", 18, 2, "PASS"],
+  "granite-legal.test": ["B7", 60, 29, "PASS"],
+  "oakmont-school.test": ["D4", 61, 29, "NONE"],
 };
 
 const iso = (ms: number) => new Date(ms).toISOString();
@@ -256,7 +261,7 @@ export function mockBackend(options: MockOptions = {}): Backend {
       });
     },
     scan: async () => {},
-    scenarios: async (): Promise<Scenario[]> => CATALOG.filter((e) => e.id !== "F1").map(({ id, title }) => ({ id, title })),
+    scenarios: async (): Promise<Scenario[]> => CATALOG.map(({ id, title }) => ({ id, title })),
     demoBreak: async (zone, error) =>
       run("DEMO", key(zone), `sh scripts/demo.sh break ${zone.replace(/\.$/, "")} ${error}`, true, {
         after: () => {
@@ -270,7 +275,7 @@ export function mockBackend(options: MockOptions = {}): Backend {
       setTimeout(() => onStatus("open"), 0);
       // the simulation that runs at the start finishes after a moment
       const t = setTimeout(() => {
-        const e1 = rows.get("e1-rollover.test.");
+        const e1 = rows.get("bluefin-sushi.test.");
         if (e1 && e1.verified.state === "RUNNING") put({ ...e1, verified: { state: "PASS", at: iso(Date.now()), jobId: "sim-0" } });
       }, jobMs * 2);
       return () => {

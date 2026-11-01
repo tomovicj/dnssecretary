@@ -34,10 +34,11 @@ SIG_END=${SIG_END:-now+2592000}
 
 mkdir -p "$OUT/auth2" "$OUT/auth3" "$PDS" "$TMP"
 
-# Errors that "zone" mode can put on any hosting zone: they need nothing but the zone's own
-# KSK and ZSK (alg 13) and the records every hosting zone has (www A, mail). The web app's demo
-# panel offers the same list (WebApp.HOSTING_ERRORS), plus E1 through "rollover".
-ANY_ZONE="a1 a2 a3 a4 a6 b2 b3 b4 b5 b6 b7 d1 d3 d4 d5 d6 e4"
+# Errors that "zone" mode can put on any hosting zone: those with "hosting: true" in the catalogue
+# (they need nothing but the zone's own KSK and ZSK and the records every hosting zone has, www A
+# and mail), except E1, which "rollover" does. The web app's demo panel offers the same list.
+ANY_ZONE=$(awk '/^ *- id: / { id = tolower($3) }
+                /^ *lab: .*hosting: true/ && id != "e1" { printf "%s%s", sep, id; sep = " " }' catalog/catalog.yaml)
 
 # ---------- helpers ----------
 
