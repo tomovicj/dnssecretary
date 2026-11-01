@@ -13,6 +13,7 @@ All text in the repo is in English: comments, script output, `check.sh` descript
 Run everything from the host, in the repo root. Signing tools exist only inside the image, so the scripts run in the `signer` service (profile `tools`, `network_mode: none`, repo mounted at `/lab`). Always pass `--user` so the generated files aren't owned by root:
 
 ```sh
+sh scripts/setup.sh [--check]                                                     # everything below in one go: images, keys, sign, up, jar, webapp, web app (+ check.sh)
 docker compose build                                                              # build the shared "dnslab" image (alpine + nsd, unbound, bind tools, ldns)
 docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/keygen.sh      # once: KSK+ZSK per zone, skips zones that already have keys
 docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/sign.sh        # after any zone edit or when signatures expire
@@ -24,7 +25,7 @@ sh scripts/e1-rollover.sh && sh scripts/e3-rollover.sh                          
 mvn -f dnssecretary/pom.xml verify                                                # DNSSECretary: unit tests (offline, on snapshots) + target/dnssecretary.jar (Java 21)
 sh scripts/dnssecretary.sh check a1-expired.test                                  # run DNSSECretary in the "app" container on the lab network
 sh scripts/simulate.sh a1-expired.test fix.sh                                    # try a fix script in a sandbox copy of the lab (exit 0 = verified)
-sh scripts/web.sh [logs|stop]                                                     # web app on http://localhost:8080 (jar built, lab running)
+sh scripts/web.sh [logs|stop]                                                     # web app on http://localhost:8080 (jar built, lab running); always a fresh JVM, so re-run it after every new jar
 cd webapp && npm ci && npm run build                                              # front end into webapp/dist (served by the web app); npm run dev / mock / test
 sh scripts/demo.sh break <zone> <error> | reset                                  # web app demo: break a hosting zone live (a1 … e4, e1 = rollover) / back to the start
 sh scripts/video.sh                                                               # record the demo video (Playwright, web app running) into demo/out/
@@ -39,6 +40,8 @@ Package versions in `image/Dockerfile` are pinned (`alpine:3.20.10`, `unbound~1.
 Signature validity can be overridden with `SIG_START` / `SIG_END` (dnssec-signzone time syntax, default `now-3600` / `now+2592000`). This is meant for later lab phases, such as testing expired signatures.
 
 Verification is done by hand from the client container (its resolver is 10.53.0.53). For example: `docker compose exec client dig @10.53.0.53 +dnssec www.good.test`, or `delv` using `/lab/delv-anchor.conf`. Unbound logs validation failure reasons (`val-log-level: 2`) and returns EDE codes. See `docker compose logs resolver`.
+
+Project documentation for people lives in `docs/` (getting started, demo guide, web app, architecture, errors, fixes, lab, development, limitations); the README is the hackathon front page. Keep them in step with changes.
 
 ## DNSSECretary (Java tool)
 
