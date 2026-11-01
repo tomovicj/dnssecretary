@@ -1,189 +1,99 @@
 # DNSSECretary
 
-**DNSSECretary** (Team Port 53) is a web app for DNS hosting admins: it watches every hosted zone, explains each DNSSEC error in plain language, and fixes it with a shell script that is first verified in a sandbox copy of the hosting. The tool is in [`dnssecretary/`](dnssecretary/) (Java) and [`webapp/`](webapp/) (React).
+**DNSSEC errors, found, explained and fixed before customers notice.** A web app for DNS hosting
+admins, by Team Port 53.
 
-This repo also holds the lab it runs against: an isolated DNSSEC lab in Docker, a miniature DNS hierarchy with its own root and trust anchor, a validating resolver, a demo hosting of 40 customer zones, and **one deliberately broken zone for each of 30 common DNSSEC errors** from the team's error catalogue, so detection and fixes are tested against real broken zones.
+![The incident list: two broken zones, three at risk, every fix already verified in a sandbox](docs/images/dashboard.png)
 
-Everything runs on an internal Docker network with no internet access. There are no external queries, and the lab changes no records outside itself.
+## The problem
 
-## Architecture
+DNSSEC stops spoofing and cache poisoning, but one configuration mistake makes a signed domain
+unreachable for every validating resolver. Plain DNS forgives errors; DNSSEC does not. Signatures
+expire because re-signing stopped, the DS at the registrar doesn't match the key after a key change,
+a key rollover goes too fast, an NSEC3 chain breaks. Fear of these outages keeps adoption low: only
+10–15% of `.rs` domains are signed, and some owners switch DNSSEC off because it is "too
+complicated". Tools like DNSViz show *what* is wrong, but the operator still has to work out *why*
+and *how to fix it*.
 
-```
-                    ┌──────────────────────┐
-                    │ root      10.53.0.2  │  NSD, zone "."
-                    └──────────┬───────────┘
-                    ┌──────────┴───────────┐
-                    │ tld       10.53.0.3  │  NSD, zone "test."
-                    └──────────┬───────────┘
-         ┌─────────────────────┼─────────────────────┐
-┌────────┴─────────┐ ┌─────────┴────────┐ ┌──────────┴────────┐
-│ auth1 10.53.0.11 │ │ auth2 10.53.0.12 │ │ auth3 10.53.0.13  │
-│ NSD: good.test + │ │ NSD: stale copy  │ │ Unbound auth-zone │
-│ 29 broken zones  │ │ of F1 zone       │ │ no TCP, UDP ≤ 512 │
-└──────────────────┘ └──────────────────┘ └───────────────────┘
+## What DNSSECretary does
 
-┌──────────────────────┐         ┌───────────────────────┐
-│ client  10.53.0.100  │ ─────▶ │ resolver  10.53.0.53  │  Unbound 1.20, validating,
-│ dig, delv            │         │                       │  trust anchor = lab root KSK
-└──────────────────────┘         └───────────────────────┘
-```
+For every zone of a hosting, every 20 seconds:
 
-All containers use one image (`image/Dockerfile`: Alpine with NSD, Unbound, BIND tools and ldns). Each server's directory (`root/`, `tld/`, `auth1/`, …) is mounted read-only as its config directory.
+1. **Detect.** Walk the chain of trust (DS → DNSKEY → RRSIG), ask every name server and a
+   validating resolver, and check signature timing, algorithms, keys and NSEC/NSEC3 against the
+   RFCs. 30 error types, from the team's error catalogue.
+2. **Diagnose.** Turn raw findings into one diagnosis per problem, in plain language: what
+   breaks, why it happened, who has to fix it (the zone, the parent/registrar, the server operator),
+   with RFC references.
+3. **Fix.** Generate the fix as a short shell script the admin can read and edit: re-sign, put a
+   key back, publish the right DS, fix a server setting.
+4. **Verify, before and after.** Run the script first in a **sandbox copy of the hosting** (a
+   container without a network, all servers inside) and only call the fix "verified" if the zone
+   then validates. One click runs it on the real servers, then the zone is checked live again.
 
-## Requirements
-
-- Docker with Compose v2
-- A POSIX shell on the host
-
-Signing tools (`dnssec-keygen`, `dnssec-signzone`, `ldns-signzone`) run inside the `signer` container, so nothing else needs to be installed.
+![The zone screen: the diagnosis, the generated fix script, test and run](docs/images/zone.png)
 
 ## Quick start
 
-```sh
-docker compose build
-
-# 1. Keys (once). Skips zones that already have keys.
-docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/keygen.sh
-
-# 2. Sign all zones and build the trust anchor (after every zone change).
-docker compose run --rm --user $(id -u):$(id -g) signer sh scripts/sign.sh
-
-# 3. Start the lab.
-docker compose up -d
-
-# 4. Check that every broken zone shows the expected result.
-sh scripts/check.sh
-```
-
-Always pass `--user`, so the generated files are owned by you and not by root.
-
-After re-signing, reload the servers:
+You need Docker (with Compose v2) on Linux or WSL 2. Java and Node are optional: when they're
+missing, the build runs in containers.
 
 ```sh
-docker compose restart root tld auth1 auth2 auth3 resolver
+git clone https://github.com/tomovicj/dnssecretary.git && cd dnssecretary
+sh scripts/setup.sh --check      # builds, signs, starts the lab and the web app (~1 min after the image builds)
 ```
 
-### Querying by hand
+Open **http://localhost:8080**. You see a hosting with 40 customer zones, three of them "at risk".
+Click **Demo panel** (top right), pick a zone and an error, and click **Break this zone**: it shows up
+as broken within seconds, its fix gets verified in the sandbox, and **Open → Execute on hosting**
+fixes it. `sh scripts/video.sh` records the same story as a 40-second video, no clicks needed.
 
-```sh
-docker compose exec client dig @10.53.0.53 +dnssec www.good.test
-docker compose exec client dig @10.53.0.53 +dnssec www.a1-expired.test   # SERVFAIL, EDE 7
-docker compose exec client delv @10.53.0.53 -a /lab/delv-anchor.conf www.good.test
-docker compose logs resolver                                             # why validation failed
+Step by step, and what to do when something doesn't start: [docs/getting-started.md](docs/getting-started.md).
+
+## How it fits together
+
+```mermaid
+flowchart LR
+    subgraph lab["Lab: isolated Docker network 10.53.0.0/24, no internet"]
+        root["root .2<br/>NSD"] --> tld["test. .3<br/>NSD"]
+        tld --> auth["auth1/2/3<br/>40 hosting zones +<br/>30 broken catalogue zones"]
+        resolver["resolver .53<br/>Unbound, validating"]
+    end
+    subgraph tool["DNSSECretary (Java 21)"]
+        scan["Scanner<br/>collect → check → diagnose"] --> plan["Fix plan → shell script"]
+        plan --> sandbox["Sandbox<br/>copy of the lab, --network none"]
+        plan --> exec["Execute on the hosting<br/>+ live verify"]
+    end
+    ui["Web app (React)<br/>REST + live events"] <--> tool
+    tool -- DNS queries --> lab
+    exec -- re-sign, reload --> lab
 ```
 
-Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS (127.0.0.11), which strips Extended DNS Error (EDE) codes from the answer.
+- **[`dnssecretary/`](dnssecretary/)**: the tool. Java 21, dnsjava, Javalin; a CLI (`check`,
+  `fix`, `verify`, …) and the web server (`serve`).
+- **[`webapp/`](webapp/)**: the front end. React + TypeScript; dashboard, zone screen, demo panel.
+- **The lab**: a miniature internet in Docker with its own root and trust anchor, a validating
+  resolver, the demo hosting's 40 customer zones and **one deliberately broken zone for each of
+  the 30 catalogue errors**, so every check and every fix is tested against a real broken zone.
+- **[`catalog/catalog.yaml`](catalog/catalog.yaml)**: the error catalogue, the single source of
+  every error's title, cause, fix, symptom and RFCs, shared by the tool and the lab.
 
-## Scripts
+Everything stays inside the lab: no external queries, no scanning, no records changed outside it.
 
-| Script | Runs in | What it does |
-|--------|---------|--------------|
-| `scripts/keygen.sh` | signer | Makes a KSK + ZSK per zone, plus extra keys some errors need (`keys/old`, `next`, `k2`, `alg8`). |
-| `scripts/sign.sh` | signer | Signs bottom-up: `good.test` → broken zones → hosting zones → `test.` → root. Then builds the trust anchor and copies zones to the servers. |
-| `scripts/break.sh` | signer | Called by `sign.sh`. Builds the broken zones and the DS records their parent should have. `zone <zone> <error>` breaks a hosting zone the same way, `rollover <zone>` replaces a ZSK at once. |
-| `scripts/hosting.sh` | signer | Called by `sign.sh`: signs the demo hosting's 40 customer zones (`zones/hosting.list`), three of them with an "at risk" start error, and writes `auth1/hosting.conf`. |
-| `scripts/sign-tld.sh` | signer | Step 2 of `sign.sh`: re-signs only `test.` with the children's DS records and copies it to `tld/`. DNSSECretary uses it to fix a DS in the lab. |
-| `scripts/check.sh` | host | Queries every zone and compares rcode / AD / EDE with the expected result. Exits 1 on mismatch. `STRICT_EDE=1` also fails on wrong EDE codes. |
-| `scripts/e1-rollover.sh` | host | Breaks E1 live: caches the DNSKEY set, then swaps the ZSK without pre-publishing it. |
-| `scripts/e3-rollover.sh` | host | Breaks E3 live: caches `www`, swaps the ZSK and removes the old one at once. `delv` fails, Unbound itself doesn't. |
-| `scripts/clean.sh` | host | Removes everything generated. `-n` dry run, `-k` keep keys, `-y` don't ask. |
-| `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
-| `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
-| `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
-| `scripts/video.sh` | host | Records the demo as a video (`demo/out/dnssecretary-demo.webm`): a browser in the `tour` container (Playwright, `demo/tour.mjs`) goes through one incident in under a minute. The web app must be running. |
-| `scripts/web.sh` | host | Starts the web app (compose service `web`) on http://localhost:8080; `logs`, `stop`. Build the front end first (`webapp/`, `npm run build`), see [`webapp/README.md`](webapp/README.md). |
-| `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
+## Documentation
 
-After running a rollover script, run `sign.sh` and restart the servers to get a clean lab again.
+| | |
+| --- | --- |
+| [Getting started](docs/getting-started.md) | Requirements, setup step by step, stopping, resetting, troubleshooting |
+| [Demo guide](docs/demo.md) | The 5-minute live demo, the video, what to say, a checklist for the day |
+| [Using the web app](docs/web-app.md) | The dashboard, the zone screen, the demo panel, the REST API |
+| [Architecture](docs/architecture.md) | Components, the scan pipeline, jobs and locks, the sandbox, design decisions |
+| [Errors we detect](docs/errors.md) | All 30 catalogue errors: what breaks, how it's detected, how it's fixed |
+| [How fixes work](docs/fixes.md) | Fix scripts, the sandbox, execution, verification, safety |
+| [The lab](docs/lab.md) | Servers, signing, the broken zones, the demo hosting, every script |
+| [Development](docs/development.md) | Building, tests, CI, adding a check or an error, conventions |
+| [Limitations and next steps](docs/limitations.md) | What the demo simplifies, and the way to real hostings |
 
-## Demo hosting
+## Team Port 53
 
-Besides the catalogue zones, the lab hosts 40 customer zones of a made-up DNS hosting
-(`northwind-coffee.test`, `lindqvist-law.test`, …), listed in [`zones/hosting.list`](zones/hosting.list).
-They are what the web app shows: all signed correctly, except three that start "at risk" (A6, B7, D4).
-`sh scripts/demo.sh break <zone> <error>` breaks any of them live as one of 18 catalogue errors, and so
-does the web app's demo panel. `sh scripts/video.sh` records a demo video of under a minute without anyone
-clicking: a zone breaks (A1), is detected, its fix is verified in the sandbox, and it is fixed. `sh scripts/demo.sh reset` brings the hosting back to its start.
-
-## Broken zones
-
-Each zone is named `<id>-<short>.test` and is delegated from `test.`. The IDs come from the team's error catalogue ([`catalog/catalog.yaml`](catalog/catalog.yaml)). "Result" is what Unbound 1.20 returns, as checked by `check.sh`.
-
-| ID | Zone | Error | Result (Unbound 1.20) |
-|----|------|-------|----------------------|
-| A1 | `a1-expired.test` | Signature expired | SERVFAIL, EDE 7 |
-| A2 | `a2-notyet.test` | Signature not yet valid | SERVFAIL, EDE 8 |
-| A3 | `a3-nosig.test` | RRset without RRSIG | SERVFAIL, EDE 10 |
-| A4 | `a4-bogus.test` | Data changed after signing | SERVFAIL, EDE 6 |
-| A5 | `a5-unknown-key.test` | Signed by a key not in the DNSKEY set | SERVFAIL, EDE 9 |
-| A6 | `a6-expiring.test` | Signature expires in 2 days | NOERROR, AD (risk) |
-| A7 | `a7-ttl-long.test` | TTL (30 d) longer than signature validity (7 d) | NOERROR, AD (risk) |
-| B1 | `b1-ds-stale.test` | DS points to a key that doesn't exist | SERVFAIL, EDE 6 |
-| B2 | `b2-ds-digest.test` | DS has a wrong digest | SERVFAIL, EDE 6 |
-| B3 | `b3-ds-alg.test` | DS and DNSKEY algorithms differ | SERVFAIL, EDE 6 |
-| B4 | `b4-ds-unsigned.test` | DS exists, zone unsigned | SERVFAIL, EDE 9 |
-| B5 | `b5-dnskey-zsk.test` | DNSKEY set not signed by the KSK | SERVFAIL, EDE 6 |
-| B6 | `b6-island.test` | Signed zone, no DS in parent ("island") | NOERROR, no AD |
-| B7 | `b7-ds-sha1.test` | DS uses SHA-1 | NOERROR, AD (risk) |
-| B8 | `b8-ds-extra.test` | Leftover old DS next to the correct one | NOERROR, AD (risk) |
-| C1 | `c1-rsasha1.test` | Deprecated algorithm (5, RSASHA1) | NOERROR, AD (risk) |
-| C2 | `c2-two-alg.test` | Two algorithms, records signed with only one | NOERROR, AD (Unbound is lenient) |
-| C3 | `c3-rsa1024.test` | Weak RSA key (1024 bits) | NOERROR, AD (risk) |
-| D1 | `d1-nsec-broken.test` | Broken NSEC chain | SERVFAIL for `missing.`, EDE 6 |
-| D2 | `d2-bitmap.test` | NSEC type bitmap lists a type that doesn't exist | SERVFAIL for `www TXT`, EDE 6 |
-| D3 | `d3-nsec-nosig.test` | NSEC records without signatures | SERVFAIL for `missing.`, EDE 12 |
-| D4 | `d4-nsec3-iter.test` | NSEC3 with 200 iterations + salt (RFC 9276) | NXDOMAIN without AD |
-| D5 | `d5-nsec3param.test` | NSEC3PARAM doesn't match the NSEC3 chain | SERVFAIL for `missing.`, EDE 12 |
-| D6 | `d6-nsec-mixed.test` | NSEC and NSEC3 mixed in one zone | NXDOMAIN, AD (risk) |
-| E1 | `e1-rollover.test` | ZSK replaced without pre-publishing | SERVFAIL, EDE 9 (after `e1-rollover.sh`) |
-| E2 | `e2-ksk-ds-early.test` | DS of the new KSK published too early | SERVFAIL, EDE 6 |
-| E3 | `e3-rollover.test` | Old ZSK removed before TTL expired | `delv` fails, Unbound AD from cache (after `e3-rollover.sh`) |
-| E4 | `e4-cds.test` | CDS doesn't match the keys | NOERROR, AD (risk) |
-| F1 | `f1-stale-secondary.test` | Secondary (auth2) serves a stale zone with expired signatures | NOERROR, AD (Unbound retries auth1) |
-| F2 | `f2-tcp-edns.test` | Server without TCP and a 512-byte UDP limit | SERVFAIL for `big. TXT`, no EDE |
-
-"Risk" means the domain still resolves, but the setup is unsafe or bad practice.
-
-Some results differ from what other resolvers would return. For example, BIND may use other EDE codes, or be stricter for C2. This is why DNSSECretary detects errors from the zone data and treats EDE only as a hint.
-
-### Lab notes
-
-- **Clock skew:** Unbound tolerates up to 1 day of clock skew (`val-sig-skew-max`). Time-based errors (A1, A2, F1) therefore use offsets of 7 days or more.
-- **Building the broken zones:**
-  - Most are signed with `dnssec-signzone -P -O full` (one record per line), then edited with `awk`.
-  - A5, D5 and D6 splice in records from a second signing run.
-  - D4 is signed with `ldns-signzone`, because `dnssec-signzone` refuses more than 150 NSEC3 iterations.
-- **Results depend on versions.** Package versions are pinned in `image/Dockerfile`. After bumping one, run `check.sh` and update the expected results in it.
-
-## Repository layout
-
-```
-zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them) + hosting.list
-scripts/          keygen, sign, break, hosting, check, rollover, clean, demo and video scripts + DNSSECretary wrappers
-catalog/          the error catalogue (catalog.yaml), shared by DNSSECretary and the lab
-dnssecretary/     DNSSECretary, the Java tool (Maven project, see its README)
-webapp/           the web app's front end (React + TypeScript, see its README)
-demo/             the demo video's browser script (Playwright, run by scripts/video.sh)
-root/ tld/        NSD configs for the root and test. servers
-auth1/ auth2/     NSD configs for the authoritative servers
-auth3/            Unbound auth-zone config (error F2)
-resolver/         Unbound resolver config and root hints
-image/Dockerfile  the shared image (pinned versions); stage "app" adds a Java runtime, "web" the Docker CLI
-compose.yaml      network and services
-```
-
-Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `auth1/hosting.conf`, `resolver/root.key`, `client/delv-anchor.conf`, `dnssecretary/target/`, `webapp/dist/`, `demo/out/`. Every team member generates their own keys, so trust anchors differ between machines.
-
-## CI
-
-`.github/workflows/lab.yml` runs on pushes to `main` and on pull requests. It runs:
-
-1. `shellcheck` over `scripts/`.
-2. DNSSECretary unit tests (`mvn verify`, offline, on the recorded snapshots).
-3. The whole lab from scratch: build → `keygen.sh` → `sign.sh` → `up -d` → `check.sh` → DNSSECretary collect for every zone (`snapshots.sh`) → both rollover scripts → collect for E1/E3.
-
-To run shellcheck locally:
-
-```sh
-docker run --rm -v "$PWD:/mnt:ro" -w /mnt koalaman/shellcheck:v0.10.0 scripts/*.sh scripts/fixenv/*.sh scripts/sandbox/*.sh
-```
+Višnja Radonjić, Marija Nikolić, Boris Ivanović, Miloš Marinković, Jovan Tomović.
