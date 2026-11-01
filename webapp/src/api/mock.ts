@@ -256,12 +256,13 @@ export function mockBackend(options: MockOptions = {}): Backend {
       });
     },
     scan: async () => {},
-    scenarios: async (): Promise<Scenario[]> =>
-      ZONES.slice(1).map((z) => ({ zone: `${z}.`, id: z.slice(0, 2).toUpperCase(), title: z })),
-    demoBreak: async (zone) =>
-      run("DEMO", key(zone), `sh scripts/demo.sh break ${zone.replace(/\.$/, "")}`, true, {
-        after: () =>
-          put({ ...row(zone), status: "CRITICAL", issues: [ISSUES.A1], brokenSince: iso(Date.now()), verified: { state: "PASS", at: iso(Date.now()), jobId: null } }),
+    scenarios: async (): Promise<Scenario[]> => CATALOG.filter((e) => e.id !== "F1").map(({ id, title }) => ({ id, title })),
+    demoBreak: async (zone, error) =>
+      run("DEMO", key(zone), `sh scripts/demo.sh break ${zone.replace(/\.$/, "")} ${error}`, true, {
+        after: () => {
+          const issue = ISSUES[error] ?? ISSUES.A1;
+          put({ ...row(zone), status: issue.severity, issues: [issue], brokenSince: iso(Date.now()), verified: { state: "PASS", at: iso(Date.now()), jobId: null } });
+        },
       }),
     demoHeal: async () =>
       run("DEMO", undefined, "sh scripts/demo.sh heal", true, {

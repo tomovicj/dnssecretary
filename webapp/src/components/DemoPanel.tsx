@@ -4,29 +4,33 @@ import type { Job, Scenario } from "../api/types";
 import { shortZone } from "../pages/dashboard";
 import { JOB_STATE } from "../pages/zone";
 
-const ROLLOVER = ["e1-rollover.test.", "e3-rollover.test."];
-
 /**
  * The drawer that changes the lab hosting for the demo (scripts/demo.sh on the server):
- * break one zone, break E1/E3 by a live key rollover, heal every zone, or reset the lab.
- * Not part of the admin's story; the header's "Demo panel" opens it.
+ * break a hosting zone with one catalogue error (E1: a live key rollover), heal every zone,
+ * or reset the hosting to its start. Not part of the admin's story; the header's "Demo panel" opens it.
  */
 export function DemoPanel({ onClose }: { onClose: () => void }) {
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
+  const [zones, setZones] = useState<string[]>([]);
   const [zone, setZone] = useState("");
+  const [error, setErrorId] = useState("");
   const [job, setJob] = useState<Job | null>(null);
   const [last, setLast] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [failure, setFailure] = useState<string | null>(null);
   const jobId = useRef<string | null>(null);
   jobId.current = job?.id ?? null;
   const close = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     api.scenarios().then((s) => {
-      const breakable = s.filter((x) => !ROLLOVER.includes(x.zone));
-      setScenarios(breakable);
-      setZone((z) => z || (breakable[0]?.zone ?? ""));
-    }, (e: Error) => setError(e.message));
+      setScenarios(s);
+      setErrorId((id) => id || (s[0]?.id ?? ""));
+    }, (e: Error) => setFailure(e.message));
+    api.zones().then((rows) => {
+      const names = rows.map((r) => r.zone).sort();
+      setZones(names);
+      setZone((z) => z || (names[0] ?? ""));
+    }, (e: Error) => setFailure(e.message));
     close.current?.focus();
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -46,9 +50,9 @@ export function DemoPanel({ onClose }: { onClose: () => void }) {
   const running = job !== null && (job.state === "QUEUED" || job.state === "RUNNING");
 
   function run(request: Promise<Job>) {
-    setError(null);
+    setFailure(null);
     setLast("");
-    request.then(setJob, (e: Error) => setError(e.message));
+    request.then(setJob, (e: Error) => setFailure(e.message));
   }
 
   return (
@@ -69,35 +73,37 @@ export function DemoPanel({ onClose }: { onClose: () => void }) {
         <section>
           <h3>Break a zone</h3>
           <p className="muted small">
-            Puts the catalogue's broken version of the zone back on the servers. It shows up in Incidents after the
-            next scan.
+            Signs a customer's zone the way the chosen error breaks it and puts it on the servers (E1: replaces the
+            ZSK while the resolver still has the old one cached). It shows up in Incidents right after.
           </p>
           <label htmlFor="break-zone" className="muted small">
             Zone
           </label>
           <select id="break-zone" value={zone} onChange={(e) => setZone(e.target.value)}>
-            {scenarios.map((s) => (
-              <option key={s.zone} value={s.zone}>
-                {shortZone(s.zone)} · {s.id} {s.title}
+            {zones.map((z) => (
+              <option key={z} value={z}>
+                {shortZone(z)}
               </option>
             ))}
           </select>
-          <button type="button" className="button big dark" disabled={!zone || running} onClick={() => run(api.demoBreak(zone))}>
+          <label htmlFor="break-error" className="muted small">
+            Error
+          </label>
+          <select id="break-error" value={error} onChange={(e) => setErrorId(e.target.value)}>
+            {scenarios.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.id} · {s.title}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            className="button big dark"
+            disabled={!zone || !error || running}
+            onClick={() => run(api.demoBreak(zone, error))}
+          >
             Break this zone
           </button>
-        </section>
-
-        <section>
-          <h3>Live key rollover</h3>
-          <p className="muted small">Replaces a key the wrong way while the resolver still has the old one cached.</p>
-          <div className="two">
-            <button type="button" className="button big" disabled={running} onClick={() => run(api.demoBreak(ROLLOVER[0]))}>
-              E1 · ZSK too fast
-            </button>
-            <button type="button" className="button big" disabled={running} onClick={() => run(api.demoBreak(ROLLOVER[1]))}>
-              E3 · old key removed
-            </button>
-          </div>
         </section>
 
         <section>
@@ -110,21 +116,21 @@ export function DemoPanel({ onClose }: { onClose: () => void }) {
               type="button"
               className="button big danger"
               disabled={running}
-              onClick={() => window.confirm("Reset the lab? Every catalogue zone is broken again.") && run(api.demoReset())}
+              onClick={() => window.confirm("Reset the hosting? Every zone goes back to its start.") && run(api.demoReset())}
             >
-              Reset lab (30 broken)
+              Reset hosting
             </button>
           </div>
           <p className="muted small">
-            Heal: every zone signed correctly, a healthy hosting to start the demo from. Reset: <code>sign.sh</code> and a
-            restart, the lab as it is after a clone.
+            Heal: every zone signed correctly. Reset: <code>sign.sh</code> and a restart, the hosting as the demo starts
+            it (three zones at risk), keys and server settings as they were.
           </p>
         </section>
       </div>
 
       <div className="drawer-foot" role="status">
-        {error ? (
-          <span className="bad">{error}</span>
+        {failure ? (
+          <span className="bad">{failure}</span>
         ) : job ? (
           <span>
             <span className="mono">{job.script.replace("sh scripts/demo.sh ", "")}</span>: {JOB_STATE[job.state]}

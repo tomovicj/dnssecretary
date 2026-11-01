@@ -1,0 +1,11 @@
+$TTL 3600
+silverbirch-hotel.test.      IN SOA  ns1.silverbirch-hotel.test. hostmaster.silverbirch-hotel.test. ( 1 3600 900 604800 300 )
+silverbirch-hotel.test.      IN NS   ns1.silverbirch-hotel.test.
+ns1.silverbirch-hotel.test.  IN A    10.53.0.11
+
+silverbirch-hotel.test.      IN A    192.0.2.13
+www.silverbirch-hotel.test.  IN A    192.0.2.13
+mail.silverbirch-hotel.test. IN A    198.51.100.13
+silverbirch-hotel.test.      IN MX   10 mail.silverbirch-hotel.test.
+silverbirch-hotel.test.      IN TXT  "v=spf1 mx -all"
+_dmarc.silverbirch-hotel.test. IN TXT  "v=DMARC1; p=quarantine"

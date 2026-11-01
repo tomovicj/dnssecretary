@@ -1,0 +1,12 @@
+{
+  "name": "dnssecretary-demo-video",
+  "private": true,
+  "type": "module",
+  "description": "Records the web app demo as a video: sh scripts/video.sh",
+  "scripts": {
+    "tour": "node tour.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.48.2"
+  }
+}

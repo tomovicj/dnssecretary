@@ -1,0 +1,11 @@
+$TTL 3600
+lindqvist-law.test.          IN SOA  ns1.lindqvist-law.test. hostmaster.lindqvist-law.test. ( 1 3600 900 604800 300 )
+lindqvist-law.test.          IN NS   ns1.lindqvist-law.test.
+ns1.lindqvist-law.test.      IN A    10.53.0.11
+
+lindqvist-law.test.          IN A    192.0.2.2
+www.lindqvist-law.test.      IN A    192.0.2.2
+mail.lindqvist-law.test.     IN A    198.51.100.2
+lindqvist-law.test.          IN MX   10 mail.lindqvist-law.test.
+lindqvist-law.test.          IN TXT  "v=spf1 mx -all"
+api.lindqvist-law.test.      IN A    192.0.2.102

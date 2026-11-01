@@ -1,0 +1,11 @@
+$TTL 3600
+hazel-photography.test.      IN SOA  ns1.hazel-photography.test. hostmaster.hazel-photography.test. ( 1 3600 900 604800 300 )
+hazel-photography.test.      IN NS   ns1.hazel-photography.test.
+ns1.hazel-photography.test.  IN A    10.53.0.11
+
+hazel-photography.test.      IN A    192.0.2.38
+www.hazel-photography.test.  IN A    192.0.2.38
+mail.hazel-photography.test. IN A    198.51.100.38
+hazel-photography.test.      IN MX   10 mail.hazel-photography.test.
+hazel-photography.test.      IN TXT  "v=spf1 mx -all"
+api.hazel-photography.test.  IN A    192.0.2.138

@@ -1,0 +1,11 @@
+$TTL 3600
+driftwood-surf.test.         IN SOA  ns1.driftwood-surf.test. hostmaster.driftwood-surf.test. ( 1 3600 900 604800 300 )
+driftwood-surf.test.         IN NS   ns1.driftwood-surf.test.
+ns1.driftwood-surf.test.     IN A    10.53.0.11
+
+driftwood-surf.test.         IN A    192.0.2.34
+www.driftwood-surf.test.     IN A    192.0.2.34
+mail.driftwood-surf.test.    IN A    198.51.100.34
+driftwood-surf.test.         IN MX   10 mail.driftwood-surf.test.
+driftwood-surf.test.         IN TXT  "v=spf1 mx -all"
+api.driftwood-surf.test.     IN A    192.0.2.134

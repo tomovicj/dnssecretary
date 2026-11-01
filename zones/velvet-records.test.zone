@@ -1,0 +1,11 @@
+$TTL 3600
+velvet-records.test.         IN SOA  ns1.velvet-records.test. hostmaster.velvet-records.test. ( 1 3600 900 604800 300 )
+velvet-records.test.         IN NS   ns1.velvet-records.test.
+ns1.velvet-records.test.     IN A    10.53.0.11
+
+velvet-records.test.         IN A    192.0.2.27
+www.velvet-records.test.     IN A    192.0.2.27
+mail.velvet-records.test.    IN A    198.51.100.27
+velvet-records.test.         IN MX   10 mail.velvet-records.test.
+velvet-records.test.         IN TXT  "v=spf1 mx -all"
+blog.velvet-records.test.    IN CNAME www.velvet-records.test.

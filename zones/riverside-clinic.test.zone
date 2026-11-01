@@ -1,0 +1,11 @@
+$TTL 3600
+riverside-clinic.test.       IN SOA  ns1.riverside-clinic.test. hostmaster.riverside-clinic.test. ( 1 3600 900 604800 300 )
+riverside-clinic.test.       IN NS   ns1.riverside-clinic.test.
+ns1.riverside-clinic.test.   IN A    10.53.0.11
+
+riverside-clinic.test.       IN A    192.0.2.11
+www.riverside-clinic.test.   IN A    192.0.2.11
+mail.riverside-clinic.test.  IN A    198.51.100.11
+riverside-clinic.test.       IN MX   10 mail.riverside-clinic.test.
+riverside-clinic.test.       IN TXT  "v=spf1 mx -all"
+blog.riverside-clinic.test.  IN CNAME www.riverside-clinic.test.

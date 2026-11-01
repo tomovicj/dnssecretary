@@ -1,0 +1,11 @@
+$TTL 3600
+westgate-pharmacy.test.      IN SOA  ns1.westgate-pharmacy.test. hostmaster.westgate-pharmacy.test. ( 1 3600 900 604800 300 )
+westgate-pharmacy.test.      IN NS   ns1.westgate-pharmacy.test.
+ns1.westgate-pharmacy.test.  IN A    10.53.0.11
+
+westgate-pharmacy.test.      IN A    192.0.2.28
+www.westgate-pharmacy.test.  IN A    192.0.2.28
+mail.westgate-pharmacy.test. IN A    198.51.100.28
+westgate-pharmacy.test.      IN MX   10 mail.westgate-pharmacy.test.
+westgate-pharmacy.test.      IN TXT  "v=spf1 mx -all"
+shop.westgate-pharmacy.test. IN CNAME www.westgate-pharmacy.test.

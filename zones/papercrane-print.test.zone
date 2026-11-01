@@ -1,0 +1,11 @@
+$TTL 3600
+papercrane-print.test.       IN SOA  ns1.papercrane-print.test. hostmaster.papercrane-print.test. ( 1 3600 900 604800 300 )
+papercrane-print.test.       IN NS   ns1.papercrane-print.test.
+ns1.papercrane-print.test.   IN A    10.53.0.11
+
+papercrane-print.test.       IN A    192.0.2.23
+www.papercrane-print.test.   IN A    192.0.2.23
+mail.papercrane-print.test.  IN A    198.51.100.23
+papercrane-print.test.       IN MX   10 mail.papercrane-print.test.
+papercrane-print.test.       IN TXT  "v=spf1 mx -all"
+blog.papercrane-print.test.  IN CNAME www.papercrane-print.test.

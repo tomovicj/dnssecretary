@@ -1,0 +1,11 @@
+$TTL 3600
+lumen-optics.test.           IN SOA  ns1.lumen-optics.test. hostmaster.lumen-optics.test. ( 1 3600 900 604800 300 )
+lumen-optics.test.           IN NS   ns1.lumen-optics.test.
+ns1.lumen-optics.test.       IN A    10.53.0.11
+
+lumen-optics.test.           IN A    192.0.2.16
+www.lumen-optics.test.       IN A    192.0.2.16
+mail.lumen-optics.test.      IN A    198.51.100.16
+lumen-optics.test.           IN MX   10 mail.lumen-optics.test.
+lumen-optics.test.           IN TXT  "v=spf1 mx -all"
+shop.lumen-optics.test.      IN CNAME www.lumen-optics.test.

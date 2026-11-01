@@ -72,7 +72,8 @@ public final class Api {
 
     public record ScriptRequest(String script, Boolean simulateFirst) {}
 
-    public record ZoneRequest(String zone) {}
+    /** POST /api/demo/break: a hosting zone and an error (A1 …), or a catalogue zone alone. */
+    public record BreakRequest(String zone, String error) {}
 
     public record Error(String error) {}
 }

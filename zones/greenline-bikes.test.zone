@@ -1,0 +1,11 @@
+$TTL 3600
+greenline-bikes.test.        IN SOA  ns1.greenline-bikes.test. hostmaster.greenline-bikes.test. ( 1 3600 900 604800 300 )
+greenline-bikes.test.        IN NS   ns1.greenline-bikes.test.
+ns1.greenline-bikes.test.    IN A    10.53.0.11
+
+greenline-bikes.test.        IN A    192.0.2.7
+www.greenline-bikes.test.    IN A    192.0.2.7
+mail.greenline-bikes.test.   IN A    198.51.100.7
+greenline-bikes.test.        IN MX   10 mail.greenline-bikes.test.
+greenline-bikes.test.        IN TXT  "v=spf1 mx -all"
+blog.greenline-bikes.test.   IN CNAME www.greenline-bikes.test.

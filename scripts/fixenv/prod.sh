@@ -11,7 +11,7 @@
 # else dnssec-lab (the name of the repo's directory).
 if [ -z "${LAB_PROJECT:-}" ]; then
     LAB_PROJECT=$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}' \
-        "$(hostname)" 2>/dev/null || true)
+        "$(cat /etc/hostname 2>/dev/null)" 2>/dev/null || true)   # a container's hostname is its ID
 fi
 LAB_PROJECT=${LAB_PROJECT:-dnssec-lab}
 

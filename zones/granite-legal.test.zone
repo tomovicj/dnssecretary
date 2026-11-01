@@ -1,0 +1,11 @@
+$TTL 3600
+granite-legal.test.          IN SOA  ns1.granite-legal.test. hostmaster.granite-legal.test. ( 1 3600 900 604800 300 )
+granite-legal.test.          IN NS   ns1.granite-legal.test.
+ns1.granite-legal.test.      IN A    10.53.0.11
+
+granite-legal.test.          IN A    192.0.2.37
+www.granite-legal.test.      IN A    192.0.2.37
+mail.granite-legal.test.     IN A    198.51.100.37
+granite-legal.test.          IN MX   10 mail.granite-legal.test.
+granite-legal.test.          IN TXT  "v=spf1 mx -all"
+_dmarc.granite-legal.test.   IN TXT  "v=DMARC1; p=quarantine"

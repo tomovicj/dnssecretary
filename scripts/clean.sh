@@ -41,6 +41,7 @@ add() {
 
 add build                    # temporary files, dsset-*, *.zone.in
 add ./*/*.signed             # signed zones in root/, tld/, auth1/, auth2/, auth3/
+add auth1/hosting.conf       # the hosting zones' NSD blocks (hosting.sh)
 add ./dsset-* ./*.zone.in    # in case anything ever ended up in the root dir
 add resolver/root.key        # trust anchor for Unbound
 add client/delv-anchor.conf  # trust anchor for delv

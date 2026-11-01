@@ -1,0 +1,11 @@
+$TTL 3600
+maple-veterinary.test.       IN SOA  ns1.maple-veterinary.test. hostmaster.maple-veterinary.test. ( 1 3600 900 604800 300 )
+maple-veterinary.test.       IN NS   ns1.maple-veterinary.test.
+ns1.maple-veterinary.test.   IN A    10.53.0.11
+
+maple-veterinary.test.       IN A    192.0.2.8
+www.maple-veterinary.test.   IN A    192.0.2.8
+mail.maple-veterinary.test.  IN A    198.51.100.8
+maple-veterinary.test.       IN MX   10 mail.maple-veterinary.test.
+maple-veterinary.test.       IN TXT  "v=spf1 mx -all"
+shop.maple-veterinary.test.  IN CNAME www.maple-veterinary.test.

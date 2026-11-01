@@ -1,0 +1,11 @@
+$TTL 3600
+redwood-roofing.test.        IN SOA  ns1.redwood-roofing.test. hostmaster.redwood-roofing.test. ( 1 3600 900 604800 300 )
+redwood-roofing.test.        IN NS   ns1.redwood-roofing.test.
+ns1.redwood-roofing.test.    IN A    10.53.0.11
+
+redwood-roofing.test.        IN A    192.0.2.24
+www.redwood-roofing.test.    IN A    192.0.2.24
+mail.redwood-roofing.test.   IN A    198.51.100.24
+redwood-roofing.test.        IN MX   10 mail.redwood-roofing.test.
+redwood-roofing.test.        IN TXT  "v=spf1 mx -all"
+shop.redwood-roofing.test.   IN CNAME www.redwood-roofing.test.

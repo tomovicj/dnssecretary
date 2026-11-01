@@ -1,5 +1,5 @@
 #!/bin/sh
-# check.sh – asks the resolver about every broken zone and checks the result is as expected.
+# check.sh – asks the resolver about every broken zone (and every hosting zone) and checks the result is as expected.
 # "Expected" is what was verified with Unbound 1.20 (the lab resolver).
 # Where that differs from the error catalogue, the description says "(catalogue: ...)".
 #
@@ -106,6 +106,13 @@ row E4  e4-cds.test                   CDS   NOERROR  AD -  "CDS with a wrong dig
 row F1  www.f1-stale-secondary.test   A     NOERROR  AD -  "Unbound retries on auth1"
 row F2  www.f2-tcp-edns.test          A     NOERROR  AD -  "a small answer works"
 row F2  big.f2-tcp-edns.test          TXT   SERVFAIL -- -  "large answer: no TCP (catalogue: EDE 22/23)"
+
+echo; echo "=== Demo hosting (zones/hosting.list) ==="
+# Every customer zone answers securely; the start errors (A6, B7, D4) are "at risk", so www works too.
+# shellcheck disable=SC2013  # one zone name per line, no spaces; a for loop keeps FAIL in this shell
+for z in $(awk '!/^#/ && NF { print $1 }' zones/hosting.list); do
+    row OK "www.$z" A NOERROR AD - "hosting zone"
+done
 
 echo
 echo "Errors: $FAIL, EDE warnings: $WARN."

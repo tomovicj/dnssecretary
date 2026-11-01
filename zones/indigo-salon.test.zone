@@ -1,0 +1,11 @@
+$TTL 3600
+indigo-salon.test.           IN SOA  ns1.indigo-salon.test. hostmaster.indigo-salon.test. ( 1 3600 900 604800 300 )
+indigo-salon.test.           IN NS   ns1.indigo-salon.test.
+ns1.indigo-salon.test.       IN A    10.53.0.11
+
+indigo-salon.test.           IN A    192.0.2.39
+www.indigo-salon.test.       IN A    192.0.2.39
+mail.indigo-salon.test.      IN A    198.51.100.39
+indigo-salon.test.           IN MX   10 mail.indigo-salon.test.
+indigo-salon.test.           IN TXT  "v=spf1 mx -all"
+blog.indigo-salon.test.      IN CNAME www.indigo-salon.test.

@@ -1,0 +1,11 @@
+$TTL 3600
+saltmarsh-brewery.test.      IN SOA  ns1.saltmarsh-brewery.test. hostmaster.saltmarsh-brewery.test. ( 1 3600 900 604800 300 )
+saltmarsh-brewery.test.      IN NS   ns1.saltmarsh-brewery.test.
+ns1.saltmarsh-brewery.test.  IN A    10.53.0.11
+
+saltmarsh-brewery.test.      IN A    192.0.2.19
+www.saltmarsh-brewery.test.  IN A    192.0.2.19
+mail.saltmarsh-brewery.test. IN A    198.51.100.19
+saltmarsh-brewery.test.      IN MX   10 mail.saltmarsh-brewery.test.
+saltmarsh-brewery.test.      IN TXT  "v=spf1 mx -all"
+blog.saltmarsh-brewery.test. IN CNAME www.saltmarsh-brewery.test.

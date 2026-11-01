@@ -32,7 +32,7 @@ sandbox_config() {
         awk -v ip="$ip" -v svc="$svc" -v run="$SANDBOX_RUN" '
             /^[[:space:]]*ip-address:/ { print "    ip-address: " ip; next }
             /^[[:space:]]*zonesdir:/   { print "    zonesdir: \"/lab/" svc "\""; next }
-            { print }
+            { gsub("/etc/nsd/", "/lab/" svc "/"); print }
             /^server:/ { print "    pidfile: \"" run "/" svc ".pid\""
                          print "    xfrdfile: \"" run "/" svc ".xfrd\""
                          print "    zonelistfile: \"" run "/" svc ".zonelist\""

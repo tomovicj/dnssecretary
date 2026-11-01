@@ -3,7 +3,7 @@
 # and delivers it to tld/. sign.sh calls it as step 2; DNSSECretary calls it when it
 # fixes a DS in the parent (B1–B3, B6–B8, C2, E2) in the lab.
 #
-# Input:  zones/test.zone, build/dsset-good.test., build/parent-ds/*.ds
+# Input:  zones/test.zone, zones/hosting.list, build/dsset-good.test., build/parent-ds/*.ds
 # Output: build/test.zone.signed, build/dsset-test., tld/test.zone.signed
 #
 # The root is not touched: the KSK of test. doesn't change, so its DS in the root stays valid.
@@ -25,7 +25,11 @@ SIG_END=${SIG_END:-now+2592000}
 
 echo ">> signing: test"
 cat "$BUILD/dsset-good.test." "$BUILD"/parent-ds/*.ds > "$BUILD/dsset-test-children"
-{ cat "$SRC/test.zone"; echo; cat "$BUILD/dsset-test-children"; } > "$BUILD/test.zone.in"
+# The hosting zones' delegations (all on auth1, glue like the catalogue zones) come from the list.
+{ cat "$SRC/test.zone"
+  echo; echo "; delegations for the demo hosting (zones/hosting.list)"
+  awk '!/^#/ && NF { printf "%s. IN NS ns1.%s.\nns1.%s. IN A 10.53.0.11\n", $1, $1, $1 }' "$SRC/hosting.list"
+  echo; cat "$BUILD/dsset-test-children"; } > "$BUILD/test.zone.in"
 
 # Same options as sign_zone in sign.sh.
 dnssec-signzone -S -K "$KEYDIR" -d "$BUILD" \

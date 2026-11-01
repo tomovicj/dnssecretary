@@ -1,0 +1,11 @@
+$TTL 3600
+juniper-gardens.test.        IN SOA  ns1.juniper-gardens.test. hostmaster.juniper-gardens.test. ( 1 3600 900 604800 300 )
+juniper-gardens.test.        IN NS   ns1.juniper-gardens.test.
+ns1.juniper-gardens.test.    IN A    10.53.0.11
+
+juniper-gardens.test.        IN A    192.0.2.40
+www.juniper-gardens.test.    IN A    192.0.2.40
+mail.juniper-gardens.test.   IN A    198.51.100.40
+juniper-gardens.test.        IN MX   10 mail.juniper-gardens.test.
+juniper-gardens.test.        IN TXT  "v=spf1 mx -all"
+shop.juniper-gardens.test.   IN CNAME www.juniper-gardens.test.

@@ -11,14 +11,17 @@ vi.mock("../api/client", async (original) => {
 describe("DemoPanel", () => {
   afterEach(cleanup);
 
-  it("breaks the chosen zone and shows how the action went", async () => {
+  it("breaks the chosen zone with the chosen error and shows how the action went", async () => {
     render(<DemoPanel onClose={() => {}} />);
-    const select = (await screen.findByLabelText("Zone")) as HTMLSelectElement;
-    await waitFor(() => expect(select.options.length).toBe(28)); // e1/e3 have their own buttons
-    fireEvent.change(select, { target: { value: "d1-nsec-broken.test." } });
+    const zone = (await screen.findByLabelText("Zone")) as HTMLSelectElement;
+    const error = screen.getByLabelText("Error") as HTMLSelectElement;
+    await waitFor(() => expect(zone.options.length).toBe(31));
+    await waitFor(() => expect(error.options.length).toBeGreaterThan(1));
+    fireEvent.change(zone, { target: { value: "good.test." } });
+    fireEvent.change(error, { target: { value: "E1" } });
     fireEvent.click(screen.getByRole("button", { name: "Break this zone" }));
 
-    expect(await screen.findByText("break d1-nsec-broken.test")).toBeTruthy();
+    expect(await screen.findByText("break good.test E1")).toBeTruthy();
     await waitFor(() => expect(screen.getByRole("status").textContent).toContain("Passed"));
   });
 
@@ -26,7 +29,7 @@ describe("DemoPanel", () => {
     const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
     const onClose = vi.fn();
     render(<DemoPanel onClose={onClose} />);
-    fireEvent.click(screen.getByRole("button", { name: "Reset lab (30 broken)" }));
+    fireEvent.click(screen.getByRole("button", { name: "Reset hosting" }));
     expect(confirm).toHaveBeenCalledOnce();
     expect(screen.getByRole("status").textContent).toBe("No action yet.");
 

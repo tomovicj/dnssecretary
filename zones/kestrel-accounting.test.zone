@@ -1,0 +1,11 @@
+$TTL 3600
+kestrel-accounting.test.     IN SOA  ns1.kestrel-accounting.test. hostmaster.kestrel-accounting.test. ( 1 3600 900 604800 300 )
+kestrel-accounting.test.     IN NS   ns1.kestrel-accounting.test.
+ns1.kestrel-accounting.test. IN A    10.53.0.11
+
+kestrel-accounting.test.     IN A    192.0.2.20
+www.kestrel-accounting.test. IN A    192.0.2.20
+mail.kestrel-accounting.test. IN A    198.51.100.20
+kestrel-accounting.test.     IN MX   10 mail.kestrel-accounting.test.
+kestrel-accounting.test.     IN TXT  "v=spf1 mx -all"
+shop.kestrel-accounting.test. IN CNAME www.kestrel-accounting.test.

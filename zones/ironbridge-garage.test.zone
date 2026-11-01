@@ -1,0 +1,11 @@
+$TTL 3600
+ironbridge-garage.test.      IN SOA  ns1.ironbridge-garage.test. hostmaster.ironbridge-garage.test. ( 1 3600 900 604800 300 )
+ironbridge-garage.test.      IN NS   ns1.ironbridge-garage.test.
+ns1.ironbridge-garage.test.  IN A    10.53.0.11
+
+ironbridge-garage.test.      IN A    192.0.2.15
+www.ironbridge-garage.test.  IN A    192.0.2.15
+mail.ironbridge-garage.test. IN A    198.51.100.15
+ironbridge-garage.test.      IN MX   10 mail.ironbridge-garage.test.
+ironbridge-garage.test.      IN TXT  "v=spf1 mx -all"
+blog.ironbridge-garage.test. IN CNAME www.ironbridge-garage.test.

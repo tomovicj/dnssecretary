@@ -1,0 +1,11 @@
+$TTL 3600
+orchard-bakery.test.         IN SOA  ns1.orchard-bakery.test. hostmaster.orchard-bakery.test. ( 1 3600 900 604800 300 )
+orchard-bakery.test.         IN NS   ns1.orchard-bakery.test.
+ns1.orchard-bakery.test.     IN A    10.53.0.11
+
+orchard-bakery.test.         IN A    192.0.2.10
+www.orchard-bakery.test.     IN A    192.0.2.10
+mail.orchard-bakery.test.    IN A    198.51.100.10
+orchard-bakery.test.         IN MX   10 mail.orchard-bakery.test.
+orchard-bakery.test.         IN TXT  "v=spf1 mx -all"
+api.orchard-bakery.test.     IN A    192.0.2.110

@@ -1,0 +1,11 @@
+$TTL 3600
+pixelforge-games.test.       IN SOA  ns1.pixelforge-games.test. hostmaster.pixelforge-games.test. ( 1 3600 900 604800 300 )
+pixelforge-games.test.       IN NS   ns1.pixelforge-games.test.
+ns1.pixelforge-games.test.   IN A    10.53.0.11
+
+pixelforge-games.test.       IN A    192.0.2.12
+www.pixelforge-games.test.   IN A    192.0.2.12
+mail.pixelforge-games.test.  IN A    198.51.100.12
+pixelforge-games.test.       IN MX   10 mail.pixelforge-games.test.
+pixelforge-games.test.       IN TXT  "v=spf1 mx -all"
+shop.pixelforge-games.test.  IN CNAME www.pixelforge-games.test.

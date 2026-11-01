@@ -1,0 +1,48 @@
+# The demo hosting's customer zones: what the web app watches by default (dnssecretary serve).
+# Every zone is delegated from test. and served by auth1, like the catalogue zones; sign.sh signs
+# them (scripts/hosting.sh) and generates their delegations and auth1/hosting.conf from this list.
+#
+#   <zone>   [<catalogue error the zone starts with>]
+#
+# The start errors are "at risk" ones, so the hosting has something to show before the demo
+# breaks anything. scripts/demo.sh break <zone> <error> breaks any of these zones live.
+northwind-coffee.test
+lindqvist-law.test
+bluefin-sushi.test
+atlas-dental.test
+harbor-books.test
+copperleaf-studio.test
+greenline-bikes.test
+maple-veterinary.test
+summit-climbing.test
+orchard-bakery.test
+riverside-clinic.test
+pixelforge-games.test
+silverbirch-hotel.test
+tidewater-marina.test
+ironbridge-garage.test
+lumen-optics.test
+foxglove-florist.test
+quarry-architects.test
+saltmarsh-brewery.test
+kestrel-accounting.test
+nordic-knitwear.test
+oakmont-school.test    d4
+papercrane-print.test
+redwood-roofing.test
+stonepath-yoga.test
+sunflower-daycare.test
+velvet-records.test
+westgate-pharmacy.test    a6
+wildberry-market.test
+zephyr-travel.test
+amber-jewellery.test
+bramble-cafe.test
+cobalt-it.test
+driftwood-surf.test
+ember-pizza.test
+falcon-logistics.test
+granite-legal.test    b7
+hazel-photography.test
+indigo-salon.test
+juniper-gardens.test

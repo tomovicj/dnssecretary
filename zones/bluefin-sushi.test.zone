@@ -1,0 +1,11 @@
+$TTL 3600
+bluefin-sushi.test.          IN SOA  ns1.bluefin-sushi.test. hostmaster.bluefin-sushi.test. ( 1 3600 900 604800 300 )
+bluefin-sushi.test.          IN NS   ns1.bluefin-sushi.test.
+ns1.bluefin-sushi.test.      IN A    10.53.0.11
+
+bluefin-sushi.test.          IN A    192.0.2.3
+www.bluefin-sushi.test.      IN A    192.0.2.3
+mail.bluefin-sushi.test.     IN A    198.51.100.3
+bluefin-sushi.test.          IN MX   10 mail.bluefin-sushi.test.
+bluefin-sushi.test.          IN TXT  "v=spf1 mx -all"
+blog.bluefin-sushi.test.     IN CNAME www.bluefin-sushi.test.

@@ -1,0 +1,11 @@
+$TTL 3600
+oakmont-school.test.         IN SOA  ns1.oakmont-school.test. hostmaster.oakmont-school.test. ( 1 3600 900 604800 300 )
+oakmont-school.test.         IN NS   ns1.oakmont-school.test.
+ns1.oakmont-school.test.     IN A    10.53.0.11
+
+oakmont-school.test.         IN A    192.0.2.22
+www.oakmont-school.test.     IN A    192.0.2.22
+mail.oakmont-school.test.    IN A    198.51.100.22
+oakmont-school.test.         IN MX   10 mail.oakmont-school.test.
+oakmont-school.test.         IN TXT  "v=spf1 mx -all"
+api.oakmont-school.test.     IN A    192.0.2.122
