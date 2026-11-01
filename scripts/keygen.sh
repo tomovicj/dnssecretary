@@ -25,8 +25,11 @@ ZONES="$ZONES c1-rsasha1.test. c2-two-alg.test. c3-rsa1024.test."
 ZONES="$ZONES d2-bitmap.test. d3-nsec-nosig.test. d5-nsec3param.test. d6-nsec-mixed.test."
 ZONES="$ZONES e2-ksk-ds-early.test. e3-rollover.test. e4-cds.test."
 ZONES="$ZONES f1-stale-secondary.test. f2-tcp-edns.test."
+# The demo hosting's customer zones (see scripts/hosting.sh)
+ZONES="$ZONES $(awk '!/^#/ && NF { printf "%s. ", $1 }' zones/hosting.list)"
 
 mkdir -p "$KEYDIR"
+made=0
 
 # Algorithm for a zone. Almost all zones use 13, except errors C1 and C3.
 alg_for() {
@@ -51,6 +54,7 @@ for zone in $ZONES; do
     fi
 
     alg=$(alg_for "$zone")
+    made=1
     echo ">> $zone: making KSK and ZSK ($alg)"
     # $alg unquoted on purpose: it can also contain "-b 1024".
     # shellcheck disable=SC2086
@@ -74,6 +78,7 @@ extra_key() {
         echo ">> $zone: extra key in $dir/ already exists, skipping"
     else
         echo ">> $zone: making an extra key in $dir/"
+        made=1
         dnssec-keygen -q -K "$dir" "$@" "$zone" >/dev/null
     fi
 }
@@ -87,6 +92,12 @@ extra_key next e2-ksk-ds-early.test. -a "$ALG" -f KSK
 extra_key k2   a5-unknown-key.test.  -a "$ALG"
 # C2: an algorithm-8 KSK. It is published in the DNSKEY set (and has a DS), but signs nothing.
 extra_key alg8 c2-two-alg.test.      -a RSASHA256 -b 2048 -f KSK
+
+# New keys make the demo's saved copy of keys/ stale (scripts/demo.sh save); the next demo action saves again.
+if [ "$made" = 1 ] && [ -d build/demo ]; then
+    rm -rf build/demo
+    echo ">> new keys: dropped the demo's saved copy in build/demo/"
+fi
 
 echo
 echo "Done. The keys are in $KEYDIR/ (.key = public part, .private = SECRET part)."

@@ -26,7 +26,7 @@ import org.xbill.DNS.Name;
 import org.xbill.DNS.RRSIGRecord;
 import org.xbill.DNS.TextParseException;
 import rs.port53.dnssecretary.catalog.Catalog;
-import rs.port53.dnssecretary.catalog.CatalogEntry;
+import rs.port53.dnssecretary.catalog.ErrorId;
 import rs.port53.dnssecretary.check.CheckContext;
 import rs.port53.dnssecretary.collect.Collector;
 import rs.port53.dnssecretary.collect.KeyDirectory;
@@ -84,6 +84,21 @@ public final class WebApp {
         return new WebApp(catalog, zones, collect, s -> analyze(s, config, catalog, clock, keys),
                 SandboxRunner.forLab(labDir)::run, prod::run, (args, log) -> demo(labDir, args, log), clock,
                 labDir.resolve("webapp/dist"), 4);
+    }
+
+    /**
+     * The errors scripts/demo.sh can put on any hosting zone (break.sh "zone" mode, E1 by a live
+     * rollover): what the demo panel offers.
+     */
+    static final List<ErrorId> HOSTING_ERRORS = Stream.of("A1", "A2", "A3", "A4", "A6", "B2", "B3", "B4", "B5",
+            "B6", "B7", "D1", "D3", "D4", "D5", "D6", "E1", "E4").map(ErrorId::valueOf).toList();
+
+    /** The demo hosting's customer zones: zones/hosting.list in the lab ("&lt;zone&gt; [&lt;start error&gt;]" lines). */
+    public static List<Name> hostingZones(Path labDir) throws IOException {
+        try (Stream<String> lines = Files.lines(labDir.resolve("zones/hosting.list"))) {
+            return lines.map(String::strip).filter(l -> !l.isEmpty() && !l.startsWith("#"))
+                    .map(l -> name(l.split("\\s+")[0])).toList();
+        }
     }
 
     /** good.test and the lab zone of every catalogue entry. */
@@ -153,17 +168,27 @@ public final class WebApp {
         });
         app.sse("/api/events", events::add);
 
-        app.get("/api/demo/scenarios", ctx -> ctx.json(catalog.entries().stream()
-                .sorted(Comparator.comparing(CatalogEntry::id))
-                .map(e -> Map.of("zone", Catalog.labZone(e).toString(), "id", e.id().name(), "title", e.title()))
+        app.get("/api/demo/scenarios", ctx -> ctx.json(HOSTING_ERRORS.stream()
+                .map(id -> Map.of("id", id.name(), "title", catalog.get(id).title()))
                 .toList()));
+        // With an error: a watched zone that is not a catalogue zone (demo.sh checks it is in the
+        // hosting list). Without one: a catalogue zone, broken as the catalogue breaks it.
         app.post("/api/demo/break", ctx -> {
-            Api.ZoneRequest req = body(ctx, Api.ZoneRequest.class);
+            Api.BreakRequest req = body(ctx, Api.BreakRequest.class);
             Name z = name(req == null || req.zone() == null ? "" : req.zone());
-            if (catalog.forLabZone(z).isEmpty()) {
-                throw new IllegalArgumentException("Not a catalogue zone: " + z);
+            if (req.error() == null) {
+                if (catalog.forLabZone(z).isEmpty()) {
+                    throw new IllegalArgumentException("Not a catalogue zone: " + z);
+                }
+                ctx.status(202).json(jobs.demo(List.of("break", z.toString(true)), z).view(false));
+                return;
             }
-            ctx.status(202).json(jobs.demo(List.of("break", z.toString(true)), z).view(false));
+            ErrorId error = HOSTING_ERRORS.stream().filter(id -> id.name().equalsIgnoreCase(req.error()))
+                    .findFirst().orElseThrow(() -> new IllegalArgumentException("Not a demo error: " + req.error()));
+            if (catalog.forLabZone(z).isPresent() || !store.zones().contains(z)) {
+                throw new IllegalArgumentException("Not a hosting zone: " + z);
+            }
+            ctx.status(202).json(jobs.demo(List.of("break", z.toString(true), error.name()), z).view(false));
         });
         app.post("/api/demo/heal", ctx -> ctx.status(202).json(jobs.demo(List.of("heal"), null).view(false)));
         app.post("/api/demo/reset", ctx -> ctx.status(202).json(jobs.demo(List.of("reset"), null).view(false)));

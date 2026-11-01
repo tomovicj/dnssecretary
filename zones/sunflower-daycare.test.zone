@@ -1,0 +1,11 @@
+$TTL 3600
+sunflower-daycare.test.      IN SOA  ns1.sunflower-daycare.test. hostmaster.sunflower-daycare.test. ( 1 3600 900 604800 300 )
+sunflower-daycare.test.      IN NS   ns1.sunflower-daycare.test.
+ns1.sunflower-daycare.test.  IN A    10.53.0.11
+
+sunflower-daycare.test.      IN A    192.0.2.26
+www.sunflower-daycare.test.  IN A    192.0.2.26
+mail.sunflower-daycare.test. IN A    198.51.100.26
+sunflower-daycare.test.      IN MX   10 mail.sunflower-daycare.test.
+sunflower-daycare.test.      IN TXT  "v=spf1 mx -all"
+api.sunflower-daycare.test.  IN A    192.0.2.126

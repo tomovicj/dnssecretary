@@ -34,7 +34,7 @@ src/
 │   ├── Header.tsx    the bar on every screen (live status, demo panel button)
 │   ├── Badges.tsx    state label and the "verified" badge
 │   ├── ScriptEditor.tsx CodeMirror: the editable script (shell highlighting) and the read-only diff
-│   └── DemoPanel.tsx the drawer: break a zone, E1/E3 live rollover, heal, reset (confirm)
+│   └── DemoPanel.tsx the drawer: break a hosting zone with a chosen error, heal, reset (confirm)
 ├── App.tsx           routes: / and /zones/:zone
 └── styles.css        the design's tokens; state = colour + word + icon, never colour alone
 ```

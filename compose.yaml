@@ -90,3 +90,16 @@ services:
               "--config", "/lab/dnssecretary/config/lab.yaml", "serve", "--port", "8080"]
     ports: ["127.0.0.1:8080:8080"]
     networks: [dnslab, web]
+
+  tour:                     # records the demo video (Playwright, demo/tour.mjs): sh scripts/video.sh
+    image: mcr.microsoft.com/playwright:v1.48.2-jammy
+    profiles: ["demo"]
+    user: "${LAB_UID:-1000}:${LAB_GID:-1000}"
+    volumes: ["./demo:/demo"]
+    working_dir: /demo
+    environment:
+      HOME: /tmp
+      BASE_URL: http://web:8080
+      PACE: ${PACE:-1}
+    command: ["sh", "-c", "npm ci --no-audit --no-fund --loglevel=error && node tour.mjs"]
+    networks: [web]         # reaches the web app by name; npm needs the internet once

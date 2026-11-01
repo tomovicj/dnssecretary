@@ -1,0 +1,11 @@
+$TTL 3600
+stonepath-yoga.test.         IN SOA  ns1.stonepath-yoga.test. hostmaster.stonepath-yoga.test. ( 1 3600 900 604800 300 )
+stonepath-yoga.test.         IN NS   ns1.stonepath-yoga.test.
+ns1.stonepath-yoga.test.     IN A    10.53.0.11
+
+stonepath-yoga.test.         IN A    192.0.2.25
+www.stonepath-yoga.test.     IN A    192.0.2.25
+mail.stonepath-yoga.test.    IN A    198.51.100.25
+stonepath-yoga.test.         IN MX   10 mail.stonepath-yoga.test.
+stonepath-yoga.test.         IN TXT  "v=spf1 mx -all"
+_dmarc.stonepath-yoga.test.  IN TXT  "v=DMARC1; p=quarantine"

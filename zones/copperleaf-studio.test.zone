@@ -1,0 +1,11 @@
+$TTL 3600
+copperleaf-studio.test.      IN SOA  ns1.copperleaf-studio.test. hostmaster.copperleaf-studio.test. ( 1 3600 900 604800 300 )
+copperleaf-studio.test.      IN NS   ns1.copperleaf-studio.test.
+ns1.copperleaf-studio.test.  IN A    10.53.0.11
+
+copperleaf-studio.test.      IN A    192.0.2.6
+www.copperleaf-studio.test.  IN A    192.0.2.6
+mail.copperleaf-studio.test. IN A    198.51.100.6
+copperleaf-studio.test.      IN MX   10 mail.copperleaf-studio.test.
+copperleaf-studio.test.      IN TXT  "v=spf1 mx -all"
+api.copperleaf-studio.test.  IN A    192.0.2.106

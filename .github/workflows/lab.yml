@@ -43,7 +43,8 @@ jobs:
           name: dnssecretary-jar
           path: dnssecretary/target/dnssecretary.jar
 
-  # Web app front end (webapp/): typecheck, unit tests on the mock backend, production build.
+  # Web app front end (webapp/): typecheck, unit tests on the mock backend, production build;
+  # and a syntax check of the demo video script (it needs the whole lab to run).
   webapp:
     runs-on: ubuntu-latest
     defaults:
@@ -64,6 +65,8 @@ jobs:
         run: npm test
       - name: Build (webapp/dist)
         run: npm run build
+      - name: Demo video script parses (demo/tour.mjs)
+        run: node --check ../demo/tour.mjs
 
   lab:
     runs-on: ubuntu-latest
@@ -111,6 +114,15 @@ jobs:
 
       - name: DNSSECretary collect after the rollovers (E1, E3)
         run: sh scripts/dnssecretary.sh snapshot e1-rollover.test e3-rollover.test -d build/snapshots
+
+      # The demo hosting: a customer zone broken live (break.sh "zone" mode) is found as that error.
+      # check exits 2 when it finds a critical error.
+      - name: Demo hosting (demo.sh break, dnssecretary check)
+        run: |
+          sh scripts/demo.sh break northwind-coffee.test a1
+          rc=0; sh scripts/dnssecretary.sh check northwind-coffee.test > build/hosting-check.txt || rc=$?
+          cat build/hosting-check.txt
+          [ "$rc" -eq 2 ] && grep -q '^\[A1\]' build/hosting-check.txt
 
       - name: Server logs
         if: failure()

@@ -1,0 +1,11 @@
+$TTL 3600
+tidewater-marina.test.       IN SOA  ns1.tidewater-marina.test. hostmaster.tidewater-marina.test. ( 1 3600 900 604800 300 )
+tidewater-marina.test.       IN NS   ns1.tidewater-marina.test.
+ns1.tidewater-marina.test.   IN A    10.53.0.11
+
+tidewater-marina.test.       IN A    192.0.2.14
+www.tidewater-marina.test.   IN A    192.0.2.14
+mail.tidewater-marina.test.  IN A    198.51.100.14
+tidewater-marina.test.       IN MX   10 mail.tidewater-marina.test.
+tidewater-marina.test.       IN TXT  "v=spf1 mx -all"
+api.tidewater-marina.test.   IN A    192.0.2.114

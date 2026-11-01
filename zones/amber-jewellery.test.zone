@@ -1,0 +1,11 @@
+$TTL 3600
+amber-jewellery.test.        IN SOA  ns1.amber-jewellery.test. hostmaster.amber-jewellery.test. ( 1 3600 900 604800 300 )
+amber-jewellery.test.        IN NS   ns1.amber-jewellery.test.
+ns1.amber-jewellery.test.    IN A    10.53.0.11
+
+amber-jewellery.test.        IN A    192.0.2.31
+www.amber-jewellery.test.    IN A    192.0.2.31
+mail.amber-jewellery.test.   IN A    198.51.100.31
+amber-jewellery.test.        IN MX   10 mail.amber-jewellery.test.
+amber-jewellery.test.        IN TXT  "v=spf1 mx -all"
+blog.amber-jewellery.test.   IN CNAME www.amber-jewellery.test.

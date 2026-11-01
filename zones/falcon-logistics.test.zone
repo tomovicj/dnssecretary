@@ -1,0 +1,11 @@
+$TTL 3600
+falcon-logistics.test.       IN SOA  ns1.falcon-logistics.test. hostmaster.falcon-logistics.test. ( 1 3600 900 604800 300 )
+falcon-logistics.test.       IN NS   ns1.falcon-logistics.test.
+ns1.falcon-logistics.test.   IN A    10.53.0.11
+
+falcon-logistics.test.       IN A    192.0.2.36
+www.falcon-logistics.test.   IN A    192.0.2.36
+mail.falcon-logistics.test.  IN A    198.51.100.36
+falcon-logistics.test.       IN MX   10 mail.falcon-logistics.test.
+falcon-logistics.test.       IN TXT  "v=spf1 mx -all"
+shop.falcon-logistics.test.  IN CNAME www.falcon-logistics.test.

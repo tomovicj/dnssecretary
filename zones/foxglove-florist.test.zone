@@ -1,0 +1,11 @@
+$TTL 3600
+foxglove-florist.test.       IN SOA  ns1.foxglove-florist.test. hostmaster.foxglove-florist.test. ( 1 3600 900 604800 300 )
+foxglove-florist.test.       IN NS   ns1.foxglove-florist.test.
+ns1.foxglove-florist.test.   IN A    10.53.0.11
+
+foxglove-florist.test.       IN A    192.0.2.17
+www.foxglove-florist.test.   IN A    192.0.2.17
+mail.foxglove-florist.test.  IN A    198.51.100.17
+foxglove-florist.test.       IN MX   10 mail.foxglove-florist.test.
+foxglove-florist.test.       IN TXT  "v=spf1 mx -all"
+_dmarc.foxglove-florist.test. IN TXT  "v=DMARC1; p=quarantine"

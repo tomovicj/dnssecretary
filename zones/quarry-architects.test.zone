@@ -1,0 +1,11 @@
+$TTL 3600
+quarry-architects.test.      IN SOA  ns1.quarry-architects.test. hostmaster.quarry-architects.test. ( 1 3600 900 604800 300 )
+quarry-architects.test.      IN NS   ns1.quarry-architects.test.
+ns1.quarry-architects.test.  IN A    10.53.0.11
+
+quarry-architects.test.      IN A    192.0.2.18
+www.quarry-architects.test.  IN A    192.0.2.18
+mail.quarry-architects.test. IN A    198.51.100.18
+quarry-architects.test.      IN MX   10 mail.quarry-architects.test.
+quarry-architects.test.      IN TXT  "v=spf1 mx -all"
+api.quarry-architects.test.  IN A    192.0.2.118

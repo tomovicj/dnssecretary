@@ -1,5 +1,5 @@
 #!/bin/sh
-# heal.sh – signs EVERY catalogue zone correctly: a healthy hosting to start the web app demo from
+# heal.sh – signs EVERY catalogue and hosting zone correctly: a healthy hosting to start the web app demo from
 # (then scripts/demo.sh break <zone> breaks zones one by one, live).
 #
 # Runs where the BIND tools are, like sign.sh; normally through scripts/demo.sh heal, which
@@ -39,8 +39,10 @@ for f in "$SRC"/*.test.zone; do
     dnssec-verify -q -o "$z" "$OUT/$z.zone.signed"
     cp "$OUT/dsset-$z." "$BUILD/parent-ds/$z.ds"
 
-    # The same servers as the broken zone (F1: auth1 and auth2, F2: auth3).
-    [ -f "$BUILD/broken/$z.zone.signed" ] && cp "$OUT/$z.zone.signed" auth1/
+    # The same servers as the broken zone (F1: auth1 and auth2, F2: auth3); hosting zones: auth1.
+    if [ -f "$BUILD/broken/$z.zone.signed" ] || grep -q "^$z\([[:space:]]\|$\)" "$SRC/hosting.list"; then
+        cp "$OUT/$z.zone.signed" auth1/
+    fi
     [ -f "$BUILD/broken/auth2/$z.zone.signed" ] && cp "$OUT/$z.zone.signed" auth2/
     [ -f "$BUILD/broken/auth3/$z.zone.signed" ] && cp "$OUT/$z.zone.signed" auth3/
     echo ">> healed: $z"

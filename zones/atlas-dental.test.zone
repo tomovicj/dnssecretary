@@ -1,0 +1,11 @@
+$TTL 3600
+atlas-dental.test.           IN SOA  ns1.atlas-dental.test. hostmaster.atlas-dental.test. ( 1 3600 900 604800 300 )
+atlas-dental.test.           IN NS   ns1.atlas-dental.test.
+ns1.atlas-dental.test.       IN A    10.53.0.11
+
+atlas-dental.test.           IN A    192.0.2.4
+www.atlas-dental.test.       IN A    192.0.2.4
+mail.atlas-dental.test.      IN A    198.51.100.4
+atlas-dental.test.           IN MX   10 mail.atlas-dental.test.
+atlas-dental.test.           IN TXT  "v=spf1 mx -all"
+shop.atlas-dental.test.      IN CNAME www.atlas-dental.test.

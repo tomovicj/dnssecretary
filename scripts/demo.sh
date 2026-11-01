@@ -1,10 +1,13 @@
 #!/bin/sh
 # demo.sh – puts the lab into a state for the web app demo (the demo panel calls it).
 #
-#   sh scripts/demo.sh heal           every zone correct (C1, C3 stay "at risk"): a healthy hosting
-#   sh scripts/demo.sh break <zone>   that zone as the catalogue breaks it; E1/E3: the live rollover
-#   sh scripts/demo.sh reset          the lab as after sign.sh: all 30 zones broken
-#   sh scripts/demo.sh save [-f]      remember keys/ and auth3/unbound.conf (heal and break do it once)
+#   sh scripts/demo.sh heal                   every zone correct (C1, C3 stay "at risk")
+#   sh scripts/demo.sh break <zone> <error>   a hosting zone (zones/hosting.list) broken as <error>:
+#                                             a1 … e4 as break.sh "zone" mode lists them, e1 = live rollover
+#   sh scripts/demo.sh break <zone>           a catalogue zone as the catalogue breaks it; E1/E3: live rollover
+#   sh scripts/demo.sh reset                  the lab as after sign.sh: the hosting at its start
+#                                             (3 zones at risk), all 30 catalogue zones broken
+#   sh scripts/demo.sh save [-f]              remember keys/ and auth3/unbound.conf (heal and break do it once)
 #
 # Needs only the Docker CLI: signing runs in a throw-away lab container (like the signer
 # service), restarts go through scripts/fixenv/prod.sh. Run from the host or from a container
@@ -24,7 +27,7 @@ BROKEN=build/broken
 # shellcheck source=scripts/fixenv/prod.sh
 . scripts/fixenv/prod.sh
 
-usage() { sed -n '2,7p' "$0"; exit 2; }
+usage() { sed -n '2,10p' "$0"; exit 2; }
 
 # A lab script with the BIND tools, as the owner of the lab (the files stay theirs).
 lab_sh() {
@@ -114,10 +117,39 @@ break_zone() {
     echo "broke $z"
 }
 
+# A hosting zone broken live as one catalogue error ($2, e.g. a1 or A1).
+break_hosting() {
+    z=${1%.}; e=$(echo "$2" | tr '[:upper:]' '[:lower:]')
+    save
+    if [ "$e" = e1 ]; then
+        # as for e1-rollover.test: the resolver caches the DNSKEY set, then the ZSK is replaced at once
+        flush "$z"
+        ask "$z" DNSKEY
+        lab_sh scripts/break.sh rollover "$z"
+        reload auth1
+    else
+        ds=build/parent-ds/$z.ds
+        before=$(cat "$ds" 2>/dev/null || true)
+        lab_sh scripts/break.sh zone "$z" "$e"
+        cp "build/hosting/$z.zone.signed" auth1/
+        reload auth1
+        if [ "$(cat "$ds" 2>/dev/null || true)" != "$before" ]; then
+            lab_sh scripts/sign-tld.sh >/dev/null
+            reload tld
+        fi
+        flush "$z"
+    fi
+    echo "broke $z ($e)"
+}
+
 case ${1:-} in
     heal)  heal ;;
     reset) reset ;;
     save)  save "${2:-}" ;;
-    break) [ $# -eq 2 ] || usage; break_zone "$2" ;;
+    break) case $# in
+               2) break_zone "$2" ;;
+               3) break_hosting "$2" "$3" ;;
+               *) usage ;;
+           esac ;;
     *)     usage ;;
 esac

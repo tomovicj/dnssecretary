@@ -1,0 +1,11 @@
+$TTL 3600
+zephyr-travel.test.          IN SOA  ns1.zephyr-travel.test. hostmaster.zephyr-travel.test. ( 1 3600 900 604800 300 )
+zephyr-travel.test.          IN NS   ns1.zephyr-travel.test.
+ns1.zephyr-travel.test.      IN A    10.53.0.11
+
+zephyr-travel.test.          IN A    192.0.2.30
+www.zephyr-travel.test.      IN A    192.0.2.30
+mail.zephyr-travel.test.     IN A    198.51.100.30
+zephyr-travel.test.          IN MX   10 mail.zephyr-travel.test.
+zephyr-travel.test.          IN TXT  "v=spf1 mx -all"
+api.zephyr-travel.test.      IN A    192.0.2.130

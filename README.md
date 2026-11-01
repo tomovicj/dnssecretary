@@ -79,8 +79,9 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | Script | Runs in | What it does |
 |--------|---------|--------------|
 | `scripts/keygen.sh` | signer | Makes a KSK + ZSK per zone, plus extra keys some errors need (`keys/old`, `next`, `k2`, `alg8`). |
-| `scripts/sign.sh` | signer | Signs bottom-up: `good.test` → broken zones → `test.` → root. Then builds the trust anchor and copies zones to the servers. |
-| `scripts/break.sh` | signer | Called by `sign.sh`. Builds the broken zones and the DS records their parent should have. |
+| `scripts/sign.sh` | signer | Signs bottom-up: `good.test` → broken zones → hosting zones → `test.` → root. Then builds the trust anchor and copies zones to the servers. |
+| `scripts/break.sh` | signer | Called by `sign.sh`. Builds the broken zones and the DS records their parent should have. `zone <zone> <error>` breaks a hosting zone the same way, `rollover <zone>` replaces a ZSK at once. |
+| `scripts/hosting.sh` | signer | Called by `sign.sh`: signs the demo hosting's 40 customer zones (`zones/hosting.list`), three of them with an "at risk" start error, and writes `auth1/hosting.conf`. |
 | `scripts/sign-tld.sh` | signer | Step 2 of `sign.sh`: re-signs only `test.` with the children's DS records and copies it to `tld/`. DNSSECretary uses it to fix a DS in the lab. |
 | `scripts/check.sh` | host | Queries every zone and compares rcode / AD / EDE with the expected result. Exits 1 on mismatch. `STRICT_EDE=1` also fails on wrong EDE codes. |
 | `scripts/e1-rollover.sh` | host | Breaks E1 live: caches the DNSKEY set, then swaps the ZSK without pre-publishing it. |
@@ -88,12 +89,23 @@ Always query `@10.53.0.53`. Without it, `dig` goes through Docker's embedded DNS
 | `scripts/clean.sh` | host | Removes everything generated. `-n` dry run, `-k` keep keys, `-y` don't ask. |
 | `scripts/dnssecretary.sh` | host | Runs DNSSECretary in the `app` container on the lab network, e.g. `check a1-expired.test`. See [`dnssecretary/README.md`](dnssecretary/README.md). |
 | `scripts/simulate.sh` | host / web | Tries a fix script in a sandbox copy of the lab (one container, no network, the lab's addresses on `lo`), then `verify`. Exit 0 = verified. The lab itself is not touched. |
-| `scripts/demo.sh` | host / web | Web app demo: `heal` (every zone correct), `break <zone>` (one zone broken again, E1/E3 live), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
+| `scripts/demo.sh` | host / web | Web app demo: `break <zone> <error>` (a hosting zone broken live, e.g. `a1`; `e1` = live rollover), `break <zone>` (a catalogue zone broken again), `heal` (every zone correct), `reset` (the lab as after `sign.sh`, keys and auth3 config restored). |
+| `scripts/video.sh` | host | Records the demo as a video (`demo/out/dnssecretary-demo.webm`): a browser in the `tour` container (Playwright, `demo/tour.mjs`) goes through three incidents with captions. The web app must be running. |
 | `scripts/web.sh` | host | Starts the web app (compose service `web`) on http://localhost:8080; `logs`, `stop`. Build the front end first (`webapp/`, `npm run build`), see [`webapp/README.md`](webapp/README.md). |
-| `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue zone correctly. C1/C3 stay "at risk" (weak keys by design). |
+| `scripts/heal.sh` | signer | Called by `demo.sh heal`: signs every catalogue and hosting zone correctly. C1/C3 stay "at risk" (weak keys by design). |
 | `scripts/snapshots.sh` | host | Records a DNSSECretary snapshot of every catalogue zone (unit test data). `ROLLOVER=1` also records E1/E3. |
 
 After running a rollover script, run `sign.sh` and restart the servers to get a clean lab again.
+
+## Demo hosting
+
+Besides the catalogue zones, the lab hosts 40 customer zones of a made-up DNS hosting
+(`northwind-coffee.test`, `lindqvist-law.test`, …), listed in [`zones/hosting.list`](zones/hosting.list).
+They are what the web app shows: all signed correctly, except three that start "at risk" (A6, B7, D4).
+`sh scripts/demo.sh break <zone> <error>` breaks any of them live as one of 18 catalogue errors, and so
+does the web app's demo panel. `sh scripts/video.sh` records a demo video without anyone clicking: three
+zones break one after another (A1, B2, E1), and each is detected, verified in the sandbox, explained and
+fixed. `sh scripts/demo.sh reset` brings the hosting back to its start.
 
 ## Broken zones
 

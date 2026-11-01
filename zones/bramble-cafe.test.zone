@@ -1,0 +1,11 @@
+$TTL 3600
+bramble-cafe.test.           IN SOA  ns1.bramble-cafe.test. hostmaster.bramble-cafe.test. ( 1 3600 900 604800 300 )
+bramble-cafe.test.           IN NS   ns1.bramble-cafe.test.
+ns1.bramble-cafe.test.       IN A    10.53.0.11
+
+bramble-cafe.test.           IN A    192.0.2.32
+www.bramble-cafe.test.       IN A    192.0.2.32
+mail.bramble-cafe.test.      IN A    198.51.100.32
+bramble-cafe.test.           IN MX   10 mail.bramble-cafe.test.
+bramble-cafe.test.           IN TXT  "v=spf1 mx -all"
+shop.bramble-cafe.test.      IN CNAME www.bramble-cafe.test.

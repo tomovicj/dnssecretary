@@ -81,7 +81,11 @@ sh scripts/break.sh
 # Keep the broken DS set: scripts/demo.sh break puts a zone back into its broken state.
 cp -a "$BUILD/parent-ds" "$BUILD/broken/parent-ds"
 
-# ---------- 2. test. (parent of good.test and the broken zones) ----------
+# ---------- 1c. the demo hosting's customer zones (zones/hosting.list) ----------
+sh scripts/hosting.sh
+#   -> produces $BUILD/hosting/*.zone.signed (delivered to auth1/), their DS, auth1/hosting.conf
+
+# ---------- 2. test. (parent of good.test, the broken zones and the hosting zones) ----------
 # A separate script, because DNSSECretary re-signs only test. when it fixes a DS.
 sh scripts/sign-tld.sh
 #   -> produces $BUILD/dsset-test. and delivers tld/test.zone.signed

@@ -122,8 +122,8 @@ export interface ZoneDetail extends ZoneRow {
   jobs: Job[];
 }
 
+/** An error the demo panel can put on any hosting zone (GET /api/demo/scenarios). */
 export interface Scenario {
-  zone: string;
   id: string;
   title: string;
 }

@@ -18,6 +18,9 @@ dnssecretary/target/
 resolver/root.key
 client/delv-anchor.conf
 
+# The hosting zones' NSD blocks, generated from zones/hosting.list (scripts/hosting.sh)
+auth1/hosting.conf
+
 # --- Server runtime files ---
 *.pid
 *.log
@@ -39,3 +42,7 @@ compose.override.yaml
 # Web app (webapp/): dependencies and build output (served by dnssecretary serve)
 webapp/node_modules/
 webapp/dist/
+
+# Demo video (demo/): dependencies and the recording
+demo/node_modules/
+demo/out/

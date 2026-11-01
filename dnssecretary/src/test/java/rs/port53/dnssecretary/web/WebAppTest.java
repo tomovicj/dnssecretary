@@ -144,13 +144,30 @@ class WebAppTest {
     }
 
     @Test
-    void demoBreaksOnlyCatalogueZones() throws Exception {
+    void demoBreaksACatalogueZoneAsItIsOrAHostingZoneWithAnError() throws Exception {
         String id = post("/api/demo/break", "{\"zone\":\"a1-expired.test\"}", 202).path("id").asText();
         await(() -> state(id).equals("PASS"));
-        assertThat(demos).containsExactly(List.of("break", "a1-expired.test"));
+        // good.test stands in for a hosting zone: watched, not a catalogue zone
+        String id2 = post("/api/demo/break", "{\"zone\":\"good.test\",\"error\":\"e1\"}", 202).path("id").asText();
+        await(() -> state(id2).equals("PASS"));
+        assertThat(demos).containsExactly(List.of("break", "a1-expired.test"), List.of("break", "good.test", "E1"));
 
-        post("/api/demo/break", "{\"zone\":\"good.test\"}", 400);
-        assertThat(get("/api/demo/scenarios")).hasSize(30);
+        post("/api/demo/break", "{\"zone\":\"good.test\"}", 400);                         // no error: catalogue only
+        post("/api/demo/break", "{\"zone\":\"a1-expired.test\",\"error\":\"A1\"}", 400);  // a catalogue zone
+        post("/api/demo/break", "{\"zone\":\"good.test\",\"error\":\"F2\"}", 400);       // not on a hosting zone
+        post("/api/demo/break", "{\"zone\":\"other.test\",\"error\":\"A1\"}", 400);      // not watched
+        JsonNode scenarios = get("/api/demo/scenarios");
+        assertThat(scenarios).hasSize(18);
+        assertThat(scenarios.get(0).path("id").asText()).isEqualTo("A1");
+        assertThat(scenarios.get(0).path("title").asText()).isEqualTo("Expired signature");
+    }
+
+    @Test
+    void hostingZonesComeFromTheLabsList() throws Exception {
+        assertThat(WebApp.hostingZones(java.nio.file.Path.of("..")))
+                .hasSizeGreaterThan(30)
+                .contains(WebApp.name("northwind-coffee.test"), WebApp.name("westgate-pharmacy.test"))
+                .noneMatch(z -> CATALOG.forLabZone(z).isPresent());
     }
 
     @Test

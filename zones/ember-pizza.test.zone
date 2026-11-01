@@ -1,0 +1,11 @@
+$TTL 3600
+ember-pizza.test.            IN SOA  ns1.ember-pizza.test. hostmaster.ember-pizza.test. ( 1 3600 900 604800 300 )
+ember-pizza.test.            IN NS   ns1.ember-pizza.test.
+ns1.ember-pizza.test.        IN A    10.53.0.11
+
+ember-pizza.test.            IN A    192.0.2.35
+www.ember-pizza.test.        IN A    192.0.2.35
+mail.ember-pizza.test.       IN A    198.51.100.35
+ember-pizza.test.            IN MX   10 mail.ember-pizza.test.
+ember-pizza.test.            IN TXT  "v=spf1 mx -all"
+blog.ember-pizza.test.       IN CNAME www.ember-pizza.test.

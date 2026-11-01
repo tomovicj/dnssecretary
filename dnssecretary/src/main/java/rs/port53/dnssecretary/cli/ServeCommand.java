@@ -33,8 +33,15 @@ final class ServeCommand implements Callable<Integer> {
             description = "Seconds between two scans of every zone (default: ${DEFAULT-VALUE}).")
     int scanInterval;
 
+    enum Watch { hosting, catalogue }
+
+    @Option(names = "--watch", defaultValue = "hosting",
+            description = "Which lab zones to watch: hosting (the demo hosting's customer zones, zones/hosting.list) "
+                    + "or catalogue (good.test and every catalogue zone). Default: ${DEFAULT-VALUE}.")
+    Watch watch;
+
     @Option(names = "--zone", paramLabel = "<zone>",
-            description = "A zone to watch (repeatable). Default: good.test and every catalogue lab zone.")
+            description = "A zone to watch (repeatable); replaces --watch.")
     List<String> zones;
 
     @Override
@@ -44,9 +51,11 @@ final class ServeCommand implements Callable<Integer> {
             spec.commandLine().getErr().println(Messages.get(config.dns() == null ? "cli.noConfig" : "cli.noFixConfig"));
             return Main.EXIT_TOOL_ERROR;
         }
-        List<Name> watched = zones == null || zones.isEmpty() ? WebApp.labZones(main.catalog())
-                : zones.stream().map(Main::zoneName).toList();
-        WebApp app = WebApp.forLab(config, main.catalog(), Path.of(config.fix().labDir()), watched, Clock.systemUTC());
+        Path labDir = Path.of(config.fix().labDir());
+        List<Name> watched = zones != null && !zones.isEmpty() ? zones.stream().map(Main::zoneName).toList()
+                : watch == Watch.hosting ? WebApp.hostingZones(labDir)
+                : WebApp.labZones(main.catalog());
+        WebApp app = WebApp.forLab(config, main.catalog(), labDir, watched, Clock.systemUTC());
         int p = app.start(port);
         spec.commandLine().getOut().println(Messages.get("web.listening", p, watched.size(), scanInterval));
         spec.commandLine().getOut().flush();
