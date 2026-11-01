@@ -14,7 +14,7 @@ import org.xbill.DNS.ZoneTransferIn;
 
 /**
  * AXFR from the zone's name servers, first one that allows it.
- * In the lab NSD doesn't allow transfers yet (docs/java-proposal.md 2.5, point 8).
+ * In the lab NSD doesn't allow transfers, so the lab uses FileZoneSource.
  */
 public final class AxfrZoneSource implements ZoneSource {
 

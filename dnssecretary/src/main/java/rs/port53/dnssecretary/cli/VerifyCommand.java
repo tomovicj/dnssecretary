@@ -18,7 +18,7 @@ import rs.port53.dnssecretary.report.TextReport;
 import rs.port53.dnssecretary.verify.Verifier;
 import rs.port53.dnssecretary.verify.VerifyResult;
 
-/** verify: live check after a fix (docs/java-proposal.md 3.8). */
+/** verify: live check after a fix. */
 @Command(name = "verify", mixinStandardHelpOptions = true,
         description = "After a fix: check the zone live again, and that the resolver returns NOERROR AD.",
         exitCodeListHeading = "%nExit codes:%n",

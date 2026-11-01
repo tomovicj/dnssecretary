@@ -12,7 +12,7 @@ import rs.port53.dnssecretary.collect.ZoneSnapshot;
 import rs.port53.dnssecretary.report.Report;
 
 /**
- * Live verify after a fix (docs/java-proposal.md 3.8): the checks find no critical error,
+ * Live verify after a fix: the checks find no critical error,
  * and the validating resolver answers every sample with NOERROR/NXDOMAIN and the AD bit.
  * Pure: works on a freshly collected snapshot.
  */

@@ -29,8 +29,7 @@ import rs.port53.dnssecretary.dns.TrustAnchor;
 
 /**
  * collect: asks the network everything the checks need about one zone and returns
- * a {@link ZoneSnapshot}. The only step (besides apply) that does I/O.
- * Steps follow docs/java-proposal.md 3.4.
+ * a {@link ZoneSnapshot}. The only step (besides running fix scripts) that does I/O.
  */
 public final class Collector {
 

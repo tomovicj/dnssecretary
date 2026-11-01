@@ -158,20 +158,21 @@ Some results differ from what other resolvers would return. For example, BIND ma
 ## Repository layout
 
 ```
-zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them)
-scripts/          keygen, sign, break, check, rollover and clean scripts + DNSSECretary wrappers
+zones/            unsigned zone sources (hand-edited; no DS records – sign.sh adds them) + hosting.list
+scripts/          keygen, sign, break, hosting, check, rollover, clean, demo and video scripts + DNSSECretary wrappers
 catalog/          the error catalogue (catalog.yaml), shared by DNSSECretary and the lab
 dnssecretary/     DNSSECretary, the Java tool (Maven project, see its README)
-docs/             design documents
+webapp/           the web app's front end (React + TypeScript, see its README)
+demo/             the demo video's browser script (Playwright, run by scripts/video.sh)
 root/ tld/        NSD configs for the root and test. servers
 auth1/ auth2/     NSD configs for the authoritative servers
 auth3/            Unbound auth-zone config (error F2)
 resolver/         Unbound resolver config and root hints
-image/Dockerfile  the shared image (pinned versions); stage "app" adds a Java runtime
+image/Dockerfile  the shared image (pinned versions); stage "app" adds a Java runtime, "web" the Docker CLI
 compose.yaml      network and services
 ```
 
-Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `resolver/root.key`, `client/delv-anchor.conf`, `dnssecretary/target/`. Every team member generates their own keys, so trust anchors differ between machines.
+Generated and gitignored: `keys/`, `build/`, `*/*.signed`, `auth1/hosting.conf`, `resolver/root.key`, `client/delv-anchor.conf`, `dnssecretary/target/`, `webapp/dist/`, `demo/out/`. Every team member generates their own keys, so trust anchors differ between machines.
 
 ## CI
 
