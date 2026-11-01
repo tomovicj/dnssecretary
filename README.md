@@ -1,8 +1,8 @@
-# dnssec-lab
+# DNSSECretary
 
-An isolated DNSSEC lab in Docker: a miniature DNS hierarchy with its own root and trust anchor, a validating resolver, and **one deliberately broken zone for each of 30 common DNSSEC errors**.
+**DNSSECretary** (Team Port 53) is a web app for DNS hosting admins: it watches every hosted zone, explains each DNSSEC error in plain language, and fixes it with a shell script that is first verified in a sandbox copy of the hosting. The tool is in [`dnssecretary/`](dnssecretary/) (Java) and [`webapp/`](webapp/) (React).
 
-It is the test environment for **DNSSECretary** (Team Port 53). DNSSECretary checks a zone, explains each error in plain language, and fixes it or gives the exact fix. Every error in the team's error catalogue has a zone here that reproduces it, so the detection and fix engines can be tested against real broken zones.
+This repo also holds the lab it runs against: an isolated DNSSEC lab in Docker, a miniature DNS hierarchy with its own root and trust anchor, a validating resolver, a demo hosting of 40 customer zones, and **one deliberately broken zone for each of 30 common DNSSEC errors** from the team's error catalogue, so detection and fixes are tested against real broken zones.
 
 Everything runs on an internal Docker network with no internet access. There are no external queries, and the lab changes no records outside itself.
 

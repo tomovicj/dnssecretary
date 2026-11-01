@@ -1,3 +1,5 @@
+name: dnssecretary          # the compose project, whatever the clone's directory is called (scripts/fixenv/prod.sh)
+
 networks:
   web: {}                   # only for the web app's published port (dnslab can't publish ports)
   dnslab:
